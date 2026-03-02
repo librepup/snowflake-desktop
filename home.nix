@@ -536,7 +536,7 @@ in
   };
   # Wallpapers
   home.file = {
-    "Pictures/Wallpaper/dangeroooous_jungle_wp.png".source = ./files/pictures/dangeroooous_jungle_wp.png;
+    "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ./files/pictures/dangeroooous_jungle_wp.png;
     "Pictures/Wallpapers/marnieGruvbox.png".source = ./files/pictures/marnieGruvbox.png;
     "Pictures/Wallpapers/demeLook.jpg".source = ./files/pictures/demeLook.jpg;
     "Pictures/Wallpapers/helltakerStare.jpg".source = ./files/pictures/helltakerStare.jpg;
@@ -909,7 +909,7 @@ in
     	"class_g = 'Thunderbird' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
     	"class_g = 'Mozilla Thunderbird' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
         "class_g ?= 'Xfce4-power-manager'",
-    	# 
+    	#
     	# Exclude Vokoscreen and VokoscreenNG area selector
     	#
     	"class_g ?= 'vokoscreen' && argb",
@@ -984,7 +984,7 @@ in
     	dnd = { shadow = false; }
     	popup_menu = { opacity = 1; }
     	dropdown_menu = { opacity = 1; }
-    
+
     };
   '';
   home.file.".scripts/polybar.sh" = {
@@ -1003,10 +1003,10 @@ in
     text = ''
       #!/usr/bin/env bash
       # View Screenshots from your Clipboard
-      
+
       # Define randomized Filename
       fileName=$((10000 + $RANDOM % 1000000000))
-      
+
       # If image in clipboard, run process; else send error notification.
       if xclip -selection clipboard -t image/png -o &> /dev/null; then
           # Export clipboard image to /home/$USER/ with a random file name.
@@ -1146,20 +1146,20 @@ in
 
     [experimental]
         per_monitor_dpi = false
-    
+
     [urgency_low]
         background = "#222222"
         foreground = "#888888"
         timeout = 5
         default_icon = dialog-information
-    
+
     [urgency_normal]
         background = "#1d1f21"
         foreground = "#ffffff"
         timeout = 5
         override_pause_level = 30
         default_icon = dialog-information
-    
+
     [urgency_critical]
         background = "#900000"
         foreground = "#ffffff"
@@ -1201,7 +1201,7 @@ in
       location: 0;
       fullscreen: false;
     }
-    
+
     @theme "squared-loji"
   '';
   home.file.".scripts/wineOsuSetup.sh" = {
@@ -1278,7 +1278,7 @@ in
     /* Rofi Squared Nord  */
     /* Author: Nixpup (https://codeberg.org/nixpup) */
     /* Original Author: Newman Sanchez (https://github.com/newmanls) */
-    
+
     * {
         /*font:   "FiraCode Nerd Font Medium 12";*/
         font: "DejaVu Sans Mono Regular 14";
@@ -1304,13 +1304,13 @@ in
         location:   center;
         width:      480;
         border-radius: 0px;
-    
+
         background-color:   @bg0;
     }
     inputbar {
         spacing:    8px;
         padding:    8px;
-    
+
         background-color:   @bg1;
     }
     prompt, entry, element-icon, element-text {
@@ -1328,7 +1328,7 @@ in
         padding:    4px 0;
         lines:      8;
         columns:    1;
-    
+
         fixed-height:   false;
     }
     element {
@@ -1367,7 +1367,7 @@ in
     /* Rofi Squared Loji  */
     /* Author: Nixpup (https://codeberg.org/nixpup) */
     /* Original Author: Newman Sanchez (https://github.com/newmanls) */
-    
+
     * {
         font: "DejaVu Sans Mono Regular 14";
         bg0: #282A2E;
@@ -1385,13 +1385,13 @@ in
         location:   center;
         width:      480;
         border-radius: 0px;
-    
+
         background-color:   @bg0;
     }
     inputbar {
         spacing:    8px;
         padding:    8px;
-    
+
         background-color:   @bg1;
     }
     prompt, entry, element-icon, element-text {
@@ -1409,7 +1409,7 @@ in
         padding:    4px 0;
         lines:      8;
         columns:    1;
-    
+
         fixed-height:   false;
     }
     element {
