@@ -56,7 +56,7 @@ in
       };
       vicinaeDmenuRun = {
         enable = true;
-        keybind = "SUPER,f";
+        keybind = "SUPER,t";
       };
     };
   };
@@ -467,10 +467,15 @@ in
     ".config/waybar/config.jsonc".source = ./files/config/waybar/config.jsonc;
     ".config/waybar/style.css".source = ./files/config/waybar/style.css;
     ".config/waybar/guix.css".source = ./files/config/waybar/guix.css;
+    ".config/waybar/jungle.css".source = ./files/config/waybar/jungle.css;
     ".config/waybar/layout.jsonc".source = ./files/config/waybar/layout.jsonc;
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".scripts/nixmacs-wayland-run.sh" = {
+      source = ./files/scripts/nixmacs-wayland-run.sh;
+      executable = true;
+    };
     ".scripts/shell/buildnix.sh".source = ./files/scripts/buildnix.sh;
     ".scripts/shell/cartom.sh".source = ./files/scripts/cartom.sh;
     ".scripts/shell/crypt.sh".source = ./files/scripts/crypt.sh;
