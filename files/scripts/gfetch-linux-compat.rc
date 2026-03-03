@@ -65,7 +65,7 @@ cat <<EOF
    j". ..    os: Plan 9 from $os/$arch
    (  . .)   shell: $shell
    |   ° ¡   uptime: $uptime
-   ¿     ;   ram: $used/$free GiB
+   ¿     ;   ram: $used/$ram
    c?".UJ    cpu: $cputype $cpu
              resolution: $scr
              fs: / (ext4)
