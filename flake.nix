@@ -327,6 +327,18 @@
                 ];
               };
               # Users
+              users.users.glenda = {
+                isNormalUser = true;
+                description = "Glenda Plan9 User";
+                extraGroups = [
+                  "networkmanager"
+                  "wheel"
+                  "dialout"
+                  "plugdev"
+                  "guixbuild"
+                ];
+                shell = pkgs.plan9port + "/plan9/bin/rc";
+              };
               users.users.puppy = {
                 isNormalUser = true;
                 shell = pkgs.zsh;
