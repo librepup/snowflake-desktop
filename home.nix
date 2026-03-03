@@ -476,6 +476,10 @@ in
       source = ./files/scripts/nixmacs-wayland-run.sh;
       executable = true;
     };
+    ".scripts/runRio.sh" = {
+      source = ./files/scripts/runRio.sh;
+      executable = true;
+    };
     ".scripts/shell/buildnix.sh".source = ./files/scripts/buildnix.sh;
     ".scripts/shell/cartom.sh".source = ./files/scripts/cartom.sh;
     ".scripts/shell/crypt.sh".source = ./files/scripts/crypt.sh;
