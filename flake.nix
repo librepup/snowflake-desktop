@@ -338,6 +338,10 @@
                   "guixbuild"
                 ];
                 shell = pkgs.plan9port + "/plan9/bin/rc";
+                packages = with pkgs;
+                [
+                  plan9port
+                ];
               };
               users.users.puppy = {
                 isNormalUser = true;
