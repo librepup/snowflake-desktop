@@ -686,7 +686,9 @@
                       cp -r "$1" "$1.$(date +%Y%m%d_%H%M%S).backup"
                     }
 
-                    export NINEBINPATH=$(ls -la $(which 9) | awk '{print $11}' | sed "s/\/bin\/9/\/plan9\/bin/g")
+                    getNineBinPath() {
+                      export NINEBINPATH=$(ls -la $(which 9) | awk '{print $11}' | sed "s/\/bin\/9/\/plan9\/bin/g")
+                    }
 
                     # Guix Initialization and Setup
                     GUIX_PROFILE="$HOME/.config/guix/current"
