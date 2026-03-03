@@ -472,6 +472,10 @@ in
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".scripts/gfetch-linux-compat.rc" = {
+      source = ./files/scripts/gfetch-linux-compat.rc;
+      executable = true;
+    };
     ".scripts/nixmacs-wayland-run.sh" = {
       source = ./files/scripts/nixmacs-wayland-run.sh;
       executable = true;
