@@ -294,7 +294,7 @@ myLogHook = dynamicLogWithPP $ def
 ------------------------------------------------------------------------
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
-    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn "kitty -o font_family=TempleOS -o font_size=10")
     , ((myWinMask .|. shiftMask, xK_Return), spawn "term rc")
     -- Dmenu
     , ((modm, xK_t), spawn $ "dmenu_run" ++ dmenuArgs jungleDmenuTheme ++ " -p '%:'")
@@ -336,6 +336,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Applications
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((modm .|. controlMask, xK_f), spawn "kitty emacsclient -c")
+    , ((myWinMask .|. controlMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm .|. shiftMask, xK_s), spawn "microsoft-edge")
     , ((modm, xK_s), spawn "firefox")
