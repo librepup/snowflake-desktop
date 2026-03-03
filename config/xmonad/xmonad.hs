@@ -251,7 +251,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Programs
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
-    , ((modm .|. controlMask, xK_f), spawn "emacsclient -c")
+    , ((modm .|. controlMask, xK_f), spawn "kitty emacsclient -c")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm .|. shiftMask, xK_s), spawn "microsoft-edge")
     , ((modm, xK_s), spawn "firefox")
