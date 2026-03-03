@@ -459,6 +459,7 @@
                   wlsunset
                   wofi
                   mako
+                  wlr-randr
                   xwayland
                   xwayland-satellite
                   slurp
@@ -587,6 +588,7 @@
                   };
                   shellInit = ''
                     unset -m EMACSLOADPATH
+                    unalias -m 9
 
                     if [ -d "$HOME/.scripts/shell" ]; then
                       for script in "$HOME/.scripts/shell"/*; do
@@ -684,6 +686,8 @@
                       cp -r "$1" "$1.$(date +%Y%m%d_%H%M%S).backup"
                     }
 
+                    export NINEBINPATH=$(ls -la $(which 9) | awk '{print $11}' | sed "s/\/bin\/9/\/plan9\/bin/g")
+
                     # Guix Initialization and Setup
                     GUIX_PROFILE="$HOME/.config/guix/current"
                     . "$GUIX_PROFILE/etc/profile"
@@ -702,6 +706,7 @@
                   };
                   promptInit = ''
                     unset -m EMACSLOADPATH
+                    unalias -m 9
                     if [[ -n "$IN_NIX_SHELL" ]]; then
                       PROMPT='  nix-shell %~ '
                     else
