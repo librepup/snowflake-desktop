@@ -358,9 +358,6 @@
                   plan9-ls-short = pkgs.writeShellScriptBin "l" ''
                     exec ${pkgs.plan9port}/bin/9 ls "$@"
                   '';
-                  plan9-exit = pkgs.writeShellScriptBin "q" ''
-                    exec exit "$@"
-                  '';
                 in
                 [
                   plan9port
@@ -370,7 +367,6 @@
                   plan9-rio
                   plan9-ls-full
                   plan9-ls-short
-                  plan9-exit
                 ];
               };
               users.users.puppy = {
