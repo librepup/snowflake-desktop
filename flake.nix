@@ -381,6 +381,7 @@
                   "guixbuild"
                 ];
                 packages = with pkgs; [
+                  emote
                   microsoft-edge
                   feh
                   cmus

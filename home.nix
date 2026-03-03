@@ -472,6 +472,10 @@ in
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".scripts/polybar-date-toggle.sh" = {
+      source = ./files/scripts/polybar-date-toggle.sh;
+      executable = true;
+    };
     ".scripts/gfetch-linux-compat.rc" = {
       source = ./files/scripts/gfetch-linux-compat.rc;
       executable = true;
