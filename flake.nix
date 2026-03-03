@@ -339,8 +339,26 @@
                 ];
                 shell = pkgs.plan9port + "/plan9/bin/rc";
                 packages = with pkgs;
+                let
+                  plan9-term = pkgs.writeShellScriptBin "term" ''
+                    exec ${pkgs.plan9port}/bin/9 9term "$@"
+                  '';
+                  plan9-acme = pkgs.writeShellScriptBin "acme" ''
+                    exec ${pkgs.plan9port}/bin/9 acme "$@"
+                  '';
+                  plan9-rc-shell = pkgs.writeShellScriptBin "rc" ''
+                    exec ${pkgs.plan9port}/bin/9 rc "$@"
+                  '';
+                  plan9-rio = pkgs.writeShellScriptBin "rio" ''
+                    exec ${pkgs.plan9port}/bin/9 rio "$@"
+                  '';
+                in
                 [
                   plan9port
+                  plan9-term
+                  plan9-acme
+                  plan9-rc-shell
+                  plan9-rio
                 ];
               };
               users.users.puppy = {
