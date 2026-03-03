@@ -687,7 +687,7 @@
                     }
 
                     getNineBinPath() {
-                      export NINEBINPATH=$(ls -la $(which 9) | awk '{print $11}' | sed "s/\/bin\/9/\/plan9\/bin/g")
+                      export NINEBINPATH=$(ls -la $(which 9) | awk '{print $9}' | sed "s/\/bin\/9/\/plan9\/bin/g")
                     }
 
                     # Guix Initialization and Setup
