@@ -605,7 +605,7 @@
                     htop = "btm --theme nord $@";
                     iftop = "bandwhich $@";
                     gc = "git clone $@";
-                    cat = "bat --style full --theme=TwoDark --pager=less --paging=auto --wrap=auto $@";
+                    cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
                     wp = "feh --bg-fill $@";
                     forcekill = "kill -9 $@";
                     size = "du -sh $@";
