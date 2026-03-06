@@ -382,6 +382,7 @@
                 ];
                 packages = with pkgs; [
                   emote
+                  pulseaudio
                   whatsapp-electron
                   microsoft-edge
                   feh
