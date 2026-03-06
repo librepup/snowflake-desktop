@@ -9,6 +9,7 @@
 import XMonad
 import Data.Monoid
 import Data.List (intercalate)
+import Data.Char (isSpace)
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -27,7 +28,11 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.SubLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Simplest
-import XMonad.Layout.BoringWindows
+import XMonad.Layout.Minimize
+import XMonad.Layout.TwoPane
+import XMonad.Layout.Grid
+import XMonad.Layout.CircleEx
+import qualified XMonad.Layout.BoringWindows as BW
 -- Hooks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -52,6 +57,10 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
+import XMonad.Actions.Minimize
+import qualified XMonad.Actions.Search as S
+import XMonad.Actions.Submap (submap, submapDefault)
+import XMonad.Actions.ShowText
 -- Control
 import Control.Monad (when)
 -- X11
@@ -59,8 +68,11 @@ import Graphics.X11.Xlib (warpPointer)
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
 
 ------------------------------------------------------------------------
--- Define Data Types, Themes, and Presets
+-- Definitions
 ------------------------------------------------------------------------
+-- Trim Helper
+trimWS :: String -> String
+trimWS = reverse . dropWhile isSpace . reverse . dropWhile isSpace
 -- Toggle Float
 toggleFloat w = windows (\s -> if M.member w (W.floating s)
                           then
@@ -94,7 +106,6 @@ marnieXPConfig = def
     , position          = Top
     , height            = 24
     , historySize       = 0
-    , defaultText       = "yes"
     }
 jungleXPConfig = def
     { font              = "xft:TempleOS:size=8"
@@ -107,7 +118,6 @@ jungleXPConfig = def
     , position          = Top
     , height            = 24
     , historySize       = 0
-    , defaultText       = "yes"
     }
 -- Tab Theme(s)
 marnieTabTheme = def
@@ -120,7 +130,7 @@ marnieTabTheme = def
     , inactiveTextColor   = "#888888"
     , urgentTextColor     = "#ffffff"
     , fontName            = "xft:DejaVu Sans Mono:size=10"
-    , decoHeight          = 20
+    , decoHeight          = 14
     }
 jungleTabTheme = def
     { activeColor         = "#ffbf2d"
@@ -133,7 +143,18 @@ jungleTabTheme = def
     , inactiveTextColor   = "#888888"
     , urgentTextColor     = "#ffffff"
     , fontName            = "xft:TempleOS:size=8"
-    , decoHeight          = 20
+    , decoHeight          = 14
+    }
+-- FlashText Theme(s)
+jungleFlashTheme = def
+    { st_font             = "xft:TempleOS:size=8"
+    , st_bg               = "#1d1f21"
+    , st_fg               = "#ffbf2d"
+    }
+marnieFlashTheme = def
+    { st_font             = "xft:DejaVu Sans Mono:size=10"
+    , st_bg               = "#1d1f21"
+    , st_fg               = "#ff2a54"
     }
 -- Colorscheme(s)
 data ColorScheme = ColorScheme
@@ -180,51 +201,52 @@ dmenuArgs t = " -nb '" ++ normalBackground t ++
 ------------------------------------------------------------------------
 -- General
 ------------------------------------------------------------------------
--- Variables
+-- Settings
+myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"]
 myModMask       = mod1Mask  -- Alt Key (mod1)
 myWinMask       = mod4Mask  -- Windows/Super Key (mod4)
-myTerminal      = "kitty"   -- Terminal Emulator (Default: kitty)
+myTerminal      = "kitty"   -- Terminal Emulator
 myBorderWidth   = 2         -- Border Width
 
--- Window Manager Theme
+------------------------------------------------------------------------
+-- Themes
+------------------------------------------------------------------------
+-- General
 (myFocusedBorderColor, myNormalBorderColor) = (focused c, normal c)
   where c = jungleColorscheme
-
-------------------------------------------------------------------------
--- Workspaces
-------------------------------------------------------------------------
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"]
-
-------------------------------------------------------------------------
--- Tab Config
-------------------------------------------------------------------------
--- Theme
+-- FlashText
+myFlashTheme = jungleFlashTheme
+-- Tabs
 myTabTheme = jungleTabTheme
-
-------------------------------------------------------------------------
--- Prompt Config
-------------------------------------------------------------------------
--- Theme
+-- Prompts
 myXPConfig :: XPConfig
 myXPConfig = jungleXPConfig
 
 ------------------------------------------------------------------------
 -- Layouts
 ------------------------------------------------------------------------
-myLayout = smartBorders
-           $ avoidStruts
-           $ mkToggle (NBFULL ?? EOT)
-           $   tabbed shrinkText myTabTheme
-           ||| ( windowNavigation
-               $ addTabs shrinkText myTabTheme
-               $ subLayout [] Simplest
-               $ boringWindows
-               $ spacingWithEdge 4
-               $ ResizableTall 1 (3/100) (1/2) []
-               )
-           ||| spacingWithEdge 4 (spiral (6/7))
-           ||| spacingWithEdge 4 Accordion
-           ||| noBorders Full
+myLayoutHook = smartBorders
+             $ avoidStruts
+             $ mkToggle (NBFULL ?? EOT)
+             -- Tabbed
+             $ minimize (tabbed shrinkText myTabTheme)
+             -- Tall + Tabbed Sub-Layout
+             ||| (windowNavigation
+                 $ addTabs shrinkText myTabTheme
+                 $ subLayout [] Simplest
+                 $ BW.boringWindows
+                 $ minimize
+                 $ spacingWithEdge 4
+                 $ ResizableTall 1 (3/100) (1/2) []
+                 )
+             -- Spiral
+             ||| spacingWithEdge 4 (spiral (6/7))
+             -- Accordion
+             ||| spacingWithEdge 4 Accordion
+             -- Circle
+             ||| spacingWithEdge 4 (minimize $ circle)
+             -- Fullscreen
+             ||| noBorders Full
   where
     spacingWithEdge i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
@@ -249,6 +271,8 @@ myManageHook = composeAll
 -- Startup Hook
 ------------------------------------------------------------------------
 myStartupHook = do
+    -- Initialize ShowText
+    flashText def 1 " "
     -- Set Default Cursor
     setDefaultCursor xC_left_ptr
     -- Set Environment to XMonad
@@ -264,7 +288,7 @@ myStartupHook = do
     spawnOnce "xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144.00 --output DP-0 --mode 2560x1440 --right-of HDMI-0"
 
     -- Polybar
-    spawnOnce "geex-bar"
+    spawnOnce "if command -v geex-bar > /dev/null; then geex-bar fi"
     --spawnOnce "pkill polybar; if type xrandr > /dev/null; then for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do MONITOR=$m polybar --reload main & done; else polybar --reload main & fi"
 
     -- Mouse Settings
@@ -277,15 +301,15 @@ myStartupHook = do
     -- Various Autostart Programs
     spawnOnce "sleep 1 && if command -v emote > /dev/null; then emote & fi"
     -- Set Wallpaper
-    spawnOnce "sleep 1 && feh --bg-fill /home/puppy/Pictures/Wallpapers/dangeroooous_jungle_wp.png"
+    spawnOnce "sleep 1 && if command -v feh > /dev/null; then feh --bg-fill /home/puppy/Pictures/Wallpapers/dangeroooous_jungle_wp.png fi"
     -- Start NixMacs or Emacs Daemon
     spawnOnce "sleep 1 && if command -v nixmacs > /dev/null; then nixmacs --fg-daemon; else emacs --fg-daemon; fi"
     -- Start Bluelight Filter
-    spawnOnce "redshift -l 52.520008:13.404954 -t 4000:4000 &"
+    spawnOnce "if command -v redshift > /dev/null; then redshift -l 52.520008:13.404954 -t 6000:6000 & fi"
     -- Source Xresources
     spawnOnce "xrdb ~/.Xresources"
     -- Start Dunst Notification Daemon
-    spawnOnce "dunst &"
+    spawnOnce "if command -v dunst > /dev/null; then dunst & fi"
     -- Set WM Name for Java Applications
     setWMName "LG3D"
 
@@ -370,6 +394,29 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
     , ((myWinMask .|. controlMask .|. shiftMask, xK_u), withFocused (sendMessage . UnMergeAll))
     , ((myWinMask .|. controlMask, xK_Tab), onGroup W.focusDown')
+    -- Minimize
+    , ((myWinMask, xK_i), withFocused minimizeWindow)
+    , ((myWinMask .|. shiftMask, xK_i), withLastMinimized maximizeWindowAndFocus)
+    -- Search
+    , ((myWinMask, xK_space), do
+        choice <- runProcessWithInput "dmenu"
+            [ "-nb", normalBackground jungleDmenuTheme
+            , "-nf", normalForeground jungleDmenuTheme
+            , "-sb", selectedBackground jungleDmenuTheme
+            , "-sf", selectedForeground jungleDmenuTheme
+            , "-fn", selectedFont jungleDmenuTheme
+            , "-p", "Search:"
+            ]
+            "YT\nNix\nDuck\nGoogle\nImages\nMaps\n"
+        case trimWS choice of
+            "Google"     -> S.promptSearch myXPConfig S.google
+            "Duck"       -> S.promptSearch myXPConfig S.duckduckgo
+            "YT"         -> S.promptSearch myXPConfig S.youtube
+            "Images"     -> S.promptSearch myXPConfig S.images
+            "Maps"       -> S.promptSearch myXPConfig S.maps
+            "Nix"        -> S.promptSearch myXPConfig (S.searchEngine "nixpkgs" "https://search.nixos.org/packages?query=")
+            _            -> return ()
+        )
     ]
     ++
     -- WinMod (Super key) Bindings
@@ -428,7 +475,7 @@ main = xmonad
         focusedBorderColor = myFocusedBorderColor,
         keys               = myKeys,
         mouseBindings      = myMouseBindings,
-        layoutHook         = myLayout,
+        layoutHook         = myLayoutHook,
         manageHook         = myManageHook <+> manageHook def,
         handleEventHook    = handleEventHook def,
         logHook            = myLogHook,

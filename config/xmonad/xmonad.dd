@@ -21,3 +21,16 @@ spawnOnce "if type xrandr > /dev/null; then \
          \  polybar --reload example & \
          \fi"
 ```
+Search Function:
+```
+    , ((myWinMask, xK_space), do
+        spawn "notify-send 'Search' 'g=Google\nd=DuckDuckGo\ny=YouTube\ni=Images\nm=Maps\nn=Nix'"
+        submapDefault (spawn "dunstctl close-all") . M.fromList $
+            [ ((0, xK_d), spawn "dunstctl close-all" >> S.promptSearch myXPConfig S.duckduckgo)
+            , ((0, xK_y), spawn "dunstctl close-all" >> S.promptSearch myXPConfig S.youtube)
+            , ((0, xK_m), spawn "dunstctl close-all" >> S.promptSearch myXPConfig S.maps)
+            , ((0, xK_g), spawn "dunstctl close-all" >> S.promptSearch myXPConfig S.google)
+            , ((0, xK_i), spawn "dunstctl close-all" >> S.promptSearch myXPConfig S.images)
+            , ((0, xK_n), S.promptSearch myXPConfig (S.searchEngine "nixpkgs" "https://search.nixos.org/packages?query="))
+            ])
+```
