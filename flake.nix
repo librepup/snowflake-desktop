@@ -382,6 +382,7 @@
                 ];
                 packages = with pkgs; [
                   emote
+                  whatsapp-electron
                   microsoft-edge
                   feh
                   cmus
@@ -596,6 +597,7 @@
                     tarZip = "echo 'Arg1: Archive.tar.gz, Arg2: Full Path of the Folder';tar -czvf $@";
                     zipCreate = "echo 'Arg1: Archive.zip, Arg2: Folder/';zip -r $@";
                     # Applications
+                    img = "kitten icat --use-window-size 380,380,380,380 $@";
                     explorer = "yazi $@";
                     poke = "pokeget --hide-name $@";
                     weather = "curl wttr.in/Berlin $@";
