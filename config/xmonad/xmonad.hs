@@ -288,7 +288,7 @@ myStartupHook = do
     spawnOnce "xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144.00 --output DP-0 --mode 2560x1440 --right-of HDMI-0"
 
     -- Polybar
-    spawnOnce "if command -v geex-bar > /dev/null; then geex-bar fi"
+    spawnOnce "if command -v geex-bar > /dev/null; then geex-bar; fi"
     --spawnOnce "pkill polybar; if type xrandr > /dev/null; then for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do MONITOR=$m polybar --reload main & done; else polybar --reload main & fi"
 
     -- Mouse Settings
@@ -299,17 +299,17 @@ myStartupHook = do
     spawnIfAnyDevice myMice "xinput set-prop 'Mad Catz Global' 'libinput Accel Speed' 0.3"
 
     -- Various Autostart Programs
-    spawnOnce "sleep 1 && if command -v emote > /dev/null; then emote & fi"
+    spawnOnce "if pgrep emote > /dev/null; then pkill emote; fi; sleep 1 && if command -v emote > /dev/null; then emote; fi"
     -- Set Wallpaper
-    spawnOnce "sleep 1 && if command -v feh > /dev/null; then feh --bg-fill /home/puppy/Pictures/Wallpapers/dangeroooous_jungle_wp.png fi"
+    spawnOnce "sleep 1 && if command -v feh > /dev/null; then feh --bg-fill $HOME/Pictures/Wallpapers/dangeroooous_jungle_wp.png; fi"
     -- Start NixMacs or Emacs Daemon
     spawnOnce "sleep 1 && if command -v nixmacs > /dev/null; then nixmacs --fg-daemon; else emacs --fg-daemon; fi"
     -- Start Bluelight Filter
-    spawnOnce "if command -v redshift > /dev/null; then redshift -l 52.520008:13.404954 -t 6000:6000 & fi"
+    spawnOnce "if pgrep redshift > /dev/null; then pkill redshift; fi; if command -v redshift > /dev/null; then redshift -l 52.520008:13.404954 -t 5300:5300; fi"
     -- Source Xresources
     spawnOnce "xrdb ~/.Xresources"
     -- Start Dunst Notification Daemon
-    spawnOnce "if command -v dunst > /dev/null; then dunst & fi"
+    spawnOnce "if pgrep dunst > /dev/null; then pkill dunst; fi; if command -v dunst > /dev/null; then dunst; fi"
     -- Set WM Name for Java Applications
     setWMName "LG3D"
 
