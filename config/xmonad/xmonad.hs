@@ -24,6 +24,10 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.Simplest
+import XMonad.Layout.BoringWindows
 -- Hooks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -47,6 +51,7 @@ import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS
 import XMonad.Actions.Warp
 import XMonad.Actions.MouseResize
+import XMonad.Actions.WithAll (sinkAll)
 -- Control
 import Control.Monad (when)
 -- X11
@@ -115,7 +120,7 @@ marnieTabTheme = def
     , inactiveTextColor   = "#888888"
     , urgentTextColor     = "#ffffff"
     , fontName            = "xft:DejaVu Sans Mono:size=10"
-    , decoHeight          = 14
+    , decoHeight          = 20
     }
 jungleTabTheme = def
     { activeColor         = "#ffbf2d"
@@ -128,7 +133,7 @@ jungleTabTheme = def
     , inactiveTextColor   = "#888888"
     , urgentTextColor     = "#ffffff"
     , fontName            = "xft:TempleOS:size=8"
-    , decoHeight          = 14
+    , decoHeight          = 20
     }
 -- Colorscheme(s)
 data ColorScheme = ColorScheme
@@ -206,14 +211,22 @@ myXPConfig = jungleXPConfig
 ------------------------------------------------------------------------
 -- Layouts
 ------------------------------------------------------------------------
-myLayout = smartBorders $ avoidStruts $ mkToggle (NBFULL ?? EOT) $ spacingWithEdge 4 $
-           tabbed shrinkText myTabTheme |||
-           ResizableTall 1 (3/100) (1/2) [] |||
-           spiral (6/7) |||
-           Accordion |||
-           noBorders Full
+myLayout = smartBorders
+           $ avoidStruts
+           $ mkToggle (NBFULL ?? EOT)
+           $   tabbed shrinkText myTabTheme
+           ||| ( windowNavigation
+               $ addTabs shrinkText myTabTheme
+               $ subLayout [] Simplest
+               $ boringWindows
+               $ spacingWithEdge 4
+               $ ResizableTall 1 (3/100) (1/2) []
+               )
+           ||| spacingWithEdge 4 (spiral (6/7))
+           ||| spacingWithEdge 4 Accordion
+           ||| noBorders Full
   where
-     spacingWithEdge i = spacingRaw True (Border i i i i) True (Border i i i i) True
+    spacingWithEdge i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
 ------------------------------------------------------------------------
 -- Window Rules
@@ -349,6 +362,14 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_p), spawn "notify-send 'XMonad' 'Recompiling...' -i $HOME/Pictures/xmonad_logo.png; xmonad --recompile; xmonad --restart; notify-send 'XMonad' 'Restarted Successfully!' -i $HOME/Pictures/xmonad_logo.png")
     -- Reload XMonad
     , ((modm .|. shiftMask, xK_c), spawn "notify-send 'XMonad' 'Recompiling...' -i $HOME/Pictures/xmonad_logo.png; xmonad --recompile; xmonad --restart; notify-send 'XMonad' 'Restarted Successfully!' -i $HOME/Pictures/xmonad_logo.png")
+    -- Sub-Layout Tabbing
+    , ((myWinMask .|. controlMask, xK_Left), sendMessage $ pullGroup L)
+    , ((myWinMask .|. controlMask, xK_Right), sendMessage $ pullGroup R)
+    , ((myWinMask .|. controlMask, xK_Up), sendMessage $ pullGroup U)
+    , ((myWinMask .|. controlMask, xK_Down), sendMessage $ pullGroup D)
+    , ((myWinMask .|. controlMask, xK_u), withFocused (sendMessage . UnMerge))
+    , ((myWinMask .|. controlMask .|. shiftMask, xK_u), withFocused (sendMessage . UnMergeAll))
+    , ((myWinMask .|. controlMask, xK_Tab), onGroup W.focusDown')
     ]
     ++
     -- WinMod (Super key) Bindings
