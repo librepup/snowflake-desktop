@@ -13,6 +13,7 @@ import Data.Char (isSpace)
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import Control.Monad
 -- Layouts
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
@@ -46,6 +47,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Util.Loggers
+import XMonad.Util.NamedActions
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 import XMonad.Util.Cursor (setDefaultCursor)
@@ -88,12 +90,6 @@ doWarp = ask >>= \w -> liftX $ do
       cy = fromIntegral (wa_height wa) `div` 2
   io $ warpPointer dpy none w 0 0 0 0 cx cy
   return mempty
--- Conditional Device Commands
-spawnIfAnyDevice :: [String] -> String -> X ()
-spawnIfAnyDevice devNames cmd = spawnOnce $
-    "if xinput list --name-only | grep -qE '" ++ devRegex ++ "'; then " ++ cmd ++ "; fi"
-  where
-    devRegex = intercalate "|" devNames
 -- Prompt/XP Theme(s)
 marnieXPConfig = def
     { font              = "xft:DejaVu Sans Mono:size=10"
@@ -265,51 +261,149 @@ myManageHook = composeAll
     , title =? "vicinae"                  --> (doFocus <+> doWarp) -- Focus and Warp Mouse to "vicinae" Window.
     , className =? "vicinae"              --> (doFocus <+> doWarp) -- ...
     , title =? "FLOAT_ME_NOW"             --> doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8)
+    , title =? "FLOATING_HELP_SCREEN"     --> doRectFloat (W.RationalRect 0.275 0.1 0.485 0.75)
+    , title =? "Library"                  --> doCenterFloat
     ]
+
+------------------------------------------------------------------------
+-- Autostart
+------------------------------------------------------------------------
+myAutostart :: X ()
+myAutostart = do
+    -- Monitor
+    spawnOnce $
+      "xrandr" ++
+          " --output HDMI-0" ++
+          " --primary" ++
+          " --mode 1920x1080" ++
+          " --rate 144.00" ++
+        " --output DP-0" ++
+          " --mode 2560x1440" ++
+          " --right-of HDMI-0"
+    -- Mouse
+    let myMice = ["Mad Catz Global", "Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse"]
+    forM_ myMice $ \mouse -> do
+      spawnOnce $
+        "if xinput list --name-only | grep -q '" ++ mouse ++ "'; then " ++
+        "xinput set-prop " ++
+          "'" ++ mouse ++ "' 'libinput Accel Profile Enabled' 0 1 0; " ++
+        "xinput set-prop " ++
+          "'" ++ mouse ++ "' 'libinput Accel Speed' 0.3; " ++
+        "fi"
+    -- XMonad Environment
+    spawnOnce $
+      "if command -v dex > /dev/null; then" ++
+        " dex --autostart --environment xmonad;" ++
+      " fi"
+    -- BetterLockscreen XSS Lock
+    spawnOnce $
+      "if command -v xss-lock > /dev/null; then" ++
+        " xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" ++
+      " fi"
+    -- NetworkManager Applet
+    spawnOnce $
+      "if command -v nm-applet > /dev/null; then" ++
+        " nm-applet &" ++
+      " fi"
+    -- Kill Picom
+    spawnOnce $
+      "if pgrep picom > /dev/null; then" ++
+        " pkill -9 picom;" ++
+       " fi"
+    -- Polybar
+    spawnOnce $
+      "if pgrep polybar > /dev/null; then pkill polybar; fi;" ++
+      "if command -v geex-bar > /dev/null; then" ++
+        " geex-bar &" ++
+      " else" ++
+        " if type xrandr > /dev/null; then" ++
+          " for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do" ++
+            " MONITOR=$m polybar --reload main &" ++
+          " done;" ++
+        " else" ++
+          " polybar --reload main &" ++
+        " fi;" ++
+      " fi;"
+    -- Emote
+    spawnOnce $
+      "if pgrep emote > /dev/null; then" ++
+        " pkill emote;" ++
+      " fi;" ++
+      " sleep 1 && if command -v emote > /dev/null; then" ++
+        " emote &"++
+      " fi"
+    -- Wallpaper
+    spawnOnce $
+      "sleep 1 && if command -v feh > /dev/null; then" ++
+        " feh --bg-fill $HOME/Pictures/Wallpapers/dangeroooous_jungle_wp.png;" ++
+      " fi"
+    -- NixMacs or Emacs Daemon
+    spawnOnce $
+      "if emacsclient -e \"(emacs-pid)\" > /dev/null; then" ++
+        " emacsclient -e \"(kill-emacs)\";" ++
+      " fi;" ++
+      " sleep 1 && if command -v nixmacs > /dev/null; then" ++
+        " nixmacs --fg-daemon &" ++
+      " elif command -v emacs > /dev/null; then" ++
+        " emacs --fg-daemon &" ++
+      " else" ++
+        " if command -v notify-send > /dev/null; then" ++
+          " notify-send 'Emacs' 'Neither NixMacs nor Emacs Found';" ++
+        " else" ++
+          " echo 'Error: Neither NixMacs nor Emacs Found.';" ++
+        " fi;" ++
+      " fi"
+    -- Disable Screensaver
+    spawnOnce $
+      "if command -v xset > /dev/null; then" ++
+        " xset s off -dpms s noblank;" ++
+      " else" ++
+        " if command -v notify-send > /dev/null; then" ++
+          " notify-send 'Screensaver' 'Error Disabling Screensaver';" ++
+        " else" ++
+          " echo 'Error: Could Not Disable Screensaver and Could Not Find Notification Command';" ++
+        " fi;" ++
+      " fi"
+    -- Bluelight Filter
+    spawnOnce $
+      "if pgrep redshift > /dev/null; then" ++
+        " pkill -9 redshift;" ++
+      " fi;" ++
+      " if command -v redshift > /dev/null; then" ++
+        " redshift -x;" ++
+        " redshift -l 52.520008:13.404954 -t 5200:5200 &" ++
+      " else" ++
+        " if command -v notify-send > /dev/null; then" ++
+          " notify-send 'Error' 'Redshift Not Found';" ++
+        " else" ++
+          " echo 'Error: Redshift Not Found';" ++
+        " fi;" ++
+      " fi"
+    -- Source Xresources
+    spawnOnce $
+      "if command -v xrdb > /dev/null; then" ++
+        " xrdb ~/.Xresources;" ++
+      " fi"
+    -- Dunst Notification Daemon
+    spawnOnce $
+      "if pgrep dunst > /dev/null; then" ++
+        " pkill dunst;" ++
+      " fi;" ++
+      " if command -v dunst > /dev/null; then" ++
+        " dunst &" ++
+      " fi"
 
 ------------------------------------------------------------------------
 -- Startup Hook
 ------------------------------------------------------------------------
+myStartupHook :: X ()
 myStartupHook = do
     -- Initialize ShowText
     flashText def 1 " "
     -- Set Default Cursor
     setDefaultCursor xC_left_ptr
-    -- Set Environment to XMonad
-    spawnOnce "if command -v dex > /dev/null; then dex --autostart --environment xmonad; fi"
-    -- Transfer XSS Lock to Betterlockscreen
-    spawnOnce "if command -v xss-lock > /dev/null; then xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout & fi"
-    -- Start NetworkManager Applet
-    spawnOnce "if command -v nm-applet > /dev/null; then nm-applet & fi"
-    -- Kill Picom
-    spawnOnce "pkill picom"
-
-    -- Monitor Setup
-    spawnOnce "xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 144.00 --output DP-0 --mode 2560x1440 --right-of HDMI-0"
-
-    -- Polybar
-    spawnOnce "if command -v geex-bar > /dev/null; then geex-bar; fi"
-    --spawnOnce "pkill polybar; if type xrandr > /dev/null; then for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do MONITOR=$m polybar --reload main & done; else polybar --reload main & fi"
-
-    -- Mouse Settings
-    let myMice = ["Mad Catz Global", "Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse"]
-    spawnIfAnyDevice myMice "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Profile Enabled' 0 1 0"
-    spawnIfAnyDevice myMice "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Speed' 0.3"
-    spawnIfAnyDevice myMice "xinput set-prop 'Mad Catz Global' 'libinput Accel Profile Enabled' 0 1 0"
-    spawnIfAnyDevice myMice "xinput set-prop 'Mad Catz Global' 'libinput Accel Speed' 0.3"
-
-    -- Various Autostart Programs
-    spawnOnce "if pgrep emote > /dev/null; then pkill emote; fi; sleep 1 && if command -v emote > /dev/null; then emote; fi"
-    -- Set Wallpaper
-    spawnOnce "sleep 1 && if command -v feh > /dev/null; then feh --bg-fill $HOME/Pictures/Wallpapers/dangeroooous_jungle_wp.png; fi"
-    -- Start NixMacs or Emacs Daemon
-    spawnOnce "sleep 1 && if command -v nixmacs > /dev/null; then nixmacs --fg-daemon; else emacs --fg-daemon; fi"
-    -- Start Bluelight Filter
-    spawnOnce "if pgrep redshift > /dev/null; then pkill redshift; fi; if command -v redshift > /dev/null; then redshift -l 52.520008:13.404954 -t 5300:5300; fi"
-    -- Source Xresources
-    spawnOnce "xrdb ~/.Xresources"
-    -- Start Dunst Notification Daemon
-    spawnOnce "if pgrep dunst > /dev/null; then pkill dunst; fi; if command -v dunst > /dev/null; then dunst; fi"
+    -- Autostart
+    myAutostart
     -- Set WM Name for Java Applications
     setWMName "LG3D"
 
@@ -334,24 +428,93 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm, xK_Return), spawn $ XMonad.terminal conf)
     , ((modm .|. shiftMask, xK_Return), spawn "kitty -o font_family=TempleOS -o font_size=12")
     , ((myWinMask .|. shiftMask, xK_Return), spawn "term rc")
-    -- Help Screen
-    , ((myWinMask, xK_h), spawn "kitty -o initial_window_width=1340 -o initial_window_height=860 --title FLOAT_ME_NOW -o font_family=TempleOS -o font_size=8 bash -c 'echo -e \"Alt+Shift+Return - Open Kitty Terminal\nAlt+Return - Open Unchanged Kitty Terminal\nWin+Shift+Return - Open 9term Terminal\n\nAlt+t - Run DMenu\n\nAlt+Shift+q - Kill Current Window\n\nAlt+Space - Switch to Next Layout\nAlt+Left/Right/Up/Down - Change Focused Window\nAlt+Shift+Left/Right - Swap Window Positions\nAlt+Shift+Up/Down - Shrink or Expand Stack\n\nAlt+Ctrl+Left/RIght - Shrink or Expand Stack\nAlt+Ctrl+Up/Down - Resize Stack Vertically\nAlt+Comma/Period - Add or Remove Window to/from Master\nAlt+Tab - Switch between Current and Previous Workspace\n\nAlt+Shift+Space - Toggle Floating\nAlt+Shift+t - Toggle Fullscreen\n\nAlt+Shift+f - Open NixMacs\nAlt+Ctrl+f - Open EmacsClient\nWin+Shift+f - Open Acme Editor\nAlt+Shift+s - Open Microsoft Edge\nAlt+s - Open Firefox\nAlt+a - Take Screenshot\nAlt+d - Open IceDove\n\nAlt+Shift+e - Exit XMonad with Confirm Prompt\nWin+Shift+x - Force Quit XMonad\n\nAlt+Shift+p - Restart XMonad\nAlt+Shift+c - Reload XMonad\n\nWin+l - Lock Screen\nWin+e - Open File Explorer\nWin+t - Open Vicinae\nWin+Shift+t - Open Vicinae DMenu Run\nWin+Period - Open Emoji Picker\n\nWin+Left/Right - Switch Monitor Focus\n\nWin+1 - Disable Screensaver\nWin+2 - Enable Screensaver\n\nAlt+0..9 - Switch to Workspace\nAlt+Shift+0..9 - Move Window to Workspace\"; read -n 1 -s'")
     -- Dmenu
-    , ((modm, xK_t), spawn $ "dmenu_run" ++ dmenuArgs jungleDmenuTheme ++ " -p '%:'")
+    , ((modm, xK_t), spawn $ -- Dmenu
+        "dmenu_run" ++
+        dmenuArgs jungleDmenuTheme ++
+        " -p '%:'")
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
+    -- Help Screen
+    , ((myWinMask, xK_h), spawn $
+        "kitty " ++
+          "-o initial_window_width=1040 " ++
+          "-o initial_window_height=860 " ++
+          "--title FLOATING_HELP_SCREEN " ++
+          "-o font_family=TempleOS " ++
+          "-o font_size=8 " ++
+        "bash -c '" ++
+          "center_block() { " ++
+            "local width=$(tput cols); " ++
+            "mapfile -t lines; " ++
+            "local max=0; " ++
+            "for l in \"${lines[@]}\"; do " ++
+              "(( ${#l} > max )) && max=${#l}; " ++
+            "done; " ++
+            "local pad=$(( (width - max) / 2 )); " ++
+            "(( pad < 0 )) && pad=0; " ++
+            "for l in \"${lines[@]}\"; do " ++
+              "printf \"%*s%s\n\" \"$pad\" \"\" \"$l\"; " ++
+            "done " ++
+            "}; " ++
+          "cat <<\"EOF\" | center_block \n" ++
+            "\nXMonad Help Screen\n==================\n\n" ++
+            "Alt+Shift+Return -> Open Kitty Terminal\n" ++
+            "Alt+Return -> Open Unchanged Kitty Terminal\n" ++
+            "Win+Shift+Return -> Open 9term Terminal\n" ++
+            "\nAlt+t -> Run DMenu\n" ++
+            "\nAlt+Shift+q -> Kill Current Window\n" ++
+            "\nAlt+Space -> Switch to Next Layout\n" ++
+            "Alt+Left/Right/Up/Down -> Change Focused Window\n" ++
+            "Alt+Shift+Left/Right -> Swap Window Positions\n" ++
+            "Alt+Shift+Up/Down -> Shrink or Expand Stack\n" ++
+            "\nAlt+Ctrl+Left/RIght -> Shrink or Expand Stack\n" ++
+            "Alt+Ctrl+Up/Down -> Resize Stack Vertically\n" ++
+            "Alt+Comma/Period -> Add or Remove Window to/from Master\n" ++
+            "Alt+Tab -> Switch between Current and Previous Workspace\n" ++
+            "\nAlt+Shift+Space -> Toggle Floating\n" ++
+            "Alt+Shift+t -> Toggle Fullscreen\n" ++
+            "\nAlt+Shift+f -> Open NixMacs\n" ++
+            "Alt+Ctrl+f -> Open EmacsClient\n" ++
+            "Win+Shift+f -> Open Acme Editor\n" ++
+            "Alt+Shift+s -> Open Microsoft Edge\n" ++
+            "Alt+s -> Open Firefox\n" ++
+            "Alt+a -> Take Screenshot\n" ++
+            "Alt+d -> Open IceDove\n" ++
+            "\nAlt+Shift+e -> Exit XMonad with Confirm Prompt\n" ++
+            "Win+Shift+x -> Force Quit XMonad\n\n" ++
+            "Alt+Shift+p -> Restart XMonad\n" ++
+            "Alt+Shift+c -> Reload XMonad\n\n" ++
+            "Win+l -> Lock Screen\n" ++
+            "Win+e -> Open File Explorer\n" ++
+            "Win+t -> Open Vicinae\n" ++
+            "Win+Shift+t -> Open Vicinae DMenu Run\n" ++
+            "Win+Period -> Open Emoji Picker\n\n" ++
+            "Win+Left/Right -> Switch Monitor Focus\n\n" ++
+            "Win+1 -> Disable Screensaver\n" ++
+            "Win+2 -> Enable Screensaver\n\n" ++
+            "Alt+0..9 -> Switch to Workspace\n" ++
+            "Alt+Shift+0..9 -> Move Window to Workspace\n\n" ++
+            "Win+Ctrl+Up/Down/Left/Right -> Create Tabbed Stack with Window\n" ++
+            "Win+Ctrl+u -> Unstack Window\n" ++
+            "Win+Ctrl+Shift+u -> Unstall All Windows\n\n" ++
+            "Win+i -> Minimize Window\n" ++
+            "Win+Shift+i -> Un-Minimize Window\n\n" ++
+            "Win+Space -> Open Interactive Web Search\n" ++
+          "EOF\n" ++
+        "read -n 1 -s'")
     -- Cycle Layouts
     , ((modm, xK_space), sendMessage NextLayout)
     -- Focus Windows
-    , ((modm, xK_Left ), windows W.focusUp    )
-    , ((modm, xK_Right), windows W.focusDown  )
-    , ((modm, xK_Up   ), windows W.focusUp    )
-    , ((modm, xK_Down ), windows W.focusDown  )
+    , ((modm, xK_Left ), windows W.focusUp)
+    , ((modm, xK_Right), windows W.focusDown)
+    , ((modm, xK_Up   ), windows W.focusUp)
+    , ((modm, xK_Down ), windows W.focusDown)
     -- Move Windows
-    , ((modm .|. shiftMask, xK_Left ), windows W.swapUp    )
-    , ((modm .|. shiftMask, xK_Right), windows W.swapDown  )
-    , ((modm .|. shiftMask, xK_Up   ), sendMessage Expand  )
-    , ((modm .|. shiftMask, xK_Down ), sendMessage Shrink  )
+    , ((modm .|. shiftMask, xK_Left ), windows W.swapUp)
+    , ((modm .|. shiftMask, xK_Right), windows W.swapDown)
+    , ((modm .|. shiftMask, xK_Up   ), sendMessage Expand)
+    , ((modm .|. shiftMask, xK_Down ), sendMessage Shrink)
     -- Shrink or Expand Master Area
     , ((modm, xK_h), sendMessage Shrink)
     , ((modm, xK_v), sendMessage Expand)
@@ -398,7 +561,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask, xK_i), withFocused minimizeWindow)
     , ((myWinMask .|. shiftMask, xK_i), withLastMinimized maximizeWindowAndFocus)
     -- Search
-    , ((myWinMask, xK_space), do
+    , ((myWinMask, xK_space), do -- Interactive Web Search
         choice <- runProcessWithInput "dmenu"
             [ "-nb", normalBackground jungleDmenuTheme
             , "-nf", normalForeground jungleDmenuTheme
@@ -427,8 +590,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask, xK_period), spawn "emote")
     , ((myWinMask, xK_v), spawn "$HOME/.scripts/viewScreenshot.sh")
     -- Move Cursor
-    , ((myWinMask, xK_Left), warpToScreen 0 0.5 0.5)  -- Main screen (center)
-    , ((myWinMask, xK_Right), warpToScreen 1 0.5 0.5)  -- Second screen (center)
+    , ((myWinMask, xK_Left), warpToScreen 0 0.5 0.5)
+    , ((myWinMask, xK_Right), warpToScreen 1 0.5 0.5)
     -- Resize
     , ((myWinMask, xK_Up), sendMessage MirrorExpand)
     , ((myWinMask, xK_Down), sendMessage MirrorShrink)
@@ -444,7 +607,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
 ------------------------------------------------------------------------
--- Mouse bindings
+-- Mouse Binds
 ------------------------------------------------------------------------
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-button1, Set the window to floating mode and move by dragging
