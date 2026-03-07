@@ -253,6 +253,7 @@
               hardware.opentabletdriver = {
                 enable = true;
               };
+              programs.ssh.askPassword = lib.mkForce "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
               programs = {
                 mango.enable = true;
                 naitre.enable = true;
@@ -261,6 +262,7 @@
               services = {
                 desktopManager = {
                   gnome.enable = true;
+                  plasma6.enable = true;
                 };
                 displayManager = {
                   gdm.enable = false;
@@ -381,6 +383,7 @@
                   "guixbuild"
                 ];
                 packages = with pkgs; [
+                  kjv
                   emote
                   pulseaudio
                   whatsapp-electron
@@ -598,6 +601,7 @@
                     tarZip = "echo 'Arg1: Archive.tar.gz, Arg2: Full Path of the Folder';tar -czvf $@";
                     zipCreate = "echo 'Arg1: Archive.zip, Arg2: Folder/';zip -r $@";
                     # Applications
+                    bible = "kjv $@";
                     img = "kitten icat --use-window-size 380,380,380,380 $@";
                     explorer = "yazi $@";
                     poke = "pokeget --hide-name $@";

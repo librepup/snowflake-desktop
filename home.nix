@@ -437,6 +437,8 @@ in
     targets.firefox.enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   };
+  # Picom
+  home.file.".config/picom/picom.conf".source = ./files/config/picom/picom.conf;
   # Wofi
   home.file = {
     ".config/wofi/config".source = ./files/config/wofi/config;
@@ -865,145 +867,6 @@ in
       };
     };
   };
-  home.file.".config/picom/picom.conf".text = ''
-    # Backend
-    backend = "glx";
-    # GLX backend
-    glx-no-stencil = true;
-    glx-copy-from-front = false;
-    glx-no-rebind-pixmap = true;
-    use-damage = false;
-    # Shadows
-    shadow = true;
-    shadow-radius = 35;
-    shadow-offset-x = -35;
-    shadow-offset-y = -35;
-    shadow-opacity = 0.8;
-    shadow-exclude = [
-    	"_GTK_FRAME_EXTENTS@:c",
-    	# Removed to avoid no-shadow in modal dialog windows.
-        "name = 'Notification'",
-        "name = 'Plank'",
-        "name = 'Docky'",
-        "name = 'Kupfer'",
-    	"name = 'Pensela'",
-    	"name = 'Drawing Board'",
-    	#
-    	# Workaround for VirtualBox empty window at launching
-    	"name = 'VirtualBox'",
-    	"name = 'VirtualBoxVM'",
-    	#
-    	# Avoid shadow in Negatron popups
-    	"name = 'Negatron v0.100.1' && argb",
-    	#
-    	# Avoid shadow for the XFCE alt tab TaskSwitcher
-        "name ?= 'xfwm4' && argb",
-    	#
-        # "name *= 'compton'",
-        "class_g = 'Conky'",
-        "class_g = 'Kupfer'",
-        "class_g = 'Synapse'",
-        "class_g ?= 'Notify-osd'",
-        "class_g ?= 'Cairo-dock'",
-    	"class_g = 'Cairo-clock'",
-        "class_g ?= 'Xfce4-notifyd'",
-    	#
-    	# Exclude special Firefox/Firefox-esr/Thunderbird dropdowns.
-      	# Ref: https://github.com/chjj/compton/issues/247
-    	 "class_g = 'Thunderbird' && argb",
-    	 "class_g = 'Telegram' && argb",
-    	 "name ?= 'Thunderbird' && (window_type = 'utility' || window_type = 'popup_menu')",
-    	#
-    	# Exclude some special popup menu shadows, but Modal Windows.
-    	# These are more finetuning thant previous ones:
-    	"class_g ?= 'Thunderbird' && class_i = 'Popup' && argb",
-    	"class_g = 'firefox' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'Firefox' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'firefox-esr' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'Firefox-esr' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'Tor Browser' && (window_type = 'utility') && argb",
-    	"class_g = 'Navegador Tor' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'Thunderbird' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-    	"class_g = 'Mozilla Thunderbird' && (window_type = 'utility' || window_type = 'popup_menu') && argb",
-        "class_g ?= 'Xfce4-power-manager'",
-    	#
-    	# Exclude Vokoscreen and VokoscreenNG area selector
-    	#
-    	"class_g ?= 'vokoscreen' && argb",
-    	"name = 'Área'",
-    	"name *= 'Cuenta regresiva'",
-    	"_NET_WM_WINDOW_TYPE:a *= '_KDE_NET_WM_WINDOW_TYPE_OVERRIDE'"
-    #	"override_redirect = true"
-    ];
-    shadow-ignore-shaped = false;
-    # Opacity
-    inactive-opacity = 1;
-    active-opacity = 1;
-    frame-opacity = 1;
-    inactive-opacity-override = false;
-    blur-background = true;
-    blur-method = "kernel";
-    blur-kern = "9x9gaussian"
-    blur-background-exclude = [
-        "class_g = 'Peek'",
-    	"class_g = 'Pensela'",
-    	"name = 'Drawing Board'",
-        "window_type = 'dock'",
-    	"window_type = 'dropdown_menu'",
-    	"window_type = 'combo'",
-    	"window_type = 'popup_menu'",
-    	"window_type = 'utility'",
-        "window_type = 'desktop'",
-    	"_GTK_FRAME_EXTENTS@:c"
-    ];
-    opacity-exclude = [
-        "name = 'Stratagus'"
-    ];
-    opacity-rule = [
-        #"95:class_g = 'Alacritty' && focused",
-        #"95:class_g = 'Alacritty' && !focused"
-        "80:class_g = 'Alacritty'",
-        "80:class_g = 'Emacs'",
-        "90:class_g = 'kitty'"
-    ];
-    shadow-exclude = [
-     "name = 'Notification'",
-     "class_g = 'Conky'",
-     "class_g ?= 'Notify-osd'",
-     "class_g = 'Cairo-clock'",
-     "_GTK_FRAME_EXTENTS@:c",
-     "class_g = 'Polybar'",
-     "name = 'Polybar'",
-     "class_g = 'Rofi'",
-     "name = 'osu!'"
-    ];
-    # Fading
-    fading = true;
-    fade-in-step = 0.07;
-    fade-out-step = 0.07;
-    fade-exclude = [ ];
-    # OTHER CONFIG
-    log-level = "warn";
-    mark-wmwin-focused = true;
-    mark-ovredir-focused = true;
-    detect-rounded-corners = true;
-    detect-client-opacity = true;
-    refresh-rate = 0;
-    focus-exclude = [ "class_g = 'Cairo-clock'" ];
-    detect-transient = true;
-    detect-client-leader = true;
-    invert-color-include = [ ];
-    resize-damage = 2;
-    # Window type settings
-    wintypes:
-    {
-    	dock = { shadow = true; }
-    	dnd = { shadow = false; }
-    	popup_menu = { opacity = 1; }
-    	dropdown_menu = { opacity = 1; }
-
-    };
-  '';
   home.file.".scripts/polybar.sh" = {
     text = ''
       if type "xrandr"; then
