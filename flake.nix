@@ -2,6 +2,7 @@
   description = "NixOS Systems Flake for Desktop System (Snowflake)";
 
   inputs = {
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -86,6 +87,7 @@
       dgop,
       spicetify-nix,
       jonafonts,
+      nix-cachyos-kernel,
       ...
     }:
     let
@@ -115,6 +117,12 @@
                   };
                 })
               ];
+            }
+          )
+          (
+            { pkgs, ... }:
+            {
+              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             }
           )
           (
@@ -170,6 +178,12 @@
                 "d /mnt 0775 puppy users -"
                 "d /mnt/SteamLibrary 0775 puppy users -"
                 "d /run/nvidia-xdriver 0777 root root -"
+                "d /mountables 0755 root root -"
+                "d /mountables/genesis 0755 root root -"
+                "d /mountables/exodus 0755 root root -"
+                "d /mountables/leviticus 0755 root root -"
+                "d /mountables/deuteronomy 0755 root root -"
+                "d /mountables/ezekiel 0755 root root -"
               ];
               # Handle "/mnt"
               fileSystems."/mnt" = {
@@ -183,6 +197,7 @@
               # Bootloader.
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;
+              boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
               # Networking
               networking = {
                 wireless.enable = true;
@@ -383,6 +398,11 @@
                   "guixbuild"
                 ];
                 packages = with pkgs; [
+                  qemu
+                  quickemu
+                  lynx
+                  links2
+                  w3m-full
                   kjv
                   emote
                   pulseaudio
@@ -482,7 +502,6 @@
                   skyemu # GameBoy Advanced Emulator
                   prismlauncher # Minecraft
                   # Networks
-                  urbit
                   librewolf-bin # For I2P
                   tor-browser # For Tor
                   # Rust
@@ -636,6 +655,7 @@
                     cleanflatpak = "flatpak uninstall --unused";
                     guix-garbage = "guix gc $@";
                     guix-update = "guix pull && guix package --upgrade && guix gc $@";
+                    search = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history $@";
                   };
                   shellInit = ''
                     unset -m EMACSLOADPATH
@@ -1037,6 +1057,12 @@
               # Nix Settings
               nix = {
                 settings = {
+                  substituters = [
+                    "https://attic.xuyh0120.win/lantian"
+                  ];
+                  trusted-public-keys = [
+                    "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+                  ];
                   auto-optimise-store = true;
                   experimental-features = [
                     "nix-command"
