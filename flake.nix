@@ -579,6 +579,7 @@
                     pf = "pridefetch -f trans --width 11 $@";
                     mf = "microfetch $@";
                     ff = "fastfetch $@";
+                    gf = "fastfetch --pipe false --logo Guix | sed 's/NixOS 25.11 (Xantusia)/Guix System/g' $@";
                     pef = "pfetch $@";
                     of = "onefetch $@";
                     distro = "cat /etc/*-release | grep 'PRETTY_NAME' | cut -c 13- | sed 's/\"//g'";
@@ -760,11 +761,10 @@
                     unset -m EMACSLOADPATH
                     unalias -m 9
                     if [[ -n "$IN_NIX_SHELL" ]]; then
-                      PROMPT='  nix-shell %~ '
+                      PROMPT='  (shell) %~ '
+                    elif [[ -n "$GUIX_ENVIRONMENT" ]]; then
+                      PROMPT='  (shell) %~ '
                     else
-                      PROMPT='  %~ '
-                    fi
-                    if [[ -n "$GUIX_ENVIRONMENT" ]]; then
                       PROMPT='  %~ '
                     fi
                     if [ -d "$HOME/.scripts/shell" ]; then
