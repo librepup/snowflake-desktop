@@ -5,6 +5,7 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,6 +89,7 @@
       spicetify-nix,
       jonafonts,
       nix-cachyos-kernel,
+      nix-gaming,
       ...
     }:
     let
@@ -149,6 +151,7 @@
                 home-manager.nixosModules.home-manager
                 nix-flatpak.nixosModules.nix-flatpak
                 ./hardware-configuration.nix
+                inputs.nix-gaming.nixosModules.pipewireLowLatency
               ];
               home-manager = {
                 useGlobalPkgs = true;
@@ -398,6 +401,10 @@
                   "guixbuild"
                 ];
                 packages = with pkgs; [
+                  inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
+                  ffmpeg-full
+                  dhcpcd
+                  spotify
                   qemu
                   quickemu
                   lynx
@@ -633,6 +640,7 @@
                     cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
                     wp = "feh --bg-fill $@";
                     forcekill = "kill -9 $@";
+                    tagmp3 = "$HOME/.scripts/tagmp3.sh $@";
                     size = "du -sh $@";
                     analogcity = "ssh lowlife@45.79.250.220 $@";
                     shreddy = "shred -z -u -v --iterations=1 $@";
@@ -1014,11 +1022,11 @@
                 alsa.enable = true;
                 alsa.support32Bit = true;
                 pulse.enable = true;
-                # If you want to use JACK applications, uncomment this
-                #jack.enable = true;
-                # use the example session manager (no others are packaged yet so this is enabled by default,
-                # no need to redefine it in your config for now)
-                #media-session.enable = true;
+                lowLatency = {
+                  enable = true;
+                  quantum = 64;
+                  rate = 48000;
+                };
               };
               # VirtualBox
               virtualisation.virtualbox.host.enable = true;
@@ -1059,9 +1067,11 @@
                 settings = {
                   substituters = [
                     "https://attic.xuyh0120.win/lantian"
+                    "https://nix-gaming.cachix.org"
                   ];
                   trusted-public-keys = [
                     "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+                    "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
                   ];
                   auto-optimise-store = true;
                   experimental-features = [

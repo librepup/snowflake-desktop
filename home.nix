@@ -474,6 +474,10 @@ in
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".scripts/tagmp3.sh" = {
+      source = ./files/scripts/tagmp3.sh;
+      executable = true;
+    };
     ".scripts/polybar-date-toggle.sh" = {
       source = ./files/scripts/polybar-date-toggle.sh;
       executable = true;
