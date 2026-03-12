@@ -63,6 +63,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    jonabron.url = "github:librepup/jonabron";
 
   };
 
@@ -90,6 +96,8 @@
       jonafonts,
       nix-cachyos-kernel,
       nix-gaming,
+      plasma-manager,
+      jonabron,
       ...
     }:
     let
@@ -140,10 +148,183 @@
               templeos = pkgs.callPackage ./files/packages/templeosFont/default.nix { };
               gnutypewriter = pkgs.callPackage ./files/packages/gnutypewriter/default.nix { };
               osuLazerLatest = pkgs.callPackage ./files/packages/osuLazerLatest.nix { };
-              urbitNcl = pkgs.callPackage ./files/packages/urbit/default.nix { };
               epdfinfoPkg = pkgs.callPackage ./files/packages/epdfinfo/default.nix { };
               cartographCF = pkgs.callPackage ./files/packages/cartographCF/default.nix { };
               spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+              # Bundles
+              bundleBrowsers = with pkgs; [
+                librewolf-bin
+                tor-browser
+                lynx
+                links2
+                w3m-full
+                microsoft-edge
+              ];
+              bundleRust = with pkgs; [
+                cargo
+                rustc
+                rustfmt
+                clippy
+                rust-analyzer
+                gcc
+                libgcc
+                rustlings
+              ];
+              bundleWayland = with pkgs; [
+                grim
+                grimblast
+                wf-recorder
+                wtype
+                swaybg
+                waybar
+                swayidle
+                hyprlock
+                swaylock-fancy
+                wlsunset
+                wofi
+                mako
+                wlr-randr
+                xwayland
+                xwayland-satellite
+                slurp
+                sway-contrib.grimshot
+                hyprpicker
+                wl-clipboard
+                gammastep
+                xdg-desktop-portal
+                xdg-desktop-portal-gtk
+                xdg-desktop-portal-wlr
+                hyprshot
+                sway-audio-idle-inhibit
+              ];
+              bundleFetchers = with pkgs; [
+                microfetch
+                hyfetch
+                pridefetch
+                fastfetch
+                pfetch
+                onefetch
+              ];
+              bundleVSTs = with pkgs; [
+                yabridge
+                yabridgectl
+                wineWowPackages.yabridge
+                oxefmsynth
+                bespokesynth-with-vst2
+                ninjas2
+                zam-plugins
+                vaporizer2
+                surge
+                lsp-plugins
+              ];
+              bundleDAWs = with pkgs; [
+                ardour
+                zrythm
+                non
+              ];
+              bundleAudioUtilities = with pkgs; [
+                playerctl
+                wireplumber
+                qpwgraph
+                pulseaudio
+                pavucontrol
+                alsa-utils
+              ];
+              bundleMessaging = with pkgs; [
+                signal-desktop-bin
+                telegram-desktop
+                whatsapp-electron
+                discord
+                vesktop
+                ripcord
+                element-desktop
+              ];
+              bundleGames = with pkgs; [
+                ace-of-penguins
+                kdePackages.kpat
+                prismlauncher
+              ];
+              bundleEmulators = with pkgs; [
+                azahar
+                ryubing
+                skyemu
+              ];
+              bundleGraphicsDesign = with pkgs; [
+                gimp3-with-plugins
+                krita
+                imagemagick
+              ];
+              bundleMusicPlayers = with pkgs; [
+                spotify
+                strawberry
+                kew
+                cmus
+              ];
+              bundleWine = with pkgs; [
+                wineWowPackages.full
+                winetricks
+                wine
+                wine64
+              ];
+              bundleArchivers = with pkgs; [
+                zip
+                p7zip
+                unzip
+                unrar
+                ntfs3g
+                hfsprogs
+                cryptsetup
+                testdisk
+                encfs
+              ];
+              bundleVideoProduction = with pkgs; [
+                obs-studio
+                kdePackages.kdenlive
+                kdePackages.ffmpegthumbs
+              ];
+              bundleImageViewers = with pkgs; [
+                feh
+                xfce.tumbler
+              ];
+              bundleExplorers = with pkgs; [
+                xfce.thunar
+                yazi
+              ];
+              bundleGeneralUtilities = with pkgs; [
+                progress
+                openssl
+                parted
+                gparted
+                rsync
+                usbutils
+                websocat
+                xorg.xkbutils
+                xorg.xrandr
+                xorg.xprop
+                xorg.xwininfo
+                eza
+                bat
+                zoxide
+                bottom
+                bandwhich
+                ripgrep
+                ripgrep-all
+                clock-rs
+                ffmpeg-full
+                coreutils-full
+                xclip
+                xdotool
+                pciutils
+                fd
+                imv
+                jq
+              ];
+              bundleNetworking = with pkgs; [
+                dhcpcd
+                networkmanagerapplet
+                networkmanager_dmenu
+                wpa_supplicant
+              ];
             in
             {
               imports = [
@@ -170,12 +351,12 @@
                   inputs.naitre.hmModules.naitre # Naitre HUD
                   inputs.dms.homeModules.dank-material-shell # DMS Shell
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
+                  plasma-manager.homeModules.plasma-manager
                 ];
                 backupFileExtension = "backup";
               };
               # NixOS Configuration
-              # 1TB Drive
-              # Create Necessary Folders
+              # Create Folders
               systemd.tmpfiles.rules = [
                 "d /extra 0775 puppy users -"
                 "d /mnt 0775 puppy users -"
@@ -197,28 +378,26 @@
                   "nofail"
                 ];
               };
-              # Bootloader.
+              # Firmware
+              hardware.enableRedistributableFirmware = true;
+              # Bootloader
               boot.loader.systemd-boot.enable = true;
               boot.loader.efi.canTouchEfiVariables = true;
               boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
               # Networking
               networking = {
-                wireless.enable = true;
+                networkmanager = {
+                  enable = true;
+                  insertNameservers = [
+                    "1.1.1.1"
+                    "8.8.8.8"
+                  ];
+                };
+                hostName = "snowflake";
                 nameservers = [
                   "1.1.1.1"
                   "8.8.8.8"
                 ];
-                networkmanager.insertNameservers = [
-                  "1.1.1.1"
-                  "8.8.8.8"
-                ];
-              };
-              services.udev = {
-                packages = [ pkgs.util-linux ];
-                extraRules = ''
-                  # Wacom CTH-480 for OpenTabletDriver (OTD)
-                  SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", MODE="0666", GROUP="plugdev"
-                '';
               };
               # Guix
               services.guix = {
@@ -232,14 +411,9 @@
                   ];
                 };
               };
-              # Enable networking
-              networking = {
-                networkmanager.enable = true;
-                hostName = "snowflake";
-              };
-              # Set your time zone.
+              # TimeZone
               time.timeZone = "Europe/Berlin";
-              # Select internationalisation properties.
+              # Locales
               i18n.defaultLocale = "en_US.UTF-8";
               i18n.extraLocaleSettings = {
                 LC_ADDRESS = "de_DE.UTF-8";
@@ -252,12 +426,27 @@
                 LC_TELEPHONE = "de_DE.UTF-8";
                 LC_TIME = "de_DE.UTF-8";
               };
-              hardware.graphics = {
+              # Tablet Support
+              hardware.opentabletdriver = {
                 enable = true;
               };
-              # Tablet Support
               hardware.uinput.enable = true;
               boot.kernelModules = [ "uinput" ];
+              services.udev = {
+                packages = [ pkgs.util-linux ];
+                extraRules = ''
+                  # Wacom CTH-480 for OpenTabletDriver (OTD)
+                  SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", MODE="0666", GROUP="plugdev"
+                '';
+              };
+              # Nvidia
+              environment.sessionVariables = {
+                LIBVA_DRIVER_NAME = "nvidia";
+                GBM_BACKEND = "nvidia-drm"; # In case of issues, try removing this variable, as it's not required on newer 580 Drivers.
+                __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+                WLR_NO_HARDWARE_CURSORS = "1";
+                NIXOS_OZONE_WL = "1";
+              };
               boot.kernelParams = [
                 "nvidia-drm.modeset=1"
                 "nvidia-drm.fbdev=0"
@@ -268,21 +457,32 @@
                 "nvidia_uvm"
                 "nvidia_drm"
               ];
-              hardware.opentabletdriver = {
+              hardware.graphics = {
                 enable = true;
               };
+              hardware.nvidia = {
+                package = config.boot.kernelPackages.nvidiaPackages.stable;
+                modesetting.enable = true;
+                powerManagement.enable = false;
+                powerManagement.finegrained = false;
+                open = false;
+                nvidiaSettings = true;
+              };
+              # Programs
               programs.ssh.askPassword = lib.mkForce "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
               programs = {
                 mango.enable = true;
                 naitre.enable = true;
                 xwayland.enable = true;
               };
+              # Display and Desktop Managers
               services = {
                 desktopManager = {
                   gnome.enable = true;
                   plasma6.enable = true;
                 };
                 displayManager = {
+                  defaultSession = "none+xmonad";
                   gdm.enable = false;
                   gdm.wayland = false;
                   sddm = {
@@ -291,6 +491,26 @@
                   };
                 };
               };
+              # Xorg
+              services.xserver.xrandrHeads = [
+                {
+                  output = "HDMI-0";
+                  monitorConfig = ''
+                    Option "Mode" "1920x1080"
+                    Option "Rate" "144"
+                    Option "Primary" "true"
+                    Option "Position" "0 0"
+                  '';
+                }
+                {
+                  output = "DP-0";
+                  monitorConfig = ''
+                    Option "Mode" "2560x1440"
+                    Option "Rate" "60"
+                    Option "Position" "1920 0"
+                  '';
+                }
+              ];
               services.xserver = {
                 videoDrivers = [ "nvidia" ];
                 enable = true;
@@ -399,166 +619,69 @@
                   "dialout"
                   "plugdev"
                   "guixbuild"
+                  "libvirtd"
                 ];
                 packages = with pkgs; [
+                  espeak
+                  inputs.jonabron.packages.x86_64-linux.urbit
+                  inputs.jonabron.packages.x86_64-linux.gobm
+                  kdePackages.karousel
+                  plasmusic-toolbar
+                  libsForQt5.qtstyleplugin-kvantum
+                  libsForQt5.qt5ct
                   inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
-                  ffmpeg-full
-                  dhcpcd
-                  spotify
                   qemu
                   quickemu
-                  lynx
-                  links2
-                  w3m-full
                   kjv
                   emote
-                  pulseaudio
-                  whatsapp-electron
-                  microsoft-edge
-                  feh
-                  cmus
-                  alsa-utils
-                  hyfetch
-                  pridefetch
-                  fastfetch
-                  pfetch
-                  discord
                   veracrypt
-                  gimp3-with-plugins
                   flameshot
-                  grim
-                  grimblast
                   redshift
                   zathura
                   keepassxc
                   nil
                   nixfmt
                   qbittorrent
-                  onefetch
                   kdePackages.qt5compat
-                  sway-audio-idle-inhibit
-                  imv
-                  yazi
-                  gamescope
-                  vesktop
-                  pciutils
-                  xdotool
-                  fd
                   picard # mp3 Tagging
-                  krita
-                  microfetch
-                  imagemagick
                   yt-dlp
                   rofimoji
                   rofi
-                  ardour
-                  kdePackages.kdenlive
-                  signal-desktop-bin
-                  telegram-desktop
-                  xclip
                   texliveFull
-                  strawberry
                   blahaj
-                  pavucontrol
-                  zip
-                  p7zip
-                  unzip
-                  unrar
                   appimage-run
-                  rsync
                   zenmap
                   zerotierone
-                  gparted
-                  parted
-                  jq
                   translate-shell
-                  progress
-                  openssl
-                  coreutils-full
                   nix-prefetch-scripts
-                  obs-studio
                   libreoffice
-                  xfce.thunar
-                  xfce.tumbler
                   gnome-shell-extensions
-                  kew # Terminal Music Player with Cover Preview
-                  hfsprogs # For Apple HFS+ Filesystems
-                  ntfs3g # NTFS Filesystem Support
-                  cryptsetup # LUKS Encryption
-                  testdisk # File Recovery Utilities
-                  encfs # Create Encrypted Folders
-                  usbutils
-                  websocat
                   gnome-font-viewer
                   fontforge-gtk
                   fontpreview
-                  # Arduino
-                  xorg.xkbutils
-                  xorg.xrandr
-                  xorg.xprop
-                  xorg.xwininfo
                   arduino-ide
-                  # Wine
-                  wineWowPackages.full
-                  winetricks
-                  # Games
-                  ace-of-penguins
-                  kdePackages.kpat
-                  azahar # 3DS Emulator
-                  ryubing # Switch Emulator
-                  skyemu # GameBoy Advanced Emulator
-                  prismlauncher # Minecraft
-                  # Networks
-                  librewolf-bin # For I2P
-                  tor-browser # For Tor
-                  # Rust
-                  cargo
-                  rustc
-                  rustfmt
-                  clippy
-                  rust-analyzer
-                  gcc
-                  libgcc
-                  rustlings
-                  # XMonad
                   xmobar
-                  # Niri
-                  wf-recorder
-                  wtype
-                  swaybg
-                  waybar
-                  swayidle
-                  hyprlock
-                  swaylock-fancy
-                  wlsunset
-                  wofi
-                  mako
-                  wlr-randr
-                  xwayland
-                  xwayland-satellite
-                  slurp
-                  sway-contrib.grimshot
-                  hyprpicker
-                  wl-clipboard
-                  brightnessctl
-                  playerctl
-                  wireplumber
-                  gammastep
-                  xdg-desktop-portal
-                  xdg-desktop-portal-gtk
-                  xdg-desktop-portal-wlr
-                  hyprshot
-                  # Alternative Programs
-                  eza
-                  bat
-                  zoxide
-                  bottom
-                  bandwhich
                   pokeget-rs
-                  ripgrep
-                  ripgrep-all
-                  clock-rs
-                ];
+                ]
+                ++ bundleBrowsers
+                ++ bundleRust
+                ++ bundleWayland
+                ++ bundleFetchers
+                ++ bundleVSTs
+                ++ bundleDAWs
+                ++ bundleAudioUtilities
+                ++ bundleMessaging
+                ++ bundleGames
+                ++ bundleEmulators
+                ++ bundleGraphicsDesign
+                ++ bundleMusicPlayers
+                ++ bundleWine
+                ++ bundleArchivers
+                ++ bundleVideoProduction
+                ++ bundleGeneralUtilities
+                ++ bundleNetworking
+                ++ bundleImageViewers
+                ++ bundleExplorers;
               };
               # Programs
               programs = {
@@ -644,8 +767,6 @@
                     size = "du -sh $@";
                     analogcity = "ssh lowlife@45.79.250.220 $@";
                     shreddy = "shred -z -u -v --iterations=1 $@";
-                    wineosu = "WINEPREFIX=$HOME/.wine-osu wine64 $@";
-                    winethirtytwo = "WINEPREFIX=$HOME/.wine-thirtytwo wine $@";
                     ipinfo = "curl ipinfo.io | jq .";
                     radminstart = "doas systemctl start zerotierone $@";
                     zerotierstart = "doas systemctl start zerotierone $@";
@@ -860,16 +981,6 @@
               environment.interactiveShellInit = ''
                 unset EMACSLOADPATH
               '';
-
-              # Wayland Session Variables
-              environment.sessionVariables = {
-                LIBVA_DRIVER_NAME = "nvidia";
-                GBM_BACKEND = "nvidia-drm"; # In case of issues, try removing this variable, as it's not required on newer 580 Drivers.
-                __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-                WLR_NO_HARDWARE_CURSORS = "1";
-                NIXOS_OZONE_WL = "1";
-              };
-
               # System Packages
               environment.systemPackages =
                 with pkgs;
@@ -883,7 +994,6 @@
                 in
                 [
                   nickel
-                  urbitNcl
                   epdfinfoPkg
                   libelf
                   gnumake
@@ -907,6 +1017,8 @@
 
               programs.nix-ld.enable = true;
 
+              programs.virt-manager.enable = true;
+
               programs.thunar = {
                 enable = true;
                 plugins = with pkgs.xfce; [
@@ -915,6 +1027,7 @@
                 ];
               };
 
+              # DMS
               programs.dank-material-shell = {
                 enable = true;
                 quickshell.package = pkgs.unstable.quickshell;
@@ -922,8 +1035,7 @@
               };
 
               programs.fzf.fuzzyCompletion = true;
-
-              # Services
+              # Networks
               services = {
                 yggdrasil = {
                   enable = false;
@@ -964,46 +1076,32 @@
                 };
               };
               systemd.services.tor.wantedBy = lib.mkForce [ ];
-
+              # GPG
               programs.gnupg.agent = {
                 enable = true;
                 enableSSHSupport = true;
               };
-
-              services.displayManager.defaultSession = "none+xmonad";
-              hardware.nvidia = {
-                package = config.boot.kernelPackages.nvidiaPackages.stable;
-                modesetting.enable = true;
-                powerManagement.enable = false;
-                powerManagement.finegrained = false;
-                open = false;
-                nvidiaSettings = true;
-              };
-              # Enable CUPS to print documents.
+              # Printing
               services.printing.enable = true;
-              services.xserver.xrandrHeads = [
-                {
-                  output = "HDMI-0";
-                  monitorConfig = ''
-                    Option "Mode" "1920x1080"
-                    Option "Rate" "144"
-                    Option "Primary" "true"
-                    Option "Position" "0 0"
-                  '';
-                }
-                {
-                  output = "DP-0";
-                  monitorConfig = ''
-                    Option "Mode" "2560x1440"
-                    Option "Rate" "60"
-                    Option "Position" "1920 0"
-                  '';
-                }
-              ];
-              # Enable sound with pipewire.
-              services.pulseaudio.enable = false;
+              # Escalation Utilities
               security = {
-                rtkit.enable = true;
+                sudo = {
+                  enable = true;
+                  wheelNeedsPassword = true;
+                  extraRules = [{
+                    commands = [
+                      {
+                        command = "${pkgs.systemd}/bin/reboot";
+                        options = [ "NOPASSWD" ];
+                      }
+                      {
+                        command = "${pkgs.systemd}/bin/poweroff";
+                        options = [ "NOPASSWD" ];
+                      }
+                    ];
+                    groups = [ "wheel" ];
+                  }];
+                };
                 doas = {
                   enable = true;
                   wheelNeedsPassword = true;
@@ -1017,6 +1115,9 @@
                   ];
                 };
               };
+              # Audio
+              security.rtkit.enable = true;
+              services.pulseaudio.enable = false;
               services.pipewire = {
                 enable = true;
                 alsa.enable = true;
@@ -1027,10 +1128,46 @@
                   quantum = 64;
                   rate = 48000;
                 };
+                jack.enable = true;
+                wireplumber.enable = true;
               };
-              # VirtualBox
-              virtualisation.virtualbox.host.enable = true;
-              users.extraGroups.vboxusers.members = [ "puppy" ];
+              # Virtualization
+              environment.etc."libvirt/qemu/networks/default.xml" = {
+                text = ''
+                  <network>
+                    <name>default</name>
+                    <bridge name="virbr0"/>
+                    <forward mode='nat'/>
+                    <ip address='172.16.56.1' netmask='255.255.255.0'>
+                      <dhcp>
+                        <range start='172.16.56.2' end='172.16.56.254'/>
+                        <host mac='52:54:00:12:34:56' name='virtualmachine' ip='172.16.56.10'/>
+                      </dhcp>
+                    </ip>
+                  </network>
+                '';
+              };
+              system.activationScripts.libvirt-network-start = {
+                deps = [ "users" ];
+                text = ''
+                  export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+                  /run/current-system/sw/bin/sleep 2
+                  if ! /run/current-system/sw/bin/virsh net-list --all | grep -q "default"; then
+                    /run/current-system/sw/bin/virsh net-define /etc/libvirt/qemu/networks/default.xml
+                  fi
+                  /run/current-system/sw/bin/virsh net-start default || true
+                  /run/current-system/sw/bin/virsh net-autostart default || true
+                '';
+              };
+              virtualisation = {
+                libvirtd = {
+                  enable = true;
+                  qemu = {
+                    swtpm.enable = true;
+                  };
+                };
+                spiceUSBRedirection.enable = true;
+              };
               # Flatpak
               services.flatpak = {
                 enable = true;

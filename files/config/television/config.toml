@@ -1,0 +1,13 @@
+[sources]
+
+[sources.nixpkgs]
+type = "nixpkgs"
+flake = "/etc/nixos"
+
+[sources.nixos]
+type = "nixos-options"
+flake = "/etc/nixos"
+
+[sources.home-manager]
+type = "home-manager-options"
+flake = "/etc/nixos"
