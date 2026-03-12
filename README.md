@@ -13,6 +13,7 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - Display Manager: SDDM
  - Audio: Low-Latency PipeWire
  - BIOS: (U)EFI
+ - Bootloader: GRUB
 
 ## Gaming
  - Steam Installed (with Proton-GE)

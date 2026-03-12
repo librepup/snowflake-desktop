@@ -1,33 +1,69 @@
 { config, pkgs, lib, inputs, unstable, ... }:
-let
-  wineWowPackagesBinary = pkgs.wineWowPackages.full;
-  fontSize = 13;
-  transOpacity = 0.95;
-  fullOpacity = 1.0;
-in
 {
   home.username = "puppy";
   home.homeDirectory = "/home/puppy";
   home.stateVersion = "25.05";
   home.sessionVariables = {
-    XDG_DATA_DIRS = "$HOME/.guix-profile/share:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:$XDG_DATA_DIRS";
+    XDG_DATA_DIRS = "$HOME/.guix-profile/share:$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:$HOME/.local/share:$XDG_DATA_DIRS";
   };
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
-    name = "DMZ-White";
-    package = pkgs.vanilla-dmz;
-    size = 32;
+    name = "XCursor-Pro-Dark";
+    size = 28;
   };
-  gtk.cursorTheme = {
-    name = "DMZ-White";
-    package = pkgs.vanilla-dmz;
-    size = 32;
+  gtk = {
+    theme = {
+      name = lib.mkForce "WhiteSur-Dark";
+      package = lib.mkForce pkgs.whitesur-gtk-theme;
+    };
+    iconTheme = {
+      name = lib.mkForce "WhiteSur-dark";
+      package = lib.mkForce pkgs.whitesur-icon-theme;
+    };
+    cursorTheme = {
+      name = "XCursor-Pro-Dark";
+      package = pkgs.xcursor-pro;
+      size = 28;
+    };
   };
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
       uris = [ "qemu:///system" ];
+    };
+  };
+  programs.plasma = {
+    enable = true;
+    shortcuts = {
+      ksmserver = {
+        "Lock Session" = [
+          "Screensaver"
+          "Meta+L"
+        ];
+      };
+    };
+    hotkeys.commands = {
+      "launch-terminal" = {
+        name = "Launch Terminal";
+        key = "Alt+Shift+Return";
+        command = "kitty -o font_family=TempleOS -o font_size=12";
+      };
+      "launch-firefox" = {
+        name = "Launch Firefox";
+        key = "Alt+S";
+        command = "firefox";
+      };
+      "launch-nixmacs" = {
+        name = "Launch NixMacs";
+        key = "Alt+Shift+F";
+        command = "nixmacs";
+      };
+      "launch-file-manager" = {
+        name = "Launch Explorer";
+        key = "Meta+E";
+        command = "thunar";
+      };
     };
   };
   wayland.windowManager.naitre = {
@@ -439,8 +475,12 @@ in
   };
   # Stylix
   stylix = {
+    cursor = {
+      name = "XCursor-Pro-Dark";
+      package = pkgs.xcursor-pro;
+      size = 28;
+    };
     enable = true;
-    targets.firefox.enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   };
   # Picom
@@ -500,6 +540,9 @@ in
       source = ./files/scripts/runRio.sh;
       executable = true;
     };
+    ".scripts/shell/help.sh".source = ./files/scripts/help.sh;
+    ".scripts/shell/nixgethash.sh".source = ./files/scripts/nixgethash.sh;
+    ".scripts/shell/keymon.sh".source = ./files/scripts/keymon.sh;
     ".scripts/shell/buildnix.sh".source = ./files/scripts/buildnix.sh;
     ".scripts/shell/cartom.sh".source = ./files/scripts/cartom.sh;
     ".scripts/shell/crypt.sh".source = ./files/scripts/crypt.sh;

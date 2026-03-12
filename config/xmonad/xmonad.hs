@@ -10,6 +10,7 @@ import XMonad
 import Data.Monoid
 import Data.List (intercalate)
 import Data.Char (isSpace)
+import Data.Tree
 import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -61,6 +62,7 @@ import qualified XMonad.Actions.Search as S
 import XMonad.Actions.Submap (submap, submapDefault)
 import XMonad.Actions.ShowText
 import XMonad.Actions.PhysicalScreens
+import XMonad.Actions.TreeSelect
 -- X11
 import Graphics.X11.Xlib (xC_left_ptr)
 import Graphics.X11.Xlib (warpPointer)
@@ -96,6 +98,58 @@ doWarp = ask >>= \w -> liftX $ do
       cy = fromIntegral (wa_height wa) `div` 2
   io $ warpPointer dpy none w 0 0 0 0 cx cy
   return mempty
+-- Tree Launcher
+myLauncher :: Forest String
+myLauncher = [ Node "Internet"
+               [ Node "Firefox" []
+               , Node "IceCat" []
+               , Node "Microsoft Edge" []
+               ]
+             , Node "Audio"
+               [ Node "Production"
+                 [ Node "Ardour" []
+                 , Node "Non" []
+                 , Node "Rythm" []
+                 ]
+               , Node "Players"
+                 [ Node "Strawberry" []
+                 , Node "Spotify" []
+                 ]
+               ]
+             , Node "Games"
+               [ Node "osu!" []
+               , Node "osu!lazer" []
+               , Node "Steam" []
+               ]
+             , Node "Graphics"
+               [ Node "Krita" []
+               , Node "GIMP" []
+               ]
+             ]
+
+treeAction :: String -> X ()
+treeAction node = case node of
+    "Ardour"         -> spawn "ardour8"
+    "Non"            -> spawn "non-daw"
+    "Rythm"          -> spawn "zrythm --audio-backend=PulseAudio"
+    "Krita"          -> spawn "krita"
+    "GIMP"           -> spawn "gimp"
+    "Spotify"        -> spawn "spotify"
+    "Strawberry"     -> spawn "strawberry"
+    "Firefox"        -> spawn "firefox"
+    "Microsoft Edge" -> spawn "microsoft-edge"
+    "IceCat"         -> spawn "icecat"
+    "osu!"           -> spawn "osu-stable"
+    "osu!lazer"      -> spawn "osu!"
+    "Steam"          -> spawn "steam"
+    "Internet"       -> return ()
+    "Games"          -> return ()
+    "Graphics"       -> return ()
+    "Audio"          -> return ()
+    "Production"     -> return ()
+    "Players"        -> return ()
+    _                -> return ()
+
 -- Prompt/XP Theme(s)
 marnieXPConfig = def
     { font              = "xft:DejaVu Sans Mono:size=10"
@@ -624,10 +678,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
           "fi; " ++
         "fi")
     , ((myWinMask, xK_e), spawn $
-        "if command -v nautilus > /dev/null; then " ++
-          "nautilus; " ++
-        "elif command -v thunar > /dev/null; then " ++
+        "if command -v thunar > /dev/null; then " ++
           "thunar; " ++
+        "elif command -v nautilus > /dev/null; then " ++
+          "nautilus; " ++
         "elif command -v konqueror > /dev/null; then " ++
           "konqueror; " ++
         "else " ++
