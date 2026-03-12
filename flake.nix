@@ -318,6 +318,7 @@
                 fd
                 imv
                 jq
+                xev
               ];
               bundleNetworking = with pkgs; [
                 dhcpcd
@@ -427,6 +428,13 @@
                 LC_TIME = "de_DE.UTF-8";
               };
               # Tablet Support
+              programs.ydotool = {
+                enable = true;
+                group = "ydotool";
+              };
+              services.input-remapper = {
+                enable = true;
+              };
               hardware.opentabletdriver = {
                 enable = true;
               };
@@ -620,6 +628,8 @@
                   "plugdev"
                   "guixbuild"
                   "libvirtd"
+                  "input"
+                  "ydotool"
                 ];
                 packages = with pkgs; [
                   espeak
