@@ -109,8 +109,8 @@
         unset -m EMACSLOADPATH
         unalias -m 9
 
-        if [ -d "$HOME/.scripts/shell" ]; then
-          for script in "$HOME/.scripts/shell"/*; do
+        if [ -d "$HOME/.shell-autoload-functions" ]; then
+          for script in "$HOME/.shell-autoload-functions"/*; do
             [ -f "$script" ] && source "$script"
           done
         fi

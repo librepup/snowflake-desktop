@@ -33,6 +33,7 @@ Downloaders
   mp3         - Download URL as MP3
   mp4         - Download URL as MP4
   mp4fallback - Fallback URL to MP4 Downloader
+  mpget       - Download URL as MP3, set Cover, and apply Tags
 "
     elif [[ "$arg" == *git* ]]; then
         echo -e "Shell Help: GIT Options
@@ -90,6 +91,7 @@ Downloaders
   mp3         - Download URL as MP3
   mp4         - Download URL as MP4
   mp4fallback - Fallback URL to MP4 Downloader
+  mpget       - Download URL as MP3, set Cover, and apply Tags
 
 Archiving
   zipCreate   - Create Zip Archive
