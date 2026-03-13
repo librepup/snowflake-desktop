@@ -204,6 +204,9 @@ in
       "ydotool"
     ];
     packages = with pkgs; [
+      #inputs.jonabron.packages.x86_64-linux.xptheme
+      #inputs.jonabron.packages.x86_64-linux.winxp-icons
+      lxappearance
       espeak
       inputs.jonabron.packages.x86_64-linux.urbit
       inputs.jonabron.packages.x86_64-linux.gobm
