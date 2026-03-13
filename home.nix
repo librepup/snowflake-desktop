@@ -33,6 +33,45 @@
       uris = [ "qemu:///system" ];
     };
   };
+  programs.spotify-player = {
+    enable = true;
+    settings = {
+      theme = lib.mkForce "JungleVibrant";
+    };
+    themes = [
+      {
+        name = "JungleVibrant";
+        palette = {
+          black = "#0a0a05";
+          red = "#F04535";
+          green = "#4CBF5A";
+          yellow = "#D4921A";
+          blue = "#78BADC";
+          magenta = "#C23FAD";
+          cyan = "#8ABEB7";
+          white = "#f5e8d5";
+          bright_black = "#8a7a6e";
+          bright_red = "#FF6040";
+          bright_green = "#4CBF5A";
+          bright_yellow = "#D4921A";
+          bright_blue = "#78BADC";
+          bright_magenta = "#C23FAD";
+          bright_cyan = "#8ABEB7";
+          bright_white = "#f5e8d5";
+        };
+        component_style = {
+          block_title = { fg = "#78BADC"; modifiers = ["Bold"]; };
+          border = { fg = "#8a7a6e"; };
+          playback_status = { fg = "#4CBF5A"; modifiers = ["Bold"]; };
+          playback_track = { fg = "#f5e8d5"; modifiers = ["Bold"]; };
+          playback_artists = { fg = "#78BADC"; };
+          playback_album = { fg = "#D4921A"; };
+          selection = { fg = "#0a0a05"; bg = "#4CBF5A"; modifiers = ["Bold"]; };
+          header = { fg = "#C23FAD"; };
+        };
+      }
+    ];
+  };
   programs.plasma = {
     enable = true;
     shortcuts = {

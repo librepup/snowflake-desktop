@@ -113,7 +113,7 @@ let
     imagemagick
   ];
   bundleMusicPlayers = with pkgs; [
-    spotify
+    spotdl
     strawberry
     kew
     cmus
