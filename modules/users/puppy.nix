@@ -15,6 +15,8 @@ let
     links2
     w3m-full
     microsoft-edge
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    floorp-bin
   ];
   bundleRust = with pkgs; [
     cargo
@@ -206,6 +208,7 @@ in
     packages = with pkgs; [
       #inputs.jonabron.packages.x86_64-linux.xptheme
       #inputs.jonabron.packages.x86_64-linux.winxp-icons
+      vdhcoapp # Video DownloadHelper Companion
       lxappearance
       espeak
       inputs.jonabron.packages.x86_64-linux.urbit

@@ -68,6 +68,10 @@
       inputs.home-manager.follows = "home-manager";
     };
     jonabron.url = "github:librepup/jonabron";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -96,6 +100,7 @@
       nix-gaming,
       plasma-manager,
       jonabron,
+      zen-browser,
       ...
     }:
     let
@@ -272,7 +277,7 @@
                     "video/mov" = "mpv.desktop";
                     "application/pdf" = "zathura.desktop";
                     "inode/directory" = "thunar.desktop";
-                    "text/html" = "firefox.desktop";
+                    "text/html" = "zen.desktop";
                   };
                 };
               };
