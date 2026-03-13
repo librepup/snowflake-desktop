@@ -43,6 +43,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.WorkspaceHistory
 -- Utils
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
@@ -62,7 +63,7 @@ import qualified XMonad.Actions.Search as S
 import XMonad.Actions.Submap (submap, submapDefault)
 import XMonad.Actions.ShowText
 import XMonad.Actions.PhysicalScreens
-import XMonad.Actions.TreeSelect
+import qualified XMonad.Actions.TreeSelect as TS
 -- X11
 import Graphics.X11.Xlib (xC_left_ptr)
 import Graphics.X11.Xlib (warpPointer)
@@ -98,58 +99,6 @@ doWarp = ask >>= \w -> liftX $ do
       cy = fromIntegral (wa_height wa) `div` 2
   io $ warpPointer dpy none w 0 0 0 0 cx cy
   return mempty
--- Tree Launcher
-myLauncher :: Forest String
-myLauncher = [ Node "Internet"
-               [ Node "Firefox" []
-               , Node "IceCat" []
-               , Node "Microsoft Edge" []
-               ]
-             , Node "Audio"
-               [ Node "Production"
-                 [ Node "Ardour" []
-                 , Node "Non" []
-                 , Node "Rythm" []
-                 ]
-               , Node "Players"
-                 [ Node "Strawberry" []
-                 , Node "Spotify" []
-                 ]
-               ]
-             , Node "Games"
-               [ Node "osu!" []
-               , Node "osu!lazer" []
-               , Node "Steam" []
-               ]
-             , Node "Graphics"
-               [ Node "Krita" []
-               , Node "GIMP" []
-               ]
-             ]
-
-treeAction :: String -> X ()
-treeAction node = case node of
-    "Ardour"         -> spawn "ardour8"
-    "Non"            -> spawn "non-daw"
-    "Rythm"          -> spawn "zrythm --audio-backend=PulseAudio"
-    "Krita"          -> spawn "krita"
-    "GIMP"           -> spawn "gimp"
-    "Spotify"        -> spawn "spotify"
-    "Strawberry"     -> spawn "strawberry"
-    "Firefox"        -> spawn "firefox"
-    "Microsoft Edge" -> spawn "microsoft-edge"
-    "IceCat"         -> spawn "icecat"
-    "osu!"           -> spawn "osu-stable"
-    "osu!lazer"      -> spawn "osu!"
-    "Steam"          -> spawn "steam"
-    "Internet"       -> return ()
-    "Games"          -> return ()
-    "Graphics"       -> return ()
-    "Audio"          -> return ()
-    "Production"     -> return ()
-    "Players"        -> return ()
-    _                -> return ()
-
 -- Prompt/XP Theme(s)
 marnieXPConfig = def
     { font              = "xft:DejaVu Sans Mono:size=10"
@@ -653,7 +602,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
             , "-fn", selectedFont jungleDmenuTheme
             , "-p", "Search:"
             ]
-            "YT\nNix\nDuck\nGoogle\nImages\nMaps\nTwitter\n"
+            "YT\nNix\nOptions\nDuck\nGoogle\nImages\nMaps\nTwitter\n"
         case trimWS choice of
             "Google"     -> S.promptSearch myXPConfig S.google
             "Twitter"    -> S.promptSearch myXPConfig (S.searchEngine "twitter" "https://x.com/search?q=")
@@ -662,6 +611,27 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
             "Images"     -> S.promptSearch myXPConfig S.images
             "Maps"       -> S.promptSearch myXPConfig S.maps
             "Nix"        -> S.promptSearch myXPConfig (S.searchEngine "nixpkgs" "https://search.nixos.org/packages?query=")
+            "Options"    -> S.promptSearch myXPConfig (S.searchEngine "nixpkgs" "https://search.nixos.org/options?query=")
+            _            -> return ()
+        )
+    , ((myWinMask .|. shiftMask, xK_space), do
+        choice <- runProcessWithInput "dmenu"
+            [ "-nb", normalBackground jungleDmenuTheme
+            , "-nf", normalForeground jungleDmenuTheme
+            , "-sb", selectedBackground jungleDmenuTheme
+            , "-sf", selectedForeground jungleDmenuTheme
+            , "-fn", selectedFont jungleDmenuTheme
+            , "-p", "Launch:"
+            ]
+            "Firefox\nDiscord\nosu!\nKrita\nPavucontrol\nSpotify\nArdour\n"
+        case trimWS choice of
+            "Firefox"    -> spawn "firefox"
+            "Discord"    -> spawn "discord"
+            "osu!"       -> spawn "osu-stable"
+            "Krita"      -> spawn "krita"
+            "Pavucontrol"-> spawn "pavucontrol"
+            "Spotify"    -> spawn "spotify"
+            "Ardour"     -> spawn "ardour8"
             _            -> return ()
         )
     ]
