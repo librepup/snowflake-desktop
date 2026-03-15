@@ -11,8 +11,6 @@
   };
   # MPV
   home.file = {
-    ".config/mpv/scripts/audio_visualizer.lua".source = ../../files/config/mpv/scripts/audio_visualizer.lua;
-    ".config/mpv/scripts/autoload.lua".source = ../../files/config/mpv/scripts/autoload.lua;
     ".config/mpv/scripts/copy-time.lua".source = ../../files/config/mpv/scripts/copy-time.lua;
     ".config/mpv/scripts/cycle-commands.lua".source = ../../files/config/mpv/scripts/cycle-commands.lua;
     ".config/mpv/scripts/cycle-profile.lua".source = ../../files/config/mpv/scripts/cycle-profile.lua;
@@ -57,8 +55,9 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
-    ".shell-autoload-functions/mpget-artist.sh".source = ../../files/scripts/mpget-artist.sh;
-    ".shell-autoload-functions/mpget.sh".source = ../../files/scripts/mpget.sh;
+    ".shell-autoload-functions/mp3.sh".source = ../../files/scripts/mp3.sh;
+    #".shell-autoload-functions/mpget-artist.sh".source = ../../files/scripts/mpget-artist.sh;
+    #".shell-autoload-functions/mpget.sh".source = ../../files/scripts/mpget.sh;
     ".shell-autoload-functions/help.sh".source = ../../files/scripts/help.sh;
     ".shell-autoload-functions/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
     ".shell-autoload-functions/keymon.sh".source = ../../files/scripts/keymon.sh;

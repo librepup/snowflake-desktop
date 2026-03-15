@@ -3,7 +3,7 @@
   programs.mpv = {
     enable = true;
     config = {
-      volume = 100;
+      volume = 50;
       force-window = false;
       "autofit-larger" = "75%x75%";
       "image-display-duration" = "inf";

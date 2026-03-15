@@ -80,6 +80,7 @@ let
     pulseaudio
     pavucontrol
     alsa-utils
+    id3v2
   ];
   bundleMessaging = with pkgs; [
     signal-desktop-bin

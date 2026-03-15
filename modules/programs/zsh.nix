@@ -57,7 +57,7 @@
         ec = "emacsclient -c -nw $@";
         vim = "nixmacs -nw $@";
         # Downloading
-        mp3 = "yt-dlp -x --audio-format mp3 -o '%(uploader)s - %(title)s' $@";
+        #mp3 = "yt-dlp -x --audio-format mp3 -o '%(uploader)s - %(title)s' $@";
         # Extra
         ripgrep = "rg $@";
         oldgrep = "grep $@";
@@ -82,7 +82,7 @@
         cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
         forcekill = "kill -9 $@";
-        tagmp3 = "$HOME/.scripts/tagmp3.sh $@";
+        #tagmp3 = "$HOME/.scripts/tagmp3.sh $@";
         size = "du -sh $@";
         analogcity = "ssh lowlife@45.79.250.220 $@";
         shreddy = "shred -z -u -v --iterations=1 $@";
