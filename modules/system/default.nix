@@ -11,5 +11,7 @@
     ./nix.nix
     ./security.nix
     ./bootloader.nix
+    ./xdg.nix
+    ./kernel.nix
   ];
 }

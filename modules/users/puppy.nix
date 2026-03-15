@@ -1,12 +1,5 @@
 { config, pkgs, inputs, ... }:
 let
-  synapsian = pkgs.callPackage ../../files/packages/synapsian/default.nix { };
-  karamarea = pkgs.callPackage ../../files/packages/karamarea/default.nix { };
-  templeos = pkgs.callPackage ../../files/packages/templeosFont/default.nix { };
-  gnutypewriter = pkgs.callPackage ../../files/packages/gnutypewriter/default.nix { };
-  osuLazerLatest = pkgs.callPackage ../../files/packages/osuLazerLatest.nix { };
-  epdfinfoPkg = pkgs.callPackage ../../files/packages/epdfinfo/default.nix { };
-  cartographCF = pkgs.callPackage ../../files/packages/cartographCF/default.nix { };
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   bundleBrowsers = with pkgs; [
     librewolf-bin
@@ -206,6 +199,8 @@ in
       "ydotool"
     ];
     packages = with pkgs; [
+      inputs.nix-init.packages.x86_64-linux.default
+      inputs.jonabron.packages.x86_64-linux.momoisay
       #inputs.jonabron.packages.x86_64-linux.xptheme
       #inputs.jonabron.packages.x86_64-linux.winxp-icons
       vdhcoapp # Video DownloadHelper Companion

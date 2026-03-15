@@ -1,0 +1,237 @@
+{ config, pkgs, inputs, lib, unstable, ... }:
+{
+  # Picom
+  home.file.".config/picom/picom.conf".source = ../../files/config/picom/picom.conf;
+  # Wofi
+  home.file = {
+    ".config/wofi/config".source = ../../files/config/wofi/config;
+    ".config/wofi/style.css".source = ../../files/config/wofi/style.css;
+    ".config/wofi/redstyle.css".source = ../../files/config/wofi/redstyle.css;
+    ".config/wofi/guixstyle.css".source = ../../files/config/wofi/guixstyle.css;
+  };
+  # MPV
+  home.file = {
+    ".config/mpv/scripts/audio_visualizer.lua".source = ../../files/config/mpv/scripts/audio_visualizer.lua;
+    ".config/mpv/scripts/autoload.lua".source = ../../files/config/mpv/scripts/autoload.lua;
+    ".config/mpv/scripts/copy-time.lua".source = ../../files/config/mpv/scripts/copy-time.lua;
+    ".config/mpv/scripts/cycle-commands.lua".source = ../../files/config/mpv/scripts/cycle-commands.lua;
+    ".config/mpv/scripts/cycle-profile.lua".source = ../../files/config/mpv/scripts/cycle-profile.lua;
+    ".config/mpv/scripts/modernz.lua".source = ../../files/config/mpv/scripts/modernz.lua;
+    ".config/mpv/scripts/mpv-gif.lua".source = ../../files/config/mpv/scripts/mpv-gif.lua;
+    ".config/mpv/scripts/playlistmanager.lua".source = ../../files/config/mpv/scripts/playlistmanager.lua;
+    ".config/mpv/scripts/seek-to.lua".source = ../../files/config/mpv/scripts/seek-to.lua;
+    ".config/mpv/scripts/sponsorblock-minimal.lua".source = ../../files/config/mpv/scripts/sponsorblock-minimal.lua;
+    ".config/mpv/scripts/thumbfast.lua".source = ../../files/config/mpv/scripts/thumbfast.lua;
+    ".config/mpv/fonts/fluent-system-icons.ttf".source = ../../files/config/mpv/fonts/fluent-system-icons.ttf;
+    ".config/mpv/fonts/Netflix Sans Bold.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Bold.otf;
+    ".config/mpv/fonts/Netflix Sans Light.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Light.otf;
+    ".config/mpv/fonts/Netflix Sans Medium.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Medium.otf;
+  };
+  # Waybar
+  home.file = {
+    ".config/waybar/config.jsonc".source = ../../files/config/waybar/config.jsonc;
+    ".config/waybar/style.css".source = ../../files/config/waybar/style.css;
+    ".config/waybar/guix.css".source = ../../files/config/waybar/guix.css;
+    ".config/waybar/jungle.css".source = ../../files/config/waybar/jungle.css;
+    ".config/waybar/layout.jsonc".source = ../../files/config/waybar/layout.jsonc;
+  };
+  # ZSH Scripts and Functions
+  home.file = {
+    ".scripts/tagmp3.sh" = {
+      source = ../../files/scripts/tagmp3.sh;
+      executable = true;
+    };
+    ".scripts/polybar-date-toggle.sh" = {
+      source = ../../files/scripts/polybar-date-toggle.sh;
+      executable = true;
+    };
+    ".scripts/gfetch-linux-compat.rc" = {
+      source = ../../files/scripts/gfetch-linux-compat.rc;
+      executable = true;
+    };
+    ".scripts/nixmacs-wayland-run.sh" = {
+      source = ../../files/scripts/nixmacs-wayland-run.sh;
+      executable = true;
+    };
+    ".scripts/runRio.sh" = {
+      source = ../../files/scripts/runRio.sh;
+      executable = true;
+    };
+    ".shell-autoload-functions/mpget-artist.sh".source = ../../files/scripts/mpget-artist.sh;
+    ".shell-autoload-functions/mpget.sh".source = ../../files/scripts/mpget.sh;
+    ".shell-autoload-functions/help.sh".source = ../../files/scripts/help.sh;
+    ".shell-autoload-functions/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
+    ".shell-autoload-functions/keymon.sh".source = ../../files/scripts/keymon.sh;
+    ".shell-autoload-functions/buildnix.sh".source = ../../files/scripts/buildnix.sh;
+    ".shell-autoload-functions/cartom.sh".source = ../../files/scripts/cartom.sh;
+    ".shell-autoload-functions/crypt.sh".source = ../../files/scripts/crypt.sh;
+    ".shell-autoload-functions/disks.sh".source = ../../files/scripts/disks.sh;
+    ".shell-autoload-functions/extract.sh".source = ../../files/scripts/extract.sh;
+    ".shell-autoload-functions/fkill.sh".source = ../../files/scripts/fkill.sh;
+    ".shell-autoload-functions/generators.sh".source = ../../files/scripts/generators.sh;
+    ".shell-autoload-functions/git-helper.sh".source = ../../files/scripts/git-helper.sh;
+    ".shell-autoload-functions/guix-manager-helper.sh".source = ../../files/scripts/guix-manager-helper.sh;
+    ".shell-autoload-functions/hashurl.sh".source = ../../files/scripts/hashurl.sh;
+    ".shell-autoload-functions/mp4.sh".source = ../../files/scripts/mp4.sh;
+    ".shell-autoload-functions/nix-shell-prebuilds.sh".source = ../../files/scripts/nix-shell-prebuilds.sh;
+    ".shell-autoload-functions/edit.sh".source = ../../files/scripts/edit.sh;
+    ".shell-autoload-functions/upload.sh".source = ../../files/scripts/upload.sh;
+    ".scripts/waybar.sh" = {
+      source = ../../files/scripts/waybar.sh;
+      executable = true;
+    };
+    ".scripts/record.sh" = {
+      source = ../../files/scripts/record.sh;
+      executable = true;
+    };
+    ".scripts/flameshotCopyToClip.sh" = {
+      source = ../../files/scripts/flameshotCopyToClip.sh;
+      executable = true;
+    };
+  };
+  # FastFetch Config
+  home.file.".config/fastfetch/config.jsonc".source = ../../files/config/fastfetch/config.jsonc;
+  # Discord Colorscheme
+  home.file.".config/vesktop/themes/dank.css".source = ../../files/config/discord/dank.css;
+  home.file.".config/vesktop/themes/guix.css".source = ../../files/config/discord/guix.css;
+  home.file.".config/vesktop/themes/fuwamoco-theme.css".source = ../../files/config/discord/fuwamoco-theme.css;
+  # Kitty Colorschemes
+  home.file = {
+    ".config/kitty/fuwamocoColorscheme.conf".source = ../../files/config/kitty/fuwamocoColorscheme.conf;
+    ".config/kitty/marnieColorscheme.conf".source = ../../files/config/kitty/marnieColorscheme.conf;
+    ".config/kitty/guixColorscheme.conf".source = ../../files/config/kitty/guixColorscheme.conf;
+    ".config/kitty/jungleVibrantColorscheme.conf".source = ../../files/config/kitty/jungleVibrantColorscheme.conf;
+    ".config/kitty/jungleColorscheme.conf".source = ../../files/config/kitty/jungleColorscheme.conf;
+  };
+  # Btop
+  home.file = {
+    ".config/btop/btop.conf".source = ../../files/config/btop/btop.conf;
+    ".config/btop/themes/rumda.theme".source = ../../files/config/btop/themes/rumda.theme;
+  };
+  # Hyprlock
+  home.file = {
+    ".config/hyprlock/hyprlock.conf".source = ../../files/config/hyprlock/hyprlock.conf;
+    ".config/hyprlock/hyprlock.png".source = ../../files/config/hyprlock/hyprlock.png;
+    ".config/hyprlock/songdetail.sh".source = ../../files/config/hyprlock/songdetail.sh;
+    ".config/hyprlock/vivek.jpg".source = ../../files/config/hyprlock/vivek.jpg;
+    ".config/hyprlock/Fonts/JetBrains/JetBrains Mono Nerd.ttf".source =
+      ../../files/config/hyprlock/Fonts/JetBrains/JetBrains_Mono_Nerd.ttf;
+    ".config/hyprlock/Fonts/SF Pro Display/SF Pro Display Bold.otf".source =
+      ../../files/config/hyprlock/Fonts/SF_Pro_Display/SF_Pro_Display_Bold.otf;
+    ".config/hyprlock/Fonts/SF Pro Display/SF Pro Display Regular.otf".source =
+      ../../files/config/hyprlock/Fonts/SF_Pro_Display/SF_Pro_Display_Regular.otf;
+  };
+  # Zathura
+  home.file.".config/zathura/zathurarc" = {
+    source = ../../files/config/zathura/zathurarc;
+  };
+  # Wallpapers
+  home.file = {
+    "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ../../files/pictures/dangeroooous_jungle_wp.png;
+    "Pictures/Wallpapers/marnieGruvbox.png".source = ../../files/pictures/marnieGruvbox.png;
+    "Pictures/Wallpapers/demeLook.jpg".source = ../../files/pictures/demeLook.jpg;
+    "Pictures/Wallpapers/helltakerStare.jpg".source = ../../files/pictures/helltakerStare.jpg;
+    "Pictures/Wallpapers/lainGruvbox.jpg".source = ../../files/pictures/lainGruvbox.jpg;
+    "Pictures/Wallpapers/nixosAnime.png".source = ../../files/pictures/nixosAnime.png;
+    "Pictures/Wallpapers/fuwamoco.jpg".source = ../../files/pictures/fuwamoco.jpg;
+    "Pictures/Wallpapers/guix_wp_01.svg".source = ../../files/pictures/guix_wp_01.svg;
+    "Pictures/Wallpapers/guix_wp_02.svg".source = ../../files/pictures/guix_wp_02.svg;
+    "Pictures/Wallpapers/guix_wp_01.png".source = ../../files/pictures/guix_wp_01.png;
+    "Pictures/Wallpapers/guix_wp_02.png".source = ../../files/pictures/guix_wp_02.png;
+  };
+  # Rofi
+  home.file = {
+    ".config/rofi/colors.rasi".source = ../../files/config/rofi/colors.rasi;
+    ".config/rofi/config.rasi".source = ../../files/config/rofi/config.rasi;
+    ".config/rofi/fonts.rasi".source = ../../files/config/rofi/fonts.rasi;
+  };
+  # Yazi
+  home.file = {
+    ".config/yazi/Gruvbox-Dark.tmTheme".source = ../../files/config/yazi/Gruvbox-Dark.tmTheme;
+    ".config/yazi/theme.toml".source = ../../files/config/yazi/theme.toml;
+  };
+  # Nix-Search-TV
+  home.file.".config/nix-search-tv/config.toml".source = ../../files/config/television/config.toml;
+  home.file.".config/nix-search-tv/config.json".source = ../../files/config/television/config.json;
+  home.file.".config/television/cable/nix.toml".source = ../../files/config/television/nix.toml;
+  home.file.".scripts/mango-exit.sh" = {
+    text = ''
+      #!/usr/bin/env sh
+
+      choice=$(printf "no\nyes" | wofi --dmenu \
+        --prompt "Exit MangoWC?" \
+        --width 300 \
+        --height 150)
+
+      if [ "$choice" = "yes" ]; then
+          kill $(pidof mango)
+      else
+          return
+      fi
+    '';
+    executable = true;
+  };
+  home.file.".scripts/naitreHUDBackup.sh" = {
+    source = ../../files/scripts/naitreHUDBackup.sh;
+    executable = true;
+  };
+  home.file.".scripts/polybar.sh" = {
+    text = ''
+      if type "xrandr"; then
+        for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+          MONITOR=$m polybar --reload example &
+        done
+      else
+        polybar --reload example &
+      fi
+    '';
+    executable = true;
+  };
+  home.file.".scripts/viewScreenshot.sh" = {
+    source = ../../files/scripts/viewScreenshot.sh;
+    executable = true;
+  };
+  home.file.".config/make/config" = {
+    source = ../../files/config/mako/config;
+    executable = true;
+  };
+  home.file.".config/dunst/dunstrc".source = ../../files/config/dunst/dunstrc;
+  home.file.".scripts/screenkey.nix".text = ''
+    { pkgs ? import <nixpkgs> {} }:
+    pkgs.mkShell {
+      buildInputs = with pkgs; [
+        screenkey
+      ];
+      shellHook = '''
+        clear;echo "Starting Screenkey"
+        screenkey --font "DejaVu Sans Mono" -t 0.65 --vis-shift
+        clear;echo "Quitting Screenkey"
+        exit
+      ''';
+    }
+  '';
+  home.file.".scripts/ncdu.nix".text = ''
+    { pkgs ? import <nixpkgs> {} }:
+    pkgs.mkShell {
+      buildInputs = [
+        pkgs.ncdu
+      ];
+      shellHook = '''
+        ncdu
+        exit
+      ''';
+    }
+  '';
+  home.file.".config/rofi/old/config.rasi".text = ''
+    configuration {
+      font: "DejaVu Sans Mono 12";
+      show-icons: true;
+      location: 0;
+      fullscreen: false;
+    }
+
+    @theme "squared-loji"
+  '';
+  home.file.".config/rofi/old/squared-nord.rasi".source = ../../files/config/rofi/old/squared-nord.rasi;
+  home.file.".config/rofi/old/squared-loji.rasi".source = ../../files/config/rofi/old/squared-loji.rasi;
+}

@@ -55,8 +55,6 @@
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     jonafonts.url = "github:librepup/jonafonts";
-    # Run 'doas nix flake update nixmacs' after changes to
-    # the repository to rebuild with latest changes!
     nixmacs = {
       url = "github:librepup/NixMacs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,6 +69,9 @@
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-init = {
+      url = "github:nix-community/nix-init";
     };
   };
 
@@ -95,12 +96,12 @@
       dms,
       dgop,
       spicetify-nix,
-      jonafonts,
       nix-cachyos-kernel,
       nix-gaming,
       plasma-manager,
       jonabron,
       zen-browser,
+      nix-init,
       ...
     }:
     let
@@ -120,6 +121,16 @@
           mango.nixosModules.mango
           naitre.nixosModules.naitre
           inputs.spicetify-nix.nixosModules.default
+          # Nixpkgs Config
+          {
+            nixpkgs.config = {
+              allowUnfree = true;
+              permittedInsecurePackages = [
+                "librewolf-bin-148.0-1"
+                "librewolf-bin-unwrapped-148.0-1"
+              ];
+            };
+          }
           # Overlays
           (
             { config, pkgs, ... }:
@@ -199,10 +210,6 @@
                   "nofail"
                 ];
               };
-              # Firmware
-              hardware.enableRedistributableFirmware = true;
-              # Bootloader
-              boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
               # TimeZone
               time.timeZone = "Europe/Berlin";
               # Locales
@@ -218,98 +225,6 @@
                 LC_TELEPHONE = "de_DE.UTF-8";
                 LC_TIME = "de_DE.UTF-8";
               };
-              # Programs
-              programs.ssh.askPassword = lib.mkForce "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
-              programs = {
-                mango.enable = true;
-                naitre.enable = true;
-                xwayland.enable = true;
-              };
-              # Programs
-              programs = {
-                firefox.enable = true;
-                steam = {
-                  enable = true;
-                  remotePlay.openFirewall = true;
-                  dedicatedServer.openFirewall = true;
-                  localNetworkGameTransfers.openFirewall = true;
-                  extraCompatPackages = with pkgs; [
-                    proton-ge-bin
-                  ];
-                };
-                less.enable = true;
-                git = {
-                  enable = true;
-                };
-                bash = {
-                  completion.enable = true;
-                  enableLsColors = true;
-                  promptInit = ''
-                    PS1="\h:\w \u\$ "
-                  '';
-                  shellAliases = {
-                    q = "exit";
-                    l = "ls $@";
-                    la = "ls -r -A $@";
-                    garbage = "sudo nix-collect-garbage -d $@";
-                    rebuild = "sudo nixos-rebuild switch $@";
-                    hf = "hyfetch $@";
-                    e = "emacs -nw $@";
-                    size = "du -sh $@";
-                    vim = "emacs -nw $@";
-                    mf = "microfetch $@";
-                    wp = "feh --bg-fill $@";
-                  };
-                };
-              };
-              # XDG
-              xdg = {
-                mime = {
-                  enable = true;
-                  defaultApplications = {
-                    "image/png" = "feh.desktop";
-                    "image/jpeg" = "feh.desktop";
-                    "image/jpg" = "feh.desktop";
-                    "image/webp" = "feh.desktop";
-                    "video/mp4" = "mpv.desktop";
-                    "video/webm" = "mpv.desktop";
-                    "video/mkv" = "mpv.desktop";
-                    "video/mov" = "mpv.desktop";
-                    "application/pdf" = "zathura.desktop";
-                    "inode/directory" = "thunar.desktop";
-                    "text/html" = "zen.desktop";
-                  };
-                };
-              };
-              environment.interactiveShellInit = ''
-                unset EMACSLOADPATH
-              '';
-              environment.variables = {
-                EDITOR = "nixmacs";
-                VISUAL = "nixmacs";
-                PAGER = "less";
-                TERMINAL = "kitty";
-              };
-              programs.nix-ld.enable = true;
-              programs.thunar = {
-                enable = true;
-                plugins = with pkgs.xfce; [
-                  thunar-media-tags-plugin
-                  thunar-archive-plugin
-                ];
-              };
-              # DMS
-              programs.dank-material-shell = {
-                enable = true;
-                quickshell.package = pkgs.unstable.quickshell;
-                dgop.package = inputs.dgop.packages.${pkgs.system}.default;
-              };
-              programs.fzf.fuzzyCompletion = true;
-              # GPG
-              programs.gnupg.agent = {
-                enable = true;
-                enableSSHSupport = true;
-              };
               # Printing
               services.printing.enable = true;
               # Wine/Windows
@@ -317,17 +232,12 @@
                 enable = true;
                 winbindd.enable = true;
               };
-              # Niri
-              programs.niri = {
-                enable = true;
-              };
               # Ensure the same basic flake options you already enable
               system.stateVersion = "25.11"; # Did you read the comment?
             }
           )
         ];
       };
-      # ChatGPT Firefox Stylix Fix BEGIN
       homeConfigurations.puppy = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
@@ -335,6 +245,5 @@
           ./home.nix
         ];
       };
-      # ChatGPT Firefox Stylix Fix END
     };
 }

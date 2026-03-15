@@ -1,7 +1,5 @@
 { config, pkgs, inputs, ... }:
 let
-  osuLazerLatest = pkgs.callPackage ../../files/packages/osuLazerLatest.nix { };
-  epdfinfoPkg = pkgs.callPackage ../../files/packages/epdfinfo/default.nix { };
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in
 {
@@ -16,18 +14,18 @@ in
   in
   [
     nickel
-    epdfinfoPkg
+    inputs.jonabron.packages.x86_64-linux.epdfinfo
     libelf
     gnumake
     gcc
     inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien
     inputs.nix-search-tv.packages.x86_64-linux.default
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     emacs-wayland
     emacs-x11
     irssi
     home-manager
-    osuLazerLatest
+    inputs.jonabron.packages.x86_64-linux.osu-lazer-appimage
   ];
 }
