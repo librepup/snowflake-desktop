@@ -20,12 +20,6 @@
         ll = "eza --icons -a $@";
         cls = "clear $@";
         # Nix Related
-        # Outdated Rebuild and Garbage Commands
-        #garbage = "sudo nix-collect-garbage -d $@";
-        #rebuild = "sudo nixos-rebuild switch $@";
-        # Old Home-Manager Inclusive Aliases
-        #garbage = "doas nix-collect-garbage -d && home-manager expire-generations '-2 days'";
-        #rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake && home-manager switch --flake /etc/nixos#puppy";
         home-rebuild = "home-manager switch --flake /etc/nixos#puppy $@";
         home-garbage = "home-manager expire-generations '-1 days'";
         rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
@@ -37,9 +31,7 @@
         nixbuild = "echo 'Did you mean `buildnix`?'";
         repair = "doas nix-store --verify --repair $@";
         nix-generations = "doas nix-env --list-generations --profile /nix/var/nix/profiles/system $@";
-        #generations = "echo -e 'NixOS Generations:\n' && doas nix-env --list-generations --profile /nix/var/nix/profiles/system && echo -e '\nHome-Manager Generations:\n' && home-manager generations";
         generations = "echo -e 'NixOS Generations:\n' && doas nix-env --list-generations --profile /nix/var/nix/profiles/system && echo -e '\nHome-Manager Generations:\n' && ls -l ~/.local/state/nix/profiles/ | grep home-manager";
-        #home-generations = "home-manager generations $@";
         home-generations = "ls -l ~/.local/state/nix/profiles/ | grep home-manager $@";
         # Fetching
         fetch = "echo -e 'mf => Microfetch\npf => Pridefetch\nhf => Hyfetch\nff => Fastfetch'";
@@ -56,8 +48,6 @@
         e = "nixmacs -nw $@";
         ec = "emacsclient -c -nw $@";
         vim = "nixmacs -nw $@";
-        # Downloading
-        #mp3 = "yt-dlp -x --audio-format mp3 -o '%(uploader)s - %(title)s' $@";
         # Extra
         ripgrep = "rg $@";
         oldgrep = "grep $@";
@@ -82,7 +72,6 @@
         cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
         forcekill = "kill -9 $@";
-        #tagmp3 = "$HOME/.scripts/tagmp3.sh $@";
         size = "du -sh $@";
         analogcity = "ssh lowlife@45.79.250.220 $@";
         shreddy = "shred -z -u -v --iterations=1 $@";
@@ -104,6 +93,14 @@
         guix-garbage = "guix gc $@";
         guix-update = "guix pull && guix package --upgrade && guix gc $@";
         search = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history $@";
+        mpv = "devour mpv $@";
+        zathura = "devour zathura $@";
+        gimp = "devour gimp $@";
+        krita = "devour krita $@";
+        zen = "devour zen $@";
+        firefox = "devour firefox $@";
+        floorp = "devour floorp $@";
+        ardour = "devour ardour8 $@";
       };
       shellInit = ''
         unset -m EMACSLOADPATH

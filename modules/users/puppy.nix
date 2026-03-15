@@ -174,6 +174,7 @@ let
     nix-search-cli
     manix
     xorg.xkill
+    devour
   ];
   bundleNetworking = with pkgs; [
     dhcpcd
