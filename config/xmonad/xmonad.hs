@@ -47,7 +47,7 @@ import XMonad.Hooks.WorkspaceHistory
 -- Utils
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
-import XMonad.Util.Run
+import XMonad.Util.Run (runProcessWithInput)
 import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
@@ -616,25 +616,85 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
             _            -> return ()
         )
     , ((myWinMask .|. shiftMask, xK_space), do
-        choice <- runProcessWithInput "dmenu"
-            [ "-nb", normalBackground jungleDmenuTheme
+        category <- runProcessWithInput "dmenu"
+            [ "-p", "Category:"
             , "-nf", normalForeground jungleDmenuTheme
             , "-sb", selectedBackground jungleDmenuTheme
             , "-sf", selectedForeground jungleDmenuTheme
             , "-fn", selectedFont jungleDmenuTheme
-            , "-p", "Launch:"
             ]
-            "Firefox\nDiscord\nosu!\nKrita\nPavucontrol\nSpotify\nArdour\n"
-        case trimWS choice of
-            "Firefox"    -> spawn "firefox"
-            "Discord"    -> spawn "discord"
-            "osu!"       -> spawn "osu-stable"
-            "Krita"      -> spawn "krita"
-            "Pavucontrol"-> spawn "pavucontrol"
-            "Spotify"    -> spawn "spotify"
-            "Ardour"     -> spawn "ardour8"
-            _            -> return ()
-        )
+            "Internet\nAudio\nGames\nChatting\nGraphics\n"
+        case trimWS category of
+            "Internet" -> do
+                app <- runProcessWithInput "dmenu"
+                    [ "-p", "Browser:"
+                    , "-nf", normalForeground jungleDmenuTheme
+                    , "-sb", selectedBackground jungleDmenuTheme
+                    , "-sf", selectedForeground jungleDmenuTheme
+                    , "-fn", selectedFont jungleDmenuTheme
+                    ] "Zen\nFirefox\nFloorp\nEdge\nTor\n"
+                case trimWS app of
+                    "Firefox" -> spawn "firefox"
+                    "Zen"     -> spawn "zen"
+                    "Floorp"  -> spawn "floorp"
+                    "Edge"    -> spawn "microsoft-edge"
+                    "Tor"     -> spawn "tor-browser"
+                    _         -> return ()
+            "Audio" -> do
+                app <- runProcessWithInput "dmenu"
+                    [ "-p", "Audio App:"
+                    , "-nf", normalForeground jungleDmenuTheme
+                    , "-sb", selectedBackground jungleDmenuTheme
+                    , "-sf", selectedForeground jungleDmenuTheme
+                    , "-fn", selectedFont jungleDmenuTheme
+                    ] "Pavucontrol\nSpotify\n"
+                case trimWS app of
+                    "Spotify" -> spawn "spotify"
+                    "Pavucontrol" -> spawn "pavucontrol"
+                    _         -> return ()
+            "Chatting" -> do
+                app <- runProcessWithInput "dmenu"
+                    [ "-p", "Chat App:"
+                    , "-nf", normalForeground jungleDmenuTheme
+                    , "-sb", selectedBackground jungleDmenuTheme
+                    , "-sf", selectedForeground jungleDmenuTheme
+                    , "-fn", selectedFont jungleDmenuTheme
+                    ] "Discord\nElement\nSignal\nTelegram\nWhatsApp\nVesktop\n"
+                case trimWS app of
+                    "Discord" -> spawn "discord"
+                    "Element" -> spawn "element-desktop"
+                    "Signal"  -> spawn "signal-desktop"
+                    "Telegram" -> spawn "Telegram"
+                    "WhatsApp" -> spawn "whatsapp-electron"
+                    "Vesktop" -> spawn "vesktop"
+                    _         -> return ()
+            "Games" -> do
+                app <- runProcessWithInput "dmenu"
+                    [ "-p", "Game:"
+                    , "-nf", normalForeground jungleDmenuTheme
+                    , "-sb", selectedBackground jungleDmenuTheme
+                    , "-sf", selectedForeground jungleDmenuTheme
+                    , "-fn", selectedFont jungleDmenuTheme
+                    ] "osu!\nosu!lazer\nSteam\n"
+                case trimWS app of
+                    "osu!" -> spawn "osu-stable"
+                    "osu!lazer" -> spawn "osu!"
+                    "Steam" -> spawn "steam"
+                    _         -> return ()
+            "Graphics" -> do
+                app <- runProcessWithInput "dmenu"
+                    [ "-p", "Graphics App:"
+                    , "-nf", normalForeground jungleDmenuTheme
+                    , "-sb", selectedBackground jungleDmenuTheme
+                    , "-sf", selectedForeground jungleDmenuTheme
+                    , "-fn", selectedFont jungleDmenuTheme
+                    ] "Krita\nGimp\n"
+                case trimWS app of
+                    "Krita" -> spawn "krita"
+                    "Gimp" -> spawn "gimp"
+                    _         -> return ()
+            _ -> return ()
+    )
     ]
     ++
     -- WinMod (Super key) Bindings
