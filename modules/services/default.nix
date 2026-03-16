@@ -5,5 +5,6 @@
     ./networks.nix
     ./virtualization.nix
     ./flatpak.nix
+    ./authentication.nix
   ];
 }

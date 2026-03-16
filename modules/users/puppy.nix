@@ -105,6 +105,7 @@ let
     gimp3-with-plugins
     krita
     imagemagick
+    blender
   ];
   bundleMusicPlayers = with pkgs; [
     spotdl

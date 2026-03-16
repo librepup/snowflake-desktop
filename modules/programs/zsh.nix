@@ -53,7 +53,7 @@
         oldgrep = "grep $@";
         cargorun = "RUSTFLAGS='-Awarnings' cargo run";
         fireswitch = "nix-shell -p firefox --run 'firefox -no-remote -ProfileManager' $@";
-        lsfind = "find . -name '$@'";
+        findstring = "grep -rni \"$@\" *";
         # Zipping
         tarShow = "tar tvf $@";
         tarUnzip = "tar xvf $@";

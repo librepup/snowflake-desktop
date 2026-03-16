@@ -55,6 +55,7 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
+    ".shell-autoload-functions/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
     ".shell-autoload-functions/mp3.sh".source = ../../files/scripts/mp3.sh;
     #".shell-autoload-functions/mpget-artist.sh".source = ../../files/scripts/mpget-artist.sh;
     #".shell-autoload-functions/mpget.sh".source = ../../files/scripts/mpget.sh;
