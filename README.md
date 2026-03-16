@@ -50,11 +50,11 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
    - Vertical Offset: -60%
  - Tablet
    - Tablet Area
-     - Width: 80mm
+     - Width: 70mm
      - Height: 57mm
-     - X: 40mm
+     - X: 35mm
      - Y: 28.5mm
-     - Rotation: 0
+     - Rotation: 1
    - Tablet Display
      - Width: 1920px
      - Height: 1080px
