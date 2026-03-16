@@ -688,10 +688,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
                     , "-sb", selectedBackground jungleDmenuTheme
                     , "-sf", selectedForeground jungleDmenuTheme
                     , "-fn", selectedFont jungleDmenuTheme
-                    ] "Krita\nGimp\n"
+                    ] "Krita\nGimp\nBlender\n"
                 case trimWS app of
                     "Krita" -> spawn "krita"
                     "Gimp" -> spawn "gimp"
+                    "Blender" -> spawn "blender"
                     _         -> return ()
             _ -> return ()
     )
