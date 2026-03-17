@@ -73,6 +73,9 @@
     nix-init = {
       url = "github:nix-community/nix-init";
     };
+    millennium = {
+      url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+    };
   };
 
   outputs =
@@ -102,6 +105,7 @@
       jonabron,
       zen-browser,
       nix-init,
+      millennium,
       ...
     }:
     let
@@ -209,6 +213,11 @@
                   "defaults"
                   "nofail"
                 ];
+              };
+              # Waydroid Bind-Mount
+              fileSystems."/home/puppy/.local/share/waydroid" = {
+                device = "/mnt/Waydroid";
+                options = [ "bind" ];
               };
               # TimeZone
               time.timeZone = "Europe/Berlin";

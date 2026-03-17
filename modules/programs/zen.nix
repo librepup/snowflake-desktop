@@ -104,7 +104,10 @@ in
     (pkgs.wrapFirefox
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
     {
-      binaryName = "zen-declarative";
+      binaryName = "declarezen";
+      extraArgs = [
+        "--set" "MOZ_PROFILES_DIR" "$HOME/.config/declarezen"
+      ];
       extraPrefs = lib.concatLines (
         lib.mapAttrsToList (
           name: value: ''lockPref(${lib.strings.toJSON name}, ${lib.strings.toJSON value});''

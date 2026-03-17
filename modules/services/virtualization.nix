@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   programs.virt-manager.enable = true;
   environment.etc."libvirt/qemu/networks/default.xml" = {
@@ -29,6 +29,9 @@
     '';
   };
   virtualisation = {
+    waydroid = {
+      enable = true;
+    };
     libvirtd = {
       enable = true;
       qemu = {
@@ -37,4 +40,8 @@
     };
     spiceUSBRedirection.enable = true;
   };
+  systemd.services.waydroid-container.wantedBy = lib.mkForce [ ];
+  # Waydroid Info
+  #   Run: `nix shell github:nix-community/NUR#repos.ataraxiasjel.waydroid-script -c sudo waydroid-script` to Fix Apps not Installing
+  #  Select: libhoudini (Intel CPU) and gapps (Google Services)
 }

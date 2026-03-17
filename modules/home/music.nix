@@ -39,4 +39,11 @@
       }
     ];
   };
+  programs.ncmpcpp = {
+    enable = false;
+    mpdMusicDir = "/mnt/Files/Music";
+    settings = {
+      ncmpcpp_directory = "~/.local/share/ncmpcpp";
+    };
+  };
 }

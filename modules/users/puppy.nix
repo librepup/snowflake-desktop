@@ -101,6 +101,9 @@ let
     azahar
     ryubing
     skyemu
+    waydroid-helper
+    cage
+    weston
   ];
   bundleGraphicsDesign = with pkgs; [
     gimp3-with-plugins
@@ -202,6 +205,7 @@ in
       "libvirtd"
       "input"
       "ydotool"
+      "render"
     ];
     packages = with pkgs; [
       inputs.nix-init.packages.x86_64-linux.default

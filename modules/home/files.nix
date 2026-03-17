@@ -59,10 +59,11 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
+    ".shell-autoload-functions/android.sh".source = ../../files/scripts/android.sh;
+    ".shell-autoload-functions/play.sh".source = ../../files/scripts/play.sh;
+    ".shell-autoload-functions/preexec.sh".source = ../../files/scripts/preexec.sh;
     ".shell-autoload-functions/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
     ".shell-autoload-functions/mp3.sh".source = ../../files/scripts/mp3.sh;
-    #".shell-autoload-functions/mpget-artist.sh".source = ../../files/scripts/mpget-artist.sh;
-    #".shell-autoload-functions/mpget.sh".source = ../../files/scripts/mpget.sh;
     ".shell-autoload-functions/help.sh".source = ../../files/scripts/help.sh;
     ".shell-autoload-functions/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
     ".shell-autoload-functions/keymon.sh".source = ../../files/scripts/keymon.sh;

@@ -274,6 +274,9 @@ myManageHook = composeAll
     , title =? "Library"                  --> doCenterFloat
     , className =? "Steam"                --> doShift "2"
     , title =? "Steam"                    --> doShift "2"
+    , className =? "weston"               --> doFullFloat
+    , className =? "weston-1"             --> doFullFloat
+    , className =? "Weston Compositor"    --> doFullFloat
     ]
 
 ------------------------------------------------------------------------

@@ -93,7 +93,6 @@
         guix-garbage = "guix gc $@";
         guix-update = "guix pull && guix package --upgrade && guix gc $@";
         search = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history $@";
-        mpv = "devour mpv $@";
         zathura = "devour zathura $@";
         gimp = "devour gimp $@";
         krita = "devour krita $@";
@@ -105,6 +104,9 @@
       shellInit = ''
         unset -m EMACSLOADPATH
         unalias -m 9
+
+        setopt CORRECT
+        SPROMPT='Unknown Command "%F{red}%R%f", did you mean "%F{green}%r%f"? (y/n) '
 
         if [ -d "$HOME/.shell-autoload-functions" ]; then
           for script in "$HOME/.shell-autoload-functions"/*; do
