@@ -69,7 +69,7 @@ let
     "zen.view.compact.hide-tabbar" = true;
     "zen.view.compact.hide-toolbar" = false;
     "zen.view.compact.show-sidebar-and-toolbar-on-hover" = false;
-
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
   extensions = [
     (extension "adnauseam" "adnauseam@rednoise.org")
@@ -94,6 +94,9 @@ let
     (extension "instagram-video-control" "{a831defa-a6c9-4ca9-9593-9ccaf98462d9}")
     (extension "video-downloadhelper" "{b9db16a4-6edc-47ec-a1f4-b86292ed211d}")
     (extension "violentmonkey" "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}")
+    (extension "multi-account-containers" "@testpilot-containers")
+    (extension "traduzir-paginas-web" "{036a55b4-5e72-4d05-a06c-cba2dfcc134a}")
+    (extension "zen-tab-sorter" "{e8ef475c-3452-4fff-92f5-39a689787cd2}")
   ];
 in
 {
@@ -141,7 +144,37 @@ in
               Name = "Proton";
               URLTemplate = "https://www.protondb.com/search?q={searchTerms}";
               IconURL = "https://www.protondb.com/favicon.ico";
-              Alias = "proton";
+              Alias = "protons";
+            }
+            {
+              Name = "osu!beatmaps";
+              URLTemplate = "https://osu.ppy.sh/beatmapsets?m=0&q={searchTerms}";
+              IconURL = "https://osu.ppy.sh/favicon.ico";
+              Alias = "maps";
+            }
+            {
+              Name = "Twitter";
+              URLTemplate = "https://x.com/search?q={searchTerms}";
+              IconURL = "https://x.com/favicon.ico";
+              Alias = "tweets";
+            }
+            {
+              Name = "Reddit";
+              URLTemplate = "https://www.reddit.com/search/?q={searchTerms}";
+              IconURL = "https://reddit.com/favicon.ico";
+              Alias = "redsearch";
+            }
+            {
+              Name = "Yandex Images";
+              URLTemplate = "https://yandex.com/images/search?text={searchTerms}";
+              IconURL = "https://yandex.com/favicon.ico";
+              Alias = "yanimg";
+            }
+            {
+              Name = "Wallpaper Search";
+              URLTemplate = "https://yandex.com/images/search?ih=1080&isize=eq&iw=1920&text={searchTerms}";
+              IconURL = "https://yandex.com/favicon.ico";
+              Alias = "wpsearch";
             }
           ];
         };

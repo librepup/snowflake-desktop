@@ -81,6 +81,7 @@ let
     pavucontrol
     alsa-utils
     id3v2
+    helvum
   ];
   bundleMessaging = with pkgs; [
     signal-desktop-bin
@@ -176,6 +177,7 @@ let
     manix
     xorg.xkill
     devour
+    systemdgenie
   ];
   bundleNetworking = with pkgs; [
     dhcpcd

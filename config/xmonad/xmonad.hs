@@ -284,13 +284,13 @@ myAutostart = do
     -- Monitor
     spawnOnce $
       "xrandr" ++
-          " --output HDMI-0" ++
+          " --output DP-0" ++
           " --primary" ++
           " --mode 1920x1080" ++
           " --rate 144.00" ++
-        " --output DP-0" ++
-          " --mode 2560x1440" ++
-          " --right-of HDMI-0"
+        " --output HDMI-0" ++
+          " --mode 1920x1080" ++
+          " --right-of DP-0"
     -- Mouse
     let myMice = ["Mad Catz Global", "Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse"]
     forM_ myMice $ \mouse -> do

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1772493399604721-1</unique-id>
+	<command>kitty -o font_family=TempleOS -o font_size=8 --working-directory=%f</command>
+	<description>Open Terminal in the current Working Directory</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>imagefan-reloaded</icon>
+	<name>Make Wallpaper</name>
+	<submenu></submenu>
+	<unique-id>1773735867786364-1</unique-id>
+	<command>feh --bg-fill %f</command>
+	<description>Set selected Image as Wallpaper</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+</actions>

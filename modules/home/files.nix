@@ -1,5 +1,9 @@
 { config, pkgs, inputs, lib, unstable, ... }:
 {
+  # Thunar
+  xdg.configFile."Thunar/uca.xml" = {
+    source = ../../files/config/Thunar/uca.xml;
+  };
   # Picom
   home.file.".config/picom/picom.conf".source = ../../files/config/picom/picom.conf;
   # Wofi

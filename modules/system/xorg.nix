@@ -18,7 +18,7 @@
   # Xorg
   services.xserver.xrandrHeads = [
     {
-      output = "HDMI-0";
+      output = "DP-0";
       monitorConfig = ''
         Option "Mode" "1920x1080"
         Option "Rate" "144"
@@ -27,9 +27,9 @@
       '';
     }
     {
-      output = "DP-0";
+      output = "HDMI-0";
       monitorConfig = ''
-        Option "Mode" "2560x1440"
+        Option "Mode" "1920x1080"
         Option "Rate" "60"
         Option "Position" "1920 0"
       '';
