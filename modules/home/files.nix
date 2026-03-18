@@ -1,5 +1,7 @@
 { config, pkgs, inputs, lib, unstable, ... }:
 {
+  # Bind RShift to Super
+  home.file.".xmodmap-rhift-to-super".source = ../../files/config/xmodmap/rshiftToWin;
   # Thunar
   xdg.configFile."Thunar/uca.xml" = {
     source = ../../files/config/Thunar/uca.xml;

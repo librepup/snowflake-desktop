@@ -181,6 +181,7 @@ let
     xorg.xkill
     devour
     systemdgenie
+    xmodmap
   ];
   bundleNetworking = with pkgs; [
     dhcpcd
