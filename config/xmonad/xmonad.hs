@@ -304,6 +304,11 @@ myAutostart = do
         "xinput set-prop " ++
           "'" ++ mouse ++ "' 'libinput Accel Speed' 0.3; " ++
         "fi"
+    -- XModMap
+    spawnOnce $
+      "if command -v xmodmap > /dev/null; then" ++
+        " xmodmap ~/.xmodmap-rhift-to-super;" ++
+      " fi"
     -- XMonad Environment
     spawnOnce $
       "if command -v dex > /dev/null; then" ++
