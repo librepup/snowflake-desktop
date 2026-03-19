@@ -310,6 +310,7 @@ myAutostart = do
         " setxkbmap us -variant colemak;" ++
         " xmodmap ~/.my-input-remappings/xmodmap/rshiftToWin;" ++
         " xmodmap ~/.my-input-remappings/xmodmap/insertToTab;" ++
+        " xmodmap ~/.my-input-remappings/xmodmap/numpadRemaps;" ++
         " xmodmap ~/.my-input-remappings/xmodmap/altgrToSpace;" ++
       " fi"
     -- XMonad Environment

@@ -1,6 +1,7 @@
 { config, pkgs, inputs, lib, unstable, ... }:
 {
   # Input Remaps
+  home.file.".my-input-remappings/xmodmap/numpadRemaps".source = ../../files/config/xmodmap/numpadRemaps;
   home.file.".my-input-remappings/xmodmap/insertToTab".source = ../../files/config/xmodmap/insertToTab;
   home.file.".my-input-remappings/xmodmap/altgrToSpace".source = ../../files/config/xmodmap/altgrToSpace;
   home.file.".my-input-remappings/xmodmap/rshiftToWin".source = ../../files/config/xmodmap/rshiftToWin;
