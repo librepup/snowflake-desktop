@@ -1,0 +1,309 @@
+{
+  "Revision": "0.6.6.2",
+  "Profiles": [
+    {
+      "Tablet": "Wacom CTH-480",
+      "OutputMode": {
+        "Path": "OpenTabletDriver.Desktop.Output.LinuxArtistMode",
+        "Settings": [],
+        "Enable": true
+      },
+      "Filters": [
+        {
+          "Path": "RadialFollow.RadialFollowSmoothingTabletSpace",
+          "Settings": [
+            {
+              "Property": "InnerRadius",
+              "Value": 0.0
+            },
+            {
+              "Property": "SmoothingCoefficient",
+              "Value": 0.95
+            },
+            {
+              "Property": "SoftKneeScale",
+              "Value": 1.0
+            },
+            {
+              "Property": "SmoothingLeakCoefficient",
+              "Value": 0.0
+            },
+            {
+              "Property": "OuterRadius",
+              "Value": 3.0
+            }
+          ],
+          "Enable": false
+        },
+        {
+          "Path": "monitor_toggle.monitor_toggle",
+          "Settings": [],
+          "Enable": true
+        },
+        {
+          "Path": "HandSpeed.CustomFilter",
+          "Settings": [
+            {
+              "Property": "SpeedFormat",
+              "Value": "{0:N1}{1}"
+            },
+            {
+              "Property": "DistanceFormat",
+              "Value": "{0:N}{1}"
+            },
+            {
+              "Property": "ForcedDistanceUnit",
+              "Value": ""
+            },
+            {
+              "Property": "ForcedSpeedUnit",
+              "Value": ""
+            },
+            {
+              "Property": "OpenWebsiteAutomatically",
+              "Value": true
+            },
+            {
+              "Property": "SaveGlobalDistance",
+              "Value": true
+            },
+            {
+              "Property": "SaveDirectory",
+              "Value": ""
+            },
+            {
+              "Property": "RollingWindow",
+              "Value": 1000
+            },
+            {
+              "Property": "RateLimit",
+              "Value": 10
+            },
+            {
+              "Property": "ClearInterval",
+              "Value": 2000
+            },
+            {
+              "Property": "ServerUri",
+              "Value": "localhost:8073"
+            },
+            {
+              "Property": "BackgroundColor",
+              "Value": "#1C1B22"
+            },
+            {
+              "Property": "TextColor",
+              "Value": "#fff"
+            },
+            {
+              "Property": "Outline",
+              "Value": "1px solid #414141; outline-offset: -1px"
+            },
+            {
+              "Property": "BorderRounding",
+              "Value": "0.75rem"
+            },
+            {
+              "Property": "FontFamily",
+              "Value": "Inter"
+            },
+            {
+              "Property": "FontWeight",
+              "Value": "bold"
+            },
+            {
+              "Property": "FontSize",
+              "Value": "3rem"
+            },
+            {
+              "Property": "Title",
+              "Value": "Hand Speed"
+            },
+            {
+              "Property": "Width",
+              "Value": "20rem"
+            },
+            {
+              "Property": "CustomDivStyle",
+              "Value": ""
+            },
+            {
+              "Property": "CustomTitleStyle",
+              "Value": ""
+            },
+            {
+              "Property": "CustomDistanceStyle",
+              "Value": ""
+            },
+            {
+              "Property": "CustomSpeedStyle",
+              "Value": ""
+            }
+          ],
+          "Enable": true
+        },
+        {
+          "Path": "RadialFollow.RadialFollowSmoothingScreenSpace",
+          "Settings": [
+            {
+              "Property": "OuterRadius",
+              "Value": 5.0
+            },
+            {
+              "Property": "InnerRadius",
+              "Value": 0.0
+            },
+            {
+              "Property": "SmoothingCoefficient",
+              "Value": 0.95
+            },
+            {
+              "Property": "SoftKneeScale",
+              "Value": 1.0
+            },
+            {
+              "Property": "SmoothingLeakCoefficient",
+              "Value": 0.0
+            }
+          ],
+          "Enable": false
+        }
+      ],
+      "AbsoluteModeSettings": {
+        "Display": {
+          "Width": 1920.0,
+          "Height": 1080.0,
+          "X": 960.0,
+          "Y": 540.0,
+          "Rotation": 0.0
+        },
+        "Tablet": {
+          "Width": 57.0,
+          "Height": 46.2,
+          "X": 28.89881,
+          "Y": 23.593876,
+          "Rotation": 1.0
+        },
+        "EnableClipping": true,
+        "EnableAreaLimiting": true,
+        "LockAspectRatio": false
+      },
+      "RelativeModeSettings": {
+        "XSensitivity": 10.0,
+        "YSensitivity": 10.0,
+        "RelativeRotation": 0.0,
+        "RelativeResetDelay": "00:00:00.1000000"
+      },
+      "Bindings": {
+        "TipActivationThreshold": 1.0,
+        "TipButton": {
+          "Path": "OpenTabletDriver.Desktop.Binding.MouseBinding",
+          "Settings": [
+            {
+              "Property": "Button",
+              "Value": "Left"
+            }
+          ],
+          "Enable": true
+        },
+        "EraserActivationThreshold": 1.0,
+        "EraserButton": null,
+        "PenButtons": [
+          null,
+          {
+            "Path": "OpenTabletDriver.Desktop.Binding.MouseBinding",
+            "Settings": [
+              {
+                "Property": "Button",
+                "Value": "Right"
+              }
+            ],
+            "Enable": true
+          }
+        ],
+        "AuxButtons": [
+          {
+            "Path": "AdditionalKeys.AdditionalFKeyBindings",
+            "Settings": [
+              {
+                "Property": "Key",
+                "Value": "F16"
+              }
+            ],
+            "Enable": true
+          },
+          {
+            "Path": "AdditionalKeys.AdditionalFKeyBindings",
+            "Settings": [
+              {
+                "Property": "Key",
+                "Value": "F17"
+              }
+            ],
+            "Enable": true
+          },
+          {
+            "Path": "monitor_toggle.monitor_toggle_binding",
+            "Settings": [
+              {
+                "Property": "offset_x",
+                "Value": "0"
+              },
+              {
+                "Property": "offset_y",
+                "Value": "0"
+              },
+              {
+                "Property": "width_multiplier",
+                "Value": "1"
+              },
+              {
+                "Property": "height_multiplier",
+                "Value": "1"
+              },
+              {
+                "Property": "mode",
+                "Value": "Cycle"
+              }
+            ],
+            "Enable": true
+          },
+          {
+            "Path": "monitor_toggle.monitor_toggle_binding",
+            "Settings": [
+              {
+                "Property": "offset_y",
+                "Value": "0"
+              },
+              {
+                "Property": "width_multiplier",
+                "Value": "1"
+              },
+              {
+                "Property": "height_multiplier",
+                "Value": "1"
+              },
+              {
+                "Property": "mode",
+                "Value": "Cycle"
+              },
+              {
+                "Property": "offset_x",
+                "Value": "1920"
+              }
+            ],
+            "Enable": true
+          }
+        ],
+        "MouseButtons": [],
+        "MouseScrollUp": null,
+        "MouseScrollDown": null,
+        "DisablePressure": false,
+        "DisableTilt": false
+      }
+    }
+  ],
+  "LockUsableAreaDisplay": true,
+  "LockUsableAreaTablet": true,
+  "Tools": []
+}

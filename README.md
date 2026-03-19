@@ -38,45 +38,8 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - Guix Package Manager Installed
 
 # Settings
-## osu!
- - Keys
-   - osu!standard
-     - X | Z
-   - osu!mania
-     - Z | X | . | /
- - Screen
-   - Resolution: 1024x768
-   - Horizontal Offset: -15%
-   - Vertical Offset: -60%
- - Tablet
-   - Tablet Area
-     - Width: 70mm
-     - Height: 57mm
-     - X: 35mm
-     - Y: 28.5mm
-     - Rotation: 1
-   - Tablet Display
-     - Width: 1920px
-     - Height: 1080px
-     - X: 960px
-     - Y: 540px
-   - Plugins
-     - Additional Keys
-     - Monitor Toggle
-   - Auxiliary Settings
-     - Auxiliary Binding 1: Additional - F13-F24: (Key: F16)
-     - Auxiliary Binding 2: Additional - F13-F24: (Key: F17)
-     - Auxiliary Binding 3: Monitor Toggle: (offset_x:0), (offset_y:0), (width_multiplier:1), (height_multiplier:1), (mode:Cycle)
-     - Auxiliary Binding 4: Monitor Toggle: (offset_x:1920), (offset_y:0), (width_multiplier:1), (height_multiplier:1), (mode:Cycle)
-
+## Tablet
+![Tablet Configurations](https://github.com/librepup/snowflake-desktop/blob/main/files/config/tabletAreas/README.md)
 ## Keyboard Remaps
-### Located in `files/config/input-remapper-2` and `files/config/xmodmap`.
-Remapped the following Keys:
- - XModMap:
-   - AltGr -> Space
-   - RightCtrl -> AltGr
-   - Insert -> Tab
-   - RightShift -> Super
- - InputRemapper:
-   - F16 -> RightClick
-   - F17 -> LeftClick
+![XModMap](https://github.com/librepup/snowflake-desktop/blob/main/files/config/xmodmap/README.md)
+![XModMap](https://github.com/librepup/snowflake-desktop/blob/main/files/config/input-remapper-2/README.md)
