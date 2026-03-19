@@ -1,0 +1,311 @@
+{
+  "scripts": {
+    "YouTube JS Engine Tamer": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://update.greasyfork.org/scripts/473972/YouTube%20JS%20Engine%20Tamer.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 1,
+      "lastModified": 1773434316535,
+      "lastUpdated": 1773434316535
+    },
+    "Force Video Controls Everywhere": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "pathMap": {},
+        "excludeMatch": [
+          "https://accounts.youtube.com/RotateCookiesPage?origin=https://www.youtube.com&yt_pid=1*",
+          "https://www.instagram.com/*"
+        ]
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 2,
+      "lastModified": 1773438142242,
+      "lastUpdated": 1773434221295
+    },
+    "InstaMagnify- Instagram Media Downloader": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://update.greasyfork.org/scripts/34821/InstaMagnify%3A%20Instagram%20Media%20Downloader.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": true,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 3,
+      "lastModified": 1773437782972,
+      "lastUpdated": 1773437758875
+    },
+    "osu! BackgroundGrabber": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "from": "https://greasyfork.org/en/scripts/542558-osu-backgroundgrabber",
+        "lastInstallURL": "https://update.greasyfork.org/scripts/542558/osu%21%20BackgroundGrabber.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 4,
+      "lastModified": 1773649822980,
+      "lastUpdated": 1773649289167
+    },
+    "osu! Medal Show Solution": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "from": "https://greasyfork.org/en/scripts/559179-osu-medal-show-solution",
+        "lastInstallURL": "https://update.greasyfork.org/scripts/559179/osu%21%20Medal%20Show%20Solution.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 5,
+      "lastModified": 1773649972449,
+      "lastUpdated": 1773649972449
+    },
+    "7ktTube - Patcher": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://7kt.se/install/youtube-chrome-patch.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": true,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 6,
+      "lastModified": 1773734090554,
+      "lastUpdated": 1773650366292
+    },
+    "7ktTube - 2016 REDUX": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://7kt.se/install/7ktTube.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": true,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 7,
+      "lastModified": 1773734090252,
+      "lastUpdated": 1773650491590
+    },
+    "Pixiv Media Downloader": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://update.greasyfork.org/scripts/429582/Pixiv%20Media%20Downloader.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 8,
+      "lastModified": 1773655833173,
+      "lastUpdated": 1773655833173
+    },
+    "GitHub folder downloader": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "lastInstallURL": "https://update.greasyfork.org/scripts/505496/GitHub%20Folder%20Downloader.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 9,
+      "lastModified": 1773661014295,
+      "lastUpdated": 1773661014295
+    },
+    "Add YouTube Thumbnail to Video Description": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "from": "https://greasyfork.org/en/scripts/459456-add-youtube-thumbnail-to-video-description",
+        "lastInstallURL": "https://update.greasyfork.org/scripts/459456/Add%20YouTube%20Thumbnail%20to%20Video%20Description.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 10,
+      "lastModified": 1773734127651,
+      "lastUpdated": 1773734127651
+    },
+    "Yandex disable SafeSearch": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "from": "https://greasyfork.org/en/scripts/562706-yandex-disable-safesearch",
+        "lastInstallURL": "https://update.greasyfork.org/scripts/562706/Yandex%20disable%20SafeSearch.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 11,
+      "lastModified": 1773734237219,
+      "lastUpdated": 1773734237219
+    },
+    "Better Yandex Image Search": {
+      "custom": {
+        "origInclude": true,
+        "origExclude": true,
+        "origMatch": true,
+        "origExcludeMatch": true,
+        "from": "https://greasyfork.org/en/scripts/412102-better-yandex-image-search",
+        "lastInstallURL": "https://update.greasyfork.org/scripts/412102/Better%20Yandex%20Image%20Search.user.js",
+        "pathMap": {}
+      },
+      "config": {
+        "enabled": 1,
+        "shouldUpdate": 1,
+        "removed": 0
+      },
+      "position": 12,
+      "lastModified": 1773734257836,
+      "lastUpdated": 1773734257836
+    }
+  },
+  "settings": {
+    "isApplied": true,
+    "blacklist": "file://*/*",
+    "blacklistNet": "file://*/*",
+    "popupWidth": 320,
+    "updateEnabledScriptsOnly": true,
+    "autoUpdate": 1,
+    "lastUpdate": 1773918030484,
+    "lastModified": 1773737458467,
+    "showBadge": "unique",
+    "badgeColor": "#880088",
+    "badgeColorBlocked": "#888888",
+    "exportValues": true,
+    "exportNameTemplate": "[violentmonkey]_YYYY-MM-DD_HH.mm.ss",
+    "expose": {
+      "greasyfork%2Eorg": true,
+      "sleazyfork%2Eorg": false
+    },
+    "closeAfterInstall": false,
+    "editAfterInstall": false,
+    "helpForLocalFile": true,
+    "trackLocalFile": false,
+    "autoReload": false,
+    "features": null,
+    "syncScriptStatus": true,
+    "syncAutomatically": true,
+    "customCSS": "",
+    "importScriptData": true,
+    "importSettings": true,
+    "notifyUpdates": false,
+    "notifyUpdatesGlobal": false,
+    "version": 1,
+    "defaultInjectInto": "auto",
+    "ffInject": true,
+    "xhrInject": false,
+    "filters": {
+      "showOrder": false,
+      "showVisit": false,
+      "sort": "exec",
+      "viewSingleColumn": true,
+      "viewTable": false
+    },
+    "filtersPopup": {
+      "sort": "exec",
+      "enabledFirst": false,
+      "groupRunAt": true,
+      "hideDisabled": ""
+    },
+    "editor": {
+      "killTrailingSpaceOnSave": true,
+      "showTrailingSpace": true,
+      "autocompleteOnTyping": 100,
+      "lineWrapping": false,
+      "indentWithTabs": false,
+      "indentUnit": 2,
+      "tabSize": 2,
+      "undoDepth": 500
+    },
+    "editorTheme": "",
+    "editorThemeName": null,
+    "editorWindow": false,
+    "editorWindowPos": {},
+    "editorWindowSimple": true,
+    "scriptTemplate": "// ==UserScript==\n// @name        New script {{name}}\n// @namespace   Violentmonkey Scripts\n// @match       {{url}}\n// @icon        {{icon}}\n// @grant       none\n// @version     1.0\n// @author      -\n// @description {{date}}\n// ==/UserScript==\n",
+    "showAdvanced": true,
+    "valueEditor": {
+      "autocompleteOnTyping": 100,
+      "lineWrapping": false,
+      "indentWithTabs": false,
+      "indentUnit": 2,
+      "tabSize": 2,
+      "undoDepth": 500,
+      "editAsString": true
+    },
+    "uiTheme": ""
+  },
+  "values": {
+    "STILL_ALIVE-0a7ktTube-20-7c-202016-20REDUX-0a": {
+      "vidfixSettings": "s{\"broadcast_id\":\"21b9f148-c2fe-4516-91eb-83e4a32189a7\"}",
+      "watchedVideos": "o{\"entries\":{\"nbC3r0W6GrI\":1773650389587,\"jm9CKFZMzJQ\":1773655588966,\"9fbcRR6Z1CQ\":1773655668390,\"Loeekodt4bQ\":1773656301963,\"20ZT44C2R5I\":1773656323300,\"8VsuHVuagAQ\":1773656325286,\"B7zM4B9yaEc\":1773656325865,\"j6AGnqX2ycI\":1773656336889,\"zfISCb5Lwxw\":1773656337642,\"F4LbOeyDld8\":1773656343020,\"OSoyjLiaQFI\":1773656380479,\"t1s0UbWFKi4\":1773656426248,\"X3IDZmkaE5s\":1773656435170,\"QSvsHmptzns\":1773656438071,\"9VbJveGquAg\":1773656438754,\"hyK4R0yrRkE\":1773656441302,\"ZEyZZFoKVJI\":1773656451166,\"cFSHD9S5GZc\":1773656456592,\"zGaJo5lUW4k\":1773657886375,\"8XT4ZcwjvkI\":1773665972988,\"XjjYQikh_hE\":1773665977293,\"3wKXKY9UWFg\":1773672367870,\"oxR2xe-po4M\":1773672542417,\"OC38XkWHdZ0\":1773672599238,\"Qr1rcXJSijE\":1773672697020,\"feUxul6TGyQ\":1773672837650,\"hMtMtvO5jNs\":1773672851587,\"nNP1_d0GSug\":1773673102597,\"t2UFQzGJ88g\":1773673155710,\"YP5SOW4fu1M\":1773675172475,\"7-HwlWkqElk\":1773675394483,\"2mB_1VfOrow\":1773675821632,\"7r8_De5OIm8\":1773675827370,\"nnAy1906EHg\":1773676999330,\"vd4ewmsqY2Q\":1773677032096,\"_OVqfTDg9V8\":1773685131629,\"Us8tOm_mj4Q\":1773689654329,\"rEI_96ls12s\":1773690122208,\"aAGqkIY5mWo\":1773690124401,\"Z4T3DNnQEPg\":1773690337932,\"bRjaTHmH5i4\":1773693643258,\"VYxdJMC5Xtc\":1773693644240,\"L9joH8A2570\":1773693646839,\"nlr8bs73PQo\":1773693650881,\"9mFRsu10o3o\":1773693654364,\"Ko0Oz4DtQa8\":1773693660730,\"mDOSXBXET_w\":1773693664225,\"HiSCWRVDVos\":1773693668147,\"QLPCZECYGxM\":1773693731095,\"gx7qdWdptqA\":1773693733481,\"pizswI5P5R8\":1773693735597,\"NPon4bidGBc\":1773693743776,\"WCcJcNCM6vY\":1773693759661,\"FXOdhQdOj3Y\":1773693763548,\"bPh0U2eXX3U\":1773693830015,\"JOxcZh_swwU\":1773693831322,\"9zs445mO6wE\":1773693836339,\"K8snQ6asPFg\":1773693844051,\"482yrmYCB9g\":1773693849434,\"TZGOMa-qlGs\":1773693851943,\"3WMLIbL5P7M\":1773693865993,\"HcdsJRDTqR4\":1773693869113,\"VsPoHAXeyfM\":1773693875311,\"4mG1OjRQqzI\":1773693933204,\"G0Evfz4fVuQ\":1773693935921,\"bjjNrlntwvE\":1773693950491,\"PNBvSQ0eRYw\":1773693964208,\"XAbCQYiJefw\":1773694055827,\"LPy_G_w_C5A\":1773694057692,\"KvYSHWxEy6Q\":1773694073643,\"DWHmCI5vCvo\":1773694081154,\"cq0yiRF_t9c\":1773694087817,\"X5wF7ZqwOzk\":1773694094661,\"2mhBx7nKQEM\":1773694112881,\"HphxevZdPeI\":1773694148761,\"Wp9L15xKXVI\":1773694236483,\"LMEbfRnLj8g\":1773694239389,\"HCCyork3VwY\":1773694287711,\"ibrOPt3RXSY\":1773694320871,\"MgeobNkEEGo\":1773694329382,\"iKzP-IxnTzg\":1773694332029,\"MsTHdKWz5Gw\":1773694332672,\"sYIyLiXC6Ig\":1773694334802,\"0BQyK8z-UJQ\":1773694350149,\"G_T1AejjA4A\":1773694361575,\"f7YI6QWjRAc\":1773694372560,\"QADWLkSdCeE\":1773694387318,\"MQN1DIwRypQ\":1773694398789,\"h_oF74HHmOY\":1773694400467,\"LCY22pTUIe4\":1773694409188,\"w8uMW1HB2ak\":1773694412635,\"mAVH-VrY15w\":1773694430668,\"8RPPOM9Dd34\":1773694432851,\"QsKGan555zQ\":1773694436808,\"v6I7ATMumis\":1773694590528,\"o37-N3lZqDI\":1773694597658,\"eKiiPaTADug\":1773694602656,\"sPP8Tvq5oYA\":1773695662449,\"5tKp_hE1Dd8\":1773699645075,\"fASZ03jZygM\":1773699649726,\"IKy169GvdDM\":1773699688737,\"7eFgRxfTZPI\":1773699737041,\"f-JadiBNuI4\":1773699749813,\"CBZMjQOC1H8\":1773699786971,\"Fdm14eq9T-s\":1773699911152,\"8PfDSGAJGFg\":1773699953175,\"Ea6NCE7FWio\":1773699969251,\"9uMP56doV7o\":1773700110256,\"yvPDVNuD2v8\":1773700133194,\"D-Zq5oIJE-M\":1773700299249,\"zQhgfrNXYa0\":1773700312194,\"uo0hDHUFk7I\":1773700318427,\"kjyeCdd-dl8\":1773700439346,\"g5Ay3OuCODA\":1773700475653,\"bRRsr6MgjMs\":1773700477833,\"hH3gyR3hev8\":1773700479348,\"hmaxnHYT_YQ\":1773701224748,\"hmYPMneX8bo\":1773702063254,\"xMAgVqriIp0\":1773702077170,\"hJjJ682h6ns\":1773710429626,\"JmgvSdEIK8c\":1773710709502,\"xONIGavxU3Q\":1773710715760,\"PRlNSJjCw5o\":1773710723695,\"oI9zCzUxdTA\":1773710831562,\"FOXmrDUjtvs\":1773710845127,\"TOoC7aXkpMs\":1773711268249,\"n2sHEcd4a30\":1773711473571,\"107esCRtbtM\":1773711709055,\"_lYycMmZA_A\":1773711720958,\"dnDYe8v21OU\":1773711981788,\"7kF3_IFPaJA\":1773712036935,\"vV-5W7SFHDc\":1773712040208,\"CPNEDMMpPZ0\":1773712155578,\"iDfX-0PhYEw\":1773712172167,\"zyktN7x_DSQ\":1773712213449,\"2_opjVlYhi4\":1773712308926,\"utNwIPMBe38\":1773712316991,\"gHsjcRmL1pk\":1773712319936,\"ddZVMjheOs4\":1773712322618,\"3PXnUpDQ46M\":1773712329859,\"qzei4n_FbaM\":1773712330994,\"v_8DKFBWlDA\":1773712355010,\"Ljjut210k90\":1773712503443,\"wLNTAMY1NZA\":1773712917644,\"UPSSUSLlwjY\":1773712960814,\"wvXKZAtXbgw\":1773712997378,\"FKQcvVpPGwI\":1773713080800,\"TUdoaVCAxEI\":1773713083569,\"bwDtfhC_QTg\":1773713152831,\"_pKt7LWowpM\":1773713321959,\"g4ab7WLfG3E\":1773713445766,\"X0-JkBCAc5E\":1773713450064,\"cvq7Jy-TFAU\":1773713594570,\"RkbexzRA704\":1773713706733,\"NTsPCVOnk7s\":1773713724209,\"nggvmVG_cmE\":1773713750172,\"C4zD4M0rT6c\":1773713871352,\"WZ2uzJxG3uI\":1773713920887,\"VPvOYq3IgjE\":1773713953775,\"tQ_MMOKLT54\":1773713967152,\"nzkNydW0RWU\":1773714062230,\"dmG9KAWgvNk\":1773714067350,\"P91HEUOR5U0\":1773714138706,\"AnS-r3ay9a8\":1773714145934,\"y6qIFxEfywY\":1773714146228,\"0UqWZU95Jhg\":1773714153636,\"HH-syOneq4E\":1773714243987,\"3QszrMB74xE\":1773714303472,\"CWuapSqfSSY\":1773714323620,\"G8_FXwaiWJw\":1773714324052,\"943-tBPcFCg\":1773714381364,\"tBDF_q34lNU\":1773714395387,\"uWyTOo9V9RE\":1773714404921,\"91frwuPB7qg\":1773714436562,\"myzFJaTTu0Y\":1773714444426,\"J0j_2TBZVVE\":1773714453950,\"8PJiSflLh2o\":1773714665080,\"guW-3QKmq00\":1773714805323,\"22FXvB5g3Us\":1773714838163,\"MT7Had7HNlU\":1773715378639,\"TMZFNsdht0w\":1773722370230,\"KJ1IYm8zGoM\":1773722404594,\"V7TzDhlReJA\":1773722521433,\"eTplxWaAD8o\":1773722646488,\"4jz1i36MQXU\":1773723050171,\"SHKbm6vVqUw\":1773723056974,\"HSFBMylW-eA\":1773723060334,\"p2AiQMF_sMI\":1773723062998,\"-8AMXjuneN0\":1773723065808,\"3ltvTV44hDA\":1773723070100,\"uC0zmf16SBQ\":1773731788898,\"NUtDh8WCdMc\":1773732616879,\"MwLbGcUMy6g\":1773734685318,\"iDfl66RY1CY\":1773746752093,\"MCH9LH3hD0Q\":1773748876543,\"tSUIf1KTHAs\":1773752336425,\"eqff-YjkOp8\":1773759522625,\"mKBfeUUZdwY\":1773762203019,\"GPHMN9Vp4CQ\":1773763126150,\"5nL-Eq1lpDU\":1773767717090,\"iBqt3GB6Qic\":1773767736315,\"8dP-pNFErM8\":1773782613825,\"M-mwcIfUHYQ\":1773782634344,\"-qEzCcwdudc\":1773782708631,\"XQQ4VEltZUo\":1773789002417,\"rm37xSfsx2I\":1773789024054,\"5CZ7Rim5wV4\":1773789026616,\"oL8CxUDlGrM\":1773789394115,\"PGCPbi8YOmw\":1773790904947,\"6f2sllPBU-0\":1773792104910,\"NhGwLm6Ku_k\":1773792175554,\"5i70u2VNNGQ\":1773792180570,\"0MarYGWy2jA\":1773792189164,\"U4Zkra7Yy5c\":1773792190883,\"nC0vMDYtX5c\":1773792268638,\"mcnpHazRl38\":1773792406051,\"5TQrOnUFAWk\":1773792425786,\"VUoBlDS6ngM\":1773792443153,\"No6lZJpRNwk\":1773792510176,\"Bu4079x31SY\":1773792604229,\"NGEd0rB_SM8\":1773792606526,\"vooc4NXo7cw\":1773792636620,\"g1OhFJs4sq0\":1773793579779,\"8rm9rgsLmdg\":1773793617741,\"yebhh4KCYf4\":1773793945823,\"FE6xUWK4K1U\":1773793946182,\"ZNZAgFJTHoQ\":1773795308856,\"HDfK7gScaI8\":1773795327652,\"nOLqvFOqXtw\":1773795396567,\"ySRnjt65M8w\":1773795404831,\"k89pC10mOe0\":1773795419942,\"t9h4bjqjRE4\":1773795477914,\"dWNvlyycWzQ\":1773795478346,\"8zWz92f_HGs\":1773795478484,\"lCEvOMyrN04\":1773795487572,\"oXHnp9-SdjA\":1773795553695,\"xhyf4yM3TWw\":1773795555225,\"2cX4KMaefvQ\":1773795686511,\"RRF8XvFn6rw\":1773795797790,\"nNAX4J9fpdc\":1773795964406,\"FrrwjYLfqR4\":1773795979207,\"Ypg2HqcE9vA\":1773796324791,\"Sjpo8AeAVls\":1773796422603,\"m509eyo7-oo\":1773797908201,\"NHYsYPeuLZI\":1773798232985,\"sM05P3tQ650\":1773798406851,\"zr_CtMyQd-0\":1773798429422,\"li7RoAL2e8w\":1773798439451,\"z26b8HKFsNE\":1773922029406},\"index\":[\"nbC3r0W6GrI\",\"jm9CKFZMzJQ\",\"9fbcRR6Z1CQ\",\"Loeekodt4bQ\",\"20ZT44C2R5I\",\"8VsuHVuagAQ\",\"B7zM4B9yaEc\",\"j6AGnqX2ycI\",\"zfISCb5Lwxw\",\"F4LbOeyDld8\",\"OSoyjLiaQFI\",\"t1s0UbWFKi4\",\"X3IDZmkaE5s\",\"QSvsHmptzns\",\"9VbJveGquAg\",\"hyK4R0yrRkE\",\"ZEyZZFoKVJI\",\"cFSHD9S5GZc\",\"zGaJo5lUW4k\",\"8XT4ZcwjvkI\",\"XjjYQikh_hE\",\"3wKXKY9UWFg\",\"oxR2xe-po4M\",\"OC38XkWHdZ0\",\"Qr1rcXJSijE\",\"feUxul6TGyQ\",\"hMtMtvO5jNs\",\"nNP1_d0GSug\",\"t2UFQzGJ88g\",\"YP5SOW4fu1M\",\"7-HwlWkqElk\",\"2mB_1VfOrow\",\"7r8_De5OIm8\",\"nnAy1906EHg\",\"vd4ewmsqY2Q\",\"_OVqfTDg9V8\",\"Us8tOm_mj4Q\",\"rEI_96ls12s\",\"aAGqkIY5mWo\",\"Z4T3DNnQEPg\",\"bRjaTHmH5i4\",\"VYxdJMC5Xtc\",\"L9joH8A2570\",\"nlr8bs73PQo\",\"9mFRsu10o3o\",\"Ko0Oz4DtQa8\",\"mDOSXBXET_w\",\"HiSCWRVDVos\",\"QLPCZECYGxM\",\"gx7qdWdptqA\",\"pizswI5P5R8\",\"NPon4bidGBc\",\"WCcJcNCM6vY\",\"FXOdhQdOj3Y\",\"bPh0U2eXX3U\",\"JOxcZh_swwU\",\"9zs445mO6wE\",\"K8snQ6asPFg\",\"482yrmYCB9g\",\"TZGOMa-qlGs\",\"3WMLIbL5P7M\",\"HcdsJRDTqR4\",\"VsPoHAXeyfM\",\"4mG1OjRQqzI\",\"G0Evfz4fVuQ\",\"bjjNrlntwvE\",\"PNBvSQ0eRYw\",\"XAbCQYiJefw\",\"LPy_G_w_C5A\",\"KvYSHWxEy6Q\",\"DWHmCI5vCvo\",\"cq0yiRF_t9c\",\"X5wF7ZqwOzk\",\"2mhBx7nKQEM\",\"HphxevZdPeI\",\"Wp9L15xKXVI\",\"LMEbfRnLj8g\",\"HCCyork3VwY\",\"ibrOPt3RXSY\",\"MgeobNkEEGo\",\"iKzP-IxnTzg\",\"MsTHdKWz5Gw\",\"sYIyLiXC6Ig\",\"0BQyK8z-UJQ\",\"G_T1AejjA4A\",\"f7YI6QWjRAc\",\"QADWLkSdCeE\",\"MQN1DIwRypQ\",\"h_oF74HHmOY\",\"LCY22pTUIe4\",\"w8uMW1HB2ak\",\"mAVH-VrY15w\",\"8RPPOM9Dd34\",\"QsKGan555zQ\",\"v6I7ATMumis\",\"o37-N3lZqDI\",\"eKiiPaTADug\",\"sPP8Tvq5oYA\",\"5tKp_hE1Dd8\",\"fASZ03jZygM\",\"IKy169GvdDM\",\"7eFgRxfTZPI\",\"f-JadiBNuI4\",\"CBZMjQOC1H8\",\"Fdm14eq9T-s\",\"8PfDSGAJGFg\",\"Ea6NCE7FWio\",\"9uMP56doV7o\",\"yvPDVNuD2v8\",\"D-Zq5oIJE-M\",\"zQhgfrNXYa0\",\"uo0hDHUFk7I\",\"kjyeCdd-dl8\",\"g5Ay3OuCODA\",\"bRRsr6MgjMs\",\"hH3gyR3hev8\",\"hmaxnHYT_YQ\",\"hmYPMneX8bo\",\"xMAgVqriIp0\",\"hJjJ682h6ns\",\"JmgvSdEIK8c\",\"xONIGavxU3Q\",\"PRlNSJjCw5o\",\"oI9zCzUxdTA\",\"FOXmrDUjtvs\",\"TOoC7aXkpMs\",\"n2sHEcd4a30\",\"107esCRtbtM\",\"_lYycMmZA_A\",\"dnDYe8v21OU\",\"7kF3_IFPaJA\",\"vV-5W7SFHDc\",\"CPNEDMMpPZ0\",\"iDfX-0PhYEw\",\"zyktN7x_DSQ\",\"2_opjVlYhi4\",\"utNwIPMBe38\",\"gHsjcRmL1pk\",\"ddZVMjheOs4\",\"3PXnUpDQ46M\",\"qzei4n_FbaM\",\"v_8DKFBWlDA\",\"Ljjut210k90\",\"wLNTAMY1NZA\",\"UPSSUSLlwjY\",\"wvXKZAtXbgw\",\"FKQcvVpPGwI\",\"TUdoaVCAxEI\",\"bwDtfhC_QTg\",\"_pKt7LWowpM\",\"g4ab7WLfG3E\",\"X0-JkBCAc5E\",\"cvq7Jy-TFAU\",\"RkbexzRA704\",\"NTsPCVOnk7s\",\"nggvmVG_cmE\",\"C4zD4M0rT6c\",\"WZ2uzJxG3uI\",\"VPvOYq3IgjE\",\"tQ_MMOKLT54\",\"nzkNydW0RWU\",\"dmG9KAWgvNk\",\"P91HEUOR5U0\",\"AnS-r3ay9a8\",\"y6qIFxEfywY\",\"0UqWZU95Jhg\",\"HH-syOneq4E\",\"3QszrMB74xE\",\"CWuapSqfSSY\",\"G8_FXwaiWJw\",\"943-tBPcFCg\",\"tBDF_q34lNU\",\"uWyTOo9V9RE\",\"91frwuPB7qg\",\"myzFJaTTu0Y\",\"J0j_2TBZVVE\",\"8PJiSflLh2o\",\"guW-3QKmq00\",\"22FXvB5g3Us\",\"MT7Had7HNlU\",\"TMZFNsdht0w\",\"KJ1IYm8zGoM\",\"V7TzDhlReJA\",\"eTplxWaAD8o\",\"4jz1i36MQXU\",\"SHKbm6vVqUw\",\"HSFBMylW-eA\",\"p2AiQMF_sMI\",\"-8AMXjuneN0\",\"3ltvTV44hDA\",\"uC0zmf16SBQ\",\"NUtDh8WCdMc\",\"MwLbGcUMy6g\",\"iDfl66RY1CY\",\"MCH9LH3hD0Q\",\"tSUIf1KTHAs\",\"eqff-YjkOp8\",\"mKBfeUUZdwY\",\"GPHMN9Vp4CQ\",\"5nL-Eq1lpDU\",\"iBqt3GB6Qic\",\"8dP-pNFErM8\",\"M-mwcIfUHYQ\",\"-qEzCcwdudc\",\"XQQ4VEltZUo\",\"rm37xSfsx2I\",\"5CZ7Rim5wV4\",\"oL8CxUDlGrM\",\"PGCPbi8YOmw\",\"6f2sllPBU-0\",\"NhGwLm6Ku_k\",\"5i70u2VNNGQ\",\"0MarYGWy2jA\",\"U4Zkra7Yy5c\",\"nC0vMDYtX5c\",\"mcnpHazRl38\",\"5TQrOnUFAWk\",\"VUoBlDS6ngM\",\"No6lZJpRNwk\",\"Bu4079x31SY\",\"NGEd0rB_SM8\",\"vooc4NXo7cw\",\"g1OhFJs4sq0\",\"8rm9rgsLmdg\",\"yebhh4KCYf4\",\"FE6xUWK4K1U\",\"ZNZAgFJTHoQ\",\"HDfK7gScaI8\",\"nOLqvFOqXtw\",\"ySRnjt65M8w\",\"k89pC10mOe0\",\"t9h4bjqjRE4\",\"dWNvlyycWzQ\",\"8zWz92f_HGs\",\"lCEvOMyrN04\",\"oXHnp9-SdjA\",\"xhyf4yM3TWw\",\"2cX4KMaefvQ\",\"RRF8XvFn6rw\",\"nNAX4J9fpdc\",\"FrrwjYLfqR4\",\"Ypg2HqcE9vA\",\"Sjpo8AeAVls\",\"m509eyo7-oo\",\"NHYsYPeuLZI\",\"sM05P3tQ650\",\"zr_CtMyQd-0\",\"li7RoAL2e8w\",\"z26b8HKFsNE\"]}",
+      "settings-7kt": "s{\"shorts_redirect\":false,\"old_player\":false,\"search_left\":true,\"hide_guide\":true,\"square_pfps\":true,\"thumb_preview\":false,\"hide_info_card\":true,\"hide_clarify_box\":false,\"hide_channel_store\":true,\"hide_queue\":false,\"hide_filters_header\":true,\"hide_yt_suggested_blocks\":true,\"grey_watched\":false,\"blur_watched\":false,\"channel_list\":false,\"small_recc\":true,\"use_ryd\":\"\",\"full_subs\":false,\"clear_search\":true,\"restore_old_sidebar\":false,\"shelves\":\"\",\"search_estimate\":true,\"rightside\":false,\"logo_style\":\"2015-2017\",\"home_thumbnail\":\"196px\",\"search_thumbnail\":\"246px\",\"player_size\":\"Flexible\"}"
+    }
+  }
+}

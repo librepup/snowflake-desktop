@@ -1832,8 +1832,8 @@
           /*
            N {wasPreBound: true, nodeList: Array(23)}
 
-           R  {showInput: false, narrow: false, menuStrings: {…}, pageDarkTheme: true, theater: false, …}
-           X {showInput: undefined, narrow: undefined, menuStrings: undefined, pageDarkTheme: undefined, theater: undefined, …}
+           R  {showInput: false, narrow: false, menuStrings: {…}, pageDarkTheme: true, theater: false, …}
+           X {showInput: undefined, narrow: undefined, menuStrings: undefined, pageDarkTheme: undefined, theater: undefined, …}
            A  false
            */
 
