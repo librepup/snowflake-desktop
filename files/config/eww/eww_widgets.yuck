@@ -1,0 +1,5 @@
+(defwidget filian []
+  (box :halign "center" :valign "center" :class "container"
+    (image :path 'images/filian.gif')
+  )
+)
