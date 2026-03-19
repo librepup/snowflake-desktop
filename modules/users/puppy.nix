@@ -47,6 +47,7 @@ let
     xdg-desktop-portal-wlr
     hyprshot
     sway-audio-idle-inhibit
+    eww
   ];
   bundleFetchers = with pkgs; [
     microfetch
