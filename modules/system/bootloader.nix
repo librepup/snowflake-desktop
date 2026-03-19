@@ -13,6 +13,12 @@
       gfxmodeEfi = "1920x1080";
       gfxpayloadEfi = "keep";
       configurationLimit = 10;
+      timeoutStyle = "menu";
+      extraConfig = ''
+        set timeout=30
+        terminal_input console
+        terminal_output console
+      '';
     };
   };
   specialisation = {

@@ -21,6 +21,18 @@
         done
       fi
     '';
+    shellInit = ''
+      if alias 9 > /dev/null 2>&1; then
+        unalias 9
+      fi
+      if [ -d "$HOME/.shell-autoload-functions" ]; then
+        for script in "$HOME/.shell-autoload-functions"/*; do
+          [ -f "$script" ] && source "$script"
+        done
+      fi
+
+      eval "$(zoxide init bash)"
+    '';
     shellAliases = {
       # Basics
       cd = "z $@";
@@ -35,8 +47,6 @@
       ll = "eza --icons -a $@";
       cls = "clear $@";
       # Nix Related
-      home-rebuild = "home-manager switch --flake /etc/nixos#puppy $@";
-      home-garbage = "home-manager expire-generations '-1 days'";
       rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
       garbage = "doas nix-collect-garbage -d $@";
       ns = "nix-shell --run zsh $@";
@@ -63,8 +73,6 @@
       e = "nixmacs -nw $@";
       ec = "emacsclient -c -nw $@";
       vim = "nixmacs -nw $@";
-      # Downloading
-      mp3 = "yt-dlp -x --audio-format mp3 -o '%(uploader)s - %(title)s' $@";
       # Extra
       ripgrep = "rg $@";
       oldgrep = "grep $@";
@@ -94,14 +102,6 @@
       analogcity = "ssh lowlife@45.79.250.220 $@";
       shreddy = "shred -z -u -v --iterations=1 $@";
       ipinfo = "curl ipinfo.io | jq .";
-      radminstart = "doas systemctl start zerotierone $@";
-      zerotierstart = "doas systemctl start zerotierone $@";
-      torstart = "doas systemctl start tor $@";
-      radminstop = "doas systemctl stop zerotierone $@";
-      zerotierstop = "doas systemctl stop zerotierone $@";
-      torstop = "doas systemctl stop tor $@";
-      radminstatus = "doas systemctl status zerotierone $@";
-      zerotierstatus = "doas systemctl status zerotierone $@";
       torstatus = "doas systemctl status tor $@";
       cp = "rsync -ah --progress $1 $2";
       encryptunmount = "echo \"encryptunmount /mnt/Decrypted\";fusermount -u $1";

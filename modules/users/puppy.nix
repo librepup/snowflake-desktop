@@ -207,6 +207,7 @@ in
       "input"
       "ydotool"
       "render"
+      "input-remapper"
     ];
     packages = with pkgs; [
       inputs.nix-init.packages.x86_64-linux.default

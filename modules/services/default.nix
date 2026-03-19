@@ -6,5 +6,6 @@
     ./virtualization.nix
     ./flatpak.nix
     ./authentication.nix
+    ./printing.nix
   ];
 }

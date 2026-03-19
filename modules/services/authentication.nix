@@ -2,6 +2,9 @@
 {
   security.polkit = {
     enable = true;
+    adminIdentities = [
+      "unix-user:puppy"
+    ];
   };
   systemd.user.services.polkit-gnome = {
     description = "polkit-gnome-authentication-agent-1";

@@ -1,7 +1,11 @@
 { config, pkgs, inputs, lib, unstable, ... }:
 {
-  # Bind RShift to Super
-  home.file.".xmodmap-rhift-to-super".source = ../../files/config/xmodmap/rshiftToWin;
+  # Input Remaps
+  home.file.".my-input-remappings/xmodmap/insertToTab".source = ../../files/config/xmodmap/insertToTab;
+  home.file.".my-input-remappings/xmodmap/altgrToSpace".source = ../../files/config/xmodmap/altgrToSpace;
+  home.file.".my-input-remappings/xmodmap/rshiftToWin".source = ../../files/config/xmodmap/rshiftToWin;
+  home.file.".my-input-remappings/tablet/config.json".source = ../../files/config/input-remapper-2/config.json;
+  home.file.".my-input-remappings/tablet/presets/OpenTabletDriver Virtual Keyboard/MouseButtons.json".source = ../../files/config/input-remapper-2/presets/OpenTabletDriverVirtualKeyboard/MouseButtons.json;
   # Thunar
   xdg.configFile."Thunar/uca.xml" = {
     source = ../../files/config/Thunar/uca.xml;

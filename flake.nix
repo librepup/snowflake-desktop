@@ -1,5 +1,5 @@
 {
-  description = "NixOS Systems Flake for Desktop System (Snowflake)";
+  description = "NixOS Systems Flake for System (Snowflake)";
   inputs = {
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -135,7 +135,7 @@
               ];
             };
           }
-          # Overlays
+          # Unstable Nixpkgs Overlay
           (
             { config, pkgs, ... }:
             {
@@ -149,12 +149,14 @@
               ];
             }
           )
+          # CachyOS Kernel Overlay
           (
             { pkgs, ... }:
             {
               nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
             }
           )
+          # Main NixOS Configuration
           (
             {
               config,
@@ -173,7 +175,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.puppy = import ./home.nix;
+                users = {
+                  puppy = import ./modules/home/users/puppy.nix;
+                  root = import ./modules/home/users/root.nix;
+                };
                 extraSpecialArgs = {
                   inherit inputs pkgs;
                 };
@@ -189,70 +194,36 @@
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
                   plasma-manager.homeModules.plasma-manager
                 ];
-                backupFileExtension = "backup";
-              };
-              # NixOS Configuration
-              # Create Folders
-              systemd.tmpfiles.rules = [
-                "d /extra 0775 puppy users -"
-                "d /mnt 0775 puppy users -"
-                "d /mnt/SteamLibrary 0775 puppy users -"
-                "d /run/nvidia-xdriver 0777 root root -"
-                "d /mountables 0755 root root -"
-                "d /mountables/genesis 0755 root root -"
-                "d /mountables/exodus 0755 root root -"
-                "d /mountables/leviticus 0755 root root -"
-                "d /mountables/deuteronomy 0755 root root -"
-                "d /mountables/ezekiel 0755 root root -"
-              ];
-              # Handle "/mnt"
-              fileSystems."/mnt" = {
-                device = "/dev/disk/by-uuid/a30aac38-dff9-45ca-9719-d8455016d774";
-                fsType = "ext4";
-                options = [
-                  "defaults"
-                  "nofail"
-                ];
-              };
-              # Waydroid Bind-Mount
-              fileSystems."/home/puppy/.local/share/waydroid" = {
-                device = "/mnt/Waydroid";
-                options = [ "bind" ];
-              };
-              # TimeZone
-              time.timeZone = "Europe/Berlin";
-              # Locales
-              i18n.defaultLocale = "en_US.UTF-8";
-              i18n.extraLocaleSettings = {
-                LC_ADDRESS = "de_DE.UTF-8";
-                LC_IDENTIFICATION = "de_DE.UTF-8";
-                LC_MEASUREMENT = "de_DE.UTF-8";
-                LC_MONETARY = "de_DE.UTF-8";
-                LC_NAME = "de_DE.UTF-8";
-                LC_NUMERIC = "de_DE.UTF-8";
-                LC_PAPER = "de_DE.UTF-8";
-                LC_TELEPHONE = "de_DE.UTF-8";
-                LC_TIME = "de_DE.UTF-8";
-              };
-              # Printing
-              services.printing.enable = true;
-              # Wine/Windows
-              services.samba = {
-                enable = true;
-                winbindd.enable = true;
-              };
-              # Ensure the same basic flake options you already enable
-              system.stateVersion = "25.11"; # Did you read the comment?
+                backupFileExtension =
+                  let
+                    timestamp = pkgs.runCommand "hm-backup-timestamp" {} ''
+                      TZ="Europe/Berlin" date '+backup-%H:%M:%S@%d.%m.%Y' > $out
+                    '';
+                  in
+                    builtins.readFile timestamp;
+               };
+              system.stateVersion = "25.11";
             }
           )
         ];
       };
+      # Home-Manager
       homeConfigurations.puppy = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           stylix.homeModules.stylix
           ./home.nix
         ];
+      };
+      homeConfigurations.root = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [
+          ./modules/home/root.nix
+          self.homeManagerModules.default
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+        };
       };
     };
 }

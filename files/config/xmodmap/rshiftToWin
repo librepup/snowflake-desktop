@@ -1,3 +1,4 @@
+add shift = Shift_L Shift_R
 remove shift = Shift_R
 keycode 62 = Super_R
 add mod4 = Super_R

@@ -304,10 +304,13 @@ myAutostart = do
         "xinput set-prop " ++
           "'" ++ mouse ++ "' 'libinput Accel Speed' 0.3; " ++
         "fi"
-    -- XModMap
-    spawnOnce $
+    -- Keyboard Remaps
+    spawn $
       "if command -v xmodmap > /dev/null; then" ++
-        " xmodmap ~/.xmodmap-rhift-to-super;" ++
+        " setxkbmap us -variant colemak;" ++
+        " xmodmap ~/.my-input-remappings/xmodmap/rshiftToWin;" ++
+        " xmodmap ~/.my-input-remappings/xmodmap/insertToTab;" ++
+        " xmodmap ~/.my-input-remappings/xmodmap/altgrToSpace;" ++
       " fi"
     -- XMonad Environment
     spawnOnce $

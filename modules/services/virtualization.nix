@@ -41,6 +41,10 @@
     spiceUSBRedirection.enable = true;
   };
   systemd.services.waydroid-container.wantedBy = lib.mkForce [ ];
+  services.samba = {
+    enable = false;
+    winbindd.enable = true;
+  };
   # Waydroid Info
   #   Run: `nix shell github:nix-community/NUR#repos.ataraxiasjel.waydroid-script -c sudo waydroid-script` to Fix Apps not Installing
   #  Select: libhoudini (Intel CPU) and gapps (Google Services)

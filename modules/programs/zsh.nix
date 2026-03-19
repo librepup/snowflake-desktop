@@ -209,13 +209,18 @@
         }
 
         # Guix Initialization and Setup
-        GUIX_PROFILE="$HOME/.config/guix/current"
-        . "$GUIX_PROFILE/etc/profile"
-        GUIX_PROFILE="$HOME/.guix-profile"
-        . "$GUIX_PROFILE/etc/profile"
-        GUIX_PROFILE="/var/guix/profiles/per-user/puppy/guix-profile"
-        . "$GUIX_PROFILE/etc/profile"
-        source "$GUIX_PROFILE/etc/profile"
+        if [[ "$USER" != "root" ]]; then
+          GUIX_PROFILE="$HOME/.config/guix/current"
+          . "$GUIX_PROFILE/etc/profile"
+          GUIX_PROFILE="$HOME/.guix-profile"
+          . "$GUIX_PROFILE/etc/profile"
+          GUIX_PROFILE="/var/guix/profiles/per-user/puppy/guix-profile"
+          . "$GUIX_PROFILE/etc/profile"
+          source "$GUIX_PROFILE/etc/profile"
+        fi
+
+        # Nix-Shell Variable
+        export NIXPKGS_ALLOW_UNFREE=1
 
         # Initialize Zoxide (cd alternative).
         eval "$(zoxide init zsh)"
@@ -227,12 +232,22 @@
       promptInit = ''
         unset -m EMACSLOADPATH
         unalias -m 9
-        if [[ -n "$IN_NIX_SHELL" ]]; then
-          PROMPT='  (shell) %~ '
-        elif [[ -n "$GUIX_ENVIRONMENT" ]]; then
-          PROMPT='  (shell) %~ '
+        if [[ "$USER" == "root" ]]; then
+          if [[ -n "$IN_NIX_SHELL" ]]; then
+            PROMPT='  () (shell) %~ '
+          elif [[ -n "$GUIX_ENVIRONMENT" ]]; then
+            PROMPT='  () (shell) %~ '
+          else
+            PROMPT='  () %~ '
+          fi
         else
-          PROMPT='  %~ '
+          if [[ -n "$IN_NIX_SHELL" ]]; then
+            PROMPT='  (shell) %~ '
+          elif [[ -n "$GUIX_ENVIRONMENT" ]]; then
+            PROMPT='  (shell) %~ '
+          else
+            PROMPT='  %~ '
+          fi
         fi
         if [ -d "$HOME/.scripts/shell" ]; then
           for script in "$HOME/.scripts/shell"/*; do

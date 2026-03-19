@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
   environment.systemPackages = with pkgs;
   let
@@ -13,6 +10,10 @@ in
     '';
   in
   [
+    eza
+    bat
+    zoxide
+    rsync
     nickel
     inputs.jonabron.packages.x86_64-linux.epdfinfo
     libelf

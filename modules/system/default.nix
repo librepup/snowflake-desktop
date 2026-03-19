@@ -13,5 +13,8 @@
     ./bootloader.nix
     ./xdg.nix
     ./kernel.nix
+    ./environment.nix
+    ./region.nix
+    ./filesystem.nix
   ];
 }
