@@ -9,7 +9,7 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - Window Manager: XMonad
    - Available: XMonad, i3-gaps, NaitreHUD, MangoWC, KDE Plasma, GNOME
  - Editor: NixMacs
-   - Available: NixVim (neovim), Emacs (emacs-x11, emacs-wayland), NixMacs (nixmacs, nixmacs-wayland), Nano (nano)
+   - Available: NixVim (neovim), Emacs (emacs-x11, emacs-wayland), NixMacs (nixmacs, nixmacs-wayland), Nano (nano), Acme (acme)
  - Shell: ZSH (Oh-My-Zsh)
    - Available: ZSH, Bash, /bin/sh
  - Terminal: Kitty
@@ -68,3 +68,15 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
      - Auxiliary Binding 2: Additional - F13-F24: (Key: F17)
      - Auxiliary Binding 3: Monitor Toggle: (offset_x:0), (offset_y:0), (width_multiplier:1), (height_multiplier:1), (mode:Cycle)
      - Auxiliary Binding 4: Monitor Toggle: (offset_x:1920), (offset_y:0), (width_multiplier:1), (height_multiplier:1), (mode:Cycle)
+
+## Keyboard Remaps
+### Located in `files/config/input-remapper-2` and `files/config/xmodmap`.
+Remapped the following Keys:
+ - XModMap:
+   - AltGr -> Space
+   - RightCtrl -> AltGr
+   - Insert -> Tab
+   - RightShift -> Super
+ - InputRemapper:
+   - F16 -> RightClick
+   - F17 -> LeftClick
