@@ -4,13 +4,44 @@
   font-family: Noto Sans;
 }
 
-$accent-color: #20d0fc;
+$accent-color: #ffbf2d;
 
 
 window {
   background: transparent;
 }
 
+.constructor {
+    background: linear-gradient(0deg,rgba(74, 72, 72, 0.32) 0%, rgba(196, 196, 192, 0.25) 100%);
+    padding: 25px;
+    border: 1.5px solid #ffbf2d;
+    border-radius: 0px;
+}
+
+.picture {
+    padding: 0px;
+    background-color: rgba(33, 44, 53, 0.32);
+    border-radius: 0rem;
+    border: 2px solid #ffbf2d;
+}
+
+.text {
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.main-time {
+    font-family: "TempleOS", cursive;
+    font-size: 50px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.main-date {
+    font-family: "DejaVu Sans Mono", sans-serif;
+    font-size: 15px;
+    color: #CFCCCC;
+}
 
 .container {
   padding: 0px;

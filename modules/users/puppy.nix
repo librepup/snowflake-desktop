@@ -183,6 +183,7 @@ let
     devour
     systemdgenie
     xmodmap
+    xdo
   ];
   bundleNetworking = with pkgs; [
     dhcpcd

@@ -1,5 +1,10 @@
 { config, pkgs, inputs, lib, unstable, ... }:
 {
+  # EWW
+  home.file.".config/eww/eww.yuck".source = ../../files/config/eww/eww.yuck;
+  home.file.".config/eww/eww.scss".source = ../../files/config/eww/eww.scss;
+  home.file.".config/eww/images/clock.png".source = ../../files/config/eww/images/clock.png;
+  home.file.".config/eww/images/filian.gif".source = ../../files/config/eww/images/filian.gif;
   # Input Remaps
   home.file.".my-input-remappings/xmodmap/numpadRemaps".source = ../../files/config/xmodmap/numpadRemaps;
   home.file.".my-input-remappings/xmodmap/insertToTab".source = ../../files/config/xmodmap/insertToTab;
@@ -66,6 +71,7 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
+    ".shell-autoload-functions/eww.sh".source = ../../files/scripts/eww.sh;
     ".shell-autoload-functions/android.sh".source = ../../files/scripts/android.sh;
     ".shell-autoload-functions/play.sh".source = ../../files/scripts/play.sh;
     ".shell-autoload-functions/preexec.sh".source = ../../files/scripts/preexec.sh;
@@ -139,6 +145,7 @@
   };
   # Wallpapers
   home.file = {
+    "Pictures/Wallpapers/filianElevator.png".source = ../../files/pictures/filianElevator.png;
     "Pictures/Wallpapers/dangerousFilian.png".source = ../../files/pictures/dangerousFilian.png;
     "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ../../files/pictures/dangeroooous_jungle_wp.png;
     "Pictures/Wallpapers/marnieGruvbox.png".source = ../../files/pictures/marnieGruvbox.png;

@@ -51,6 +51,7 @@ import XMonad.Util.Run (runProcessWithInput)
 import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
+import XMonad.Util.WindowProperties (getProp32)
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
@@ -277,6 +278,7 @@ myManageHook = composeAll
     , className =? "weston"               --> doFullFloat
     , className =? "weston-1"             --> doFullFloat
     , className =? "Weston Compositor"    --> doFullFloat
+    , className =? "eww"                  --> doIgnore <+> doLower
     ]
 
 ------------------------------------------------------------------------
