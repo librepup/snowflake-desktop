@@ -138,6 +138,7 @@
   };
   # Wallpapers
   home.file = {
+    "Pictures/Wallpapers/dangerousFilian.png".source = ../../files/pictures/dangerousFilian.png;
     "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ../../files/pictures/dangeroooous_jungle_wp.png;
     "Pictures/Wallpapers/marnieGruvbox.png".source = ../../files/pictures/marnieGruvbox.png;
     "Pictures/Wallpapers/demeLook.jpg".source = ../../files/pictures/demeLook.jpg;

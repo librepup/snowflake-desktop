@@ -360,7 +360,7 @@ myAutostart = do
     -- Wallpaper
     spawnOnce $
       "sleep 1 && if command -v feh > /dev/null; then" ++
-        " feh --bg-fill $HOME/Pictures/Wallpapers/dangeroooous_jungle_wp.png;" ++
+        " feh --bg-fill $HOME/Pictures/Wallpapers/dangerousFilian.png;" ++
       " fi"
     -- NixMacs or Emacs Daemon
     spawnOnce $
