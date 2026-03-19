@@ -2,7 +2,6 @@
 {
   imports = [
     ./audio.nix
-    ./tablet.nix
     ./networking.nix
     ./nvidia.nix
     ./xorg.nix

@@ -7,5 +7,6 @@
     ./flatpak.nix
     ./authentication.nix
     ./printing.nix
+    ./tablet.nix
   ];
 }
