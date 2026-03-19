@@ -22,7 +22,7 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
    - Theme: inputs.jonabron.packages.x86_64-linux.dangerousjungle-grub-theme
 
 ## Gaming
- - Steam Installed (with Proton-GE)
+ - Steam Installed (with Proton-GE, and Millenium Themes)
  - Nix-Gaming Installed
  - OpenTabletDriver Installed
  - Input-Remapper Installed
