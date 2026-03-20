@@ -34,6 +34,7 @@ import XMonad.Layout.Minimize
 import XMonad.Layout.TwoPane
 import XMonad.Layout.Grid
 import XMonad.Layout.CircleEx
+import XMonad.Layout.NoFrillsDecoration
 import qualified XMonad.Layout.BoringWindows as BW
 -- Hooks
 import XMonad.Hooks.DynamicLog
@@ -52,6 +53,7 @@ import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import XMonad.Util.WindowProperties (getProp32)
+import XMonad.Util.Themes
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
@@ -100,6 +102,17 @@ doWarp = ask >>= \w -> liftX $ do
       cy = fromIntegral (wa_height wa) `div` 2
   io $ warpPointer dpy none w 0 0 0 0 cx cy
   return mempty
+-- Titlebar Theme
+jungleDecoTheme = def
+    { activeColor       = "#ffbf2d"
+    , activeBorderColor = "#ffbf2d"
+    , activeTextColor   = "#000000"
+    , inactiveColor     = "#1d1f21"
+    , inactiveBorderColor = "#1d1f21"
+    , inactiveTextColor = "#888888"
+    , decoHeight        = 10
+    , fontName          = "xft:TempleOS:size=8"
+    }
 -- Prompt/XP Theme(s)
 marnieXPConfig = def
     { font              = "xft:DejaVu Sans Mono:size=10"
@@ -279,6 +292,7 @@ myManageHook = composeAll
     , className =? "weston-1"             --> doFullFloat
     , className =? "Weston Compositor"    --> doFullFloat
     , className =? "eww"                  --> doIgnore <+> doLower
+    , className =? "Eww"                  --> doIgnore <+> doLower
     ]
 
 ------------------------------------------------------------------------
@@ -341,8 +355,8 @@ myAutostart = do
     -- Polybar
     spawnOnce $
       "if pgrep polybar > /dev/null; then pkill polybar; fi;" ++
-      "if command -v geex-bar > /dev/null; then" ++
-        " geex-bar &" ++
+      "if command -v jonabar > /dev/null; then" ++
+        " jonabar &" ++
       " else" ++
         " if type xrandr > /dev/null; then" ++
           " for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do" ++

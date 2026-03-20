@@ -221,6 +221,7 @@ in
       "input-remapper"
     ];
     packages = with pkgs; [
+      inputs.jonabron.packages.x86_64-linux.jonabar
       inputs.nix-init.packages.x86_64-linux.default
       inputs.jonabron.packages.x86_64-linux.momoisay
       #inputs.jonabron.packages.x86_64-linux.xptheme
