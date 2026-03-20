@@ -73,6 +73,7 @@ let
     ardour
     zrythm
     non
+    muse
   ];
   bundleAudioUtilities = with pkgs; [
     playerctl
@@ -109,8 +110,10 @@ let
   bundleGraphicsDesign = with pkgs; [
     gimp3-with-plugins
     krita
+    krita-plugin-gmic
     imagemagick
     blender
+    exiftool
   ];
   bundleMusicPlayers = with pkgs; [
     spotdl
@@ -139,6 +142,7 @@ let
     obs-studio
     kdePackages.kdenlive
     kdePackages.ffmpegthumbs
+    simplescreenrecorder
   ];
   bundleImageViewers = with pkgs; [
     feh
@@ -192,6 +196,11 @@ let
     wpa_supplicant
     protonvpn-gui
     riseup-vpn
+  ];
+  bundleKeyboard = with pkgs; [
+    keyboard-layout-editor
+    kalamine
+    xorg.xkbcomp
   ];
 in
 {
@@ -277,6 +286,7 @@ in
     ++ bundleGeneralUtilities
     ++ bundleNetworking
     ++ bundleImageViewers
+    ++ bundleKeyboard
     ++ bundleExplorers;
   };
 }

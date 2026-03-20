@@ -24,6 +24,7 @@
       maple-mono.truetype
       tt2020
       emacs-all-the-icons-fonts
+      julia-mono
     ];
   };
 }
