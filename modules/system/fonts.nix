@@ -25,6 +25,7 @@
       tt2020
       emacs-all-the-icons-fonts
       julia-mono
+      vista-fonts
     ];
   };
 }

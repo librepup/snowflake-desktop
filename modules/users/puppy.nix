@@ -100,6 +100,7 @@ let
     prismlauncher
     itgmania
     etterna
+    inputs.jonabron.packages.x86_64-linux.gobm
   ];
   bundleEmulators = with pkgs; [
     azahar
@@ -202,6 +203,12 @@ let
     protonvpn-gui
     riseup-vpn
   ];
+  bundleThemes = with pkgs; [
+    whitesur-gtk-theme
+    whitesur-icon-theme
+    chicago95
+    windows10-icons
+  ];
   bundleKeyboard = with pkgs; [
     keyboard-layout-editor
     kalamine
@@ -226,16 +233,15 @@ in
       "input-remapper"
     ];
     packages = with pkgs; [
+      inputs.jonabron.packages.x86_64-linux.xptheme
+      inputs.jonabron.packages.x86_64-linux.winxp-icons
+      inputs.jonabron.packages.x86_64-linux.diinki-aero
       inputs.jonabron.packages.x86_64-linux.jonabar
       inputs.nix-init.packages.x86_64-linux.default
       inputs.jonabron.packages.x86_64-linux.momoisay
-      #inputs.jonabron.packages.x86_64-linux.xptheme
-      #inputs.jonabron.packages.x86_64-linux.winxp-icons
-      vdhcoapp # Video DownloadHelper Companion
       lxappearance
       espeak
       inputs.jonabron.packages.x86_64-linux.urbit
-      inputs.jonabron.packages.x86_64-linux.gobm
       kdePackages.karousel
       plasmusic-toolbar
       libsForQt5.qtstyleplugin-kvantum
@@ -254,7 +260,7 @@ in
       nixfmt
       qbittorrent
       kdePackages.qt5compat
-      picard # mp3 Tagging
+      picard
       yt-dlp
       rofimoji
       rofi
@@ -293,6 +299,7 @@ in
     ++ bundleNetworking
     ++ bundleImageViewers
     ++ bundleKeyboard
+    ++ bundleThemes
     ++ bundleNode
     ++ bundleExplorers;
   };
