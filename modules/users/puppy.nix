@@ -98,6 +98,8 @@ let
     ace-of-penguins
     kdePackages.kpat
     prismlauncher
+    itgmania
+    etterna
   ];
   bundleEmulators = with pkgs; [
     azahar
@@ -151,6 +153,9 @@ let
   bundleExplorers = with pkgs; [
     xfce.thunar
     yazi
+  ];
+  bundleNode = with pkgs; [
+    nodejs_24
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
@@ -288,6 +293,7 @@ in
     ++ bundleNetworking
     ++ bundleImageViewers
     ++ bundleKeyboard
+    ++ bundleNode
     ++ bundleExplorers;
   };
 }

@@ -34,7 +34,6 @@ import XMonad.Layout.Minimize
 import XMonad.Layout.TwoPane
 import XMonad.Layout.Grid
 import XMonad.Layout.CircleEx
-import XMonad.Layout.NoFrillsDecoration
 import qualified XMonad.Layout.BoringWindows as BW
 -- Hooks
 import XMonad.Hooks.DynamicLog
@@ -52,8 +51,6 @@ import XMonad.Util.Run (runProcessWithInput)
 import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
-import XMonad.Util.WindowProperties (getProp32)
-import XMonad.Util.Themes
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
@@ -434,6 +431,11 @@ myAutostart = do
       " if command -v dunst > /dev/null; then" ++
         " dunst &" ++
       " fi"
+    -- Discord Autostart
+    spawnOnce $
+      "if ! ps aux | grep '[v]esktop' > /dev/null; then" ++
+        " vesktop &" ++
+      " fi"
 
 ------------------------------------------------------------------------
 -- Startup Hook
@@ -549,6 +551,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         "read -n 1 -s'")
     -- Cycle Layouts
     , ((modm, xK_space), sendMessage NextLayout)
+    , ((modm .|. controlMask, xK_space), setLayout $ XMonad.layoutHook conf)
     -- Focus Windows
     , ((modm, xK_Left ), windows W.focusUp)
     , ((modm, xK_Right), windows W.focusDown)

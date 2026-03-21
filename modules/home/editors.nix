@@ -21,7 +21,7 @@
     waylandPackage.enable = true;
   };
   programs.nixvim = {
-    enable = false;
+    enable = true;
     viAlias = true;
     vimAlias = true;
     globals.mapleader = " ";

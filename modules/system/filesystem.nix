@@ -2,6 +2,7 @@
 {
   systemd.tmpfiles.rules = [
     "d /extra 0775 puppy users -"
+    "d /extra/Files 0775 puppy users -"
     "d /mnt 0775 puppy users -"
     "d /mnt/SteamLibrary 0775 puppy users -"
     "d /run/nvidia-xdriver 0777 root root -"
@@ -15,6 +16,15 @@
   # Handle "/mnt"
   fileSystems."/mnt" = {
     device = "/dev/disk/by-uuid/a30aac38-dff9-45ca-9719-d8455016d774";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
+  };
+  # Handle "/extra"
+  fileSystems."/extra" = {
+    device = "/dev/disk/by-uuid/f506870d-1913-4368-80ec-3f0af6103e99";
     fsType = "ext4";
     options = [
       "defaults"
