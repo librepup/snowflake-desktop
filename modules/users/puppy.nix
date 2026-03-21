@@ -60,7 +60,6 @@ let
   bundleVSTs = with pkgs; [
     yabridge
     yabridgectl
-    wineWowPackages.yabridge
     oxefmsynth
     bespokesynth-with-vst2
     ninjas2
@@ -125,10 +124,8 @@ let
     cmus
   ];
   bundleWine = with pkgs; [
-    wineWowPackages.full
+    wineWowPackages.yabridge
     winetricks
-    wine
-    wine64
   ];
   bundleArchivers = with pkgs; [
     zip
