@@ -18,6 +18,7 @@
         ls = "eza --icons $@";
         la = "eza --icons -l -r -A -T -L=1 $@";
         ll = "eza --icons -a $@";
+        tree = "eza --icons -T -L=1000 $@";
         cls = "clear $@";
         # Nix Related
         home-rebuild = "home-manager switch --flake /etc/nixos#puppy $@";

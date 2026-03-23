@@ -1,7 +1,7 @@
 { config, pkgs, lib, unstable, ... }:
 {
   imports = [
-    ./desktops.nix
+    ./desktops/default.nix
     ./theme.nix
     ./xdg.nix
     ./music.nix

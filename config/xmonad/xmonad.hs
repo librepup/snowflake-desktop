@@ -449,6 +449,9 @@ myAutostart = do
       " if command -v dunst > /dev/null; then" ++
         " dunst &" ++
       " fi"
+    -- Input-Remapper
+    spawnOnce $
+      "sleep 10 && systemctl --user restart input-remapper-autoload.service && notify-send 'Input-Remapper' 'Restarted the Input-Remapper-Autoload User Service'"
 
 ------------------------------------------------------------------------
 -- Startup Hook

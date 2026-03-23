@@ -13,6 +13,18 @@
 	<directories/>
 </action>
 <action>
+    <icon>camera-video</icon>
+    <name>Play with MPV</name>
+    <submenu></submenu>
+    <unique-id>1774291725205719-1</unique-id>
+    <command>mpv %f</command>
+    <description>Play Selection with MPV</description>
+    <range>*</range>
+    <patterns>*</patterns>
+    <directories/>
+    <video-files/>
+</action>
+<action>
 	<icon>imagefan-reloaded</icon>
 	<name>Make Wallpaper</name>
 	<submenu></submenu>
