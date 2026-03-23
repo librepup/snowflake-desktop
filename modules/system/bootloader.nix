@@ -10,14 +10,16 @@
       efiInstallAsRemovable = true;
       device = "nodev";
       theme = inputs.jonabron.packages.x86_64-linux.dangerousjungle-grub-theme;
+      font = "${pkgs.grub2}/share/grub/unicode.pf2";
       gfxmodeEfi = "1920x1080";
+      gfxmodeBios = "1920x1080";
       gfxpayloadEfi = "keep";
       configurationLimit = 10;
       timeoutStyle = "menu";
       extraConfig = ''
+        insmod all_video
+        set terminal_output gfxterm
         set timeout=30
-        terminal_input console
-        terminal_output console
       '';
     };
   };

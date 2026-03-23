@@ -10,15 +10,19 @@
       templeos = false;
       guix = false;
       jungle = false;
-      jungleVibrant = true;
+      jungleVibrant = false;
       cappuccinoNoir = false;
+      filian = true;
       installAll = true;
     };
     exwm = {
       enable = true;
-      layout = "qwerty";
+      layout = "colemak";
     };
-    waylandPackage.enable = true;
+    wayland = {
+      enable = true;
+      separatePackage = true;
+    };
   };
   programs.nixvim = {
     enable = true;

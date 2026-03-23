@@ -65,6 +65,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    aerothemeplasma-nix = {
+      url = "github:nyakase/aerothemeplasma-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     jonabron.url = "github:librepup/jonabron";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -106,6 +110,7 @@
       zen-browser,
       nix-init,
       millennium,
+      aerothemeplasma-nix,
       ...
     }:
     let

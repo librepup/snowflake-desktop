@@ -83,6 +83,7 @@ let
     alsa-utils
     id3v2
     helvum
+    volctl
   ];
   bundleMessaging = with pkgs; [
     signal-desktop-bin
@@ -91,6 +92,7 @@ let
     discord
     vesktop
     ripcord
+    equibop
     element-desktop
   ];
   bundleGames = with pkgs; [
@@ -191,6 +193,7 @@ let
     systemdgenie
     xmodmap
     xdo
+    powershell
   ];
   bundleNetworking = with pkgs; [
     dhcpcd
@@ -205,6 +208,12 @@ let
     whitesur-icon-theme
     chicago95
     windows10-icons
+    inputs.jonabron.packages.x86_64-linux.windows-xp-theme
+    inputs.jonabron.packages.x86_64-linux.windows-vista-theme
+    inputs.jonabron.packages.x86_64-linux.revista
+    inputs.jonabron.packages.x86_64-linux.xptheme
+    inputs.jonabron.packages.x86_64-linux.winxp-icons
+    inputs.jonabron.packages.x86_64-linux.diinki-aero
   ];
   bundleKeyboard = with pkgs; [
     keyboard-layout-editor
@@ -230,9 +239,7 @@ in
       "input-remapper"
     ];
     packages = with pkgs; [
-      inputs.jonabron.packages.x86_64-linux.xptheme
-      inputs.jonabron.packages.x86_64-linux.winxp-icons
-      inputs.jonabron.packages.x86_64-linux.diinki-aero
+      kitty
       inputs.jonabron.packages.x86_64-linux.jonabar
       inputs.nix-init.packages.x86_64-linux.default
       inputs.jonabron.packages.x86_64-linux.momoisay

@@ -115,11 +115,16 @@
   home.file.".config/vesktop/themes/fuwamoco-theme.css".source = ../../files/config/discord/fuwamoco-theme.css;
   # Kitty Colorschemes
   home.file = {
-    ".config/kitty/fuwamocoColorscheme.conf".source = ../../files/config/kitty/fuwamocoColorscheme.conf;
-    ".config/kitty/marnieColorscheme.conf".source = ../../files/config/kitty/marnieColorscheme.conf;
-    ".config/kitty/guixColorscheme.conf".source = ../../files/config/kitty/guixColorscheme.conf;
-    ".config/kitty/jungleVibrantColorscheme.conf".source = ../../files/config/kitty/jungleVibrantColorscheme.conf;
-    ".config/kitty/jungleColorscheme.conf".source = ../../files/config/kitty/jungleColorscheme.conf;
+    ".config/kitty/kitty.conf".source = ../../files/config/kitty/kitty.conf;
+    ".config/kitty/scripts/emacsPager.sh" = {
+      source = ../../files/config/kitty/scripts/emacsPager.sh;
+      executable = true;
+    };
+    ".config/kitty/themes/fuwamocoColorscheme.conf".source = ../../files/config/kitty/themes/fuwamocoColorscheme.conf;
+    ".config/kitty/themes/marnieColorscheme.conf".source = ../../files/config/kitty/themes/marnieColorscheme.conf;
+    ".config/kitty/themes/guixColorscheme.conf".source = ../../files/config/kitty/themes/guixColorscheme.conf;
+    ".config/kitty/themes/jungleVibrantColorscheme.conf".source = ../../files/config/kitty/themes/jungleVibrantColorscheme.conf;
+    ".config/kitty/themes/jungleColorscheme.conf".source = ../../files/config/kitty/themes/jungleColorscheme.conf;
   };
   # Btop
   home.file = {

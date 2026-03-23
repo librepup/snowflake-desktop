@@ -15,6 +15,7 @@
         "nix-command"
         "flakes"
       ];
+      trusted-users = [ "root" "puppy" ];
     };
   };
   nixpkgs.config = {

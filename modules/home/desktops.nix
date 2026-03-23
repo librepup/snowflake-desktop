@@ -1,5 +1,93 @@
 { config, pkgs, lib, inputs, unstable, ... }:
+let
+  aeroDecoration = pkgs.stdenv.mkDerivation {
+    pname = "aero-kwin-decoration";
+    version = "6.5.5";
+    src = pkgs.fetchFromGitHub {
+      owner = "aeroshell-desktop";
+      repo = "aerothemeplasma";
+      tag = "6.5.5";
+      sha256 = "sha256-AuQH8lIpG9nnneN48RATI7E8llBLK7YOkKjTOSW3hAM=" ;
+    };
+    sourceRoot = "source/kwin/decoration";
+    nativeBuildInputs = with pkgs; [
+      cmake
+      kdePackages.extra-cmake-modules
+      kdePackages.wrapQtAppsHook
+      pkgs.pkg-config
+    ];
+    buildInputs = with pkgs.kdePackages; [
+      kdecoration
+      kcoreaddons
+      kguiaddons
+      ki18n
+      kconfig
+      kcolorscheme
+      kwidgetsaddons
+      kwindowsystem
+      kcmutils
+      kconfigwidgets
+      pkgs.gtest
+      qtbase
+    ];
+    dontWrapQtApps = true;
+    cmakeFlags = [
+      "-DCMAKE_INSTALL_PREFIX=$out"
+      "-DKDE_INSTALL_QTPLUGINDIR=lib/qt-6/plugins"
+      "-DBUILD_TESTING=OFF"
+    ];
+  };
+  aeroTheme = pkgs.stdenv.mkDerivation {
+    pname = "aerothemeplasma";
+    version = "master";
+    src = pkgs.fetchFromGitHub {
+      owner = "aeroshell-desktop";
+      repo = "aerothemeplasma";
+      tag = "6.5.5";
+      sha256 = "sha256-AuQH8lIpG9nnneN48RATI7E8llBLK7YOkKjTOSW3hAM=" ;
+    };
+    installPhase = ''
+      # 1. Plasma Desktop Theme (Path: desktoptheme/Seven-Black)
+      mkdir -p $out/share/plasma/desktoptheme/Seven-Black
+      cp -r plasma/desktoptheme/Seven-Black/. $out/share/plasma/desktoptheme/Seven-Black/
+
+      # 2. Look and Feel (Path: look-and-feel/authui7)
+      mkdir -p $out/share/plasma/look-and-feel/authui7
+      cp -r plasma/look-and-feel/authui7/. $out/share/plasma/look-and-feel/authui7/
+
+      # 3. Kvantum (Path: kvantum/Kvantum/Windows7Aero)
+      mkdir -p $out/share/Kvantum/Windows7Aero
+      cp -r misc/kvantum/Kvantum/Windows7Aero/. $out/share/Kvantum/Windows7Aero/
+
+      # 4. Color Scheme (Path: color_scheme/Aero.colors)
+      mkdir -p $out/share/color-schemes
+      cp plasma/color_scheme/Aero.colors $out/share/color-schemes/
+
+      # 5. Plasmoids (Path: plasmoids/io.gitgud.wackyideas.*)
+      mkdir -p $out/share/plasma/plasmoids
+      for d in plasma/plasmoids/io.gitgud.wackyideas.*; do
+        if [ -d "$d" ]; then
+          cp -r "$d" $out/share/plasma/plasmoids/
+        fi
+      done
+
+      # 6. Layout Templates (Path: layout-templates/io.gitgud.wackyideas.taskbar)
+      mkdir -p $out/share/plasma/layout-templates
+      for d in plasma/layout-templates/io.gitgud.wackyideas.*; do
+        if [ -d "$d" ]; then
+          cp -r "$d" $out/share/plasma/layout-templates/
+        fi
+      done
+    '';
+  };
+in
 {
+  home.packages = [
+    #aeroTheme
+    #aeroDecoration
+    #pkgs.libsForQt5.qtstyleplugin-kvantum
+    #pkgs.kdePackages.qtstyleplugin-kvantum
+  ];
   wayland.windowManager.naitre = {
     enable = true;
     modularize = {
@@ -36,36 +124,23 @@
       };
     };
   };
+  qt = {
+    enable = false;
+    platformTheme.name = "kde";
+    style.name = "kvantum";
+  };
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=Windows7Aero
+  '';
   programs.plasma = {
-    enable = true;
-    shortcuts = {
-      ksmserver = {
-        "Lock Session" = [
-          "Screensaver"
-          "Meta+L"
-        ];
-      };
-    };
-    hotkeys.commands = {
-      "launch-terminal" = {
-        name = "Launch Terminal";
-        key = "Alt+Shift+Return";
-        command = "kitty -o font_family=TempleOS -o font_size=12";
-      };
-      "launch-firefox" = {
-        name = "Launch Firefox";
-        key = "Alt+S";
-        command = "firefox";
-      };
-      "launch-nixmacs" = {
-        name = "Launch NixMacs";
-        key = "Alt+Shift+F";
-        command = "nixmacs";
-      };
-      "launch-file-manager" = {
-        name = "Launch Explorer";
-        key = "Meta+E";
-        command = "thunar";
+    enable = false;
+    workspace = {
+      lookAndFeel = "authui7";
+      theme = "Seven-Black";
+      windowDecorations = {
+        library = "org.kde.breeze";
+        theme = "Breeze";
       };
     };
   };

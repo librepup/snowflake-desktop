@@ -161,6 +161,19 @@ jungleTabTheme = def
     , fontName            = "xft:TempleOS:size=8"
     , decoHeight          = 14
     }
+vistaTabTheme = def
+    { activeColor         = "#C0C0C0"
+    , inactiveColor       = "#1d1f21"
+    , urgentColor         = "#ff0000"
+    , activeBorderColor   = "#C0C0C0"
+    , inactiveBorderColor = "#1d1f21"
+    , urgentBorderColor   = "#ff0000"
+    , activeTextColor     = "#000000"
+    , inactiveTextColor   = "#888888"
+    , urgentTextColor     = "#ffffff"
+    , fontName            = "xft:TempleOS:size=8"
+    , decoHeight          = 14
+    }
 -- FlashText Theme(s)
 jungleFlashTheme = def
     { st_font             = "xft:TempleOS:size=8"
@@ -184,6 +197,10 @@ marnieColorscheme = ColorScheme
 jungleColorscheme = ColorScheme
     { focused = "#ffbf2d"
     , normal  = "#1d1f21"
+    }
+vistaColorscheme = ColorScheme
+    { focused = "#6699ff"
+    , normal = "#333333"
     }
 -- Dmenu Theme(s)
 data DmenuTheme = DmenuTheme
@@ -290,6 +307,7 @@ myManageHook = composeAll
     , className =? "Weston Compositor"    --> doFullFloat
     , className =? "eww"                  --> doIgnore <+> doLower
     , className =? "Eww"                  --> doIgnore <+> doLower
+    , className =? "equibop"              --> doShift "2"
     ]
 
 ------------------------------------------------------------------------
@@ -431,11 +449,6 @@ myAutostart = do
       " if command -v dunst > /dev/null; then" ++
         " dunst &" ++
       " fi"
-    -- Discord Autostart
-    spawnOnce $
-      "if ! ps aux | grep '[v]esktop' > /dev/null; then" ++
-        " vesktop &" ++
-      " fi"
 
 ------------------------------------------------------------------------
 -- Startup Hook
@@ -469,8 +482,8 @@ myLogHook = dynamicLogWithPP $ def
 ------------------------------------------------------------------------
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
-    [ ((modm, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modm .|. shiftMask, xK_Return), spawn "kitty -o font_family=TempleOS -o font_size=12")
+    [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    --, ((modm .|. shiftMask, xK_Return), spawn "kitty -o font_family=TempleOS -o font_size=12")
     , ((myWinMask .|. shiftMask, xK_Return), spawn "term rc")
     -- Dmenu
     , ((modm, xK_t), spawn $ -- Dmenu

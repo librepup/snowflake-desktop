@@ -14,13 +14,17 @@
       templeos = false;
       guix = false;
       jungle = false;
-      jungleVibrant = true;
+      jungleVibrant = false;
+      filian = true;
       cappuccinoNoir = false;
       installAll = true;
     };
     exwm = {
       enable = false;
     };
-    waylandPackage.enable = true;
+    wayland = {
+      enable = true;
+      separatePackage = true;
+    };
   };
 }
