@@ -10,15 +10,15 @@
   hardware.opentabletdriver = {
     enable = true;
   };
-  systemd.user.services.input-remapper-autoload = {
-    description = "Input-Remapper Autoload Service";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.input-remapper}/bin/input-remapper-control --config-dir ${config.users.users.puppy.home}/.my-input-remappings/tablet --command autoload";
-    };
-  };
+  #systemd.user.services.input-remapper-autoload = {
+  #  description = "Input-Remapper Autoload Service";
+  #  wantedBy = [ "graphical-session.target" ];
+  #  partOf = [ "graphical-session.target" ];
+  #  serviceConfig = {
+  #    Type = "oneshot";
+  #    ExecStart = "${pkgs.input-remapper}/bin/input-remapper-control --config-dir ${config.users.users.puppy.home}/.my-input-remappings/tablet --command autoload";
+  #  };
+  #};
   hardware.uinput.enable = true;
   boot.kernelModules = [ "uinput" ];
   services.udev = {

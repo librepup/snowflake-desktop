@@ -139,6 +139,8 @@ let
     cryptsetup
     testdisk
     encfs
+    xarchiver
+    file-roller
   ];
   bundleVideoProduction = with pkgs; [
     obs-studio
@@ -192,6 +194,8 @@ let
     devour
     systemdgenie
     xmodmap
+    xbindkeys
+    killall
     xdo
     powershell
   ];

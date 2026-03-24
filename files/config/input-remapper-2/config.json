@@ -1,6 +1,7 @@
 {
     "version": "2.1.1",
     "autoload": {
-        "OpenTabletDriver Virtual Keyboard": "MouseButtons"
+        "OpenTabletDriver Virtual Keyboard": "MouseButtons",
+        "Cypress Cypress USB Keyboard / PS2 Mouse": "Minus to Ctrl+o"
     }
 }

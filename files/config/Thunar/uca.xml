@@ -35,4 +35,15 @@
 	<patterns>*</patterns>
 	<image-files/>
 </action>
+<action>
+    <icon>archive-manager</icon>
+    <name>Extract Archive</name>
+    <submenu></submenu>
+    <unique-id>1774350680041366-2</unique-id>
+    <command>mkdir -p %n &amp;&amp; xarchiver --extract-to=%d/%n %f</command>
+    <description>Extract Archive to Sub-Directory</description>
+    <range>*</range>
+    <patterns>*.7z;*.zip;*.ZIP;*.rar;*.RAR;*.iso;*.ISO;*.r0*;*.R0*;*.*01;*.tar;*.TAR;*.gz;*.GZ;*.tar.bz2;*.TAR.BZ2;*.gzip;*.GZIP;*tar.gz;*TAR.GZ;*tar.xz;*TAR.XZ;*tar.lz;*TAR.LZ;*.tgz;*.osz;*.osk</patterns>
+    <other-files/>
+</action>
 </actions>

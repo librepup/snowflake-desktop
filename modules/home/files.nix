@@ -6,13 +6,10 @@
   home.file.".config/eww/images/clock.png".source = ../../files/config/eww/images/clock.png;
   home.file.".config/eww/images/filian.gif".source = ../../files/config/eww/images/filian.gif;
   # Input Remaps
-  home.file.".my-input-remappings/xmodmap/numpadRemaps".source = ../../files/config/xmodmap/numpadRemaps;
-  home.file.".my-input-remappings/xmodmap/insertToTab".source = ../../files/config/xmodmap/insertToTab;
-  home.file.".my-input-remappings/xmodmap/altgrToSpace".source = ../../files/config/xmodmap/altgrToSpace;
-  home.file.".my-input-remappings/xmodmap/rshiftToWin".source = ../../files/config/xmodmap/rshiftToWin;
-  home.file.".my-input-remappings/tablet/config.json".source = ../../files/config/input-remapper-2/config.json;
-  home.file.".my-input-remappings/tablet/presets/OpenTabletDriver Virtual Keyboard/MouseButtons.json".source = ../../files/config/input-remapper-2/presets/OpenTabletDriverVirtualKeyboard/MouseButtons.json;
+  home.file.".my-input-remappings/xbindkeys/global".source = ../../files/config/xbindkeys/global;
+  home.file.".my-input-remappings/xmodmap/global".source = ../../files/config/xmodmap/global;
   # Thunar
+  home.file.".config/gtk-3.0/bookmarks".source = ../../files/config/gtk-3.0/bookmarks;
   xdg.configFile."Thunar/uca.xml" = {
     source = ../../files/config/Thunar/uca.xml;
   };
@@ -108,6 +105,8 @@
     };
   };
   # FastFetch Config
+  home.file.".shell-autoload-functions/ff.sh".source = ../../files/scripts/ff.sh;
+  home.file.".config/fastfetch/images/gigi.png".source = ../../files/config/fastfetch/gigi.png;
   home.file.".config/fastfetch/config.jsonc".source = ../../files/config/fastfetch/config.jsonc;
   # Discord Colorscheme
   home.file.".config/vesktop/themes/dank.css".source = ../../files/config/discord/dank.css;
@@ -204,10 +203,10 @@
     text = ''
       if type "xrandr"; then
         for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-          MONITOR=$m polybar --reload example &
+          MONITOR=$m polybar --reload main &
         done
       else
-        polybar --reload example &
+        polybar --reload main &
       fi
     '';
     executable = true;

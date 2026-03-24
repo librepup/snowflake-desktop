@@ -1,0 +1,56 @@
+! ==========================================================
+! 1. NUMPAD REMAPS (Arrows, Letters, Tab, etc.)
+! ==========================================================
+keycode 83 = Left
+keycode 84 = Down
+keycode 85 = Right
+keycode 80 = Up
+keycode 79 = Tab
+keycode 87 = F1
+keycode 88 = z
+keycode 89 = x
+keycode 90 = space
+keycode 86 = c
+keycode 81 = 1
+keycode 82 = F20
+
+! ==========================================================
+! 2. TABLET REMAPS (Function Keys)
+! ==========================================================
+keycode 194 = F21
+keycode 195 = F22
+
+! ==========================================================
+! 3. MODIFIER: SHIFT (Numpad Slash)
+! ==========================================================
+keycode 106 = Shift_L
+add shift = Shift_L
+
+! ==========================================================
+! 4. MODIFIER: ALT (Numpad Period)
+! ==========================================================
+keycode 91 = Alt_L
+add mod1 = Alt_L
+
+! ==========================================================
+! 5. ALTGR TO SPACE & ISO LEVEL 3
+! ==========================================================
+remove mod5 = ISO_Level3_Shift
+remove control = Control_R
+keycode 108 = space
+keycode 105 = ISO_Level3_Shift
+keycode 135 = ISO_Level3_Shift
+add mod5 = ISO_Level3_Shift
+
+! ==========================================================
+! 6. INSERT TO TAB
+! ==========================================================
+keycode 118 = Tab
+
+! ==========================================================
+! 7. RSHIFT TO SUPER (WIN KEY)
+! ==========================================================
+! Specifically remove the Right Shift from the shift group first
+remove shift = Shift_R
+keycode 62 = Super_R
+add mod4 = Super_R

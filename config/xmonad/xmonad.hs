@@ -339,10 +339,13 @@ myAutostart = do
     spawn $
       "if command -v xmodmap > /dev/null; then" ++
         " setxkbmap us -variant colemak;" ++
-        " xmodmap ~/.my-input-remappings/xmodmap/rshiftToWin;" ++
-        " xmodmap ~/.my-input-remappings/xmodmap/insertToTab;" ++
-        " xmodmap ~/.my-input-remappings/xmodmap/numpadRemaps;" ++
-        " xmodmap ~/.my-input-remappings/xmodmap/altgrToSpace;" ++
+        " xmodmap ~/.my-input-remappings/xmodmap/global;" ++
+      " fi"
+    spawn $
+      "if command -v xbindkeys > /dev/null; then" ++
+        " sleep 1;" ++
+        " killall xbindkeys;" ++
+        " xbindkeys --file ~/.my-input-remappings/xbindkeys/global;" ++
       " fi"
     -- XMonad Environment
     spawnOnce $
@@ -370,8 +373,8 @@ myAutostart = do
     -- Polybar
     spawnOnce $
       "if pgrep polybar > /dev/null; then pkill polybar; fi;" ++
-      "if command -v jonabar > /dev/null; then" ++
-        " jonabar &" ++
+      "if command -v jonabar-gigi > /dev/null; then" ++
+        " jonabar-gigi &" ++
       " else" ++
         " if type xrandr > /dev/null; then" ++
           " for m in $(xrandr --query | grep ' connected' | cut -d' ' -f1); do" ++

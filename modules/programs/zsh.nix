@@ -47,7 +47,7 @@
         lsbOsRelease = "lsb_release -sd $@";
         # Editing
         e = "nixmacs -nw $@";
-        ec = "emacsclient -c -nw $@";
+        ec = "nixmacs-client -c -nw $@";
         vim = "nixmacs -nw $@";
         # Extra
         ripgrep = "rg $@";
@@ -70,6 +70,7 @@
         htop = "btm --theme nord $@";
         iftop = "bandwhich $@";
         gc = "git clone $@";
+        ocat = "cat $@";
         cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
         forcekill = "kill -9 $@";
@@ -115,11 +116,6 @@
           done
         fi
 
-        # emacsclient
-        ec() {
-          guix shell emacs-pgtk -- emacsclient -c -nw "$@"
-        }
-
         # c d-Directory Function
         function c() {
           if [[ $1 == d* ]]; then
@@ -160,7 +156,7 @@
         edit() {
           local file
           file=$(fzf) || return
-          emacs -nw "$file"
+          nixmacs -nw "$file"
         }
 
         # Translate Text to English
