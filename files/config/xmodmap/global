@@ -48,7 +48,12 @@ add mod5 = ISO_Level3_Shift
 keycode 118 = Tab
 
 ! ==========================================================
-! 7. RSHIFT TO SUPER (WIN KEY)
+! 7. CAPS LOCK TO CTRL
+! ==========================================================
+keycode 66 = Control_L
+
+! ==========================================================
+! 8. RSHIFT TO SUPER (WIN KEY)
 ! ==========================================================
 ! Specifically remove the Right Shift from the shift group first
 remove shift = Shift_R

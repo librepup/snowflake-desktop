@@ -104,106 +104,25 @@
         ardour = "devour ardour8 $@";
       };
       shellInit = ''
+        # Unset Guix Emacs Load-Path and the Default '9' Alias
         unset -m EMACSLOADPATH
         unalias -m 9
 
+        # Enable Auto-Correction/Suggestion
         setopt CORRECT
         SPROMPT='Unknown Command "%F{red}%R%f", did you mean "%F{green}%r%f"? (y/n) '
 
+        # Set Completions Path
+        fpath=(~/.shell-autoload-functions/comps $fpath)
+        autoload -Uz compinit
+        compinit
+
+        # Source Auto-Load Functions
         if [ -d "$HOME/.shell-autoload-functions" ]; then
-          for script in "$HOME/.shell-autoload-functions"/*; do
+          for script in "$HOME/.shell-autoload-functions/funcs"/*.sh; do
             [ -f "$script" ] && source "$script"
           done
         fi
-
-        # c d-Directory Function
-        function c() {
-          if [[ $1 == d* ]]; then
-            local target="''${1#d}"
-            builtin cd "$target"
-          else
-            echo "Usage: c d<directory>"
-          fi
-        }
-
-        # Echo Out File
-        echoout() {
-          echo "$(<"$1")"
-        }
-
-        # Nix and Home Generations
-        nixgens() {
-          NixGens=$(doas nix-env --list-generations --profile /nix/var/nix/profiles/system)
-          HomeGens=$(home-manager generations)
-          echo -e "NixOS Generations:\n$NixGens\nHome-Manager Generations:\n$HomeGens\n"
-        }
-
-        # Nix Clean
-        clean() {
-          doas nix-store --gc
-          doas nix-collect-garbage -d
-          nix store optimise
-        }
-
-        # Ports
-        ports() {
-          doas ss -tulnp | awk '
-            NR==1 {print; next}
-            {printf "%-5s %-20s %-30s %-30s %s\n", $1, $5, $6, $7, $9}'
-        }
-
-        # File Edit Picker
-        edit() {
-          local file
-          file=$(fzf) || return
-          nixmacs -nw "$file"
-        }
-
-        # Translate Text to English
-        translate() {
-          trans -brief :"en" "$@"
-        }
-
-        # Progress Bar Move
-        move() {
-          command mv "$@" &
-          pid=$!
-          progress -mp $pid
-          wait $pid
-        }
-
-        # Trash
-        trash() {
-          local file="$1"
-          local dir="$HOME/.local/share/Trash/files"
-          mkdir -p "$dir"
-          mv "$file" "$dir"
-          echo "Moved $file to Trash."
-        }
-
-        # Serve HTTP Server in Current Directory
-        serve() {
-          local port
-          if [ -z "$1" ]; then
-            port=8000
-          else
-            port="$1"
-          fi
-          nix-shell -p python3 --run "python3 -m http.server "$port""
-        }
-
-        # Backup Files
-        backup() {
-          if [ -z "$1" ]; then
-            echo "Usage: backup <File>"
-            return 1
-          fi
-          cp -r "$1" "$1.$(date +%Y%m%d_%H%M%S).backup"
-        }
-
-        getNineBinPath() {
-          export NINEBINPATH=$(ls -la $(which 9) | awk '{print $9}' | sed "s/\/bin\/9/\/plan9\/bin/g")
-        }
 
         # Guix Initialization and Setup
         if [[ "$USER" != "root" ]]; then
@@ -218,8 +137,9 @@
 
         # Nix-Shell Variable
         export NIXPKGS_ALLOW_UNFREE=1
+        export NIXPKGS_ALLOW_INSECURE=1
 
-        # Initialize Zoxide (cd alternative).
+        # Initialize Zoxide (A 'cd' Alternative)
         eval "$(zoxide init zsh)"
       '';
       ohMyZsh = {

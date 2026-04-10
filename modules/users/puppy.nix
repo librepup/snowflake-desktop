@@ -48,6 +48,7 @@ let
     hyprshot
     sway-audio-idle-inhibit
     eww
+    xclicker
   ];
   bundleFetchers = with pkgs; [
     microfetch
@@ -84,6 +85,7 @@ let
     id3v2
     helvum
     volctl
+    lyrebird
   ];
   bundleMessaging = with pkgs; [
     signal-desktop-bin
@@ -118,12 +120,14 @@ let
     imagemagick
     blender
     exiftool
+    upscaler
   ];
   bundleMusicPlayers = with pkgs; [
     spotdl
     strawberry
     kew
     cmus
+    spotify-tray
   ];
   bundleWine = with pkgs; [
     wineWowPackages.yabridge
@@ -148,6 +152,13 @@ let
     kdePackages.ffmpegthumbs
     simplescreenrecorder
   ];
+  bundleWeb = with pkgs; [
+    httrack
+    suckit
+    wayback_machine_downloader
+    wget2
+    pastebinit
+  ];
   bundleImageViewers = with pkgs; [
     feh
     xfce.tumbler
@@ -159,6 +170,13 @@ let
   bundleNode = with pkgs; [
     nodejs_24
   ];
+  bundleShells = with pkgs; [
+    powershell
+    xonsh
+    nushell
+    rc-9front
+    cat9
+  ];
   bundleGeneralUtilities = with pkgs; [
     progress
     openssl
@@ -168,6 +186,8 @@ let
     usbutils
     websocat
     xorg.xkbutils
+    xorg.xkbprint
+    ghostscript
     xorg.xrandr
     xorg.xprop
     xorg.xwininfo
@@ -198,6 +218,7 @@ let
     killall
     xdo
     powershell
+    ghidra-bin
   ];
   bundleNetworking = with pkgs; [
     dhcpcd
@@ -244,6 +265,7 @@ in
     ];
     packages = with pkgs; [
       kitty
+      inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
       inputs.jonabron.packages.x86_64-linux.jonabar
       inputs.nix-init.packages.x86_64-linux.default
       inputs.jonabron.packages.x86_64-linux.momoisay
@@ -254,6 +276,9 @@ in
       plasmusic-toolbar
       libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
+      lutris
+      bottles
+      (pkgs.callPackage "${inputs.jonabron}/nix/packages/notitg/default.nix" { })
       inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
       qemu
       quickemu
@@ -308,6 +333,7 @@ in
     ++ bundleImageViewers
     ++ bundleKeyboard
     ++ bundleThemes
+    ++ bundleShells
     ++ bundleNode
     ++ bundleExplorers;
   };

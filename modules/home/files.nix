@@ -68,29 +68,39 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
-    ".shell-autoload-functions/eww.sh".source = ../../files/scripts/eww.sh;
-    ".shell-autoload-functions/android.sh".source = ../../files/scripts/android.sh;
-    ".shell-autoload-functions/play.sh".source = ../../files/scripts/play.sh;
-    ".shell-autoload-functions/preexec.sh".source = ../../files/scripts/preexec.sh;
-    ".shell-autoload-functions/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
-    ".shell-autoload-functions/mp3.sh".source = ../../files/scripts/mp3.sh;
-    ".shell-autoload-functions/help.sh".source = ../../files/scripts/help.sh;
-    ".shell-autoload-functions/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
-    ".shell-autoload-functions/keymon.sh".source = ../../files/scripts/keymon.sh;
-    ".shell-autoload-functions/buildnix.sh".source = ../../files/scripts/buildnix.sh;
-    ".shell-autoload-functions/cartom.sh".source = ../../files/scripts/cartom.sh;
-    ".shell-autoload-functions/crypt.sh".source = ../../files/scripts/crypt.sh;
-    ".shell-autoload-functions/disks.sh".source = ../../files/scripts/disks.sh;
-    ".shell-autoload-functions/extract.sh".source = ../../files/scripts/extract.sh;
-    ".shell-autoload-functions/fkill.sh".source = ../../files/scripts/fkill.sh;
-    ".shell-autoload-functions/generators.sh".source = ../../files/scripts/generators.sh;
-    ".shell-autoload-functions/git-helper.sh".source = ../../files/scripts/git-helper.sh;
-    ".shell-autoload-functions/guix-manager-helper.sh".source = ../../files/scripts/guix-manager-helper.sh;
-    ".shell-autoload-functions/hashurl.sh".source = ../../files/scripts/hashurl.sh;
-    ".shell-autoload-functions/mp4.sh".source = ../../files/scripts/mp4.sh;
-    ".shell-autoload-functions/nix-shell-prebuilds.sh".source = ../../files/scripts/nix-shell-prebuilds.sh;
-    ".shell-autoload-functions/edit.sh".source = ../../files/scripts/edit.sh;
-    ".shell-autoload-functions/upload.sh".source = ../../files/scripts/upload.sh;
+    # Completions (comps)
+    ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
+    # Functions (funcs)
+    ".shell-autoload-functions/funcs/translate.sh".source = ../../files/scripts/translate.sh;
+    ".shell-autoload-functions/funcs/eww.sh".source = ../../files/scripts/eww.sh;
+    ".shell-autoload-functions/funcs/serve.sh".source = ../../files/scripts/serve.sh;
+    ".shell-autoload-functions/funcs/ports.sh".source = ../../files/scripts/ports.sh;
+    ".shell-autoload-functions/funcs/nixgens.sh".source = ../../files/scripts/nixgens.sh;
+    ".shell-autoload-functions/funcs/general-stuff.sh".source = ../../files/scripts/general-stuff.sh;
+    ".shell-autoload-functions/funcs/nixclean.sh".source = ../../files/scripts/nixclean.sh;
+    ".shell-autoload-functions/funcs/android.sh".source = ../../files/scripts/android.sh;
+    ".shell-autoload-functions/funcs/play.sh".source = ../../files/scripts/play.sh;
+    ".shell-autoload-functions/funcs/preexec.sh".source = ../../files/scripts/preexec.sh;
+    ".shell-autoload-functions/funcs/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
+    ".shell-autoload-functions/funcs/mp3.sh".source = ../../files/scripts/mp3.sh;
+    ".shell-autoload-functions/funcs/help.sh".source = ../../files/scripts/help.sh;
+    ".shell-autoload-functions/funcs/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
+    ".shell-autoload-functions/funcs/keymon.sh".source = ../../files/scripts/keymon.sh;
+    ".shell-autoload-functions/funcs/buildnix.sh".source = ../../files/scripts/buildnix.sh;
+    ".shell-autoload-functions/funcs/cartom.sh".source = ../../files/scripts/cartom.sh;
+    ".shell-autoload-functions/funcs/crypt.sh".source = ../../files/scripts/crypt.sh;
+    ".shell-autoload-functions/funcs/disks.sh".source = ../../files/scripts/disks.sh;
+    ".shell-autoload-functions/funcs/extract.sh".source = ../../files/scripts/extract.sh;
+    ".shell-autoload-functions/funcs/fkill.sh".source = ../../files/scripts/fkill.sh;
+    ".shell-autoload-functions/funcs/generators.sh".source = ../../files/scripts/generators.sh;
+    ".shell-autoload-functions/funcs/git-helper.sh".source = ../../files/scripts/git-helper.sh;
+    ".shell-autoload-functions/funcs/guix-manager-helper.sh".source = ../../files/scripts/guix-manager-helper.sh;
+    ".shell-autoload-functions/funcs/hashurl.sh".source = ../../files/scripts/hashurl.sh;
+    ".shell-autoload-functions/funcs/mp4.sh".source = ../../files/scripts/mp4.sh;
+    ".shell-autoload-functions/funcs/nix-shell-prebuilds.sh".source = ../../files/scripts/nix-shell-prebuilds.sh;
+    ".shell-autoload-functions/funcs/edit.sh".source = ../../files/scripts/edit.sh;
+    ".shell-autoload-functions/funcs/nix-stuff.sh".source = ../../files/scripts/nix-stuff.sh;
+    ".shell-autoload-functions/funcs/upload.sh".source = ../../files/scripts/upload.sh;
     ".scripts/waybar.sh" = {
       source = ../../files/scripts/waybar.sh;
       executable = true;
@@ -105,7 +115,7 @@
     };
   };
   # FastFetch Config
-  home.file.".shell-autoload-functions/ff.sh".source = ../../files/scripts/ff.sh;
+  home.file.".shell-autoload-functions/funcs/ff.sh".source = ../../files/scripts/ff.sh;
   home.file.".config/fastfetch/images/gigi.png".source = ../../files/config/fastfetch/gigi.png;
   home.file.".config/fastfetch/config.jsonc".source = ../../files/config/fastfetch/config.jsonc;
   # Discord Colorscheme

@@ -28,4 +28,12 @@
       enable = true;
     };
   };
+  services = {
+    gvfs.enable = true;
+    tumbler.enable = true;
+    dbus.packages = [ pkgs.xfce.thunar ];
+  };
+  environment.variables = {
+    THUNARX_MODULE_DIR = "${pkgs.xfce.thunar-archive-plugin}/lib/thunarx-3";
+  };
 }

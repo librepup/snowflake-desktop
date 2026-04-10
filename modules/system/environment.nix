@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  console.keyMap = "colemak";
   environment = {
     variables = {
       EDITOR = "nixmacs";
