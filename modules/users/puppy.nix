@@ -86,6 +86,7 @@ let
     helvum
     volctl
     lyrebird
+    easyeffects
   ];
   bundleMessaging = with pkgs; [
     signal-desktop-bin
