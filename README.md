@@ -40,7 +40,7 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
 
 # Settings
 ## Tablet
-![Tablet Configurations](https://github.com/librepup/snowflake-desktop/blob/main/files/config/tabletAreas/README.md)
+![Tablet Configurations](https://github.com/librepup/snowflake-desktop/blob/master/files/config/tabletAreas/README.md)
 ## Keyboard Remaps
-![XModMap](https://github.com/librepup/snowflake-desktop/blob/main/files/config/xmodmap/README.md)
-![Input-Remapper](https://github.com/librepup/snowflake-desktop/blob/main/files/config/input-remapper-2/README.md)
+![XModMap](https://github.com/librepup/snowflake-desktop/blob/master/files/config/xmodmap/README.md)
+![Input-Remapper](https://github.com/librepup/snowflake-desktop/blob/master/files/config/input-remapper-2/README.md)

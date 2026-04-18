@@ -1,5 +1,5 @@
 # osu! Tablet Areas
-## 1920x1080 ![File](https://github.com/librepup/snowflake-desktop/tree/main/files/config/tabletAreas/1920x1080.json)
+## 1920x1080 ![File](https://github.com/librepup/snowflake-desktop/tree/master/files/config/tabletAreas/1920x1080.json)
 ### Tablet
  - Width: 57mm
  - Height: 46.2mm
@@ -9,7 +9,7 @@
 ### Screen
  - Resolution: 1920x1080
 
-## 1024x768 ![File](https://github.com/librepup/snowflake-desktop/tree/main/files/config/tabletAreas/1024x768.json)
+## 1024x768 ![File](https://github.com/librepup/snowflake-desktop/tree/master/files/config/tabletAreas/1024x768.json)
 ### Tablet
  - Width: 70mm
  - Height: 57mm
