@@ -1,4 +1,4 @@
-![Snowflake Desktop Banner](https://raw.githubusercontent.com/nixpup/snowflake-desktop/refs/heads/master/banner.png)
+![Snowflake Desktop Banner](https://raw.githubusercontent.com/nixpup/snowflake-desktop/refs/heads/master/files/pictures/other/banner.png)
 # snowflake
 Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
 
