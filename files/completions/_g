@@ -1,0 +1,53 @@
+#compdef g
+
+_g() {
+    local -a subcommands
+    subcommands=(
+        'execute:Run a predefined recipe'
+        'e:Run a predefined recipe'
+        'clone:Clone a remote repository'
+        'c:Clone a remote repository'
+        'update:Add a file and commit'
+        'u:Add a file and commit'
+        'push:Push to remote'
+        'p:Push to remote'
+        'new:Initialize new repo'
+        'n:Initialize new repo'
+        'init:Initialize new repo'
+        'i:Initialize new repo'
+        'add:Add file to repo'
+        'a:Add file to repo'
+        'addall:Add all files'
+        'aa:Add all files'
+        'status:Show git status'
+        's:Show git status'
+        'commit:Commit changes'
+        'co:Commit changes'
+        'cm:Commit changes'
+        'help:Show help'
+        'h:Show help'
+    )
+
+    if (( CURRENT == 2 )); then
+        _describe 'git helper commands' subcommands
+        return
+    fi
+
+    case $words[2] in
+        clone|c)
+            _urls
+            ;;
+        update|u|add|a)
+            _files
+            ;;
+        execute|e)
+            _values 'recipes' 'init' 'push'
+            ;;
+        commit|co|cm)
+            _message "Enter commit message"
+            ;;
+        *)
+            _message "No further completion"
+            ;;
+    esac
+}

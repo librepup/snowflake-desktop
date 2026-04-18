@@ -1,0 +1,115 @@
+import os
+import subprocess
+from pathlib import Path
+from xonsh.built_ins import XSH
+from xonsh.completers.tools import RichCompletion
+from prompt_toolkit.keys import Keys
+from prompt_toolkit.filters import EmacsInsertMode, ViInsertMode
+from xonsh.xontribs import xontribs_load
+from prompt_toolkit.selection import SelectionState, SelectionType
+
+xontribs_load(['whole_word_jumping'])
+
+# Variables
+ICON_NIX = ""
+ICON_GUIX = ""
+ROOT_MARK = ""
+
+# --- Prompt Setup ---
+def _shell_indicator():
+    if os.getenv("IN_NIX_SHELL"):
+        return ICON_NIX, "  (shell)"
+    if os.getenv("GUIX_ENVIRONMENT"):
+        return ICON_GUIX, "  (shell)"
+    return ICON_GUIX, " "
+
+def _user_prompt():
+    icon, tag = _shell_indicator()
+    try:
+        cwd = str(Path.cwd()).replace(str(Path.home()), "~")
+    except:
+        cwd = str(Path.cwd())
+    is_root = os.geteuid() == 0
+    root_tag = f" ({ROOT_MARK})" if is_root else ""
+    return f"{icon}{root_tag}{tag} {cwd} > "
+
+__xonsh__.env['PROMPT'] = _user_prompt
+__xonsh__.env['XONSH_SUPPRESS_WELCOME'] = True
+
+#subprocess.run([""])
+#__xonsh__.env['CURRENT_SHELL'] =
+
+# --- Aliases ---
+# ls
+lsFlags = {
+    'l': '',
+    'ls': '',
+    'la': '-l -r -A -T --level=1',
+    'll': '-l -a',
+    'tree': '-T --level=1000'
+}
+for name, flags in lsFlags.items():
+    aliases[name] = f"eza --icons=always --color=always {flags}"
+# Generic
+aliases['cd'] = "z"
+aliases['q'] = "exit"
+aliases['ec'] = "nixmacs-client -c -nw"
+aliases['e'] = "nixmacs -nw"
+aliases['dec'] = "doas nixmacs-client -c -nw"
+aliases['de'] = "doas nixmacs -nw"
+aliases['ff-gigi'] = "fastfetch --logo ~/.config/fastfetch/images/gigi.png --logo-width 25 --logo-height 20"
+aliases['play'] = "mpv --really-quiet --loop-file=no --loop-playlist=inf --image-display-duration=1"
+# Nix
+aliases['ns'] = "nix-shell --run xonsh"
+aliases['nss'] = "nix-search"
+aliases['rebuild'] = "doas nixos-rebuild switch --flake /etc/nixos#snowflake"
+aliases['garbage'] = "doas nix-collect-garbage -d"
+# Git
+aliases['gaa'] = "git add * && git add ./*"
+aliases['gc'] = "git clone"
+aliases['gco'] = "bash -c 'printf \"Commit Message: \" && read -r commitMessage && if [[ ! -z $commitMessage ]]; then git commit -m \"$commitMessage\"; fi'"
+aliases['gss'] = "bash -c 'git status && echo \"[ Remote Sources ]\" && git remote -v && echo \"[ Branches ]\" && echo \"$(git branch --list)\"'"
+
+# --- Keyboard ---
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+    insert_mode = EmacsInsertMode() | ViInsertMode()
+
+    @bindings.add(Keys.ControlSpace)
+    def toggle_mark(event):
+        buf = event.current_buffer
+        if buf.selection_state:
+            buf.selection_state = None
+        else:
+            buf.selection_state = SelectionState(
+                original_cursor_position=buf.cursor_position,
+                type=SelectionType.CHARACTERS
+            )
+
+    @bindings.add(Keys.Escape, 'w', filter=insert_mode)
+    def emacs_copy(event):
+        if event.current_buffer.selection_state:
+            data = event.current_buffer.copy_selection()
+            event.app.clipboard.set_data(data)
+            event.current_buffer.selection_state = None
+        else:
+            pass
+
+    @bindings.add(Keys.ControlY, filter=insert_mode)
+    def emacs_paste(event):
+        data = event.app.clipboard.get_data()
+        event.current_buffer.insert_text(data.text)
+
+    @bindings.add(Keys.ControlG)
+    def cancel_action(event):
+        event.current_buffer.selection_state = None
+
+    @bindings.add(Keys.ControlL, filter=insert_mode)
+    def clear_terminal(event):
+        event.app.renderer.clear()
+
+    @bindings.add(Keys.Escape, filter=insert_mode)
+    def clear_line(event):
+        event.current_buffer.reset()
+
+execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')

@@ -1,0 +1,10 @@
+/* Force collapse native Firefox Tab Groups in Zen Sidebar */
+.tabbrowser-tab[aria-hidden="true"] {
+  visibility: collapse !important;
+}
+
+/* Optional: Slim down the group header to match Zen's aesthetic */
+tab-group {
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}

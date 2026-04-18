@@ -1,0 +1,43 @@
+# Mako Configuration
+# Converted from dunstrc
+# Geometry
+width=300
+height=300
+anchor=top-right
+margin=10,10,50,10
+# Appearance
+font=DejaVu Sans Mono 14
+background-color=#1d1f21
+text-color=#ffffff
+border-size=3
+border-color=#c13f47
+border-radius=4
+padding=8
+markup=1
+max-visible=20
+default-timeout=5000
+# Icons
+icon-path=/usr/share/icons/Adwaita
+icons=1
+max-icon-size=32
+# Progress bar
+progress-color=over #c13f47
+# Grouping
+group-by=app-name
+# Mouse actions
+on-button-left=dismiss
+on-button-middle=invoke-default-action
+on-button-right=dismiss-all
+# Urgency: Low
+[urgency=low]
+background-color=#222222
+text-color=#888888
+border-color=#c13f47
+default-timeout=5000
+# Urgency: Critical
+[urgency=critical]
+background-color=#900000
+text-color=#ffffff
+border-color=#ff0000
+default-timeout=0
+ignore-timeout=1

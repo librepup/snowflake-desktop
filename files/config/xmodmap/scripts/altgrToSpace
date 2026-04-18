@@ -1,0 +1,6 @@
+remove mod5 = ISO_Level3_Shift
+remove control = Control_R
+keycode 108 = space
+keycode 105 = ISO_Level3_Shift
+keycode 135 = ISO_Level3_Shift
+add mod5 = ISO_Level3_Shift

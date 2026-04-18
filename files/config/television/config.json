@@ -1,0 +1,6 @@
+{
+  "indexes": ["nixpkgs", "home-manager", "nixos"],
+  "update_interval": "168h",
+  "cache_dir": "/home/puppy/.cache/nix-search-tv",
+  "enable_waiting_message": true
+}

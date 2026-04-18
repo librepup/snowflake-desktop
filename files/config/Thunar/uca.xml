@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1772493399604721-1</unique-id>
+	<command>kitty -o font_family=TempleOS -o font_size=8 --working-directory=%f</command>
+	<description>Open Terminal in the current Working Directory</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+    <icon>camera-video</icon>
+    <name>Play with MPV</name>
+    <submenu></submenu>
+    <unique-id>1774291725205719-1</unique-id>
+    <command>mpv %f</command>
+    <description>Play Selection with MPV</description>
+    <range>*</range>
+    <patterns>*</patterns>
+    <directories/>
+    <video-files/>
+</action>
+<action>
+	<icon>imagefan-reloaded</icon>
+	<name>Make Wallpaper</name>
+	<submenu></submenu>
+	<unique-id>1773735867786364-1</unique-id>
+	<command>feh --bg-fill %f</command>
+	<description>Set selected Image as Wallpaper</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+    <icon>archive-manager</icon>
+    <name>Extract Archive</name>
+    <submenu></submenu>
+    <unique-id>1774350680041366-2</unique-id>
+    <command>ark %f</command>
+    <description>Extract Archive to Sub-Directory</description>
+    <range>*</range>
+    <patterns>*.7z;*.zip;*.ZIP;*.rar;*.RAR;*.iso;*.ISO;*.r0*;*.R0*;*.*01;*.tar;*.TAR;*.gz;*.GZ;*.tar.bz2;*.TAR.BZ2;*.gzip;*.GZIP;*tar.gz;*TAR.GZ;*tar.xz;*TAR.XZ;*tar.lz;*TAR.LZ;*.tgz;*.osz;*.osk</patterns>
+    <other-files/>
+</action>
+</actions>

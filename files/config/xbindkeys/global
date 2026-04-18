@@ -1,0 +1,32 @@
+# 1. Macro: Map Numpad Minus (keycode 82) to Ctrl+o
+"xdotool key --clearmodifiers ctrl+o"
+    release+F20
+
+# 2. Rebind: Map Tablet Keys to Mouse Buttons
+# Left Click DOWN + UP
+"xdotool mousedown 1"
+  XF86Launch8
+
+"xdotool mouseup 1"
+  XF86Launch8 + Release
+
+# Right Click DOWN+UP
+"xdotool mousedown 3"
+  XF86Launch7
+
+"xdotool mouseup 3"
+  XF86Launch7 + Release
+
+# Left Click DOWN + UP
+"xdotool mousedown 1"
+  F22
+
+"xdotool mouseup 1"
+  F22 + Release
+
+# Right Click DOWN+UP
+"xdotool mousedown 3"
+  F21
+
+"xdotool mouseup 3"
+  F21 + Release

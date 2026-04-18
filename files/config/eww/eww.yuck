@@ -1,0 +1,47 @@
+(defpoll time :interval "1s" "date +%H:%M")
+(defpoll date :interval "1h" "date '+%A, %d. %B'")
+
+(defwidget constructor []
+  (box :class "constructor" :orientation "h" :space-evenly false
+     (image :path 'images/clock.png'
+        :image-width 150
+        :image-height 150
+        :class "picture")
+    (box :orientation "v" :class "text" :space-evenly false
+      (label :text time :class "main-time"
+            :tooltip "Today is a great day for a Snacker!")
+      (label :text date :class "main-date"))))
+
+(defwindow clock
+  :geometry (geometry :x "10px"
+                      :y "34px"
+                      :width "450px"
+                      :height "100px"
+                      :anchor "top left")
+  :stacking "bg"
+  :exclusive true
+  :windowtype "dock"
+  :wm-ignore true
+  (constructor))
+
+(defwidget filian []
+  (box :orientation "h" :space-evenly false
+    (image :path 'images/filian.gif'
+           :class "picture")
+  )
+)
+
+(defwindow filian
+  :monitor '["<primary>", 2, 1, 0]'
+  :windowtype "dock"
+  :stacking "bg"
+  :exclusive true
+  :wm-ignore true
+  :geometry (geometry
+    :x "-10px"
+    :y "-10px"
+    :width "70px"
+    :height "70px"
+    :anchor "bottom right")
+  (filian)
+)

@@ -1,0 +1,36 @@
+! Numpad Remaps
+! 4, 5, 6, 8 to Arrow Keys
+keycode 83 = Left
+keycode 84 = Down
+keycode 85 = Right
+keycode 80 = Up
+
+! 7 to Tab
+keycode 79 = Tab
+
+! 1 to F1
+keycode 87 = F1
+
+! Period to Alt
+keycode 91 = Alt_L
+add mod1 = Alt_L
+
+! 2, 3 to Z, X
+keycode 88 = z
+keycode 89 = x
+
+! 0 to Space
+keycode 90 = space
+
+! Plus to C
+keycode 86 = c
+
+! 9 to 1
+keycode 81 = 1
+
+! Minus to F20 (-> Ctrl+O)
+keycode 82 = F20
+
+! Slash to Shift
+keycode 106 = Shift_L
+add shift = Shift_L
