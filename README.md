@@ -32,3 +32,8 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
 ## Extras
  - Home-Manager Installed
  - Guix Package Manager Installed
+
+# Screenshots
+![Snowflake Desktop Screenshot](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/screenshots/snowflake01.png)
+![Snowflake Desktop Screenshot](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/screenshots/snowflake02.png)
+![Snowflake Desktop Screenshot](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/screenshots/snowflake03.png)
