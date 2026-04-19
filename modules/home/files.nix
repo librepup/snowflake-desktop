@@ -198,6 +198,7 @@
     "Pictures/Wallpapers/guix_wp_02.png".source = ../../files/pictures/wallpapers/guix_wp_02.png;
     "Pictures/Wallpapers/gigiThumb.jpg".source = ../../files/pictures/wallpapers/gigiThumb.jpg;
     "Pictures/Wallpapers/gigiMurin.png".source = ../../files/pictures/wallpapers/gigiMurin.png;
+    "Pictures/Wallpapers/makima.jpg".source = ../../files/pictures/wallpapers/makima.jpg;
   };
   # Icons
   home.file = {

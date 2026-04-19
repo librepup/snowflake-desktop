@@ -351,7 +351,7 @@ myTSConfig = TS.TSConfig
 myTree :: [Tree (TS.TSNode (X ()))]
 myTree =
   [ Node (TS.TSNode "Most Used" "" (return ()))
-      [ Node (TS.TSNode "Discord" "" (spawn "discord")) []
+      [ Node (TS.TSNode "Discord (No GPU)" "" (spawn "discord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
       , Node (TS.TSNode "Krita" "" (spawn "krita")) []
       , Node (TS.TSNode "Steam" "" (spawn "steam")) []
       , Node (TS.TSNode "osu!" "" (spawn "osu-stable")) []
@@ -367,6 +367,7 @@ myTree =
       ]
   , Node (TS.TSNode "Chat" "" (return ()))
       [ Node (TS.TSNode "Discord" "" (spawn "discord")) []
+      , Node (TS.TSNode "Discord (No GPU)" "" (spawn "discord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
       , Node (TS.TSNode "Equibop" "" (spawn "equibop")) []
       , Node (TS.TSNode "Signal" "" (spawn "signal-desktop")) []
       , Node (TS.TSNode "Telegram" "" (spawn "Telegram")) []
