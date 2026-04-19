@@ -321,6 +321,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_F12), windows (W.shift "F12"))
     , ((modm, xK_Home), windows (W.view "\xEF85"))
     , ((modm .|. shiftMask, xK_Home), windows (W.shift "\xEF85"))
+    , ((modm, xK_End), windows (W.view "\xF001"))
+    , ((modm .|. shiftMask, xK_End), windows (W.shift "\xF001"))
     ]
     ++
     -- Switch Workspaces

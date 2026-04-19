@@ -473,7 +473,7 @@ myXPConfig :: XPConfig
 myXPConfig = moriXPConfig
 -- Settings
 functionWorkspaces = ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"]
-namedWorkspaces = ["osu!","Minus","Plus","\xEF85"]
+namedWorkspaces = ["osu!","Minus","Plus","\xEF85","\xF001"]
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"] ++ functionWorkspaces ++ namedWorkspaces
 myModMask       = mod1Mask  -- Alt Key (mod1)
 myWinMask       = mod4Mask  -- Windows/Super Key (mod4)
