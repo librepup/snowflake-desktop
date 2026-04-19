@@ -212,6 +212,7 @@
     ## Akuma Nihmune
     "Pictures/Wallpapers/Akuma Nihmune/01.png".source = ../../files/pictures/wallpapers/AkumaNihmune/01.png;
     "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
+    "Pictures/Wallpapers/Akuma Nihmune/03.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/03.jpg;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
     ## el_XoX
