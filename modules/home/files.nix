@@ -49,6 +49,10 @@
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".trayicon-scripts/wayPaper.sh" = {
+      source = ../../files/scripts/tooltips/wayPaper.sh;
+      executable = true;
+    };
     ".scripts/animescript.sh" = {
       source = ../../files/scripts/animescript;
       executable = true;
@@ -77,8 +81,8 @@
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
     ".shell-autoload-functions/funcs/xmonadsync.sh".source = ../../files/scripts/xmonadsync.sh;
+    ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source = ../../files/scripts/tauonCopyConfig.sh;
     ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source = ../../files/scripts/toggle-zen-transparency.sh;
-    # ".shell-autoload-functions/funcs/arrowvortex.sh".source = ../../files/scripts/arrowvortex.sh;
     ".shell-autoload-functions/funcs/lash.sh".source = ../../files/scripts/lash.sh;
     ".shell-autoload-functions/funcs/translate.sh".source = ../../files/scripts/translate.sh;
     ".shell-autoload-functions/funcs/eww.sh".source = ../../files/scripts/eww.sh;
@@ -223,6 +227,7 @@
     "Pictures/Icons/error.png".source = ../../files/pictures/icons/error.png;
     "Pictures/Icons/no.png".source = ../../files/pictures/icons/no.png;
     "Pictures/Icons/xmonad_logo.png".source = ../../files/pictures/icons/xmonad_logo.png;
+    "Pictures/Icons/waypaper.svg".source = ../../files/pictures/icons/waypaper.svg;
   };
   # Rofi
   home.file = {

@@ -113,6 +113,7 @@ myAutostart = do
   spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -x && redshift -l 52.520008:13.404954 -t 5200:5200 & fi" -- Bluelight Filter
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC
+  spawnOnceIfExists "yad" "pkill yad && $HOME/.trayicon-scripts/wayPaper.sh &"
 
 ------------------------------------------------------------------------
 -- Startup Hook

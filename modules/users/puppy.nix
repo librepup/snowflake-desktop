@@ -102,18 +102,6 @@ let
     equibop
     element-desktop
   ];
-  bundleGames = with pkgs; [
-    (pkgs.callPackage "${inputs.jonabron}/nix/packages/arrowvortex/default.nix" { })
-    (pkgs.callPackage "${inputs.jonabron}/nix/packages/notitg/default.nix" { })
-    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
-    outfox
-    ace-of-penguins
-    kdePackages.kpat
-    prismlauncher
-    itgmania
-    etterna
-    inputs.jonabron.packages.x86_64-linux.gobm
-  ];
   bundleEmulators = with pkgs; [
     azahar
     ryubing
@@ -145,8 +133,9 @@ let
     kew
     cmus
     spotify-tray
+    tauon
   ];
-  bundleWine = with pkgs; [
+  bundleWineAndGames = with pkgs; [
     wineWowPackages.yabridge
     winetricks
     nero-umu
@@ -154,6 +143,18 @@ let
     mangohud
     protonup-ng
     protonup-qt
+    (pkgs.callPackage "${inputs.jonabron}/nix/packages/arrowvortex/default.nix" { })
+    (pkgs.callPackage "${inputs.jonabron}/nix/packages/notitg/default.nix" { })
+    inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable
+    outfox
+    ace-of-penguins
+    kdePackages.kpat
+    prismlauncher
+    itgmania
+    etterna
+    inputs.jonabron.packages.x86_64-linux.gobm
+    lutris
+    bottles
   ];
   bundleArchivers = with pkgs; [
     zip
@@ -184,7 +185,12 @@ let
   bundleImageViewers = with pkgs; [
     feh
     xfce.tumbler
+  ];
+  bundleWallpaperManagers = with pkgs; [
     variety
+    waypaper
+    linux-wallpaperengine
+    yad
   ];
   bundleExplorers = with pkgs; [
     xfce.thunar
@@ -201,6 +207,25 @@ let
     cat9
     cat9-wrapped
   ];
+  bundleXorg = with pkgs; [
+    yad
+    xcolor
+    xclicker
+    xclip
+    xdotool
+    wmctrl
+    xorg.xkbutils
+    xorg.xkbprint
+    xorg.xrandr
+    xorg.xprop
+    xorg.xwininfo
+    lxrandr
+    xev
+    xorg.xkill
+    xdo
+    lxappearance
+    xmobar
+  ];
   bundleGeneralUtilities = with pkgs; [
     progress
     openssl
@@ -209,13 +234,7 @@ let
     rsync
     usbutils
     websocat
-    xorg.xkbutils
-    xorg.xkbprint
     ghostscript
-    xorg.xrandr
-    lxrandr
-    xorg.xprop
-    xorg.xwininfo
     eza
     bat
     zoxide
@@ -226,24 +245,15 @@ let
     clock-rs
     ffmpeg-full
     coreutils-full
-    xclip
-    xdotool
-    wmctrl
     pciutils
     fd
     imv
     jq
-    xev
     nix-search-cli
     manix
-    xorg.xkill
     devour
     systemdgenie
-    xmodmap
-    xbindkeys
     killall
-    xdo
-    powershell
     ghidra-bin
   ];
   bundleNetworking = with pkgs; [
@@ -270,7 +280,8 @@ let
     keyboard-layout-editor
     kalamine
     xorg.xkbcomp
-    xclicker
+    xmodmap
+    xbindkeys
   ];
 in
 {
@@ -300,15 +311,12 @@ in
       inputs.jonabron.packages.x86_64-linux.jonabar
       inputs.nix-init.packages.x86_64-linux.default
       inputs.jonabron.packages.x86_64-linux.momoisay
-      lxappearance
       espeak
       inputs.jonabron.packages.x86_64-linux.urbit
       kdePackages.karousel
       plasmusic-toolbar
       libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
-      lutris
-      bottles
       qemu
       quickemu
       kjv
@@ -341,7 +349,6 @@ in
       fontforge-gtk
       fontpreview
       arduino-ide
-      xmobar
       pokeget-rs
     ]
     ++ bundleBrowsers
@@ -352,11 +359,10 @@ in
     ++ bundleDAWs
     ++ bundleAudioUtilities
     ++ bundleMessaging
-    ++ bundleGames
     ++ bundleEmulators
     ++ bundleGraphicsDesign
     ++ bundleMusicPlayers
-    ++ bundleWine
+    ++ bundleWineAndGames
     ++ bundleArchivers
     ++ bundleVideoProduction
     ++ bundleGeneralUtilities
@@ -368,6 +374,9 @@ in
     ++ bundleNode
     ++ bundleVirtualization
     ++ bundleHaskell
+    ++ bundleXorg
+    ++ bundleWallpaperManagers
+    ++ bundleWeb
     ++ bundleExplorers;
   };
 }

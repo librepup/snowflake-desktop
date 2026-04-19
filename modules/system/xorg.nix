@@ -57,8 +57,6 @@
         dunst
         libnotify
         eww
-        xcolor
-        linux-wallpaperengine
       ];
       package = pkgs.i3-rounded;
     };
