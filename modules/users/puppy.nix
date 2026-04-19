@@ -184,6 +184,7 @@ let
   bundleImageViewers = with pkgs; [
     feh
     xfce.tumbler
+    variety
   ];
   bundleExplorers = with pkgs; [
     xfce.thunar
