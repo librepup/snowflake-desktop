@@ -214,6 +214,12 @@
     "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
+    ## el_XoX
+    "Pictures/Wallpapers/el_XoX/01.jpg".source = ../../files/pictures/wallpapers/el_XoX/01.jpg;
+    "Pictures/Wallpapers/el_XoX/02.jpg".source = ../../files/pictures/wallpapers/el_XoX/02.jpg;
+    "Pictures/Wallpapers/el_XoX/03.jpg".source = ../../files/pictures/wallpapers/el_XoX/03.jpg;
+    "Pictures/Wallpapers/el_XoX/04.jpg".source = ../../files/pictures/wallpapers/el_XoX/04.jpg;
+    "Pictures/Wallpapers/el_XoX/05.jpg".source = ../../files/pictures/wallpapers/el_XoX/05.jpg;
     # Unsorted
     "Pictures/Wallpapers/Unsorted/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/Unsorted/dangeroooous_jungle_wp.png;
     "Pictures/Wallpapers/Unsorted/marnieGruvbox.png".source = ../../files/pictures/wallpapers/Unsorted/marnieGruvbox.png;
