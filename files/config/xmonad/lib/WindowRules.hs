@@ -121,6 +121,8 @@ myManageHook = composeAll
     , className =? "floorp"               --> doShift "2"          -- Send Floorp Browser to Workspace 2.
     , title =? "osu!"                     --> doShift "osu!"       -- Move osu!stable to the "osu!" Workspace.
     , title =? "Waypaper"                 --> doRectFloat centerAndSizeTo840x440 -- Float, Center, and Resize Waypaper Windows.
+    , className =? "krita"                --> doShift "3"
+    , title =? "Krita - Edit Text — Krita" --> doFloat
     -- , (liftX $ withWindowSet (return . (== "9") . W.currentTag)) --> doFloat <+> doSink
     ]
   where

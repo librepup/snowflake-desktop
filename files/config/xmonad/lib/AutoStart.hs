@@ -107,7 +107,8 @@ myAutostart = do
   spawnOnceIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
   spawnOnceIfExists "jonabar-mori" "if ! pgrep polybar > /dev/null; then jonabar-mori & fi" -- Polybar
   spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
-  spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
+  spawnOnceIfExists "waypaper" "waypaper --restore"
+  -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
   spawnOnceIfExists "nixmacs-client" "if ! nixmacs-client -e \"(emacs-pid)\" > /dev/null 2>&1; then nixmacs --fg-daemon & fi" -- NixMacs Daemon
   spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
   spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -x && redshift -l 52.520008:13.404954 -t 5200:5200 & fi" -- Bluelight Filter
