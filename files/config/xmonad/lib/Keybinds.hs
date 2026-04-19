@@ -131,6 +131,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_Tab), toggleWS)
         , ((0, xK_n), spawn "gnome-text-editor")
+	, ((0, xK_a), spawn "pavucontrol")
         , ((controlMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
         , ((0, xK_minus), sendMessage zoomOut)
         , ((0, xK_equal), sendMessage zoomIn)
