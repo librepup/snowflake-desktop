@@ -96,6 +96,7 @@ import XMonad.Prompt.ConfirmPrompt
 -- Modify Opacity
 myFadeHook :: FadeHook
 myFadeHook = composeAll [ className =? "Emacs" --> opacity 0.80
+                        , className =? "anvil" --> opacity 0.80
                         ]
 
 -- Spawn If Exists Helper
@@ -376,6 +377,7 @@ myTree =
   , Node (TS.TSNode "Editing" "" (return ()))
       [ Node (TS.TSNode "Text" "" (return ()))
           [ Node (TS.TSNode "Emacs" "" (spawn "nixmacs")) []
+          , Node (TS.TSNode "Notepad" "" (spawn "gnome-text-editor")) []
           ]
       , Node (TS.TSNode "Video" "" (return ()))
           [ Node (TS.TSNode "KDEnlive" "" (spawn "kdenlive")) []

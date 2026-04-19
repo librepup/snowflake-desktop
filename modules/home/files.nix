@@ -16,6 +16,8 @@
   # Picom
   home.file.".config/picom/picom.conf".source = ../../files/config/picom/latest.conf;
   home.file.".config/picom/outdated.conf".source = ../../files/config/picom/picom.conf;
+  # Anvil
+  home.file.".anvil/style.js".source = ../../files/config/anvil/style.js;
   # Wofi
   home.file = {
     ".config/wofi/config".source = ../../files/config/wofi/config;

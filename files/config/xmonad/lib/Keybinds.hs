@@ -130,6 +130,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
         , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_Tab), toggleWS)
+        , ((0, xK_n), spawn "gnome-text-editor")
+        , ((controlMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
         , ((0, xK_minus), sendMessage zoomOut)
         , ((0, xK_equal), sendMessage zoomIn)
         , ((0, xK_c), spawn "xcolor | xclip -selection clipboard")

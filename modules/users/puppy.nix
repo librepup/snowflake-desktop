@@ -175,6 +175,9 @@ let
     kdePackages.ffmpegthumbs
     simplescreenrecorder
   ];
+  bundleTextEditors = with pkgs; [
+    anvil-editor
+  ];
   bundleWeb = with pkgs; [
     httrack
     suckit
@@ -225,6 +228,7 @@ let
     xdo
     lxappearance
     xmobar
+    glycin-loaders
   ];
   bundleGeneralUtilities = with pkgs; [
     progress

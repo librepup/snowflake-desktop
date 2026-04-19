@@ -1,7 +1,6 @@
 ------------------------------------------------------------------------
 -- WindowRules
 ------------------------------------------------------------------------
-
 module WindowRules where
 import Definitions
 import Keybinds
@@ -121,5 +120,8 @@ myManageHook = composeAll
     , title =? "Media viewer"             --> doFloat              -- Float Telegram Media Viewer Window.
     , className =? "floorp"               --> doShift "2"          -- Send Floorp Browser to Workspace 2.
     , title =? "osu!"                     --> doShift "osu!"       -- Move osu!stable to the "osu!" Workspace.
+    , title =? "Waypaper"                 --> doRectFloat centerAndSizeTo840x440 -- Float, Center, and Resize Waypaper Windows.
     -- , (liftX $ withWindowSet (return . (== "9") . W.currentTag)) --> doFloat <+> doSink
     ]
+  where
+    centerAndSizeTo840x440 = (W.RationalRect ((1 - (840 / 1920)) / 2) ((1 - (440 / 1080)) / 2) (840 / 1920) (440 / 1080))
