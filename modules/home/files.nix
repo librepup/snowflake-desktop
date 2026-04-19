@@ -209,6 +209,9 @@
     ## Demenishki
     "Pictures/Wallpapers/Demeniski/01.jpg".source = ../../files/pictures/wallpapers/Demenishki/01.jpg;
     "Pictures/Wallpapers/Demeniski/02.png".source = ../../files/pictures/wallpapers/Demenishki/02.png;
+    ## Akuma Nihmune
+    "Pictures/Wallpapers/Akuma Nihmune/01.png".source = ../../files/pictures/wallpapers/AkumaNihmune/01.png;
+    "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
     # Unsorted
