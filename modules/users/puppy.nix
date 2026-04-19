@@ -381,6 +381,7 @@ in
     ++ bundleXorg
     ++ bundleWallpaperManagers
     ++ bundleWeb
+    ++ bundleTextEditors
     ++ bundleExplorers;
   };
 }
