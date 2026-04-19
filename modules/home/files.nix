@@ -183,6 +183,9 @@
     "Pictures/Wallpapers/Mori Calliope/10.png".source = ../../files/pictures/wallpapers/MoriCalliope/10.png;
     "Pictures/Wallpapers/Mori Calliope/11.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/11.jpg;
     "Pictures/Wallpapers/Mori Calliope/12.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/12.jpg;
+    "Pictures/Wallpapers/Camila/01.png".source = ../../files/pictures/wallpapers/Camila/01.png;
+    "Pictures/Wallpapers/Camila/02.jpg".source = ../../files/pictures/wallpapers/Camila/02.jpg;
+    "Pictures/Wallpapers/Camila/03.jpg".source = ../../files/pictures/wallpapers/Camila/03.jpg;
     "Pictures/Wallpapers/filianElevator.png".source = ../../files/pictures/wallpapers/filianElevator.png;
     "Pictures/Wallpapers/dangerousFilian.png".source = ../../files/pictures/wallpapers/dangerousFilian.png;
     "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/dangeroooous_jungle_wp.png;
