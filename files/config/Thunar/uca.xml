@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1772493399604721-1</unique-id>
-	<command>kitty -o font_family=TempleOS -o font_size=8 --working-directory=%f</command>
+	<command>kitty --working-directory=%f</command>
 	<description>Open Terminal in the current Working Directory</description>
 	<range></range>
 	<patterns>*</patterns>

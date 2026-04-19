@@ -171,6 +171,8 @@
   };
   # Wallpapers
   home.file = {
+    # VTubers
+    ## Mori Calliope
     "Pictures/Wallpapers/Mori Calliope/01.png".source = ../../files/pictures/wallpapers/MoriCalliope/01.png;
     "Pictures/Wallpapers/Mori Calliope/02.png".source = ../../files/pictures/wallpapers/MoriCalliope/02.png;
     "Pictures/Wallpapers/Mori Calliope/03.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/03.jpg;
@@ -183,25 +185,31 @@
     "Pictures/Wallpapers/Mori Calliope/10.png".source = ../../files/pictures/wallpapers/MoriCalliope/10.png;
     "Pictures/Wallpapers/Mori Calliope/11.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/11.jpg;
     "Pictures/Wallpapers/Mori Calliope/12.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/12.jpg;
+    ## Camila
     "Pictures/Wallpapers/Camila/01.png".source = ../../files/pictures/wallpapers/Camila/01.png;
     "Pictures/Wallpapers/Camila/02.jpg".source = ../../files/pictures/wallpapers/Camila/02.jpg;
     "Pictures/Wallpapers/Camila/03.jpg".source = ../../files/pictures/wallpapers/Camila/03.jpg;
-    "Pictures/Wallpapers/filianElevator.png".source = ../../files/pictures/wallpapers/filianElevator.png;
-    "Pictures/Wallpapers/dangerousFilian.png".source = ../../files/pictures/wallpapers/dangerousFilian.png;
-    "Pictures/Wallpapers/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/dangeroooous_jungle_wp.png;
-    "Pictures/Wallpapers/marnieGruvbox.png".source = ../../files/pictures/wallpapers/marnieGruvbox.png;
-    "Pictures/Wallpapers/demeLook.jpg".source = ../../files/pictures/wallpapers/demeLook.jpg;
-    "Pictures/Wallpapers/helltakerStare.jpg".source = ../../files/pictures/wallpapers/helltakerStare.jpg;
-    "Pictures/Wallpapers/lainGruvbox.jpg".source = ../../files/pictures/wallpapers/lainGruvbox.jpg;
-    "Pictures/Wallpapers/nixosAnime.png".source = ../../files/pictures/wallpapers/nixosAnime.png;
-    "Pictures/Wallpapers/fuwamoco.jpg".source = ../../files/pictures/wallpapers/fuwamoco.jpg;
-    "Pictures/Wallpapers/guix_wp_01.svg".source = ../../files/pictures/wallpapers/guix_wp_01.svg;
-    "Pictures/Wallpapers/guix_wp_02.svg".source = ../../files/pictures/wallpapers/guix_wp_02.svg;
-    "Pictures/Wallpapers/guix_wp_01.png".source = ../../files/pictures/wallpapers/guix_wp_01.png;
-    "Pictures/Wallpapers/guix_wp_02.png".source = ../../files/pictures/wallpapers/guix_wp_02.png;
-    "Pictures/Wallpapers/gigiThumb.jpg".source = ../../files/pictures/wallpapers/gigiThumb.jpg;
-    "Pictures/Wallpapers/gigiMurin.png".source = ../../files/pictures/wallpapers/gigiMurin.png;
-    "Pictures/Wallpapers/makima.jpg".source = ../../files/pictures/wallpapers/makima.jpg;
+    ## Filian
+    "Pictures/Wallpapers/Filian/01.png".source = ../../files/pictures/wallpapers/Filian/01.png;
+    "Pictures/Wallpapers/Filian/02.png".source = ../../files/pictures/wallpapers/Filian/02.png;
+    ## Gigi Murin
+    "Pictures/Wallpapers/Gigi Murin/01.png".source = ../../files/pictures/wallpapers/GigiMurin/01.png;
+    "Pictures/Wallpapers/Gigi Murin/02.jpg".source = ../../files/pictures/wallpapers/GigiMurin/02.jpg;
+    ## Demenishki
+    "Pictures/Wallpapers/Demeniski/01.jpg".source = ../../files/pictures/wallpapers/Demenishki/01.jpg;
+    ## FUWAMOCO
+    "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
+    # Unsorted
+    "Pictures/Wallpapers/Unsorted/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/Unsorted/dangeroooous_jungle_wp.png;
+    "Pictures/Wallpapers/Unsorted/marnieGruvbox.png".source = ../../files/pictures/wallpapers/Unsorted/marnieGruvbox.png;
+    "Pictures/Wallpapers/Unsorted/helltakerStare.jpg".source = ../../files/pictures/wallpapers/Unsorted/helltakerStare.jpg;
+    "Pictures/Wallpapers/Unsorted/lainGruvbox.jpg".source = ../../files/pictures/wallpapers/Unsorted/lainGruvbox.jpg;
+    "Pictures/Wallpapers/Unsorted/nixosAnime.png".source = ../../files/pictures/wallpapers/Unsorted/nixosAnime.png;
+    "Pictures/Wallpapers/Unsorted/guix_wp_01.svg".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_01.svg;
+    "Pictures/Wallpapers/Unsorted/guix_wp_02.svg".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_02.svg;
+    "Pictures/Wallpapers/Unsorted/guix_wp_01.png".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_01.png;
+    "Pictures/Wallpapers/Unsorted/guix_wp_02.png".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_02.png;
+    "Pictures/Wallpapers/Unsorted/makima.jpg".source = ../../files/pictures/wallpapers/Unsorted/makima.jpg;
   };
   # Icons
   home.file = {
