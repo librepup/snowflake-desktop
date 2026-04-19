@@ -189,14 +189,20 @@
     "Pictures/Wallpapers/Camila/01.png".source = ../../files/pictures/wallpapers/Camila/01.png;
     "Pictures/Wallpapers/Camila/02.jpg".source = ../../files/pictures/wallpapers/Camila/02.jpg;
     "Pictures/Wallpapers/Camila/03.jpg".source = ../../files/pictures/wallpapers/Camila/03.jpg;
+    "Pictures/Wallpapers/Camila/04.jpg".source = ../../files/pictures/wallpapers/Camila/04.jpg;
+    "Pictures/Wallpapers/Camila/05.png".source = ../../files/pictures/wallpapers/Camila/05.png;
+    "Pictures/Wallpapers/Camila/06.jpg".source = ../../files/pictures/wallpapers/Camila/06.jpg;
     ## Filian
     "Pictures/Wallpapers/Filian/01.png".source = ../../files/pictures/wallpapers/Filian/01.png;
     "Pictures/Wallpapers/Filian/02.png".source = ../../files/pictures/wallpapers/Filian/02.png;
+    "Pictures/Wallpapers/Filian/03.jpg".source = ../../files/pictures/wallpapers/Filian/03.jpg;
     ## Gigi Murin
     "Pictures/Wallpapers/Gigi Murin/01.png".source = ../../files/pictures/wallpapers/GigiMurin/01.png;
     "Pictures/Wallpapers/Gigi Murin/02.jpg".source = ../../files/pictures/wallpapers/GigiMurin/02.jpg;
+    "Pictures/Wallpapers/Gigi Murin/03.jpg".source = ../../files/pictures/wallpapers/GigiMurin/03.jpg;
     ## Demenishki
     "Pictures/Wallpapers/Demeniski/01.jpg".source = ../../files/pictures/wallpapers/Demenishki/01.jpg;
+    "Pictures/Wallpapers/Demeniski/02.png".source = ../../files/pictures/wallpapers/Demenishki/02.png;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
     # Unsorted
