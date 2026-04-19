@@ -132,6 +132,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_Tab), toggleWS)
         , ((0, xK_n), spawn "gnome-text-editor")
 	, ((0, xK_a), spawn "pavucontrol")
+        , ((0, xK_m), spawn "cp /etc/nixos/files/config/tauon/tauon.conf $HOME/.local/share/TauonMusicBox/tauon.conf && tauon")
         , ((controlMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
         , ((0, xK_minus), sendMessage zoomOut)
         , ((0, xK_equal), sendMessage zoomIn)
