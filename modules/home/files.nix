@@ -254,8 +254,8 @@
       source = ../../files/config/rofi/scripts/runEntry.sh;
       executable = true;
     };
-    "config/rofi/sounds/click.wav".source = ../../files/config/rofi/sounds/click.wav;
-    "config/rofi/sounds/click.ogg".source = ../../files/config/rofi/sounds/click.ogg;
+    ".config/rofi/sounds/click.wav".source = ../../files/config/rofi/sounds/click.wav;
+    ".config/rofi/sounds/click.ogg".source = ../../files/config/rofi/sounds/click.ogg;
     ".config/rofi/config.rasi".source = ../../files/config/rofi/config.rasi;
   };
   # Yazi
