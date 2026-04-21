@@ -8,5 +8,6 @@
     ./authentication.nix
     ./printing.nix
     ./tablet.nix
+    ./ibus.nix
   ];
 }

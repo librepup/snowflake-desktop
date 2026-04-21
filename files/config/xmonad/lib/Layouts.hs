@@ -11,10 +11,11 @@ import Keybinds
 -- Basics
 import XMonad
 import Data.Monoid
-import Data.List (intercalate)
+import Data.List (intercalate, intersect)
 import Data.Char (isSpace)
 import Data.Tree
 import System.Exit
+import System.IO (readFile, writeFile)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
@@ -95,13 +96,13 @@ import XMonad.Prompt.ConfirmPrompt
 ------------------------------------------------------------------------
 -- Layouts
 ------------------------------------------------------------------------
-myLayoutHook = avoidStruts
-             $ onWorkspace "9" allFloat
+myLayoutHook t = avoidStruts
+             $ onWorkspace "9" (allFloat t)
              $ onWorkspace "osu!" fullLayout
              $ smartBorders
              $ mkToggle (NBFULL ?? EOT)
-             $ tabbedLayout
-             ||| multiLayout
+             $ tabbedLayout t
+             ||| multiLayout t
              ||| spiralLayout
              ||| accordionLayout
              ||| circleLayout
@@ -109,16 +110,16 @@ myLayoutHook = avoidStruts
   where
     spacingWithEdge i = spacingRaw True (Border i i i i) True (Border i i i i) True
     -- Tabbed
-    tabbedLayout =
+    tabbedLayout t =
       named "Tabbed"
       $ minimize
-      $ (tabbed shrinkText myTabTheme)
+      $ (tabbed shrinkText t)
     -- Multi
-    multiLayout =
+    multiLayout t =
       named "Multi"
       $ minimize
       $ windowNavigation
-      $ addTabs shrinkText myTabTheme
+      $ addTabs shrinkText t
       $ subLayout [] Simplest
       $ BW.boringWindows
       $ spacingWithEdge 4
@@ -147,7 +148,7 @@ myLayoutHook = avoidStruts
       $ minimize
       $ noBorders Full
     -- Floating
-    allFloat =
+    allFloat t =
       named "Floating"
       $ minimize
-      $ simpleFloat' shrinkText moriTabTheme
+      $ simpleFloat' shrinkText t

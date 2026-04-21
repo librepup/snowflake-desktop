@@ -18,6 +18,9 @@
     };
   in
   [
+    ibus-engines.uniemoji
+    ibus-with-plugins
+    ibus-theme-tools
     direnv
     eza
     bat

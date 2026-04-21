@@ -96,13 +96,14 @@ import XMonad.Prompt.ConfirmPrompt
 ------------------------------------------------------------------------
 -- Key Binds
 ------------------------------------------------------------------------
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+-- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
     [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal)
     --  ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
-    , ((modm, xK_t), shellPrompt myXPConfig)
+    , ((modm, xK_t), shellPrompt xp)
     , ((modm .|. controlMask, xK_t), spawn "rofi -show drun -config $HOME/.config/rofi/config.rasi")
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
@@ -119,7 +120,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
                                        , TS.ts_originY = fromIntegral cy }
         TS.treeselectAction dynamicConfig layoutTree)
     , ((modm .|. controlMask, xK_space), setLayout $ XMonad.layoutHook conf)
-    -- Scratchpads
     -- Focus Windows
     , ((modm, xK_Left), windows W.focusUp)
     , ((modm, xK_Right), windows W.focusDown)
@@ -134,7 +134,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
         , ((shiftMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
-	, ((0, xK_a), spawn "pavucontrol")
+        , ((0, xK_a), spawn "pavucontrol")
         , ((0, xK_m), spawn "cp /etc/nixos/files/config/tauon/tauon.conf $HOME/.local/share/TauonMusicBox/tauon.conf && tauon")
         , ((controlMask .|. shiftMask, xK_m), spawn "tauon")
         , ((0, xK_minus), sendMessage zoomOut)
@@ -143,7 +143,16 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_r), sendMessage zoomReset)
         , ((0, xK_e), spawn "nixmacs-client -c")
         , ((0, xK_k), spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")
-        , ((0, xK_space), setLayout $ XMonad.layoutHook conf)
+        , ((0, xK_space), do
+            screenRect <- fmap (screenRect . W.screenDetail . W.current) (gets windowset)
+            let sw = fromIntegral $ rect_width screenRect
+                sh = fromIntegral $ rect_height screenRect
+                cx = (sw `div` 2) - (TS.ts_node_width myTSConfig `div` 2)
+                cy = (sh `div` 2) - 200
+                dynamicConfig = myTSConfig { TS.ts_originX = fromIntegral cx
+                                           , TS.ts_originY = fromIntegral cy }
+            TS.treeselectAction dynamicConfig themeTree)
+--        , ((0, xK_space), setLayout $ XMonad.layoutHook conf)
         , ((0, xK_Return), spawn Definitions.myTerminal)
         , ((shiftMask, xK_Return), spawn Definitions.myTerminalFb)
         , ((controlMask, xK_Return), spawn "arcan_db add_appl_kv console font_size 14 >/dev/null 2>&1 && arcan console lash")
@@ -186,7 +195,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_a), spawn "flameshot gui")
     , ((modm, xK_d), spawn "icedove")
     -- Exit XMonad
-    , ((modm .|. shiftMask, xK_e), confirmPrompt myXPConfig "Type 'yes' to exit:" $ io (exitWith ExitSuccess))
+    , ((modm .|. shiftMask, xK_e), confirmPrompt xp "Type 'yes' to exit:" $ io (exitWith ExitSuccess))
     , ((myWinMask .|. shiftMask, xK_x), io (exitWith ExitSuccess))
     -- Restart XMonad
     , ((modm .|. shiftMask, xK_p), spawn $
@@ -257,7 +266,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask .|. shiftMask, xK_e), spawn "thunar -q")
     , ((myWinMask, xK_t), spawn "vicinae open")
     , ((myWinMask .|. shiftMask, xK_t), spawn "compgen -c | sort -u | vicinae dmenu --placeholder '%:' | sh")
-    , ((myWinMask, xK_period), spawn "emote")
+    -- , ((myWinMask, xK_period), spawn "emote")
     , ((myWinMask, xK_v), spawn $
       "if command -v pactl > /dev/null && command -v dmenu > /dev/null; then " ++
         "chosen=$(seq 0 5 150 | awk '{print $1 \"%\"}' | dmenu -nb '#0A0A05' -nf '#D4921A' -sf '#4CBF5A' -sb '#C23FAD' -fn 'TempleOS:size=14' -p '%:'); " ++

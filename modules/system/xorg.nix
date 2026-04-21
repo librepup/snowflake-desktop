@@ -38,8 +38,10 @@
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     enable = true;
-    xkb.layout = "us";
-    xkb.variant = "colemak";
+    xkb = {
+      layout = "us";
+      variant = "colemak";
+    };
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

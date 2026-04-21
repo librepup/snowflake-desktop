@@ -10,14 +10,16 @@ module Definitions where
 import XMonad
 import XMonad.Operations
 import Data.Monoid
-import Data.List (intercalate)
+import Data.List (intercalate, intersect)
 import Data.Char (isSpace)
 import Data.Tree
 import System.Exit
+import System.IO (readFile, writeFile)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
 import Control.Monad (when)
+import Control.Concurrent (threadDelay)
 import XMonad.ManageHook (className)
 import XMonad.Prelude (when)
 -- Layouts
@@ -58,14 +60,14 @@ import XMonad.Hooks.FadeWindows
 -- Utils
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
-import XMonad.Util.Run (runProcessWithInput)
+import XMonad.Util.Run (runProcessWithInput, spawnPipe)
 import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import qualified XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedScratchpad
 -- Actions
-import XMonad.Actions.FloatKeys
+import XMonad.Actions.FloatKeys (keysMoveWindow, keysMoveWindowTo, keysResizeWindow, keysAbsResizeWindow)
 import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
@@ -82,10 +84,10 @@ import XMonad.Actions.OnScreen (viewOnScreen)
 import XMonad.Actions.UpdatePointer
 -- X11
 import Graphics.X11.Xlib
-import Graphics.X11.Xlib (xC_left_ptr)
-import Graphics.X11.Xlib (warpPointer)
+import Graphics.X11.Xlib (warpPointer, xC_left_ptr, displayWidth, displayHeight)
 import Graphics.X11.Xlib.Extras
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
+import Graphics.X11.Xlib.Misc (grabPointer, getPointerControl)
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
@@ -93,6 +95,51 @@ import XMonad.Prompt.ConfirmPrompt
 ------------------------------------------------------------------------
 -- Definitions
 ------------------------------------------------------------------------
+-- Theme Switching
+getXPConfig :: String -> XPConfig
+getXPConfig "elXoX" = elXoXXPConfig
+getXPConfig "camila" = camilaXPConfig
+getXPConfig "mori" = moriXPConfig
+getXPConfig "gigi" = gigiXPConfig
+getXPConfig _ = moriXPConfig
+
+setTheme :: String -> X ()
+setTheme name = do
+  io $ writeFile "/home/puppy/.xmonad/currentTheme" name
+  XS.put (CurrentTheme name)
+  case name of
+    "mori" -> applyBorders moriColorscheme
+    "elXoX" -> applyBorders elXoXColorscheme
+    "camila" -> applyBorders camilaColorscheme
+    "gigi" -> applyBorders gigiColorscheme
+    _ -> return ()
+  sendMessage ReleaseResources
+  refresh
+  setLayout =<< asks (layoutHook . config)
+  spawn "xmonad --recompile && xmonad --restart"
+
+-- activeThemeName <- io $ readFile "/home/puppy/.xmonad/currentTheme"
+-- let activeTabTheme = case activeThemeName of
+--       "mori" -> moriTabTheme
+--       "elXoX" -> elXoXTabTheme
+--       "camila" -> camilaTabTheme
+--       _ -> moriTabTheme
+
+applyBorders :: ColorScheme -> X ()
+applyBorders cs = do
+  refresh
+  withDisplay $ \d -> do
+    let f = focused cs
+    let n = normal cs
+    return ()
+
+themeTree :: [Tree (TS.TSNode (X ()))]
+themeTree =
+  [ Node (TS.TSNode "Mori" "" (setTheme "mori" <+> spawn "pkill polybar; jonabar-mori &")) []
+  , Node (TS.TSNode "el_XoX" "" (setTheme "elXoX" <+> spawn "pkill polybar; jonabar-elxox &")) []
+  , Node (TS.TSNode "Camila" "" (setTheme "camila" <+> spawn "pkill polybar; jonabar-camila &")) []
+  , Node (TS.TSNode "Gigi" "" (setTheme "gigi" <+> spawn "pkill polybar; jonabar-gigi &")) []
+  ]
 -- Modify Opacity
 myFadeHook :: FadeHook
 myFadeHook = composeAll [ className =? "Emacs" --> opacity 0.80
@@ -172,8 +219,8 @@ marnieXPConfig = def
     , height            = 24
     , historySize       = 0
     }
-jungleXPConfig = def
-    { font              = "xft:TempleOS:size=8"
+gigiXPConfig = def
+    { font              = "xft:DejaVu Sans Mono:size=10" -- "xft:TempleOS:size=8"
     , bgColor           = "#1d1f21"
     , fgColor           = "#ffffff"
     , bgHLight          = "#ffbf2d"
@@ -196,6 +243,30 @@ moriXPConfig = def
     , height              = 24
     , historySize         = 0
     }
+elXoXXPConfig = def
+    { font                = "xft:DejaVu Sans Mono:size=10"
+    , bgColor             = "#1d1f21"
+    , fgColor             = "#f2d048"
+    , bgHLight            = "#F58FA3"
+    , fgHLight            = "#1d1f21"
+    , borderColor         = "#F58FA3"
+    , promptBorderWidth   = 2
+    , position            = Top
+    , height              = 24
+    , historySize         = 0
+    }
+camilaXPConfig = def
+    { font                = "xft:DejaVu Sans Mono:size=10"
+    , bgColor             = "#1d1f21"
+    , fgColor             = "#F186AD"
+    , bgHLight            = "#F186AD"
+    , fgHLight            = "#1d1f21"
+    , borderColor         = "#F186AD"
+    , promptBorderWidth   = 2
+    , position            = Top
+    , height              = 24
+    , historySize         = 0
+    }
 -- Tab Theme(s)
 marnieTabTheme = def
     { activeColor         = "#ff2a54"
@@ -209,7 +280,7 @@ marnieTabTheme = def
     , fontName            = "xft:DejaVu Sans Mono:size=10"
     , decoHeight          = 14
     }
-jungleTabTheme = def
+gigiTabTheme = def
     { activeColor         = "#ffbf2d"
     , inactiveColor       = "#1d1f21"
     , urgentColor         = "#ff0000"
@@ -236,6 +307,32 @@ moriTabTheme = def
     , fontName            = "xft:DejaVu Sans Mono:size=10"
     , decoHeight          = 14
     }
+elXoXTabTheme = def
+    { activeColor         = "#F58FA3"
+    , inactiveColor       = "#1d1f21"
+    , urgentColor         = "#ff0000"
+    , activeBorderColor   = "#F58FA3" -- "#f1cf48"
+    , inactiveBorderColor = "#1d1f21"
+    , urgentBorderColor   = "#ff0000"
+    , activeTextColor     = "#000000"
+    , inactiveTextColor   = "#FFFFFF"
+    , urgentTextColor     = "#ffffff"
+    , fontName            = "xft:DejaVu Sans Mono:size=10"
+    , decoHeight          = 14
+    }
+camilaTabTheme = def
+    { activeColor         = "#F186AD"
+    , inactiveColor       = "#1d1f21"
+    , urgentColor         = "#ff0000"
+    , activeBorderColor   = "#F186AD"
+    , inactiveBorderColor = "#1d1f21"
+    , urgentBorderColor   = "#ff0000"
+    , activeTextColor     = "#FEEDFC"
+    , inactiveTextColor   = "#888888"
+    , urgentTextColor     = "#ffffff"
+    , fontName            = "xft:DejaVu Sans Mono:size=10"
+    , decoHeight          = 14
+    }
 -- FlashText Theme(s)
 jungleFlashTheme = def
     { st_font             = "xft:TempleOS:size=8"
@@ -256,12 +353,12 @@ moriFlashTheme = def
 data ColorScheme = ColorScheme
     { focused :: String
     , normal :: String
-    }
+    } deriving (Read, Show)
 marnieColorscheme = ColorScheme
     { focused = "#ff2a54"
     , normal  = "#1d1f21"
     }
-jungleColorscheme = ColorScheme
+gigiColorscheme = ColorScheme
     { focused = "#ffbf2d"
     , normal  = "#1d1f21"
     }
@@ -269,6 +366,17 @@ moriColorscheme = ColorScheme
     { focused = "#ec3372"
     , normal  = "#1d1f21"
     }
+elXoXColorscheme = ColorScheme
+    { focused = "#f2d048"
+    , normal  = "#F58FA3"
+    }
+camilaColorscheme = ColorScheme
+    { focused = "#F186AD"
+    , normal  = "#1d1f21"
+    }
+data CurrentTheme = CurrentTheme String deriving (Read, Show)
+instance ExtensionClass CurrentTheme where
+  initialValue = CurrentTheme "mori"
 -- Dmenu Theme(s)
 data DmenuTheme = DmenuTheme
     { normalBackground :: String
@@ -462,15 +570,15 @@ myScratchpads =
 -- Themes
 ------------------------------------------------------------------------
 -- General
-(myFocusedBorderColor, myNormalBorderColor) = (focused c, normal c)
-  where c = moriColorscheme
+-- (myFocusedBorderColor, myNormalBorderColor) = (focused c, normal c)
+--   where c = activeColorScheme
 -- FlashText
 myFlashTheme = moriFlashTheme
 -- Tabs
-myTabTheme = moriTabTheme
+-- myTabTheme = activeTabTheme
 -- Prompts
-myXPConfig :: XPConfig
-myXPConfig = moriXPConfig
+-- myXPConfig :: XPConfig
+-- myXPConfig = activeXPTheme
 -- Settings
 functionWorkspaces = ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"]
 namedWorkspaces = ["osu!","Minus","Plus","\xEF85","\xF001"]

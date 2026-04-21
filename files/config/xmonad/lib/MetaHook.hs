@@ -17,14 +17,16 @@ import UserAdditions
 import XMonad
 import XMonad.Operations
 import Data.Monoid
-import Data.List (intercalate)
+import Data.List (intercalate, intersect)
 import Data.Char (isSpace)
 import Data.Tree
 import System.Exit
+import System.IO (readFile, writeFile)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
 import Control.Monad (when)
+import Control.Exception (catch, IOException)
 import XMonad.ManageHook (className)
 import XMonad.Prelude (when)
 -- Layouts
@@ -100,7 +102,20 @@ import XMonad.Prompt.ConfirmPrompt
 ------------------------------------------------------------------------
 -- Main
 ------------------------------------------------------------------------
-main = xmonad
+main :: IO ()
+main = do
+  rawTheme <- catch (readFile "/home/puppy/.xmonad/currentTheme")
+                  (\(_ :: IOException) -> return "mori")
+
+  let themeName = filter (`notElem` "\n\r") rawTheme
+  let (activeTabTheme, activeColorScheme, activeXPConfig) = case themeName of
+        "elXoX" -> (elXoXTabTheme, elXoXColorscheme, elXoXXPConfig)
+        "mori" -> (moriTabTheme, moriColorscheme, moriXPConfig)
+        "camila" -> (camilaTabTheme, camilaColorscheme, camilaXPConfig)
+        "gigi" -> (gigiTabTheme, gigiColorscheme, gigiXPConfig)
+        _ -> (moriTabTheme, moriColorscheme, moriXPConfig)
+
+  xmonad
      . ewmhFullscreen
      . ewmh
      . docks
@@ -111,15 +126,17 @@ main = xmonad
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
         workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
-        keys               = myKeys,
+        -- normalBorderColor  = myNormalBorderColor,
+        -- focusedBorderColor = myFocusedBorderColor,
+        normalBorderColor  = normal activeColorScheme,
+        focusedBorderColor = focused activeColorScheme,
+        keys               = \c -> myKeys activeTabTheme activeXPConfig c,
         mouseBindings      = myMouseBindings,
-        layoutHook         = myLayoutHook,
+        layoutHook         = myLayoutHook activeTabTheme,
         manageHook         = myManageHook
                           <+> namedScratchpadManageHook myScratchpads
                           <+> manageHook def,
         handleEventHook    = fadeWindowsEventHook <+> handleEventHook def,
         startupHook        = myStartupHook,
         logHook            = fadeWindowsLogHook myFadeHook <+> myLogHook
-    }
+     }

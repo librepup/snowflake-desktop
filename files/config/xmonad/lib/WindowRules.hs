@@ -21,7 +21,7 @@ import System.Exit
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
-import XMonad.ManageHook (className, composeAll)
+import XMonad.ManageHook (className, composeAll, liftX)
 import XMonad.Prelude (when)
 -- Layouts
 import XMonad.Layout.Spiral
@@ -93,6 +93,7 @@ import XMonad.Prompt.ConfirmPrompt
 ------------------------------------------------------------------------
 -- Window Rules
 ------------------------------------------------------------------------
+
 myManageHook = composeAll
     [ className =? "discord"              --> doShift "2"          -- Move "discord" and "vesktop" to Workspace 2.
     , className =? "vesktop"              --> doShift "2"          -- ...
@@ -100,30 +101,48 @@ myManageHook = composeAll
     , title =? "Volume Control"           --> doFloat              -- Float Volume Control Windows.
     , title =? "Lautstärkeregler"         --> doFloat              -- ...
     , isDialog                            --> doCenterFloat        -- Float and Center Dialog Windows.
-    , title =? "emote"                    --> (doFocus <+> doWarp) -- Focus and Warp Mouse to "emote" Window.
-    , className =? "emote"                --> (doFocus <+> doWarp) -- ...
-    , title =? "vicinae"                  --> (doFocus <+> doWarp) -- Focus and Warp Mouse to "vicinae" Window.
-    , className =? "vicinae"              --> (doFocus <+> doWarp) -- ...
-    , title =? "FLOAT_ME_NOW"             --> doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8) -- Float and Move "FLOAT_ME_NOW" Windows.
+    , (className =? "emote" <||>
+       title =? "emote")                  -->                      -- Move "emote" to the Cursor.
+      doFloat >> liftX (spawn moveWindowToCursorCommand) >> idHook
+    , (title =? "vicinae" <||>
+       className =? "vicinae")            --> (doFocus <+> doWarp) -- Focus and Warp Mouse to "vicinae" Window.
+    , title =? "FLOAT_ME_NOW"             -->                      -- Float and Move "FLOAT_ME_NOW" Windows.
+      doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8)
     , title =? "Library"                  --> doCenterFloat        -- Center Float Browser Library.
-    , className =? "Steam"                --> doShift "2"          -- Move "Steam" to Workspace 2.
-    , title =? "Steam"                    --> doShift "2"          -- ...
-    , className =? "weston"               --> doFullFloat          -- Float and Fullscreen Weston Window.
-    , className =? "weston-1"             --> doFullFloat          -- ...
-    , className =? "Weston Compositor"    --> doFullFloat          -- ...
-    , className =? "eww"                  --> doIgnore <+> doLower -- Move EWW Windows below all other Windows.
-    , className =? "Eww"                  --> doIgnore <+> doLower -- ...
+    , (className =? "Steam" <||>
+       title =? "Steam")                  -->                      -- Move "Steam" to Workspace 2.
+      doShift "2"
+    , (className =? "weston" <||>
+       className =? "weston-1" <||>
+       className =? "Weston Compositor")  -->                      -- Float and Fullscreen Weston Window.
+      doFullFloat
+    , (className =? "eww" <||>
+       className =? "Eww")                -->                      -- Move EWW Windows below all other Windows.
+      doIgnore <+> doLower
     , className =? "equibop"              --> doShift "2"          -- Move "equibop" to Workspace 2.
     , className =? "Ark"                  --> doFloat              -- Float Ark Archiver Window.
-    , isDialog                            --> doF id               -- Stop Dialogues from Stealing Focus.
-    , isDialog                            --> doF W.shiftMaster    -- Stop Dialogues from Reshuffling Tab Stack Order.
+    , isDialog                            -->                      -- Stop Dialogues from Stealing Focus and Reshuffling Tab Stack Order.
+        doF id <+> doF W.shiftMaster
     , title =? "Media viewer"             --> doFloat              -- Float Telegram Media Viewer Window.
     , className =? "floorp"               --> doShift "2"          -- Send Floorp Browser to Workspace 2.
     , title =? "osu!"                     --> doShift "osu!"       -- Move osu!stable to the "osu!" Workspace.
-    , title =? "Waypaper"                 --> doRectFloat centerAndSizeTo840x440 -- Float, Center, and Resize Waypaper Windows.
+    , title =? "Waypaper"                 -->                      -- Float, Center, and Resize Waypaper Windows.
+      doRectFloat centerAndSizeTo840x440
     , className =? "krita"                --> doShift "3"
-    , title =? "Krita - Edit Text — Krita" --> doFloat
+    , title =? "Krita - Edit Text — Krita"--> doFloat
     -- , (liftX $ withWindowSet (return . (== "9") . W.currentTag)) --> doFloat <+> doSink
     ]
   where
+    moveWindowToCursorCommand =
+      "if [[ $(xdotool getmouselocation --shell | grep Y= | cut -d'=' -f2) -gt 800 ]]; then " ++
+      "sleep 0.1 && " ++
+      "xdotool getactivewindow windowmove " ++
+      "$(xdotool getmouselocation --shell | grep X= | cut -d'=' -f2) " ++
+      "$(echo $(($(xdotool getmouselocation --shell | grep Y= | cut -d'=' -f2) - 200))); " ++
+      "else " ++
+      "sleep 0.1 && " ++
+      "xdotool getactivewindow windowmove " ++
+      "$(xdotool getmouselocation --shell | grep X= | cut -d'=' -f2) " ++
+      "$(xdotool getmouselocation --shell | grep Y= | cut -d'=' -f2); " ++
+      "fi"
     centerAndSizeTo840x440 = (W.RationalRect ((1 - (840 / 1920)) / 2) ((1 - (440 / 1080)) / 2) (840 / 1920) (440 / 1080))
