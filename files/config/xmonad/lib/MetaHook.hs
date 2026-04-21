@@ -105,7 +105,7 @@ import XMonad.Prompt.ConfirmPrompt
 main :: IO ()
 main = do
   rawTheme <- catch (readFile "/home/puppy/.xmonad/currentTheme")
-                  (\(_ :: IOException) -> return "mori")
+                  (\(_ :: IOException) -> return "numi")
 
   let themeName = filter (`notElem` "\n\r") rawTheme
   let (activeTabTheme, activeColorScheme, activeXPConfig) = case themeName of
@@ -113,7 +113,8 @@ main = do
         "mori" -> (moriTabTheme, moriColorscheme, moriXPConfig)
         "camila" -> (camilaTabTheme, camilaColorscheme, camilaXPConfig)
         "gigi" -> (gigiTabTheme, gigiColorscheme, gigiXPConfig)
-        _ -> (moriTabTheme, moriColorscheme, moriXPConfig)
+        "numi" -> (numiTabTheme, numiColorscheme, numiXPConfig)
+        _ -> (numiTabTheme, numiColorscheme, numiXPConfig)
 
   xmonad
      . ewmhFullscreen

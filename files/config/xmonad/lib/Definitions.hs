@@ -101,6 +101,7 @@ getXPConfig "elXoX" = elXoXXPConfig
 getXPConfig "camila" = camilaXPConfig
 getXPConfig "mori" = moriXPConfig
 getXPConfig "gigi" = gigiXPConfig
+getXPConfig "numi" = numiXPConfig
 getXPConfig _ = moriXPConfig
 
 setTheme :: String -> X ()
@@ -112,6 +113,7 @@ setTheme name = do
     "elXoX" -> applyBorders elXoXColorscheme
     "camila" -> applyBorders camilaColorscheme
     "gigi" -> applyBorders gigiColorscheme
+    "numi" -> applyBorders numiColorscheme
     _ -> return ()
   sendMessage ReleaseResources
   refresh
@@ -137,7 +139,8 @@ applyBorders cs = do
 
 themeTree :: [Tree (TS.TSNode (X ()))]
 themeTree =
-  [ Node (TS.TSNode "Mori" "" (setTheme "mori" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Mori Calliope/06.png\"; jonabar-mori &")) []
+  [ Node (TS.TSNode "Numi" "" (setTheme "numi" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Akuma Nihmune/04.jpg\"; jonabar-numi &")) []
+  , Node (TS.TSNode "Mori" "" (setTheme "mori" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Mori Calliope/06.png\"; jonabar-mori &")) []
   , Node (TS.TSNode "el_XoX" "" (setTheme "elXoX" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/el_XoX/03.jpg\"; jonabar-elxox &")) []
   , Node (TS.TSNode "Camila" "" (setTheme "camila" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Camila/04.jpg\"; jonabar-camila &")) []
   , Node (TS.TSNode "Gigi" "" (setTheme "gigi" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Gigi Murin/02.jpg\"; jonabar-gigi &")) []
@@ -269,6 +272,18 @@ camilaXPConfig = def
     , height              = 24
     , historySize         = 0
     }
+numiXPConfig = def
+    { font                = "xft:DejaVu Sans Mono:size=10"
+    , bgColor             = "#1d1f21"
+    , fgColor             = "#EDB6DB"
+    , bgHLight            = "#EDB6DB"
+    , fgHLight            = "#1d1f21"
+    , borderColor         = "#EDB6DB"
+    , promptBorderWidth   = 2
+    , position            = Top
+    , height              = 24
+    , historySize         = 0
+    }
 -- Tab Theme(s)
 marnieTabTheme = def
     { activeColor         = "#ff2a54"
@@ -335,6 +350,19 @@ camilaTabTheme = def
     , fontName            = "xft:DejaVu Sans Mono:size=10"
     , decoHeight          = 14
     }
+numiTabTheme = def
+    { activeColor         = "#EDB6DB"
+    , inactiveColor       = "#1d1f21"
+    , urgentColor         = "#ff0000"
+    , activeBorderColor   = "#EDB6DB" -- "#f1cf48"
+    , inactiveBorderColor = "#1d1f21"
+    , urgentBorderColor   = "#ff0000"
+    , activeTextColor     = "#000000"
+    , inactiveTextColor   = "#FFFFFF"
+    , urgentTextColor     = "#ffffff"
+    , fontName            = "xft:DejaVu Sans Mono:size=10"
+    , decoHeight          = 14
+    }
 -- FlashText Theme(s)
 jungleFlashTheme = def
     { st_font             = "xft:TempleOS:size=8"
@@ -376,9 +404,13 @@ camilaColorscheme = ColorScheme
     { focused = "#F186AD"
     , normal  = "#1d1f21"
     }
+numiColorscheme = ColorScheme
+    { focused = "#EDB6DB"
+    , normal  = "#1d1f21"
+    }
 data CurrentTheme = CurrentTheme String deriving (Read, Show)
 instance ExtensionClass CurrentTheme where
-  initialValue = CurrentTheme "mori"
+  initialValue = CurrentTheme "numi"
 -- Dmenu Theme(s)
 data DmenuTheme = DmenuTheme
     { normalBackground :: String
