@@ -103,6 +103,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
     , ((modm, xK_t), shellPrompt myXPConfig)
+    , ((modm .|. controlMask, xK_t), spawn "rofi -show drun -config $HOME/.config/rofi/config.rasi")
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
     , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "xkill")
@@ -130,6 +131,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
         , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_Tab), toggleWS)
+        , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
         , ((shiftMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
 	, ((0, xK_a), spawn "pavucontrol")
@@ -137,7 +139,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((controlMask .|. shiftMask, xK_m), spawn "tauon")
         , ((0, xK_minus), sendMessage zoomOut)
         , ((0, xK_equal), sendMessage zoomIn)
-        , ((0, xK_c), spawn "xcolor | xclip -selection clipboard")
+        , ((0, xK_c), spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
         , ((0, xK_r), sendMessage zoomReset)
         , ((0, xK_e), spawn "nixmacs-client -c")
         , ((0, xK_k), spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")

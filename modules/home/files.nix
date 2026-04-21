@@ -243,9 +243,20 @@
   };
   # Rofi
   home.file = {
-    ".config/rofi/colors.rasi".source = ../../files/config/rofi/colors.rasi;
+    ".config/rofi/themes/mori/background.png".source = ../../files/config/rofi/themes/mori/background.png;
+    ".config/rofi/themes/mori/theme.rasi".source = ../../files/config/rofi/themes/mori/theme.rasi;
+    ".config/rofi/themes/rumda/fonts.rasi".source = ../../files/config/rofi/themes/rumda/fonts.rasi;
+    ".config/rofi/themes/rumda/config.rasi".source = ../../files/config/rofi/themes/rumda/config.rasi;
+    ".config/rofi/themes/rumda/colors.rasi".source = ../../files/config/rofi/themes/rumda/colors.rasi;
+    ".config/rofi/themes/squared/squared-nord.rasi".source = ../../files/config/rofi/themes/squared/squared-nord.rasi;
+    ".config/rofi/themes/squared/squared-loji.rasi".source = ../../files/config/rofi/themes/squared/squared-loji.rasi;
+    ".config/rofi/scripts/runEntry.sh" = {
+      source = ../../files/config/rofi/scripts/runEntry.sh;
+      executable = true;
+    };
+    "config/rofi/sounds/click.wav".source = ../../files/config/rofi/sounds/click.wav;
+    "config/rofi/sounds/click.ogg".source = ../../files/config/rofi/sounds/click.ogg;
     ".config/rofi/config.rasi".source = ../../files/config/rofi/config.rasi;
-    ".config/rofi/fonts.rasi".source = ../../files/config/rofi/fonts.rasi;
   };
   # Yazi
   home.file = {
@@ -324,16 +335,4 @@
       ''';
     }
   '';
-  home.file.".config/rofi/old/config.rasi".text = ''
-    configuration {
-      font: "DejaVu Sans Mono 12";
-      show-icons: true;
-      location: 0;
-      fullscreen: false;
-    }
-
-    @theme "squared-loji"
-  '';
-  home.file.".config/rofi/old/squared-nord.rasi".source = ../../files/config/rofi/old/squared-nord.rasi;
-  home.file.".config/rofi/old/squared-loji.rasi".source = ../../files/config/rofi/old/squared-loji.rasi;
 }

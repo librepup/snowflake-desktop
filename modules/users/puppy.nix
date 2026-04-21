@@ -236,6 +236,8 @@ let
     parted
     gparted
     rsync
+    inxi
+    bc
     usbutils
     websocat
     ghostscript
