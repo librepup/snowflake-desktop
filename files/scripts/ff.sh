@@ -4,6 +4,10 @@ ff-gigi() {
     fastfetch --logo ~/.config/fastfetch/images/gigi.png --logo-width 25 --logo-height 20 $@
 }
 
+ff-numi() {
+    fastfetch --logo ~/.config/fastfetch/images/numi01.png --logo-width 34 --logo-height 20 $@
+}
+
 ff-mori() {
     if [ $# -eq 0 ]; then
         fastfetch --logo ~/.config/fastfetch/images/mori02.png --logo-width 25 --logo-height 20
