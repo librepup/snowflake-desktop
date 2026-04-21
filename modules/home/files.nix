@@ -213,14 +213,24 @@
     "Pictures/Wallpapers/Akuma Nihmune/01.png".source = ../../files/pictures/wallpapers/AkumaNihmune/01.png;
     "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
     "Pictures/Wallpapers/Akuma Nihmune/03.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/03.jpg;
+    "Pictures/Wallpapers/Akuma Nihmune/04.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/04.jpg;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
+    ## Froot
+    "Pictures/Wallpapers/Froot Apricot/01.jpeg".source = ../../files/pictures/wallpapers/FrootApricot/01.jpeg;
     ## el_XoX
     "Pictures/Wallpapers/el_XoX/01.jpg".source = ../../files/pictures/wallpapers/el_XoX/01.jpg;
     "Pictures/Wallpapers/el_XoX/02.jpg".source = ../../files/pictures/wallpapers/el_XoX/02.jpg;
     "Pictures/Wallpapers/el_XoX/03.jpg".source = ../../files/pictures/wallpapers/el_XoX/03.jpg;
     "Pictures/Wallpapers/el_XoX/04.jpg".source = ../../files/pictures/wallpapers/el_XoX/04.jpg;
     "Pictures/Wallpapers/el_XoX/05.jpg".source = ../../files/pictures/wallpapers/el_XoX/05.jpg;
+    ## Ironmouse
+    "Pictures/Wallpapers/Ironmouse/06.png".source = ../../files/pictures/wallpapers/Ironmouse/06.png;
+    "Pictures/Wallpapers/Ironmouse/05.jpeg".source = ../../files/pictures/wallpapers/Ironmouse/05.jpeg;
+    "Pictures/Wallpapers/Ironmouse/04.jpg".source = ../../files/pictures/wallpapers/Ironmouse/04.jpg;
+    "Pictures/Wallpapers/Ironmouse/03.jpg".source = ../../files/pictures/wallpapers/Ironmouse/03.jpg;
+    "Pictures/Wallpapers/Ironmouse/02.jpg".source = ../../files/pictures/wallpapers/Ironmouse/02.jpg;
+    "Pictures/Wallpapers/Ironmouse/01.jpg".source = ../../files/pictures/wallpapers/Ironmouse/01.jpg;
     # Unsorted
     "Pictures/Wallpapers/Unsorted/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/Unsorted/dangeroooous_jungle_wp.png;
     "Pictures/Wallpapers/Unsorted/marnieGruvbox.png".source = ../../files/pictures/wallpapers/Unsorted/marnieGruvbox.png;

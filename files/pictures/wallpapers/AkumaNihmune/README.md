@@ -3,3 +3,4 @@
 ![Akuma Nihmune Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/AkumaNihmune/01.png)
 ![Akuma Nihmune Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/AkumaNihmune/02.jpg)
 ![Akuma Nihmune Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/AkumaNihmune/03.jpg)
+![Akuma Nihmune Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/AkumaNihmune/04.jpg)
