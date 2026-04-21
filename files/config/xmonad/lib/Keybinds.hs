@@ -143,6 +143,10 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_r), sendMessage zoomReset)
         , ((0, xK_e), spawn "nixmacs-client -c")
         , ((0, xK_k), spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")
+        , ((0, xK_p), do
+              sendMessage ReleaseResources
+              refresh
+              setLayout =<< asks (layoutHook . config))
         , ((0, xK_space), do
             screenRect <- fmap (screenRect . W.screenDetail . W.current) (gets windowset)
             let sw = fromIntegral $ rect_width screenRect
@@ -151,7 +155,10 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
                 cy = (sh `div` 2) - 200
                 dynamicConfig = myTSConfig { TS.ts_originX = fromIntegral cx
                                            , TS.ts_originY = fromIntegral cy }
-            TS.treeselectAction dynamicConfig themeTree)
+            TS.treeselectAction dynamicConfig themeTree
+            sendMessage ReleaseResources
+            refresh
+            setLayout =<< asks (layoutHook . config))
 --        , ((0, xK_space), setLayout $ XMonad.layoutHook conf)
         , ((0, xK_Return), spawn Definitions.myTerminal)
         , ((shiftMask, xK_Return), spawn Definitions.myTerminalFb)

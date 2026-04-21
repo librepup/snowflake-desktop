@@ -117,6 +117,8 @@ setTheme name = do
   refresh
   setLayout =<< asks (layoutHook . config)
   spawn "xmonad --recompile && xmonad --restart"
+  sendMessage ReleaseResources
+  refresh
 
 -- activeThemeName <- io $ readFile "/home/puppy/.xmonad/currentTheme"
 -- let activeTabTheme = case activeThemeName of
@@ -135,10 +137,10 @@ applyBorders cs = do
 
 themeTree :: [Tree (TS.TSNode (X ()))]
 themeTree =
-  [ Node (TS.TSNode "Mori" "" (setTheme "mori" <+> spawn "pkill polybar; jonabar-mori &")) []
-  , Node (TS.TSNode "el_XoX" "" (setTheme "elXoX" <+> spawn "pkill polybar; jonabar-elxox &")) []
-  , Node (TS.TSNode "Camila" "" (setTheme "camila" <+> spawn "pkill polybar; jonabar-camila &")) []
-  , Node (TS.TSNode "Gigi" "" (setTheme "gigi" <+> spawn "pkill polybar; jonabar-gigi &")) []
+  [ Node (TS.TSNode "Mori" "" (setTheme "mori" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Mori Calliope/06.png\"; jonabar-mori &")) []
+  , Node (TS.TSNode "el_XoX" "" (setTheme "elXoX" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/el_XoX/03.jpg\"; jonabar-elxox &")) []
+  , Node (TS.TSNode "Camila" "" (setTheme "camila" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Camila/04.jpg\"; jonabar-camila &")) []
+  , Node (TS.TSNode "Gigi" "" (setTheme "gigi" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Gigi Murin/02.jpg\"; jonabar-gigi &")) []
   ]
 -- Modify Opacity
 myFadeHook :: FadeHook
