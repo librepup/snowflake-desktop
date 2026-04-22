@@ -81,7 +81,6 @@ let
   ];
   bundleAudioUtilities = with pkgs; [
     playerctl
-    easyaudiosync
     mamba
     soundconverter
     glava
