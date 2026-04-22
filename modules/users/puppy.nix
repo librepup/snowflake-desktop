@@ -218,6 +218,7 @@ let
   bundleXorg = with pkgs; [
     yad
     xcolor
+    nvidia-system-monitor-qt
     xclicker
     xclip
     xdotool

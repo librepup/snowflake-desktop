@@ -104,6 +104,7 @@
         zen = "devour zen $@";
         firefox = "devour firefox $@";
         floorp = "devour floorp $@";
+        nvidia-system-monitor-qt = "qnvsm $@";
         ardour = "devour ardour8 $@";
         haskellCompile = "ghc -o Program Main.hs";
       };

@@ -15,5 +15,6 @@
     ./environment.nix
     ./region.nix
     ./filesystem.nix
+    ./cpu.nix
   ];
 }
