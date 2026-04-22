@@ -71,6 +71,8 @@ import XMonad.Actions.FloatKeys (keysMoveWindow, keysMoveWindowTo, keysResizeWin
 import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
+import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
+import XMonad.Actions.DynamicProjects
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
@@ -91,10 +93,17 @@ import Graphics.X11.Xlib.Misc (grabPointer, getPointerControl)
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
+import XMonad.Prompt.Workspace
 
 ------------------------------------------------------------------------
 -- Definitions
 ------------------------------------------------------------------------
+-- Remove Workspace Prompt
+removeWorkspacePrompt :: XPConfig -> X ()
+removeWorkspacePrompt xp =
+  workspacePrompt xp $ \tag ->
+    removeEmptyWorkspaceByTag tag
+
 -- Theme Switching
 getXPConfig :: String -> XPConfig
 getXPConfig "elXoX" = elXoXXPConfig
@@ -604,17 +613,10 @@ myScratchpads =
 ------------------------------------------------------------------------
 -- Themes
 ------------------------------------------------------------------------
--- General
--- (myFocusedBorderColor, myNormalBorderColor) = (focused c, normal c)
---   where c = activeColorScheme
 -- FlashText
 myFlashTheme = moriFlashTheme
--- Tabs
--- myTabTheme = activeTabTheme
--- Prompts
--- myXPConfig :: XPConfig
--- myXPConfig = activeXPTheme
 -- Settings
+rofiCommand     = "rofi -show drun -config $HOME/.config/rofi/config.rasi"
 functionWorkspaces = ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"]
 namedWorkspaces = ["osu!","Minus","Plus","\xEF85","\xF001"]
 myWorkspaces    = ["1","2","3","4","5","6","7","8","9","10"] ++ functionWorkspaces ++ namedWorkspaces

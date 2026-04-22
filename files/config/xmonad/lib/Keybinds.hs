@@ -70,6 +70,8 @@ import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
+import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
+import XMonad.Actions.DynamicProjects
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
@@ -92,6 +94,7 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Layout
 import XMonad.Prompt.ConfirmPrompt
+import XMonad.Prompt.Workspace
 
 ------------------------------------------------------------------------
 -- Key Binds
@@ -104,7 +107,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
     , ((modm, xK_t), shellPrompt xp)
-    , ((modm .|. controlMask, xK_t), spawn "rofi -show drun -config $HOME/.config/rofi/config.rasi")
+    , ((modm .|. controlMask, xK_t), withWorkspace xp (windows . W.view))
+    , ((modm .|. controlMask, xK_w), removeWorkspacePrompt xp)
+    , ((modm .|. controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
     , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "xkill")
@@ -130,7 +135,6 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
           ((0, xK_Right), moveTo Next (Not emptyWS))
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
         , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
-        , ((0, xK_Tab), toggleWS)
         , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
         , ((shiftMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
