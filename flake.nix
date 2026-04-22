@@ -80,6 +80,9 @@
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     };
+    helium = {
+      url = "github:tomsch/helium-nix";
+    };
   };
 
   outputs =
