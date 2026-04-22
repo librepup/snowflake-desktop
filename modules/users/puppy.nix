@@ -304,6 +304,8 @@ in
       "guixbuild"
       "libvirtd"
       "input"
+      "audio"
+      "realtime"
       "ydotool"
       "render"
       "input-remapper"
