@@ -125,7 +125,8 @@ myManageHook = composeAll
         doF id <+> doF W.shiftMaster
     , title =? "Media viewer"             --> doFloat              -- Float Telegram Media Viewer Window.
     , className =? "floorp"               --> doShift "2"          -- Send Floorp Browser to Workspace 2.
-    , title =? "osu!"                     --> doShift "osu!"       -- Move osu!stable to the "osu!" Workspace.
+    , title =? "osu!"                     --> doShift "\xF0B82"    -- Move osu!stable to the "Games" Workspace.
+    , className =? "Quaver"               --> doShift "\xF0B82"    -- Move Quaver to the "Games" Workspace.
     , title =? "Waypaper"                 -->                      -- Float, Center, and Resize Waypaper Windows.
       doRectFloat centerAndSizeTo840x440
     , className =? "krita"                --> doShift "3"

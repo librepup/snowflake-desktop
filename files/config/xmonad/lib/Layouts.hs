@@ -99,7 +99,7 @@ import XMonad.Prompt.ConfirmPrompt
 myLayoutHook t = avoidStruts
              $ onWorkspace "9" (allFloat t)
              $ onWorkspace "F12" fullLayout
-             $ onWorkspace "osu!" fullLayout
+             $ onWorkspace "\xF0B82" fullLayout
              $ smartBorders
              $ mkToggle (NBFULL ?? EOT)
              $ tabbedLayout t

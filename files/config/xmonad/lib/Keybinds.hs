@@ -312,8 +312,8 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask, xK_1), spawn "xset s off -dpms s noblank && notify-send 'Screensaver' 'Turned OFF.' -i $HOME/Pictures/Icons/no.png")
     , ((myWinMask, xK_2), spawn "xset s on +dpms s blank && notify-send 'Screensaver' 'Turned ON.' -i $HOME/Pictures/Icons/yes.png")
     -- Extra Workspaces
-    , ((modm, xK_grave), windows (W.view "osu!"))
-    , ((modm .|. shiftMask, xK_grave), windows (W.shift "osu!"))
+    , ((modm, xK_grave), windows (W.view "\xF0B82"))
+    , ((modm .|. shiftMask, xK_grave), windows (W.shift "\xF0B82"))
     , ((modm, xK_minus), windows (W.view "Minus"))
     , ((modm .|. shiftMask, xK_minus), windows (W.shift "Minus"))
     , ((modm, xK_equal), windows (W.view "Plus"))
