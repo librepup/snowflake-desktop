@@ -11,7 +11,7 @@ let
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     floorp-bin
     filezilla
-    helium.packages.x86_64-linux.default
+    inputs.helium.packages.x86_64-linux.default
   ];
   bundleRust = with pkgs; [
     cargo
