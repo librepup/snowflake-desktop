@@ -104,7 +104,7 @@ myAutostart = do
   spawnOnceIfExists "dex" "dex --autostart --environment xmonad" -- XMonad Environment
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
-  -- spawnOnceIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
+  spawnOnceIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
   spawnOnceIfExists "jonabar-numi" "if ! pgrep polybar > /dev/null; then jonabar-numi & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
   spawnOnceIfExists "waypaper" "waypaper --restore"
