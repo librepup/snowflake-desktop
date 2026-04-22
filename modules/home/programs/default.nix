@@ -2,6 +2,7 @@
 {
   imports = [
     #./direnv.nix
+    ./keepassxc.nix
     ./music.nix
     ./nixmacs.nix
     ./others.nix
