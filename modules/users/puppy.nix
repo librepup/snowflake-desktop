@@ -81,11 +81,17 @@ let
   ];
   bundleAudioUtilities = with pkgs; [
     playerctl
+    easyaudiosync
+    mamba
+    soundconverter
+    glava
     wireplumber
     qpwgraph
     pulseaudio
     pavucontrol
+    audacity
     alsa-utils
+    pwvucontrol
     id3v2
     helvum
     volctl
@@ -239,6 +245,7 @@ let
     inxi
     bc
     usbutils
+    zenity
     websocat
     ghostscript
     eza

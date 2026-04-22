@@ -9,7 +9,7 @@
     pulse.enable = true;
     lowLatency = {
       enable = true;
-      quantum = 64;
+      quantum = 128; #64
       rate = 48000;
     };
     jack.enable = true;
