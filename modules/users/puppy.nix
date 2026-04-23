@@ -83,6 +83,7 @@ let
   bundleAudioUtilities = with pkgs; [
     playerctl
     mamba
+    ciano
     soundconverter
     glava
     wireplumber
