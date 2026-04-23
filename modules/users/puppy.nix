@@ -2,6 +2,7 @@
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   bundleBrowsers = with pkgs; [
+    google-chrome
     librewolf-bin
     tor-browser
     lynx

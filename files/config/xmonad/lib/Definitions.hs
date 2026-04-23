@@ -521,7 +521,7 @@ myTree =
       ]
   , Node (TS.TSNode "Internet" "" (return ()))
       [ Node (TS.TSNode "Zen" "" (spawn "zen")) []
-      , Node (TS.TSNode "Helium" "" (spawn "taskset -c 2-5 helium")) []
+      , Node (TS.TSNode "Helium" "" (spawn "helium")) []
       , Node (TS.TSNode "Firefox" "" (spawn "firefox")) []
       , Node (TS.TSNode "Floorp" "" (spawn "floorp")) []
       , Node (TS.TSNode "Edge" "" (spawn "microsoft-edge")) []
