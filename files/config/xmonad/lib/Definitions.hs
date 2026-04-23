@@ -558,7 +558,7 @@ myTree =
       , Node (TS.TSNode "OutFox" "" (spawn "OutFox")) []
       , Node (TS.TSNode "ITGMania" "" (spawn "itgmania")) []
       , Node (TS.TSNode "Etterna" "" (spawn "etterna")) []
-      , Node (TS.TSNode "Quaver" "" (spawn "steam steam://rungameid/980610")) []
+      , Node (TS.TSNode "Quaver" "" (spawn "steam steam://rungameid/980610//gamemoderun\\ %command%'")) []
       ]
   , Node (TS.TSNode "Tools" "" (return ()))
       [ Node (TS.TSNode "Explorer" "" (spawn "thunar -q && thunar")) []
