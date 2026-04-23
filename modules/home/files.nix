@@ -178,6 +178,30 @@
   home.file.".config/zathura/zathurarc" = {
     source = ../../files/config/zathura/zathurarc;
   };
+  # Avatars
+  home.file = {
+    # el_XoX
+    "Pictures/Avatars/el_XoX/01.jpg".source = ../../files/pictures/avatars/el_XoX/01.jpg;
+    "Pictures/Avatars/el_XoX/02.jpg".source = ../../files/pictures/avatars/el_XoX/02.jpg;
+    "Pictures/Avatars/el_XoX/03.png".source = ../../files/pictures/avatars/el_XoX/03.png;
+    "Pictures/Avatars/el_XoX/04.jpg".source = ../../files/pictures/avatars/el_XoX/04.jpg;
+    # Akuma Nihmune
+    "Pictures/Avatars/Akuma Nihmune/01.jpg".source = ../../files/pictures/avatars/AkumaNihmune/01.jpg;
+    "Pictures/Avatars/Akuma Nihmune/02.jpg".source = ../../files/pictures/avatars/AkumaNihmune/02.jpg;
+    "Pictures/Avatars/Akuma Nihmune/03.jpg".source = ../../files/pictures/avatars/AkumaNihmune/03.jpg;
+    # Camila
+    "Pictures/Avatars/Camila/01.jpg".source = ../../files/pictures/avatars/Camila/01.jpg;
+    "Pictures/Avatars/Camila/02.jpg".source = ../../files/pictures/avatars/Camila/02.jpg;
+    # Ironmouse
+    "Pictures/Avatars/Ironmouse/01.jpg".source = ../../files/pictures/avatars/Ironmouse/01.jpg;
+    "Pictures/Avatars/Ironmouse/02.jpg".source = ../../files/pictures/avatars/Ironmouse/02.jpg;
+    # Projekt Melody
+    "Pictures/Avatars/Projekt Melody/01.jpg".source = ../../files/pictures/avatars/ProjektMelody/01.jpg;
+    "Pictures/Avatars/Projekt Melody/02.jpg".source = ../../files/pictures/avatars/ProjektMelody/02.jpg;
+    "Pictures/Avatars/Projekt Melody/03.jpg".source = ../../files/pictures/avatars/ProjektMelody/03.jpg;
+    # Froot Apricot
+    "Pictures/Avatars/Froot Apricot/01.jpg".source = ../../files/pictures/avatars/FrootApricot/01.jpg;
+  };
   # Wallpapers
   home.file = {
     # VTubers
