@@ -94,16 +94,16 @@ import Graphics.X11.Xlib.Misc (grabPointer, getPointerControl)
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 import XMonad.Prompt.Workspace
+import XMonad.Prompt.Input
 
 ------------------------------------------------------------------------
 -- Definitions
 ------------------------------------------------------------------------
--- Remove Workspace Prompt
+-- Dynamic Workspaces
 removeWorkspacePrompt :: XPConfig -> X ()
 removeWorkspacePrompt xp =
   workspacePrompt xp $ \tag ->
     removeEmptyWorkspaceByTag tag
-
 -- Theme Switching
 getXPConfig :: String -> XPConfig
 getXPConfig "elXoX" = elXoXXPConfig
@@ -500,6 +500,17 @@ myTSConfig = TS.TSConfig
     ]
   }
 
+layoutTree :: [Tree (TS.TSNode (X ()))]
+layoutTree =
+  [ Node (TS.TSNode "Tabbed" "" (sendMessage $ JumpToLayout "Tabbed")) []
+  , Node (TS.TSNode "Multi" "" (sendMessage $ JumpToLayout "Multi")) []
+  , Node (TS.TSNode "Spiral" "" (sendMessage $ JumpToLayout "Spiral")) []
+  , Node (TS.TSNode "Accordion" "" (sendMessage $ JumpToLayout "Accordion")) []
+  , Node (TS.TSNode "Circle" "" (sendMessage $ JumpToLayout "Circle")) []
+  , Node (TS.TSNode "Full" "" (sendMessage $ JumpToLayout "Full")) []
+  , Node (TS.TSNode "Floating" "" (sendMessage $ JumpToLayout "Floating")) []
+  ]
+
 myTree :: [Tree (TS.TSNode (X ()))]
 myTree =
   [ Node (TS.TSNode "Most Used" "" (return ()))
@@ -510,6 +521,7 @@ myTree =
       ]
   , Node (TS.TSNode "Internet" "" (return ()))
       [ Node (TS.TSNode "Zen" "" (spawn "zen")) []
+      , Node (TS.TSNode "Helium" "" (spawn "taskset -c 2-5 helium")) []
       , Node (TS.TSNode "Firefox" "" (spawn "firefox")) []
       , Node (TS.TSNode "Floorp" "" (spawn "floorp")) []
       , Node (TS.TSNode "Edge" "" (spawn "microsoft-edge")) []
@@ -578,17 +590,6 @@ myTree =
         , Node (TS.TSNode "Edit Config" "" (spawn "nixmacs $HOME/.xmonad/xmonad.hs")) []
         ]
       ]
-  ]
-
-layoutTree :: [Tree (TS.TSNode (X ()))]
-layoutTree =
-  [ Node (TS.TSNode "Tabbed" "" (sendMessage $ JumpToLayout "Tabbed")) []
-  , Node (TS.TSNode "Multi" "" (sendMessage $ JumpToLayout "Multi")) []
-  , Node (TS.TSNode "Spiral" "" (sendMessage $ JumpToLayout "Spiral")) []
-  , Node (TS.TSNode "Accordion" "" (sendMessage $ JumpToLayout "Accordion")) []
-  , Node (TS.TSNode "Circle" "" (sendMessage $ JumpToLayout "Circle")) []
-  , Node (TS.TSNode "Full" "" (sendMessage $ JumpToLayout "Full")) []
-  , Node (TS.TSNode "Floating" "" (sendMessage $ JumpToLayout "Floating")) []
   ]
 
 ------------------------------------------------------------------------

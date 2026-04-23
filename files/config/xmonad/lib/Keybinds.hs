@@ -201,8 +201,8 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm, xK_s), spawn "zen")
-    , ((modm .|. shiftMask, xK_s), spawn "firefox")
-    , ((modm .|. controlMask, xK_s), spawn "floorp")
+    , ((modm .|. controlMask, xK_s), spawn "firefox")
+    , ((modm .|. shiftMask, xK_s), spawn "taskset -c 2-5 helium")
     , ((modm, xK_a), spawn "flameshot gui")
     , ((modm, xK_d), spawn "icedove")
     -- Exit XMonad

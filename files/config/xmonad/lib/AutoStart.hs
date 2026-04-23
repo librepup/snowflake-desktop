@@ -96,7 +96,7 @@ myAutostart :: X ()
 myAutostart = do
   spawnOnceIfExists "xrdb" "xrdb ~/.Xresources" -- XResources
   spawnIfExists "xsetroot" "xsetroot -cursor_name left_ptr" -- Cursor
-  spawnOnceIfExists "xrandr" "xrandr --output DP-0 --primary --mode 1920x1080 --rate 144.00 --output HDMI-0 --mode 1920x1080 --right-of DP-0" -- Monitor
+  spawnOnceIfExists "xrandr" "xrandr --output DP-0 --primary --mode 1920x1080 --rate 144.00 --pos 0x0 --output HDMI-0 --mode 1920x1080 --scale-from 2560x1440 --pos 1920x0 --gamma 1.5:1.5:1.5 --right-of DP-0" -- Monitor
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global' 'libinput Accel Speed' 0.3" -- Mouse (1)
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Speed' 0.3" -- Mouse (2)
   spawnIfExists "xmodmap" "setxkbmap us -variant colemak && xmodmap ~/.my-input-remappings/xmodmap/global" -- XModMap
@@ -112,7 +112,7 @@ myAutostart = do
   -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
   spawnOnceIfExists "nixmacs-client" "if ! nixmacs-client -e \"(emacs-pid)\" > /dev/null 2>&1; then nixmacs --fg-daemon & fi" -- NixMacs Daemon
   spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
-  spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -x && redshift -l 52.520008:13.404954 -t 5200:5200 & fi" -- Bluelight Filter
+  spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -l 52.520008:13.404954 -t 5200:5200 -m randr:crtc=0; xrandr --output HDMI-0 --gamma 1.5:1.5:1.5 & fi" -- Bluelight Filter
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC
   spawnOnceIfExists "yad" "if ! pgrep yad > /dev/null 2>&1; then $HOME/.trayicon-scripts/wayPaper.sh & else pkill yad && $HOME/.trayicon-scripts/wayPaper.sh & fi"
