@@ -160,6 +160,7 @@ let
     prismlauncher
     itgmania
     etterna
+    phira
     inputs.jonabron.packages.x86_64-linux.gobm
     lutris
     bottles
