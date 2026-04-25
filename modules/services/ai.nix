@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
   services.open-webui = {
-    enable = true;
+    enable = false;
     stateDir = "/mnt/AI/open-webui/state";
     port = 6967;
     environment = {
@@ -14,7 +14,7 @@
     };
   };
   services.ollama = {
-    enable = true;
+    enable = false;
     models = "/mnt/AI/ollama/models";
     acceleration = "vulkan";
     package = pkgs.ollama-vulkan;
