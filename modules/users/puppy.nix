@@ -203,6 +203,7 @@ let
   bundleImageViewers = with pkgs; [
     feh
     xfce.tumbler
+    nsxiv
   ];
   bundleWallpaperManagers = with pkgs; [
     variety
@@ -245,6 +246,8 @@ let
     lxappearance
     xmobar
     glycin-loaders
+    xzoom
+    xmagnify
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
