@@ -24,6 +24,9 @@ let
     libgcc
     rustlings
   ];
+  bundleAI = with pkgs; [
+    ollama-vulkan
+  ];
   bundleHaskell = with pkgs; [
     ghc
     stack
@@ -357,7 +360,6 @@ in
       rofi
       texliveFull
       blahaj
-      appimage-run
       zenmap
       zerotierone
       translate-shell
@@ -396,6 +398,7 @@ in
     ++ bundleXorg
     ++ bundleWallpaperManagers
     ++ bundleWeb
+    ++ bundleAI
     ++ bundleTextEditors
     ++ bundleExplorers;
   };

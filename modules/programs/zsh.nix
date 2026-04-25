@@ -106,6 +106,8 @@
         floorp = "devour floorp $@";
         nvidia-system-monitor-qt = "qnvsm $@";
         ardour = "devour ardour8 $@";
+        ollamaGemma3 = "ollama run gemma3 $@";
+        ollamaServe = "ollama serve $@";
         haskellCompile = "ghc -o Program Main.hs";
       };
       shellInit = ''

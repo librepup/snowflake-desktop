@@ -10,5 +10,6 @@
     ./printing.nix
     ./tablet.nix
     ./ibus.nix
+    ./appimage.nix
   ];
 }
