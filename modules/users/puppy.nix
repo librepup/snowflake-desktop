@@ -109,6 +109,7 @@ let
     telegram-desktop
     whatsapp-electron
     discord
+    betterdiscordctl
     vesktop
     ripcord
     equibop
