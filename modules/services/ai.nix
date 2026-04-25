@@ -3,7 +3,7 @@
   services.open-webui = {
     enable = true;
     stateDir = "/mnt/AI/open-webui/state";
-    port = "6967";
+    port = 6967;
     environment = {
       ENABLE_IMAGE_GENERATION = "True";
       ENABLE_WEB_SEARCH = "True";
