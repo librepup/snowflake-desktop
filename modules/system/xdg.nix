@@ -17,7 +17,7 @@
         "application/pdf" = "zathura.desktop";
         "inode/directory" = "thunar.desktop";
         "text/html" = "pybrowse.desktop";
-        "x-scheme-handler/http" = "pybrowse.desktop"
+        "x-scheme-handler/http" = "pybrowse.desktop";
         "text/plain" = "nixmacs.desktop";
         "text/markdown" = "nixmacs.desktop";
       };
