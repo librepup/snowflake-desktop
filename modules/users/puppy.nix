@@ -13,6 +13,7 @@ let
     floorp-bin
     filezilla
     inputs.helium.packages.x86_64-linux.default
+    inputs.jonabron.packages.x86_64-linux.pybrowse
   ];
   bundleRust = with pkgs; [
     cargo

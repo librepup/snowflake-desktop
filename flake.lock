@@ -732,11 +732,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1776883859,
-        "narHash": "sha256-L8ViFcHeIThyVk8mtOA/BSs5d8puaapleaImYyCW+5Q=",
+        "lastModified": 1777113192,
+        "narHash": "sha256-joxThPAkhLVV64WkIhculcRthZjte2N+UxsTsqtd3s0=",
         "owner": "librepup",
         "repo": "jonabron",
-        "rev": "4a069808ce22e15f526543bed7984b14626d701c",
+        "rev": "ebf612bc2e4acdbe39de49c5b29ed1e031d4d678",
         "type": "github"
       },
       "original": {
