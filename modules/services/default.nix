@@ -11,5 +11,6 @@
     ./tablet.nix
     ./ibus.nix
     ./appimage.nix
+    ./ai.nix
   ];
 }
