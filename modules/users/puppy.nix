@@ -14,6 +14,7 @@ let
     filezilla
     inputs.helium.packages.x86_64-linux.default
     inputs.jonabron.packages.x86_64-linux.pybrowse
+    netflix
   ];
   bundleRust = with pkgs; [
     cargo
