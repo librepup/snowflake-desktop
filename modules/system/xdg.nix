@@ -18,6 +18,7 @@
         "inode/directory" = "thunar.desktop";
         "text/html" = "helium.desktop";
         "x-scheme-handler/http" = "helium.desktop";
+        "x-scheme-handler/https" = "helium.desktop";
         "application/x-mswinurl" = "helium.desktop";
         "text/plain" = "org.gnome.TextEditor.desktop";
         "text/markdown" = "org.gnome.TextEditor.desktop";
@@ -26,6 +27,18 @@
         "application/x-compressed-tar" = "org.kde.ark.desktop";
         "application/x-xz-compressed-tar" = "org.kde.ark.desktop";
         "application/vnd.rar" = "org.kde.ark.desktop";
+        "pplication/json" = "org.gnome.TextEditor.desktop";
+        "audio/aac" = "mpv.desktop";
+        "audio/mp4" = "mpv.desktop";
+        "audio/mpeg" = "mpv.desktop";
+        "audio/mpegurl" = "mpv.desktop";
+        "audio/ogg" = "mpv.desktop";
+        "audio/vorbis" = "mpv.desktop";
+        "audio/x-flac" = "mpv.desktop";
+        "audio/x-mp3" = "mpv.desktop";
+        "audio/x-mpegurl" = "mpv.desktop";
+        "audio/x-ms-wma" = "mpv.desktop";
+        "audio/x-wav" = "mpv.desktop";
       };
     };
   };
