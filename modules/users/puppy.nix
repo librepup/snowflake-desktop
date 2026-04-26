@@ -154,6 +154,7 @@ let
   bundleWineAndGames = with pkgs; [
     wineWowPackages.yabridge
     winetricks
+    inputs.jonabron.packages.x86_64-linux.gamemode-manager
     nero-umu
     vkd3d-proton
     mangohud
