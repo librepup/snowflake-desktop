@@ -11,3 +11,7 @@ flake = "/etc/nixos"
 [sources.home-manager]
 type = "home-manager-options"
 flake = "/etc/nixos"
+
+[sources.nur]
+type = "nur"
+flake = "/etc/nixos"
