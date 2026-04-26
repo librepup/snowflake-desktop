@@ -27,7 +27,7 @@
         "application/x-compressed-tar" = "org.kde.ark.desktop";
         "application/x-xz-compressed-tar" = "org.kde.ark.desktop";
         "application/vnd.rar" = "org.kde.ark.desktop";
-        "pplication/json" = "org.gnome.TextEditor.desktop";
+        "application/json" = "org.gnome.TextEditor.desktop";
         "audio/aac" = "mpv.desktop";
         "audio/mp4" = "mpv.desktop";
         "audio/mpeg" = "mpv.desktop";
