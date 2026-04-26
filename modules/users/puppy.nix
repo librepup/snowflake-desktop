@@ -194,6 +194,7 @@ let
   ];
   bundleTextEditors = with pkgs; [
     anvil-editor
+    gnome-text-editor
   ];
   bundleWeb = with pkgs; [
     httrack

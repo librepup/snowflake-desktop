@@ -18,8 +18,14 @@
         "inode/directory" = "thunar.desktop";
         "text/html" = "helium.desktop";
         "x-scheme-handler/http" = "helium.desktop";
-        "text/plain" = "nixmacs.desktop";
-        "text/markdown" = "nixmacs.desktop";
+        "application/x-mswinurl" = "helium.desktop";
+        "text/plain" = "org.gnome.TextEditor.desktop";
+        "text/markdown" = "org.gnome.TextEditor.desktop";
+        "application/zip" = "org.kde.ark.desktop";
+        "application/x-7z-compressed" = "org.kde.ark.desktop";
+        "application/x-compressed-tar" = "org.kde.ark.desktop";
+        "application/x-xz-compressed-tar" = "org.kde.ark.desktop";
+        "application/vnd.rar" = "org.kde.ark.desktop";
       };
     };
   };
