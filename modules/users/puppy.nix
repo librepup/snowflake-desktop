@@ -17,6 +17,7 @@ let
     netflix
     vivaldi
     vivaldi-ffmpeg-codecs
+    nur.repos.hythera.waterfox-bin
   ];
   bundleRust = with pkgs; [
     cargo
