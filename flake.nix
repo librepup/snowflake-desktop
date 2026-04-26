@@ -83,6 +83,10 @@
     helium = {
       url = "github:tomsch/helium-nix";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -114,6 +118,7 @@
       nix-init,
       millennium,
       aerothemeplasma-nix,
+      nur,
       ...
     }:
     let
