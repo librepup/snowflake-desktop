@@ -218,16 +218,6 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         "if command -v notify-send > /dev/null; then " ++
           "notify-send 'XMonad' 'Restarted Successfully!' -i $HOME/Pictures/Icons/xmonad_logo.png; " ++
         "fi;")
-    -- Reload XMonad
-    , ((modm .|. shiftMask, xK_c), spawn $
-        "if command -v notify-send > /dev/null; then " ++
-          "notify-send 'XMonad' 'Recompiling...' -i $HOME/Pictures/Icons/xmonad_logo.png; " ++
-        "fi; " ++
-        "xmonad --recompile; " ++
-        "xmonad --restart; " ++
-        "if command -v notify-send > /dev/null; then " ++
-          "notify-send 'XMonad' 'Restarted Successfully!' -i $HOME/Pictures/Icons/xmonad_logo.png; " ++
-        "fi;")
     -- Sub-Layout Tabbing
     , ((myWinMask .|. controlMask, xK_Left), sendMessage $ pullGroup L)
     , ((myWinMask .|. controlMask, xK_Right), sendMessage $ pullGroup R)
