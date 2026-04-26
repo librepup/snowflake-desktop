@@ -138,6 +138,7 @@
           mango.nixosModules.mango
           naitre.nixosModules.naitre
           inputs.spicetify-nix.nixosModules.default
+          nur.modules.nixos.default
           # Nixpkgs Config
           {
             nixpkgs.config = {

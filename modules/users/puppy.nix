@@ -154,7 +154,6 @@ let
   bundleWineAndGames = with pkgs; [
     wineWowPackages.yabridge
     winetricks
-    inputs.nur.repos.vladexa.proton-cachyos
     faugus-launcher
     inputs.jonabron.packages.x86_64-linux.gamemode-manager
     nero-umu

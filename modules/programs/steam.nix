@@ -18,6 +18,7 @@
     localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
+      nur.repos.vladexa.proton-cachyos
     ];
     protontricks.enable = true;
   };
