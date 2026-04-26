@@ -18,6 +18,7 @@ let
     vivaldi
     vivaldi-ffmpeg-codecs
     nur.repos.hythera.waterfox-bin
+    nur.repos.bandithedoge.thorium-bin
   ];
   bundleRust = with pkgs; [
     cargo
