@@ -181,6 +181,14 @@
   };
   # Avatars
   home.file = {
+    # Nemu Manaka
+    "Pictures/Avatars/Nemu Manaka/01.jpeg".source = ../../files/pictures/avatars/NemuManaka/01.jpeg;
+    "Pictures/Avatars/Nemu Manaka/02.jpeg".source = ../../files/pictures/avatars/NemuManaka/02.jpeg;
+    "Pictures/Avatars/Nemu Manaka/03.jpeg".source = ../../files/pictures/avatars/NemuManaka/03.jpeg;
+    "Pictures/Avatars/Nemu Manaka/04.jpeg".source = ../../files/pictures/avatars/NemuManaka/04.jpeg;
+    "Pictures/Avatars/Nemu Manaka/05.jpeg".source = ../../files/pictures/avatars/NemuManaka/05.jpeg;
+    "Pictures/Avatars/Nemu Manaka/06.png".source = ../../files/pictures/avatars/NemuManaka/06.png;
+    "Pictures/Avatars/Nemu Manaka/07.png".source = ../../files/pictures/avatars/NemuManaka/07.png;
     # el_XoX
     "Pictures/Avatars/el_XoX/01.jpg".source = ../../files/pictures/avatars/el_XoX/01.jpg;
     "Pictures/Avatars/el_XoX/02.jpg".source = ../../files/pictures/avatars/el_XoX/02.jpg;
