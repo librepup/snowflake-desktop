@@ -27,6 +27,7 @@
         garbage = "doas nix-collect-garbage -d $@";
         ns = "nix-shell --run zsh $@";
         nss = "nix-search $@";
+        nis = "nix-search --details --max-results 3 --search \"$@\"";
         no = "manix $@";
         nix-options = "manix $@";
         nixbuild = "echo 'Did you mean `buildnix`?'";

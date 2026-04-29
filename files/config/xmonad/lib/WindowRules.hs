@@ -126,6 +126,7 @@ myManageHook = composeAll
     , title =? "Media viewer"             --> doFloat              -- Float Telegram Media Viewer Window.
     , className =? "floorp"               --> doShift "2"          -- Send Floorp Browser to Workspace 2.
     , title =? "osu!"                     --> doShift "\xF0B82"    -- Move osu!stable to the "Games" Workspace.
+    , className =? "notitg-v4.9.1.exe"    --> doShift "\xF0B82"
     , className =? "Quaver"               --> doShift "\xF0B82"    -- Move Quaver to the "Games" Workspace.
     , title =? "Waypaper"                 -->                      -- Float, Center, and Resize Waypaper Windows.
       doRectFloat centerAndSizeTo840x440

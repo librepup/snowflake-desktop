@@ -167,7 +167,10 @@
           (
             { pkgs, ... }:
             {
-              nixpkgs.overlays = [ nix-cachyos-kernel.overlays.pinned ];
+              nixpkgs.overlays = [
+                nix-cachyos-kernel.overlays.pinned
+                inputs.millennium.overlays.default
+              ];
             }
           )
           # Main NixOS Configuration

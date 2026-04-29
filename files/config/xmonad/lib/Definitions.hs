@@ -546,6 +546,7 @@ myTree =
           ]
       , Node (TS.TSNode "Images" "" (return ()))
           [ Node (TS.TSNode "Krita" "" (spawn "krita")) []
+          , Node (TS.TSNode "Pinta" "" (spawn "flatpak run com.github.PintaProject.Pinta")) []
           , Node (TS.TSNode "GIMP" "" (spawn "gimp")) []
           ]
       ]

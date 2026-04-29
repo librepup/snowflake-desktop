@@ -161,6 +161,7 @@ let
     nero-umu
     vkd3d-proton
     mangohud
+    mangojuice
     protonup-ng
     protonup-qt
     (pkgs.callPackage "${inputs.jonabron}/nix/packages/arrowvortex/default.nix" { })
