@@ -34,6 +34,12 @@ let
   bundleAI = with pkgs; [
     ollama-vulkan
   ];
+  bundleFlatpak = with pkgs; [
+    warehouse
+    bazaar
+    flatpak-xdg-utils
+    kdePackages.flatpak-kcm
+  ];
   bundleHaskell = with pkgs; [
     ghc
     stack
@@ -146,6 +152,7 @@ let
     blender
     exiftool
     upscaler
+    themix-gui
   ];
   bundleMusicPlayers = with pkgs; [
     spotdl
