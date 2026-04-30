@@ -1,10 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 {
   services.flatpak = {
     enable = true;
     remotes = {
       "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      "appcenter" = "https://flatpak.elementary.io/repo";
     };
     packages = [
       "flathub:app/com.pixelomer.ShijimaQt/x86_64/stable"
@@ -24,5 +23,15 @@
         ];
       };
     };
+  };
+  systemd.services.manage-flatpaks-activation = {
+    enable = true;
+    serviceConfig = {
+      Restart = lib.mkForce "no";
+      RestartPreventExitStatus = "1";
+    };
+    unitConfig.DefaultDependencies = "no";
+    wantedBy = [ "multi-user.target" ];
+    stopIfChanged = false;
   };
 }
