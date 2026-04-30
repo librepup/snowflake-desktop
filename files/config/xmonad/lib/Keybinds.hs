@@ -146,6 +146,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_c), spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
         , ((0, xK_r), sendMessage zoomReset)
         , ((0, xK_e), spawn "nixmacs-client -c")
+        , ((shiftMask, xK_p), spawn "flatpak run com.github.PintaProject.Pinta")
         , ((0, xK_k), spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")
         , ((0, xK_p), do
               sendMessage ReleaseResources
