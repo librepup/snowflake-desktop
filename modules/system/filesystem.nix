@@ -33,7 +33,7 @@
     device = "/mnt/Flatpak/app";
     options = [ "bind" ];
   };
-  fileSystem."/home/puppy/.local/share/flatpak" = {
+  fileSystems."/home/puppy/.local/share/flatpak" = {
     device = "/mnt/Flatpak/localShare";
     options = [ "bind" ];
   };
