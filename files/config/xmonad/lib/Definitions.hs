@@ -580,6 +580,11 @@ myTree =
         , Node (TS.TSNode "XRandr" "" (spawn "lxrandr")) []
         , Node (TS.TSNode "Picom" "" (spawn "if pgrep picom > /dev/null 2>&1; then pkill -9 picom; else picom & fi")) []
         ]
+      , Node (TS.TSNode "Gamemode" "" (return()))
+        [ Node (TS.TSNode "Status" "" (spawn "zsh -c \"gamemode-status\"")) []
+        , Node (TS.TSNode "Toggle" "" (spawn "zsh -c \"gamemode-toggle\"")) []
+        , Node (TS.TSNode "Manager" "" (spawn "gamemode-manager")) []
+        ]
       , Node (TS.TSNode "XMonad" "" (return ()))
         [ Node (TS.TSNode "Recompile" "" (spawn $
                                           "notify-send -i $HOME/Pictures/Icons/xmonad_logo.png 'XMonad' 'Recompiling...'; " ++
