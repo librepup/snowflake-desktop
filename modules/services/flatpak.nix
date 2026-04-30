@@ -7,14 +7,14 @@
       "appcenter" = "https://flatpak.elementary.io/repo";
     };
     flatpakDir = "/mnt/Flatpak/data";
-    overrides = {
-      "global".Context = {
-        sockets = [
-          "x11"
-          "fallback-x11"
-          "!wayland"
-        ];
-      };
-    };
+    # overrides = {
+    #   "global".Context = {
+    #     sockets = [
+    #       "x11"
+    #       "fallback-x11"
+    #       "!wayland"
+    #     ];
+    #   };
+    # };
   };
 }
