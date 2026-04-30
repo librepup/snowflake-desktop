@@ -12,6 +12,9 @@
     "d /mountables/leviticus 0755 root root -"
     "d /mountables/deuteronomy 0755 root root -"
     "d /mountables/ezekiel 0755 root root -"
+    "d /mnt/Flatpak 0775 puppy users -"
+    "d /mnt/Flatpak/app 0775 puppy users -"
+    "d /mnt/Flatpak/varLib 0775 puppy users -"
   ];
   # Handle "/mnt"
   fileSystems."/mnt" = {
@@ -21,6 +24,18 @@
       "defaults"
       "nofail"
     ];
+  };
+  fileSystems."/var/lib/flatpak" = {
+    device = "/mnt/Flatpak/varLib";
+    options = [ "bind" ];
+  };
+  fileSystems."/home/puppy/.var/app" = {
+    device = "/mnt/Flatpak/app";
+    options = [ "bind" ];
+  };
+  fileSystem."/home/puppy/.local/share/flatpak" = {
+    device = "/mnt/Flatpak/localShare";
+    options = [ "bind" ];
   };
   # Handle "/extra"
   fileSystems."/extra" = {
