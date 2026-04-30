@@ -310,6 +310,8 @@ let
     systemdgenie
     killall
     ghidra-bin
+    ida-free
+    lurk
   ];
   bundleNetworking = with pkgs; [
     dhcpcd
@@ -319,6 +321,7 @@ let
     protonvpn-gui
     riseup-vpn
     wireshark
+    net-tools
   ];
   bundleThemes = with pkgs; [
     whitesur-gtk-theme
