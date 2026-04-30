@@ -235,13 +235,13 @@
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           stylix.homeModules.stylix
-          ./home.nix
+          ./modules/home/users/puppy.nix
         ];
       };
       homeConfigurations.root = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
-          ./modules/home/root.nix
+          ./modules/home/users/root.nix
           self.homeManagerModules.default
         ];
         extraSpecialArgs = {
