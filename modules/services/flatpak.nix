@@ -12,7 +12,7 @@
       "flathub:app/com.humatarayici.od/x86_64/stable"
       "flathub:app/org.garudalinux.firedragon/x86_64/stable"
       "flathub:app/com.github.PintaProject.Pinta/x86_64/stable"
-      "flathub:app/com.opera.opera-gx"
+      "flathub:app/com.opera.opera-gx/x86_64/stable"
     ];
     flatpakDir = "/mnt/Flatpak/data";
     overrides = {
