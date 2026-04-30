@@ -1,7 +1,7 @@
 {
   "general": {
     "accentColor": "#ec3372",
-    "checkForMillenniumUpdates": true,
+    "checkForMillenniumUpdates": false,
     "checkForPluginAndThemeUpdates": true,
     "injectCSS": true,
     "injectJavascript": true,
@@ -17,8 +17,11 @@
     "showPluginNotifications": true,
     "showUpdateNotifications": true
   },
+  "plugins": {
+    "enabledPlugins": []
+  },
   "themes": {
-    "activeTheme": "ATOMS",
+    "activeTheme": "Classic-Steam-Library",
     "allowedScripts": true,
     "allowedStyles": true,
     "conditions": {
@@ -29,11 +32,15 @@
         "Enable shaded game/community backgrounds?": "yes",
         "Use Custom Accent Color?": "yes"
       },
+      "Classic-Steam-Library": {
+        "2015 Theme": "yes"
+      },
       "Minimal-Dark-for-Steam": {
         "Account wallet :": "Hide",
         "Alignment fix for 4K resolution :": "no",
         "Alternate view of in-game friends :": "Alternative",
         "Alternative UI for new Steam menu :": "Minimal new UI (compact)",
+        "Alternative color update :": "Default",
         "Alternative contacts icon :": "Minimal Dark #3 (fill)",
         "Alternative downloads UI :": "New UI (alt)",
         "Alternative games names hover effect :": "Default",
@@ -54,11 +61,12 @@
         "Bigger buttons :": "no",
         "Bigger font size :": "no",
         "Bigger gamepage/library buttons :": "no",
-        "Bigger header :": "Full image",
+        "Bigger header :": "Full image only when maximized",
         "Bigger notification button :": "no",
         "Blocs backgrounds :": "Blurred",
         "Blurred background :": "Blurred",
         "Bolder names :": "no",
+        "Borders profiles :": "no",
         "Carousel arrows borders :": "yes",
         "Change UI font :": "Default",
         "Community content :": "Show",
@@ -96,6 +104,7 @@
         "Hide scrollbars :": "Hide",
         "Hide shelf :": "no",
         "Hide topbar elements :": "Show all",
+        "Hide topbar tabs :": "Show all",
         "Hide voice chat :": "no",
         "Hours played :": "Show",
         "Hover borders on library and webkit blocks :": "Full borders",
@@ -125,6 +134,7 @@
         "Right Sidebar :": "Left",
         "Root menu Steam text :": "Hide",
         "Show sidebar on mouseover :": "Default",
+        "Solid background color profiles :": "Default",
         "Static hovering (paysage games of Recent Games | Play Next) :": "Animated",
         "Static hovering (portrait games of Library | Collections) :": "Static",
         "Steam bigpicture button :": "Hide",

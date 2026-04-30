@@ -4,7 +4,7 @@
     enable = true;
     config = {
       volume = 50;
-      force-window = false;
+      force-window = true;
       "autofit-larger" = "75%x75%";
       "image-display-duration" = "inf";
       "hr-seek" = true;
