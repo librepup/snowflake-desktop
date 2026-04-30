@@ -20,10 +20,12 @@
       "Shift+p" = "show-text $\{playlist\}";
       UP = "add volume 5";
       DOWN = "add volume -5";
-      WHEEL_UP = "add volume 2";
-      WHEEL_DOWN = "add volume -2";
-      WHEEL_LEFT = "add volume -2";
-      WHEEL_RIGHT = "add volume 2";
+      WHEEL_UP = "add volume 5";
+      WHEEL_DOWN = "add volume -5";
+      WHEEL_LEFT = "playlist-prev";
+      WHEEL_RIGHT = "playlist-next";
+      "Shift+WHEEL_UP" = "add volume 1";
+      "Shift+WHEEL_DOWN" = "add volume -1";
       d = "set volume 50";
       RIGHT = "seek 5";
       LEFT = "seek -5";
@@ -53,36 +55,6 @@
       general = {
         live_config_reload = true;
       };
-      colors = {
-        #primary = {
-        #  foreground = "#c5c8c6";
-        #  background = "#1d1f21";
-        #};
-        #cursor = {
-        #  text = "#1d1f21";
-        #  cursor = "#ffffff";
-        #};
-        #normal = {
-        #  black = "#1d1f21";
-        #  red = "#cc6666";
-        #  green = "#b5bd68";
-        #  yellow = "#e6c547";
-        #  blue = "#81a2be";
-        #  magenta = "#b294bb";
-        #  cyan = "#70c0ba";
-        #  white = "#373b41";
-        #};
-        #bright = {
-        #  black = "#665c54";
-        #  red = "#ff3334";
-        #  green = "#9ec400";
-        #  yellow = "#f0c674";
-        #  blue = "#81a2be";
-        #  magenta = "#b77ee0";
-        #  cyan = "#54ced6";
-        #  white = "#282a2e";
-        #};
-      };
       font = lib.mkForce {
         offset = {
           x = 0;
@@ -104,9 +76,6 @@
       };
     };
   };
-  #programs.kitty = {
-  #  enable = true;
-  #};
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
