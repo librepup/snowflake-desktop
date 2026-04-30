@@ -38,12 +38,12 @@
       #package = lib.mkForce inputs.jonabron.packages.x86_64-linux.revista;
 
       # Chicago95
-      name = lib.mkForce "Chicago95";
-      package = lib.mkForce pkgs.chicago95;
+      #name = lib.mkForce "Chicago95";
+      #package = lib.mkForce pkgs.chicago95;
 
       # WhiteSur
-      #name = lib.mkForce "WhiteSur-dark";
-      #package = lib.mkForce pkgs.whitesur-icon-theme;
+      name = lib.mkForce "WhiteSur-dark";
+      package = lib.mkForce pkgs.whitesur-icon-theme;
     };
     cursorTheme = {
       name = "XCursor-Pro-Red";
@@ -59,6 +59,7 @@
       size = 28;
     };
     enable = false;
+    image = ../../files/pictures/wallpapers/AkumaNihmune/04.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   };
 }
