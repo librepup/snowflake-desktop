@@ -85,6 +85,7 @@
     # Completions (comps)
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
+    ".shell-autoload-functions/funcs/gamemode.sh".source = ../../files/scripts/gamemode.sh;
     ".shell-autoload-functions/funcs/xmonadsync.sh".source = ../../files/scripts/xmonadsync.sh;
     ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source = ../../files/scripts/tauonCopyConfig.sh;
     ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source = ../../files/scripts/toggle-zen-transparency.sh;
