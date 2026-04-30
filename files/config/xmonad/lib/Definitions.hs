@@ -514,7 +514,8 @@ layoutTree =
 myTree :: [Tree (TS.TSNode (X ()))]
 myTree =
   [ Node (TS.TSNode "Most Used" "" (return ()))
-      [ Node (TS.TSNode "Discord (No GPU)" "" (spawn "discord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
+      [ Node (TS.TSNode "GoofCord (No GPU)" "" (spawn "goofcord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
+      , Node (TS.TSNode "Discord (No GPU)" "" (spawn "discord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
       , Node (TS.TSNode "Krita" "" (spawn "krita")) []
       , Node (TS.TSNode "Steam" "" (spawn "steam")) []
       ]
@@ -530,6 +531,8 @@ myTree =
       ]
   , Node (TS.TSNode "Chat" "" (return ()))
       [ Node (TS.TSNode "Discord (No GPU)" "" (spawn "discord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
+      , Node (TS.TSNode "GoofCord (No GPU)" "" (spawn "goofcord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")) []
+      , Node (TS.TSNode "GoofCord" "" (spawn "goofcord")) []
       , Node (TS.TSNode "Discord" "" (spawn "discord")) []
       , Node (TS.TSNode "Equibop" "" (spawn "equibop")) []
       , Node (TS.TSNode "Signal" "" (spawn "signal-desktop")) []

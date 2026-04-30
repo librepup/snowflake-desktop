@@ -119,6 +119,7 @@ let
     ripcord
     equibop
     element-desktop
+    goofcord
   ];
   bundleEmulators = with pkgs; [
     azahar
