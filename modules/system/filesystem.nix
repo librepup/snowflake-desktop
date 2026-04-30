@@ -15,6 +15,7 @@
     "d /mnt/Flatpak 0775 puppy users -"
     "d /mnt/Flatpak/app 0775 puppy users -"
     "d /mnt/Flatpak/varLib 0775 puppy users -"
+    "d /mnt/Flatpak/localShare 0775 puppy users -"
   ];
   # Handle "/mnt"
   fileSystems."/mnt" = {
@@ -28,14 +29,17 @@
   fileSystems."/var/lib/flatpak" = {
     device = "/mnt/Flatpak/varLib";
     options = [ "bind" ];
+    depends = [ "/mnt" ];
   };
   fileSystems."/home/puppy/.var/app" = {
     device = "/mnt/Flatpak/app";
     options = [ "bind" ];
+    depends = [ "/mnt" ];
   };
   fileSystems."/home/puppy/.local/share/flatpak" = {
     device = "/mnt/Flatpak/localShare";
     options = [ "bind" ];
+    depends = [ "/mnt" ];
   };
   # Handle "/extra"
   fileSystems."/extra" = {
