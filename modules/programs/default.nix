@@ -10,5 +10,6 @@
     ./others.nix
     ./wayland.nix
     ./thunar.nix
+    ./obs.nix
   ];
 }

@@ -192,7 +192,17 @@ let
     file-roller
   ];
   bundleVideoProduction = with pkgs; [
-    obs-studio
+    #(pkgs.wrapOBS {
+    #  plugins = with pkgs.obs-studio-plugins; [
+    #    wlrobs
+    #    obs-backgroundremoval
+    #    obs-pipewire-audio-capture
+    #    input-overlay
+    #    obs-command-source
+    #    obs-retro-effects
+    #  ];
+    #})
+    #obs-studio
     kdePackages.kdenlive
     kdePackages.ffmpegthumbs
     simplescreenrecorder
