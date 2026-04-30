@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/v0.6.0";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -122,6 +123,7 @@
       nix-init,
       millennium,
       aerothemeplasma-nix,
+      flatpaks,
       nur,
       #nixos-millennium,
       ...
@@ -194,6 +196,7 @@
                 nix-flatpak.nixosModules.nix-flatpak
                 ./hardware-configuration.nix
                 inputs.nix-gaming.nixosModules.pipewireLowLatency
+                flatpaks.nixosModules.default
               ];
               home-manager = {
                 useGlobalPkgs = true;

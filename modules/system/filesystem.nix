@@ -41,6 +41,14 @@
     options = [ "bind" ];
     depends = [ "/mnt" ];
   };
+  environment.etc."flatpak/installations.d/extra.conf" = {
+    text = ''
+      [Installation "extra"]
+      Path=/mnt/Flatpak/data/
+      DisplayName=Extra Mount
+      StorageType=harddisk
+    '';
+  };
   # Handle "/extra"
   fileSystems."/extra" = {
     device = "/dev/disk/by-uuid/f506870d-1913-4368-80ec-3f0af6103e99";
