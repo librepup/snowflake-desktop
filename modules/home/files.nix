@@ -14,8 +14,9 @@
     source = ../../files/config/Thunar/uca.xml;
   };
   # Picom
-  home.file.".config/picom/picom.conf".source = ../../files/config/picom/latest.conf;
-  home.file.".config/picom/outdated.conf".source = ../../files/config/picom/picom.conf;
+  home.file.".config/picom/picom.conf".source = ../../files/config/picom/v3.conf;
+  home.file.".config/picom/v1.conf".source = ../../files/config/picom/v1.conf;
+  home.file.".config/picom/v2.conf".source = ../../files/config/picom/v2.conf;
   # Nvidia
   home.file.".nvidia-settings-rc".source = ../../files/config/nvidia/dot.nvidia-settings-rc;
   home.file.".config/environment.d/nvidia.conf".source = ../../files/config/nvidia/nvidia.conf;

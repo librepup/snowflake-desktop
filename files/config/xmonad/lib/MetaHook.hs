@@ -3,6 +3,7 @@
 ------------------------------------------------------------------------
 module MetaHook where
 import Definitions
+import qualified Definitions as DEFS
 import Keybinds
 import Layouts
 import AutoStart
@@ -20,8 +21,9 @@ import Data.Monoid
 import Data.List (intercalate, intersect)
 import Data.Char (isSpace)
 import Data.Tree
+import Data.Ratio ((%))
 import System.Exit
-import System.IO (readFile, writeFile)
+import System.IO (readFile, writeFile, Handle, hPutStrLn, hGetContents)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
@@ -57,15 +59,21 @@ import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageHelpers (isInProperty)
+import XMonad.Hooks.ManageHelpers (isInProperty, doLower, doHideIgnore)
+import XMonad.Hooks.ManageDocks (avoidStruts, docksStartupHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.Focus
+import XMonad.Hooks.Focus (keepFocus, keepWorkspace, switchFocus, liftQuery, manageFocus, FocusHook(..), FocusQuery(..))
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
 import XMonad.Hooks.FadeWindows
 -- Utils
 import XMonad.Util.EZConfig
+import XMonad.Util.WindowProperties
+import XMonad.Util.WindowProperties (hasProperty)
+import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run (runProcessWithInput)
 import XMonad.Util.Loggers
@@ -95,9 +103,20 @@ import Graphics.X11.Xlib (xC_left_ptr)
 import Graphics.X11.Xlib (warpPointer)
 import Graphics.X11.Xlib.Extras
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
+import Graphics.X11.Types
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
+
+isShijima = (stringProperty "_NET_WM_NAME" =? "Shijima-Qt"
+         <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_UTILITY")
+
+
+focusTickleHook e@(ClientMessageEvent {ev_window = w}) = do
+  isS <- runQuery isShijima w
+  if isS then return (All False) else return (All True)
+
+focusTickleHook _ = return (All True)
 
 ------------------------------------------------------------------------
 -- Main
@@ -121,23 +140,25 @@ main = do
      . ewmh
      . docks
      $ def {
-        terminal           = myTerminal,
-        focusFollowsMouse  = True,
-        clickJustFocuses   = False,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        workspaces         = myWorkspaces,
+        terminal           = myTerminal
+        , focusFollowsMouse  = True
+        , clickJustFocuses   = False
+        , borderWidth        = myBorderWidth
+        , modMask            = myModMask
+        , workspaces         = myWorkspaces
         -- normalBorderColor  = myNormalBorderColor,
         -- focusedBorderColor = myFocusedBorderColor,
-        normalBorderColor  = normal activeColorScheme,
-        focusedBorderColor = focused activeColorScheme,
-        keys               = \c -> myKeys activeTabTheme activeXPConfig c,
-        mouseBindings      = myMouseBindings,
-        layoutHook         = myLayoutHook activeTabTheme,
-        manageHook         = myManageHook
+        , normalBorderColor  = normal activeColorScheme
+        , focusedBorderColor = DEFS.focused activeColorScheme
+        , keys               = \c -> myKeys activeTabTheme activeXPConfig c
+        , mouseBindings      = myMouseBindings
+        , layoutHook         = myLayoutHook activeTabTheme
+        , manageHook         = myManageHook
                           <+> namedScratchpadManageHook myScratchpads
-                          <+> manageHook def,
-        handleEventHook    = fadeWindowsEventHook <+> handleEventHook def,
-        startupHook        = myStartupHook,
-        logHook            = fadeWindowsLogHook myFadeHook <+> myLogHook
+                          <+> manageHook def
+        , handleEventHook    = fadeWindowsEventHook
+                          <+> handleEventHook def
+                          <+> focusTickleHook
+        , startupHook        = myStartupHook
+        , logHook            = fadeWindowsLogHook myFadeHook <+> myLogHook
      }

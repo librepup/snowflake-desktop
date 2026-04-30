@@ -51,9 +51,11 @@ import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageHelpers (doLower, doHideIgnore)
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.Focus
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
 import XMonad.Hooks.FadeWindows (isUnfocused)
@@ -62,6 +64,7 @@ import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Run (runProcessWithInput)
 import XMonad.Util.Loggers
+import XMonad.Util.WindowProperties
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import qualified XMonad.Util.ExtensibleState as XS
@@ -85,15 +88,23 @@ import XMonad.Actions.UpdatePointer
 -- X11
 import Graphics.X11.Xlib (xC_left_ptr)
 import Graphics.X11.Xlib (warpPointer)
+import Graphics.X11.Xlib
+import Graphics.X11.Xlib.Extras
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
+import Graphics.X11.Types
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 
+(<&?>) :: Maybe Bool -> Maybe Bool -> Maybe Bool
+(<&?>) (Just True) y = y
+(<&?>) (Just False) _ = Just False
+(<&?>) Nothing _      = Nothing
+infixl 1 <&?>
+
 ------------------------------------------------------------------------
 -- Window Rules
 ------------------------------------------------------------------------
-
 myManageHook = composeAll
     [ className =? "discord"              --> doShift "2"          -- Move "discord" and "vesktop" to Workspace 2.
     , className =? "vesktop"              --> doShift "2"          -- ...
@@ -132,9 +143,33 @@ myManageHook = composeAll
       doRectFloat centerAndSizeTo840x440
     , className =? "krita"                --> doShift "3"
     , title =? "Krita - Edit Text — Krita"--> doFloat
+    , isShijima
+      <||> className =? "Shijima-Qt"
+      <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_UTILITY"
+      -->
+        doIgnore
+        <+> doF W.focusDown
+        <+> doShift "1"
+        <+> hasBorder False
+        <+> doRaise
+        <+> doFloat
+    -- , className =? "Shijima-Qt"
+    --   <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_UTILITY"
+    --   <||> netWmName =? "Shijima-Qt"
+    --   <||> isShijima
+    --   --> doIgnore
+    --   <+> doFloat
+    --   <+> hasBorder False
+    --   <+> doLower
+    --   <+> doF W.focusDown
+    --   <+> doSideFloat NW
     -- , (liftX $ withWindowSet (return . (== "9") . W.currentTag)) --> doFloat <+> doSink
     ]
   where
+    isShijima = (stringProperty "_NET_WM_NAME" =? "Shijima-Qt"
+             <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_UTILITY")
+    netWmWindowType = stringProperty "_NET_WM_WINDOW_TYPE"
+    netWmName = stringProperty "_NET_WM_NAME"
     moveWindowToCursorCommand =
       "if [[ $(xdotool getmouselocation --shell | grep Y= | cut -d'=' -f2) -gt 800 ]]; then " ++
       "sleep 0.1 && " ++
