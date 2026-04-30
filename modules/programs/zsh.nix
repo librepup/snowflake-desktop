@@ -74,8 +74,8 @@
         htop = "btm --theme nord $@";
         iftop = "bandwhich $@";
         gc = "git clone $@";
-        ocat = "cat $@";
-        cat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
+        picom-no-frame-pacing = "picom --backend glx  --no-frame-pacing $@";
+        bat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
         forcekill = "kill -9 $@";
         size = "du -sh $@";
