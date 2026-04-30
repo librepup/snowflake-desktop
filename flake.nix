@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flatpak.url = "github:gmodena/nix-flatpak/v0.6.0";
+    #nix-flatpak.url = "github:gmodena/nix-flatpak/v0.6.0";
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
@@ -99,7 +99,7 @@
       self,
       nixpkgs,
       home-manager,
-      nix-flatpak,
+      #nix-flatpak,
       stylix,
       nix-index-database,
       nixmacs,
@@ -193,7 +193,7 @@
               imports = [
                 inputs.dms.nixosModules.dank-material-shell # DMS Shell
                 home-manager.nixosModules.home-manager
-                nix-flatpak.nixosModules.nix-flatpak
+                #nix-flatpak.nixosModules.nix-flatpak
                 ./hardware-configuration.nix
                 inputs.nix-gaming.nixosModules.pipewireLowLatency
                 flatpaks.nixosModules.default
