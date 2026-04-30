@@ -433,6 +433,7 @@ in
     ++ bundleWallpaperManagers
     ++ bundleWeb
     ++ bundleAI
+    ++ bundleFlatpak
     ++ bundleTextEditors
     ++ bundleExplorers;
   };
