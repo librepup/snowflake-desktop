@@ -75,6 +75,7 @@ import XMonad.Actions.DynamicProjects
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
+import XMonad.Actions.CopyWindow
 import qualified XMonad.Actions.Search as S
 import XMonad.Actions.Submap (submap, submapDefault)
 import XMonad.Actions.ShowText
@@ -147,6 +148,8 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_c), spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
         , ((0, xK_r), sendMessage zoomReset)
         , ((0, xK_e), spawn "nixmacs-client -c")
+        , ((shiftMask .|. controlMask, xK_1), windows copyToAll)
+        , ((shiftMask .|. controlMask, xK_2), killAllOtherCopies)
         , ((shiftMask, xK_p), spawn "flatpak run com.github.PintaProject.Pinta")
         , ((0, xK_k), spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")
         , ((0, xK_p), do

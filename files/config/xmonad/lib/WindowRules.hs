@@ -74,6 +74,7 @@ import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
+import XMonad.Actions.CopyWindow
 import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize

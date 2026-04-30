@@ -318,6 +318,7 @@ let
     wpa_supplicant
     protonvpn-gui
     riseup-vpn
+    wireshark
   ];
   bundleThemes = with pkgs; [
     whitesur-gtk-theme
