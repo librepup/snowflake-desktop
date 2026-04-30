@@ -275,6 +275,7 @@ let
     glycin-loaders
     xzoom
     xmagnify
+    ulauncher
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
