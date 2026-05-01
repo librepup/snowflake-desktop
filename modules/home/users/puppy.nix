@@ -26,7 +26,7 @@
       '';
       createKeePassXcConfigSymLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
         $DRY_RUN_CMD mkdir -p "$HOME/.config/keepassxc"
-        $DRY_RUN_CMD ln -sfn "/etc/nixos/files/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini"
+        $DRY_RUN_CMD cp "/etc/nixos/files/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini"
       '';
     };
   };

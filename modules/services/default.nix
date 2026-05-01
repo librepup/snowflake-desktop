@@ -12,5 +12,6 @@
     ./ibus.nix
     ./appimage.nix
     ./ai.nix
+    ./snap.nix
   ];
 }

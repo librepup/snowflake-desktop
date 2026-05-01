@@ -77,8 +77,8 @@
         picom-no-frame-pacing = "picom --backend glx  --no-frame-pacing $@";
         bat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
-        flatpak-run = "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland $@";
-        flatpak-install = "flatpak install $@";
+        fpak-run = "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland $@";
+        fpak-install = "flatpak install --user $@";
         forcekill = "kill -9 $@";
         size = "du -sh $@";
         analogcity = "ssh lowlife@45.79.250.220 $@";
