@@ -15,6 +15,7 @@
   #};
   gtk = {
     enable = true;
+    colorScheme = lib.mkForce "dark";
     theme = {
       # Diinki Aero
       #name = lib.mkForce "Diinki Aero";
@@ -49,6 +50,14 @@
       name = "XCursor-Pro-Red";
       package = pkgs.xcursor-pro;
       size = 28;
+    };
+    gtk4 = {
+      enable = true;
+      colorScheme = lib.mkForce "dark";
+      theme = {
+        name = "Colloid-Dark";
+        package = lib.mkForce pkgs.colloid-gtk-theme;
+      };
     };
   };
   stylix = {
