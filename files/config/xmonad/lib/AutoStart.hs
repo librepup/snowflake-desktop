@@ -116,6 +116,7 @@ myAutostart = do
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC
   spawnOnceIfExists "yad" "if ! pgrep yad > /dev/null 2>&1; then $HOME/.trayicon-scripts/wayPaper.sh & else pkill yad && $HOME/.trayicon-scripts/wayPaper.sh & fi"
+  spawnIfExists "ulauncher" "if ! pgrep ulauncher > /dev/null 2>&1; then ulauncher & else pkill ulauncher && ulauncher & fi"
 
 ------------------------------------------------------------------------
 -- Startup Hook

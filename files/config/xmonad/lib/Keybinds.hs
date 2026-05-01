@@ -136,6 +136,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Tab), submapDefault toggleWS $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
+        , ((0, xK_q), spawn "copyq toggle")
         , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
