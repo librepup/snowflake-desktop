@@ -24,6 +24,10 @@
         $DRY_RUN_CMD mkdir -p "$HOME/.config/kitty"
         $DRY_RUN_CMD ln -sfn "/etc/nixos/files/config/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
       '';
+      createKeePassXcConfigSymLink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        $DRY_RUN_CMD mkdir -p "$HOME/.config/keepassxc"
+        $DRY_RUN_CMD ln -sfn "/etc/nixos/files/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini"
+      '';
     };
   };
 }
