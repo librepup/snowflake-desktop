@@ -7,5 +7,6 @@
     ./nixmacs.nix
     ./others.nix
     ./vim.nix
+    ./copyq.nix
   ];
 }
