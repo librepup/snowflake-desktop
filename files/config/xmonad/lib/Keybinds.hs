@@ -163,7 +163,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_equal), sendMessage zoomIn)
         , ((controlMask, xK_t), withWorkspace xp (windows . W.view))
         , ((controlMask, xK_w), removeWorkspacePrompt xp)
-        , ((controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))     
+        , ((controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))
         , ((shiftMask, xK_Tab), withWorkspace xp (windows . W.shift))
         , ((0, xK_c), spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
         , ((shiftMask, xK_c), spawn "xcolor --format rgb | tr -d '\n' | sed 's/rgb(//g' | sed 's/)//g' | sed 's/[[:space:]]//g' | xclip -selection clipboard")
@@ -223,6 +223,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_s), spawn "firefox")
     -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
+    , ((modm .|. shiftMask, xK_a), spawn "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland com.github.dynobo.normcap --detect-text=True --parse-text=True --show-introduction=False --tray=False --cli-mode 2>/dev/null | xclip -selection clipboard")
     , ((modm, xK_d), spawn "icedove")
     -- Exit XMonad
     , ((modm .|. shiftMask, xK_e), confirmPrompt xp "Type 'yes' to exit:" $ io (exitWith ExitSuccess))

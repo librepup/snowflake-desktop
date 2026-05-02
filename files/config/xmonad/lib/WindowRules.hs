@@ -51,7 +51,7 @@ import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageHelpers (doLower, doHideIgnore)
+import XMonad.Hooks.ManageHelpers (doLower, doHideIgnore, isFullscreen)
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -145,6 +145,15 @@ myManageHook = composeAll
     , title =? "osu!"                     --> doShift "\xF0B82"    -- Move osu!stable to the "Games" Workspace.
     , className =? "notitg-v4.9.1.exe"    --> doShift "\xF0B82"
     , className =? "Quaver"               --> doShift "\xF0B82"    -- Move Quaver to the "Games" Workspace.
+    , title =? "NormCap [0]"
+      -->
+        doShift "1"
+        <+> doFullFloat
+        <+> doFocus
+    , title =? "NormCap [1]"
+      -->
+        doShift "2"
+        <+> doFullFloat
     , title =? "Waypaper"                 -->                      -- Float, Center, and Resize Waypaper Windows.
       doRectFloat centerAndSizeTo840x440
     , className =? "krita"                --> doShift "3"
