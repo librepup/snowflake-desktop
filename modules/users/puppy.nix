@@ -331,6 +331,7 @@ let
     #inputs.neu-nix.packages.x86_64-linux.hack
     inputs.neu-nix.packages.x86_64-linux.swclock
     inputs.neu-nix.packages.x86_64-linux.swall
+    inputs.neu-nix.packages.x86_64-linux.swiv
   ];
   bundleThemes = with pkgs; [
     whitesur-gtk-theme
