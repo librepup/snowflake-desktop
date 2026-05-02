@@ -81,6 +81,7 @@ import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import qualified XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedScratchpad
+import qualified XMonad.Util.Hacks as Hacks
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
@@ -152,7 +153,7 @@ main = do
         , mouseBindings      = myMouseBindings
         , layoutHook         = myLayoutHook activeTabTheme
         , manageHook         = myManageHook
-                            <+> namedScratchpadManageHook myScratchpads
+                            -- Scratchpad Hooks: {- <+> namedScratchpadManageHook myScratchpads -}
                             <+> manageHook def
         , handleEventHook    = fadeWindowsEventHook
                             <+> handleEventHook def
