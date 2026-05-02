@@ -1049,6 +1049,26 @@
         "type": "github"
       }
     },
+    "neu-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777502784,
+        "narHash": "sha256-ipkjSav40vAQoziPZPLMXFw+lIUrbAH2mJopPUAYp+I=",
+        "owner": "ricardomaps",
+        "repo": "neu-nix",
+        "rev": "d4b38bfa0112ba1a1359b91404a136a71cafa151",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ricardomaps",
+        "repo": "neu-nix",
+        "type": "github"
+      }
+    },
     "nix-alien": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1726,6 +1746,7 @@
         "mango": "mango",
         "millennium": "millennium",
         "naitre": "naitre",
+        "neu-nix": "neu-nix",
         "nix-alien": "nix-alien",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-gaming": "nix-gaming",
