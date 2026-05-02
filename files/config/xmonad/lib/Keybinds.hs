@@ -104,15 +104,12 @@ import XMonad.Prompt.Workspace
 -- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
-    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal)
-    --  ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- 'spawn $ XMonad.terminal conf' to spawn Default Terminal.
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
+    , ((modm .|. controlMask, xK_t), shellPrompt xp)
     , ((modm .|. controlMask .|. shiftMask, xK_t), shellPrompt xp)
     , ((modm, xK_t), spawn "ulauncher-toggle")
-    , ((modm .|. controlMask, xK_t), withWorkspace xp (windows . W.view))
-    , ((modm .|. controlMask, xK_w), removeWorkspacePrompt xp)
-    , ((myWinMask .|. controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
     , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "xkill")
@@ -132,6 +129,19 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Right), windows W.focusDown)
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
+    , ((modm .|. shiftMask, xK_s), submapDefault (spawn "helium") $ M.fromList [
+          ((0, xK_Return), spawn "helium")
+        , ((0, xK_s), spawn "helium")
+        , ((shiftMask, xK_s), spawn "zen")
+        , ((controlMask, xK_s), spawn "microsoft-edge")
+        , ((0, xK_f), spawn "firefox")
+        , ((0, xK_o), spawn "com.opera.opera-gx")
+        , ((0, xK_e), spawn "microsoft-edge")
+        , ((0, xK_m), spawn "microsoft-edge")
+        , ((shiftMask, xK_f), spawn "floorp")
+        , ((0, xK_h), spawn "helium")
+        , ((0, xK_z), spawn "zen")
+      ])
     -- Tab Submap and Tabby
     , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
@@ -140,6 +150,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_t), shellPrompt xp)
         , ((0, xK_s), shijimaPrompt tabXPConfig)
         , ((shiftMask, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
+        , ((modm, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
         , ((shiftMask, xK_n), spawn "nixmacs-client -c")
@@ -208,9 +219,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Applications
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
-    , ((modm, xK_s), spawn "zen")
+    , ((modm, xK_s), spawn "helium")
     , ((modm .|. controlMask, xK_s), spawn "firefox")
-    , ((modm .|. shiftMask, xK_s), spawn "helium")
+    -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
     , ((modm, xK_d), spawn "icedove")
     -- Exit XMonad
