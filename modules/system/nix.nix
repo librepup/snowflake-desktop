@@ -15,8 +15,14 @@
         "nix-command"
         "flakes"
       ];
+      max-jobs = "auto";
+      cores = 0;
+      connect-timeout = 5;
       trusted-users = [ "root" "puppy" ];
     };
+    extraOptions = ''
+      warn-dirty = false
+    '';
   };
   nixpkgs.config = {
     allowUnfree = true;
