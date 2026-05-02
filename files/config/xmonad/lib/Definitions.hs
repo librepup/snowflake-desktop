@@ -280,6 +280,7 @@ promptActionList =
   , ("c: Commands", arbitraryPrompt commandActionList)
   , ("l: Layout", arbitraryPrompt layoutModActionList)
   , ("w: Workspaces", arbitraryPrompt workspaceActionList)
+  , ("s: Shijia Prompt", shijimaPrompt tabXPConfig)
   ]
 -- Shijima Focus-Changer Menu
 shijimaActions :: [(String, X ())]
