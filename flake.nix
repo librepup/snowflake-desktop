@@ -92,10 +92,10 @@
       url = "github:nix-community/nix-snapd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #nixos-millennium = {
-    #  url = "github:re1n0/nixos-millennium";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    neu-nix = {
+      url = "github:ricardomaps/neu-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -130,7 +130,7 @@
       flatpaks,
       nur,
       nix-snapd,
-      #nixos-millennium,
+      neu-nix,
       ...
     }:
     let
@@ -152,7 +152,6 @@
           inputs.spicetify-nix.nixosModules.default
           nur.modules.nixos.default
           nix-snapd.nixosModules.default
-          #inputs.nixos-millennium.nixosModules.default
           # Nixpkgs Config
           {
             nixpkgs.config = {
