@@ -45,6 +45,12 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      # extraPackages = hpkgs: [
+      #   hpkgs.X11
+      #   hpkgs.X11-xshape
+      #   hpkgs.xmonad-contrib
+      #   hpkgs.xmonad-extras
+      # ];
     };
     windowManager.i3 = {
       enable = true;

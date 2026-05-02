@@ -14,14 +14,19 @@ import Data.List (intercalate, intersect)
 import Data.Char (isSpace)
 import Data.Tree
 import System.Exit
-import System.IO (readFile, writeFile)
+import System.IO (readFile, writeFile, Handle, hPutStrLn, hGetContents)
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import Control.Monad
 import Control.Monad (when)
 import Control.Concurrent (threadDelay)
 import XMonad.ManageHook (className)
-import XMonad.Prelude (when)
+import XMonad.Prelude (when, isPrefixOf)
+import Foreign
+import Foreign.C.String
+import Foreign.C.String (withCString)
+import Control.Monad.IO.Class (liftIO)
+import Control.Exception (catch, IOException)
 -- Layouts
 import XMonad.Layout.Spiral
 import XMonad.Layout.Renamed
@@ -50,7 +55,7 @@ import qualified XMonad.Layout.BoringWindows as BW
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.ManageHelpers (isInProperty)
+import XMonad.Hooks.ManageHelpers (isInProperty, doHideIgnore)
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -60,15 +65,18 @@ import XMonad.Hooks.FadeWindows
 -- Utils
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
-import XMonad.Util.Run (runProcessWithInput, spawnPipe)
+import XMonad.Util.Run (runProcessWithInput, spawnPipe, safeSpawn)
 import XMonad.Util.Loggers
 import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import qualified XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.WindowProperties
 -- Actions
 import XMonad.Actions.FloatKeys (keysMoveWindow, keysMoveWindowTo, keysResizeWindow, keysAbsResizeWindow)
 import XMonad.Actions.WithAll
+import XMonad.Actions.GridSelect
+import XMonad.Actions.CopyWindow (copyToAll, killAllOtherCopies)
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
 import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
@@ -86,19 +94,218 @@ import XMonad.Actions.OnScreen (viewOnScreen)
 import XMonad.Actions.UpdatePointer
 -- X11
 import Graphics.X11.Xlib
-import Graphics.X11.Xlib (warpPointer, xC_left_ptr, displayWidth, displayHeight)
+import Graphics.X11.Xlib (warpPointer, xC_left_ptr, displayWidth, displayHeight, setWindowBorderWidth)
 import Graphics.X11.Xlib.Extras
-import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
+import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height, changeProperty8, getClassHint, setClassHint, getWindowProperty8)
 import Graphics.X11.Xlib.Misc (grabPointer, getPointerControl)
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 import XMonad.Prompt.Workspace
 import XMonad.Prompt.Input
+import XMonad.Prompt.XMonad
+
+------------------------------------------------------------------------
+-- Info
+------------------------------------------------------------------------
+{-
+ -- XPConfig
+    1. activeXPConfig/XPConfig Variable: xp
+-}
 
 ------------------------------------------------------------------------
 -- Definitions
 ------------------------------------------------------------------------
+-- Change Focused Windows Class to 'xmonad-shijima-class-group', and add Function to Revert all Shijimai-fied Windows to their previous State/Class.
+reclaimAllShijima :: X ()
+reclaimAllShijima = do
+    dpy <- asks display
+    root <- asks theRoot
+    (_, _, wins) <- io $ queryTree dpy root
+    forM_ wins $ \w -> do
+        hint <- io $ getClassHint dpy w
+        let cls = resClass hint
+        when (cls == "xmonad-shijima-class-group") $ do
+            origAtom <- io $ internAtom dpy "XMONAD_ORIG_CLASS" False
+            mOrig <- io $ getWindowProperty8 dpy origAtom w
+            case mOrig of
+                Just (origBytes) -> do
+                    let origName = map (toEnum . fromIntegral) origBytes
+                    io $ setClassHint dpy w (ClassHint origName origName)
+                    io $ deleteProperty dpy w origAtom
+                    manage w
+                Nothing -> return ()
+
+    sendMessage ReleaseResources
+    refresh
+
+toggleShijimaClass :: X ()
+toggleShijimaClass = withFocused $ \w -> do
+    dpy <- asks display
+    let shijimaCls = "xmonad-shijima-class-group"
+    origAtom <- io $ internAtom dpy "XMONAD_ORIG_CLASS" False
+    mOrig <- io $ getWindowProperty8 dpy origAtom w
+    case mOrig of
+        Just (origBytes) -> do
+            let origName = map (toEnum . fromIntegral) origBytes
+            io $ setClassHint dpy w (ClassHint origName origName)
+            io $ deleteProperty dpy w origAtom
+            unmanage w
+            manage w
+        Nothing -> do
+            ClassHint currentRes _ <- io $ getClassHint dpy w
+            io $ withCString currentRes $ \cStr ->
+                changeProperty8 dpy w origAtom aTOM propModeReplace
+                                (map (fromIntegral . fromEnum) currentRes)
+            io $ setClassHint dpy w (ClassHint shijimaCls shijimaCls)
+            unmanage w
+            manage w
+    refresh
+-- Tab Menu
+data ArbitraryPrompt = ArbitraryPrompt
+instance XPrompt ArbitraryPrompt where
+  showXPrompt ArbitraryPrompt = "Tabby: "
+promptXPConfig = def
+    { font                = "xft:DejaVu Sans Mono:size=14"
+    , bgColor             = "#1d1f21"
+    , fgColor             = "#EDB6DB"
+    , bgHLight            = "#EDB6DB"
+    , fgHLight            = "#1d1f21"
+    , borderColor         = "#EDB6DB"
+    , promptBorderWidth   = 0
+    , position            = Top
+    , height              = 20
+    , historySize         = 0
+    }
+tabXPConfig = def
+    { font                = "xft:DejaVu Sans Mono:size=14"
+    , bgColor             = "#1d1f21"
+    , fgColor             = "#EDB6DB"
+    , bgHLight            = "#EDB6DB"
+    , fgHLight            = "#1d1f21"
+    , borderColor         = "#EDB6DB"
+    , promptBorderWidth   = 2
+    , position            = Top
+    , height              = 20
+    , historySize         = 0
+    }
+arbitraryPrompt :: [(String, X ())] -> X ()
+arbitraryPrompt m = mkXPrompt ArbitraryPrompt centeredXP (mkCompl m) $ \input ->
+  case lookup input m of
+    Just action -> action
+    Nothing     -> return ()
+  where
+    centeredXP = tabXPConfig
+      { position = CenteredAt
+        { xpCenterY = 0.3
+        , xpWidth   = 0.6
+        }
+      , height   = 60
+      , autoComplete = Just 0
+      , searchPredicate = \search item -> search `isPrefixOf` item
+      }
+    mkCompl acts s = return $ filter (searchPredicate tabXPConfig s) (map fst acts)
+applicationActionList :: [(String, X ())]
+applicationActionList =
+  [ ("q: View Clipboard", spawn "copyq toggle")
+  , ("n: Open Notepad", spawn "gnome-text-editor")
+  , ("a: Open Mixer", spawn "pavucontrol")
+  , ("l: Lock Screen", spawn "betterlockscreen --lock")
+  , ("c: Color Picker", spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
+  , ("m: Open Music Player", spawn "tauon")
+  , ("t: Run DMenu", spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
+  , ("i: Open Pinta", spawn "flatpak run com.github.PintaProject.Pinta")
+  , ("k: Reload Picom", spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")
+  , ("p: Launch TreeSelect", do
+        screenRect <- fmap (screenRect . W.screenDetail . W.current) (gets windowset)
+        let sw = fromIntegral $ rect_width screenRect
+            sh = fromIntegral $ rect_height screenRect
+            cx = (sw `div` 2) - (TS.ts_node_width myTSConfig `div` 2)
+            cy = (sh `div` 2) - 200
+            dynamicConfig = myTSConfig { TS.ts_originX = fromIntegral cx
+                                       , TS.ts_originY = fromIntegral cy }
+        TS.treeselectAction dynamicConfig myTree)
+  ]
+workspaceActionList =
+  [ ("m: Move Window to Workspace", withWorkspace promptXPConfig (windows . W.shift))
+  , ("t: Add/Focus Workspace", withWorkspace promptXPConfig (windows . W.view))
+  , ("w: Remove Workspace", removeWorkspacePrompt promptXPConfig)
+  ]
+commandActionList :: [(String, X ())]
+commandActionList =
+  [ ("-: Zoom Out", sendMessage zoomOut)
+  , ("=: Zoom In", sendMessage zoomIn)
+  , ("r: Reset Zoom", sendMessage zoomReset)
+  , ("1: Pin Window", windows copyToAll)
+  , ("2: Delete Pin-Clones", killAllOtherCopies)
+  , ("p: Refresh Theme", do
+        sendMessage ReleaseResources
+        refresh
+    )
+  , ("g: Refresh Theme and Layout", do
+        sendMessage ReleaseResources
+        refresh
+        setLayout =<< asks (layoutHook . config)
+    )
+  , ("t: Theme Selector", do
+        screenRect <- fmap (screenRect . W.screenDetail . W.current) (gets windowset)
+        let sw = fromIntegral $ rect_width screenRect
+            sh = fromIntegral $ rect_height screenRect
+            cx = (sw `div` 2) - (TS.ts_node_width myTSConfig `div` 2)
+            cy = (sh `div` 2) - 200
+            dynamicConfig = myTSConfig { TS.ts_originX = fromIntegral cx
+                                       , TS.ts_originY = fromIntegral cy }
+        TS.treeselectAction dynamicConfig themeTree
+        sendMessage ReleaseResources
+        refresh
+        setLayout =<< asks (layoutHook . config)
+    )
+  ]
+layoutModActionList :: [(String, X ())]
+layoutModActionList =
+  [ ("l: Combine with Left Window", sendMessage $ pullGroup L)
+  , ("d: Combine with Down Window", sendMessage $ pullGroup D)
+  , ("u: Combine with Window Above", sendMessage $ pullGroup U)
+  , ("r: Combine with Window Below", sendMessage $ pullGroup R)
+  , ("z: Un-Merge Windows", withFocused (sendMessage . UnMerge))
+  , ("x: Un-Merge All Windows", withFocused (sendMessage . UnMergeAll))
+  , ("i: Minimize Window", withFocused minimizeWindow)
+  , ("I: Un-Minimize Window", withLastMinimized maximizeWindowAndFocus)
+  , ("t: Fullscreen Window", sendMessage ToggleStruts >> sendMessage (Toggle NBFULL))
+  , ("f: Toggle Floating", withFocused toggleFloat)
+  ]
+promptActionList :: [(String, X ())]
+promptActionList =
+  [ ("a: Applications", arbitraryPrompt applicationActionList)
+  , ("c: Commands", arbitraryPrompt commandActionList)
+  , ("l: Layout", arbitraryPrompt layoutModActionList)
+  , ("w: Workspaces", arbitraryPrompt workspaceActionList)
+  ]
+-- Shijima Focus-Changer Menu
+shijimaActions :: [(String, X ())]
+shijimaActions =
+  [ ("t: Toggle Shijima Class", toggleShijimaClass)
+  , ("r: Reclaim All/Revert Class", reclaimAllShijima)
+  , ("x: Run XKill", spawn "xkill")
+  , ("k: Run XKill", spawn "xkill")
+  ]
+data ShijimaPrompt = ShijimaPrompt
+instance XPrompt ShijimaPrompt where
+    showXPrompt ShijimaPrompt = "Shijima Action: "
+shijimaPrompt :: XPConfig -> X ()
+shijimaPrompt xp = mkXPrompt ShijimaPrompt centeredXP (mkCompl shijimaActions) $ \input ->
+    case lookup input shijimaActions of
+        Just action -> action
+        Nothing     -> return ()
+    where
+        centeredXP = xp { position = CenteredAt
+                            { xpCenterY = 0.5
+                            , xpWidth   = 0.3
+                            }
+                        , height   = 60
+                        , autoComplete = Just 0
+                        }
+        mkCompl acts s = return $ filter (searchPredicate xp s) (map fst acts)
 -- Dynamic Workspaces
 removeWorkspacePrompt :: XPConfig -> X ()
 removeWorkspacePrompt xp =
@@ -130,13 +337,6 @@ setTheme name = do
   spawn "xmonad --recompile && xmonad --restart"
   sendMessage ReleaseResources
   refresh
-
--- activeThemeName <- io $ readFile "/home/puppy/.xmonad/currentTheme"
--- let activeTabTheme = case activeThemeName of
---       "mori" -> moriTabTheme
---       "elXoX" -> elXoXTabTheme
---       "camila" -> camilaTabTheme
---       _ -> moriTabTheme
 
 applyBorders :: ColorScheme -> X ()
 applyBorders cs = do

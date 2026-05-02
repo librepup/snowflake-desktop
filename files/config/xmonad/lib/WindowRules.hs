@@ -72,6 +72,7 @@ import XMonad.Util.NamedScratchpad
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
+import XMonad.Actions.GridSelect
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
 import XMonad.Actions.CopyWindow
@@ -114,12 +115,16 @@ myManageHook = composeAll
     , title =? "Lautstärkeregler"         --> doFloat              -- ...
     , isDialog                            --> doCenterFloat        -- Float and Center Dialog Windows.
     , (className =? "emote" <||>
-       title =? "emote")                  -->                      -- Move "emote" to the Cursor.
-      doFloat >> liftX (spawn moveWindowToCursorCommand) >> idHook
+       title =? "emote")
+      -->                                                          -- Move "emote" to the Cursor.
+        doFloat >> liftX (spawn moveWindowToCursorCommand) >> idHook
     , (title =? "vicinae" <||>
-       className =? "vicinae")            --> (doFocus <+> doWarp) -- Focus and Warp Mouse to "vicinae" Window.
-    , title =? "FLOAT_ME_NOW"             -->                      -- Float and Move "FLOAT_ME_NOW" Windows.
-      doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8)
+       className =? "vicinae")
+      -->                                                          -- Focus and Warp Mouse to "vicinae" Window.
+        (doFocus <+> doWarp)
+    , title =? "FLOAT_ME_NOW"
+      -->                                                          -- Float and Move "FLOAT_ME_NOW" Windows.
+        doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8)
     , title =? "Library"                  --> doCenterFloat        -- Center Float Browser Library.
     , (className =? "Steam" <||>
        title =? "Steam")                  -->                      -- Move "Steam" to Workspace 2.
@@ -146,7 +151,16 @@ myManageHook = composeAll
     , className =? "ulauncher"
       <||> title =? "Ulauncher - Application Launcher"
     --> hasBorder False
-    , title =? "Krita - Edit Text — Krita"--> doFloat
+    , title =? "Krita - Edit Text — Krita"
+      -->
+        doFloat
+    , className =? "xmonad-shijima-class-group"
+      -->
+        doIgnore
+        <+> doF W.focusDown
+        <+> hasBorder False
+        <+> doRaise
+        <+> doFloat
     , isShijima
       <||> className =? "Shijima-Qt"
       <&&> isInProperty "_NET_WM_WINDOW_TYPE" "_NET_WM_WINDOW_TYPE_UTILITY"

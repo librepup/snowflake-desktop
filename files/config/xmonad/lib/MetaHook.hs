@@ -146,19 +146,18 @@ main = do
         , borderWidth        = myBorderWidth
         , modMask            = myModMask
         , workspaces         = myWorkspaces
-        -- normalBorderColor  = myNormalBorderColor,
-        -- focusedBorderColor = myFocusedBorderColor,
         , normalBorderColor  = normal activeColorScheme
         , focusedBorderColor = DEFS.focused activeColorScheme
         , keys               = \c -> myKeys activeTabTheme activeXPConfig c
         , mouseBindings      = myMouseBindings
         , layoutHook         = myLayoutHook activeTabTheme
         , manageHook         = myManageHook
-                          <+> namedScratchpadManageHook myScratchpads
-                          <+> manageHook def
+                            <+> namedScratchpadManageHook myScratchpads
+                            <+> manageHook def
         , handleEventHook    = fadeWindowsEventHook
-                          <+> handleEventHook def
-                          <+> focusTickleHook
+                            <+> handleEventHook def
+                            <+> focusTickleHook
         , startupHook        = myStartupHook
-        , logHook            = fadeWindowsLogHook myFadeHook <+> myLogHook
+        , logHook            = fadeWindowsLogHook myFadeHook
+                            <+> myLogHook
      }

@@ -73,6 +73,7 @@ import XMonad.Actions.Warp
 import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
 import XMonad.Actions.DynamicProjects
 import XMonad.Actions.MouseResize
+import XMonad.Actions.GridSelect
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
 import XMonad.Actions.CopyWindow
@@ -116,7 +117,6 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q), kill)
     , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "xkill")
     -- Cycle Layouts
-    -- , ((modm, xK_space), sendMessage NextLayout)
     , ((modm, xK_space), do
         screenRect <- fmap (screenRect . W.screenDetail . W.current) (gets windowset)
         let sw = fromIntegral $ rect_width screenRect
@@ -132,15 +132,18 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Right), windows W.focusDown)
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
-    -- Tab Submap
-    , ((modm, xK_Tab), submapDefault toggleWS $ M.fromList [
+    -- Tab Launcher
+    -- Tab Submap and Tabby
+    , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
         , ((0, xK_q), spawn "copyq toggle")
-        , ((0, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
+        , ((0, xK_t), shellPrompt xp)
+        , ((shiftMask, xK_t), spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
         , ((0, xK_period), spawn "emote")
         , ((0, xK_n), spawn "gnome-text-editor")
-        , ((shiftMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
+        , ((shiftMask, xK_n), spawn "nixmacs-client -c")
+        , ((shiftMask .|. controlMask, xK_n), spawn "nixmacs -Q --eval \"(load-theme 'modus-vivendi)\"")
         , ((0, xK_a), spawn "pavucontrol")
         , ((0, xK_m), spawn "cp /etc/nixos/files/config/tauon/tauon.conf $HOME/.local/share/TauonMusicBox/tauon.conf && tauon")
         , ((controlMask .|. shiftMask, xK_m), spawn "tauon")
@@ -148,7 +151,6 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         , ((0, xK_equal), sendMessage zoomIn)
         , ((0, xK_c), spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
         , ((0, xK_r), sendMessage zoomReset)
-        , ((0, xK_e), spawn "nixmacs-client -c")
         , ((shiftMask .|. controlMask, xK_1), windows copyToAll)
         , ((shiftMask .|. controlMask, xK_2), killAllOtherCopies)
         , ((shiftMask, xK_p), spawn "flatpak run com.github.PintaProject.Pinta")
@@ -169,15 +171,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
             sendMessage ReleaseResources
             refresh
             setLayout =<< asks (layoutHook . config))
---        , ((0, xK_space), setLayout $ XMonad.layoutHook conf)
         , ((0, xK_Return), spawn Definitions.myTerminal)
         , ((shiftMask, xK_Return), spawn Definitions.myTerminalFb)
-        , ((controlMask, xK_Return), spawn "arcan_db add_appl_kv console font_size 14 >/dev/null 2>&1 && arcan console lash")
-        , ((shiftMask, xK_backslash), spawn "kitty -o font_family='DejaVu Sans Mono' -o font_size=14 -o modify_font='cell_width 110%' xonsh")
         , ((shiftMask .|. controlMask, xK_Return), spawn "term rc")
-        , ((shiftMask .|. controlMask, xK_t), namedScratchpadAction myScratchpads "terminal")
-        , ((shiftMask .|. controlMask, xK_n), namedScratchpadAction myScratchpads "notes")
-        , ((shiftMask .|. controlMask, xK_d), namedScratchpadAction myScratchpads "scratchmsg")
         ])
     -- Move Windows
     , ((modm .|. shiftMask, xK_Left ), windows W.swapUp)
