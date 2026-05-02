@@ -323,6 +323,15 @@ let
     wireshark
     net-tools
   ];
+  bundleNeu = with pkgs; [
+    inputs.neu-nix.packages.x86_64-linux.neuwld
+    inputs.neu-nix.packages.x86_64-linux.neuswc
+    inputs.neu-nix.packages.x86_64-linux.neumenu
+    inputs.neu-nix.packages.x86_64-linux.hevel
+    #inputs.neu-nix.packages.x86_64-linux.hack
+    inputs.neu-nix.packages.x86_64-linux.swclock
+    inputs.neu-nix.packages.x86_64-linux.swall
+  ];
   bundleThemes = with pkgs; [
     whitesur-gtk-theme
     whitesur-icon-theme
@@ -439,6 +448,7 @@ in
     ++ bundleWeb
     ++ bundleAI
     ++ bundleFlatpak
+    ++ bundleNeu
     ++ bundleTextEditors
     ++ bundleExplorers;
   };
