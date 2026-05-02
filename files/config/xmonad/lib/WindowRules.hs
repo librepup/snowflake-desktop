@@ -143,6 +143,9 @@ myManageHook = composeAll
     , title =? "Waypaper"                 -->                      -- Float, Center, and Resize Waypaper Windows.
       doRectFloat centerAndSizeTo840x440
     , className =? "krita"                --> doShift "3"
+    , className =? "ulauncher"
+      <||> title =? "Ulauncher - Application Launcher"
+    --> hasBorder False
     , title =? "Krita - Edit Text — Krita"--> doFloat
     , isShijima
       <||> className =? "Shijima-Qt"

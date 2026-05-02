@@ -107,11 +107,11 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     --  ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
-    -- , ((modm, xK_t), shellPrompt xp)
+    , ((modm .|. controlMask .|. shiftMask, xK_t), shellPrompt xp)
     , ((modm, xK_t), spawn "ulauncher-toggle")
     , ((modm .|. controlMask, xK_t), withWorkspace xp (windows . W.view))
     , ((modm .|. controlMask, xK_w), removeWorkspacePrompt xp)
-    , ((modm .|. controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))
+    , ((myWinMask .|. controlMask .|. shiftMask, xK_t), withWorkspace xp (windows . W.shift))
     -- Kill Window
     , ((modm .|. shiftMask, xK_q), kill)
     , ((modm .|. shiftMask .|. controlMask, xK_q), spawn "xkill")

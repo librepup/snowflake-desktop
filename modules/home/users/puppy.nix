@@ -29,6 +29,10 @@
         $DRY_RUN_CMD rm "$HOME/.config/keepassxc/keepassxc.ini"
         $DRY_RUN_CMD cp "/etc/nixos/files/config/keepassxc/keepassxc.ini" "$HOME/.config/keepassxc/keepassxc.ini"
       '';
+      createPicomUserConfFile = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        $DRY_RUN_CMD mkdir -p "$HOME/.config/picom"
+        $DRY_RUN_CMD if [ ! -f "$HOME/.config/picom/user.conf" ]; then touch "$HOME/.config/picom/user.conf"; fi
+      '';
     };
   };
 }
