@@ -108,8 +108,11 @@ infixl 1 <&?>
 -- Window Rules
 ------------------------------------------------------------------------
 myManageHook = composeAll
-    [ className =? "discord"              --> doShift "2"          -- Move "discord" and "vesktop" to Workspace 2.
-    , className =? "vesktop"              --> doShift "2"          -- ...
+    [ (className =? "discord" <||>
+       className =? "goofcord" <||>
+       className =? "vesktop")
+        -->                                                        -- Move "discord" and "vesktop" to Workspace 2.
+          doShift "2"
     , title =? "FLOAT_MP"                 --> doCenterFloat        -- Float and Center Windows where Title equals "FLOAT_MP".
     , title =? "Volume Control"           --> doFloat              -- Float Volume Control Windows.
     , title =? "Lautstärkeregler"         --> doFloat              -- ...
