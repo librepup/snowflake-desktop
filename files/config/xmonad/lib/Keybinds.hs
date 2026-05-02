@@ -214,6 +214,8 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_space), withFocused toggleFloat)
     -- Toggle Fullscreen
     , ((modm .|. shiftMask, xK_t), sendMessage ToggleStruts >> sendMessage (Toggle NBFULL))
+    -- Toggle Bar
+    , ((modm, xK_b), sendMessage ToggleStruts)
     -- Switch Layouts
     , ((modm, xK_y), sendMessage NextLayout)
     -- Applications

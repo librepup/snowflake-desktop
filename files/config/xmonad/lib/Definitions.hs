@@ -98,6 +98,7 @@ import Graphics.X11.Xlib (warpPointer, xC_left_ptr, displayWidth, displayHeight,
 import Graphics.X11.Xlib.Extras
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height, changeProperty8, getClassHint, setClassHint, getWindowProperty8)
 import Graphics.X11.Xlib.Misc (grabPointer, getPointerControl)
+import XMonad.Util.XUtils (fi)
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
@@ -710,6 +711,7 @@ layoutTree =
   , Node (TS.TSNode "Circle" "" (sendMessage $ JumpToLayout "Circle")) []
   , Node (TS.TSNode "Full" "" (sendMessage $ JumpToLayout "Full")) []
   , Node (TS.TSNode "Floating" "" (sendMessage $ JumpToLayout "Floating")) []
+  , Node (TS.TSNode "DecoFloat" "" (sendMessage $ JumpToLayout "DecoFloat")) []
   ]
 
 myTree :: [Tree (TS.TSNode (X ()))]

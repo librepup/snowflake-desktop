@@ -24,6 +24,7 @@ import XMonad.Prelude (when)
 -- Layouts
 import XMonad.Layout.Spiral
 import XMonad.Layout.Renamed
+import XMonad.Layout.IfMax
 import XMonad.Layout.Tabbed
 import XMonad.Layout.Accordion
 import XMonad.Layout.ThreeColumns
@@ -39,6 +40,7 @@ import XMonad.Layout.SubLayouts
 import XMonad.Layout.WindowNavigation
 import XMonad.Layout.Simplest
 import XMonad.Layout.SimpleFloat (simpleFloat, simpleFloat')
+import XMonad.Layout.SimpleDecoration
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Minimize
 import XMonad.Layout.TwoPane
@@ -46,8 +48,10 @@ import XMonad.Layout.Grid
 import XMonad.Layout.CircleEx
 import XMonad.Layout.ZoomRow
 import XMonad.Layout.LimitWindows
-import XMonad.Layout.Decoration (shrinkText)
+import XMonad.Layout.Decoration
+import XMonad.Layout.Decoration (shrinkText, DecorationStyle)
 import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.TrackFloating
 import XMonad.Layout.WindowArranger
 import qualified XMonad.Layout.BoringWindows as BW
 -- Hooks
@@ -69,12 +73,13 @@ import XMonad.Util.NamedActions
 import XMonad.Util.Cursor (setDefaultCursor)
 import qualified XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.Themes
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
 import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
 import XMonad.Actions.Warp
-import XMonad.Actions.MouseResize
+-- import XMonad.Actions.MouseResize
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
 import qualified XMonad.Actions.Search as S
@@ -94,14 +99,28 @@ import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 
 ------------------------------------------------------------------------
+-- Definitions
+------------------------------------------------------------------------
+decoFloatTheme :: Theme
+decoFloatTheme = def 
+    { activeColor         = "#EDB6DB"
+    , inactiveColor       = "#1d1f21"
+    , activeBorderColor   = "#1d1f21"
+    , inactiveBorderColor = "#1d1f21"
+    , activeTextColor     = "#1d1f21"
+    , inactiveTextColor   = "#EDB6DB"
+    , decoHeight          = 20
+    , fontName            = "xft:DejaVu Sans Mono:size=10"
+    }
+
+------------------------------------------------------------------------
 -- Layouts
 ------------------------------------------------------------------------
 myLayoutHook t = avoidStruts
-             $ onWorkspace "9" (allFloat t)
+             $ onWorkspace "9" (allFloat decoFloatTheme)
              $ onWorkspace "F12" fullLayout
              $ onWorkspace "2" (multiLayout t)
              $ onWorkspace "\xF0B82" fullLayout
-             $ smartBorders
              $ mkToggle (NBFULL ?? EOT)
              $ tabbedLayout t
              ||| multiLayout t
@@ -114,11 +133,13 @@ myLayoutHook t = avoidStruts
     -- Tabbed
     tabbedLayout t =
       named "Tabbed"
+      $ smartBorders
       $ minimize
       $ (tabbed shrinkText t)
     -- Multi
     multiLayout t =
       named "Multi"
+      $ smartBorders
       $ minimize
       $ windowNavigation
       $ addTabs shrinkText t
@@ -129,18 +150,21 @@ myLayoutHook t = avoidStruts
     -- Spiral
     spiralLayout =
       named "Spiral"
+      $ smartBorders
       $ minimize
       $ spacingWithEdge 4
       $ spiral (6/7)
     -- Accordion
     accordionLayout =
       named "Accordion"
+      $ smartBorders
       $ minimize
       $ spacingWithEdge 4
       Accordion
     -- Circle
     circleLayout =
       named "Circle"
+      $ smartBorders
       $ minimize
       $ spacingWithEdge 4
       circle
