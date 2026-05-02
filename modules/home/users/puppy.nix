@@ -31,7 +31,9 @@
       '';
       createPicomUserConfFile = lib.hm.dag.entryAfter ["writeBoundary"] ''
         $DRY_RUN_CMD mkdir -p "$HOME/.config/picom"
-        $DRY_RUN_CMD if [ ! -f "$HOME/.config/picom/user.conf" ]; then touch "$HOME/.config/picom/user.conf"; fi
+        if [ ! -f "$HOME/.config/picom/user.conf" ]; then
+          $DRY_RUN_CMD touch "$HOME/.config/picom/user.conf"
+        fi
       '';
     };
   };
