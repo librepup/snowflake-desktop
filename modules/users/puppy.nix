@@ -233,6 +233,7 @@ let
     anvil-editor
     gnome-text-editor
     kdePackages.kate
+    marksman
   ];
   bundleWeb = with pkgs; [
     httrack
