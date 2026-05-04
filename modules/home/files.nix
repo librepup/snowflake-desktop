@@ -162,11 +162,6 @@
   home.file.".config/fastfetch/images/numi01.png".source = ../../files/config/fastfetch/numi01.png;
   home.file.".config/fastfetch/images/gigi.png".source = ../../files/config/fastfetch/gigi.png;
   home.file.".config/fastfetch/config.jsonc".source = ../../files/config/fastfetch/config.jsonc;
-  # Discord Colorscheme
-  home.file.".config/vesktop/themes/dank.css".source = ../../files/config/discord/dank.css;
-  home.file.".config/vesktop/themes/guix.css".source = ../../files/config/discord/guix.css;
-  home.file.".config/vesktop/themes/fuwamoco-theme.css".source =
-    ../../files/config/discord/fuwamoco-theme.css;
   # Kitty Colorschemes
   home.file = {
     # ".config/kitty/kitty.conf".source = ../../files/config/kitty/kitty.conf;
