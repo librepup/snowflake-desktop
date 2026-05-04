@@ -1,5 +1,26 @@
 # Discord
-## Plugins
+## GoofCord
+### Plugins
+ - CallTimer
+ - CrashHandler
+ - FakeNitro
+ - iLoveSpam
+ - ImageZoom
+ - KeepCurrentChannel
+ - NoTypingAnimation
+ - NoF1
+ - petpet
+ - ReadAllNotificationsButton
+ - ShowHiddenChannels
+ - Translate
+ - VencordToolbox
+ - ViewIcons
+ - WebContextMenus
+ - WebKeybinds
+ - WebScreenShareFixes
+
+## Equibop
+### Plugins
  - ViewProfilePicture
  - Translator
  - SplitLargeMessages
