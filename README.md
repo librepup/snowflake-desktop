@@ -17,7 +17,7 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - Bootloader: GRUB
 
 ## Gaming
- - Steam Installed (with Proton-GE, and Millenium Themes)
+ - Steam Installed (with Proton-GE, Proton-CachyOS, and Millenium Themes)
  - Nix-Gaming Installed
  - OpenTabletDriver Installed
  - Input-Remapper Installed
