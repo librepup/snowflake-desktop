@@ -105,7 +105,7 @@ myAutostart = do
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
   spawnIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
-  spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects & fi" -- PipeWire EasyEffects
+  spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Baseline --hide-window & fi" -- PipeWire EasyEffects
   spawnOnceIfExists "jonabar-numi" "if ! pgrep polybar > /dev/null; then jonabar-numi & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
   spawnOnceIfExists "waypaper" "waypaper --restore"
@@ -115,6 +115,7 @@ myAutostart = do
   spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -l 52.520008:13.404954 -t 5200:5200 -m randr:crtc=0; xrandr --output HDMI-0 --gamma 1.5:1.5:1.5 & fi" -- Bluelight Filter
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC
+  spawnOnceIfExists "copyq" "if ! pgrep copyq > /dev/null 2>&1; then copyq & fi"
   spawnOnceIfExists "yad" "if ! pgrep yad > /dev/null 2>&1; then $HOME/.trayicon-scripts/wayPaper.sh & else pkill yad && $HOME/.trayicon-scripts/wayPaper.sh & fi"
   spawnIfExists "ulauncher" "if ! pgrep ulauncher > /dev/null 2>&1; then ulauncher --hide-window & else pkill ulauncher && ulauncher --hide-window & fi"
 
