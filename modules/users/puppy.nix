@@ -11,6 +11,9 @@ let
   kate-edit-xmonad = pkgs.writeShellScriptBin "kedit-xmonad" ''
     exec ${pkgs.kdePackages.kate}/bin/kate $HOME/.xmonad "$@"
   '';
+  widevine-path-location = pkgs.writeShellScriptBin "widevine-path-location" ''
+    echo "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"
+  '';
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   bundleBrowsers = with pkgs; [
     google-chrome
@@ -31,6 +34,8 @@ let
     nur.repos.hythera.waterfox-bin
     nur.repos.bandithedoge.thorium-bin
     thunderbird-bin
+    widevine-cdm
+    widevine-path-location
   ];
   bundleRust = with pkgs; [
     cargo
