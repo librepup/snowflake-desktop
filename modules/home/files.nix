@@ -234,6 +234,7 @@
     # Ironmouse
     "Pictures/Avatars/Ironmouse/01.jpg".source = ../../files/pictures/avatars/Ironmouse/01.jpg;
     "Pictures/Avatars/Ironmouse/02.jpg".source = ../../files/pictures/avatars/Ironmouse/02.jpg;
+    "Pictures/Avatars/Ironmouse/03.jpg".source = ../../files/pictures/avatars/Ironmouse/03.jpg;
     # Projekt Melody
     "Pictures/Avatars/Projekt Melody/01.jpg".source = ../../files/pictures/avatars/ProjektMelody/01.jpg;
     "Pictures/Avatars/Projekt Melody/02.jpg".source = ../../files/pictures/avatars/ProjektMelody/02.jpg;
