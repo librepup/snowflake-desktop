@@ -227,12 +227,12 @@
                 ];
                 backupFileExtension =
                   let
-                    timestamp = pkgs.runCommand "hm-backup-timestamp" {} ''
+                    timestamp = pkgs.runCommand "hm-backup-timestamp" { } ''
                       TZ="Europe/Berlin" date '+backup-%H:%M:%S@%d.%m.%Y' > $out
                     '';
                   in
-                    builtins.readFile timestamp;
-               };
+                  builtins.readFile timestamp;
+              };
               system.stateVersion = "25.11";
             }
           )

@@ -7,10 +7,14 @@ file:///home/puppy/Temp
 file:///dev/null ──────────────
 file:///etc/nixos /etc/nixos
 file:///mnt /mnt
-file:///mnt/osu osu!
-file:///mnt/Files /mnt/Files
 file:///extra /extra
+file:///mountables /mountables
 file:///dev/null ──────────────
+file:///mnt/Files /mnt/Files
 file:///home/puppy/Documents/Projects
 file:///home/puppy/.xmonad
 file:///home/puppy/.config
+file:///dev/null ──────────────
+file:///mnt/NotITG-v4.9.1 NotITG
+file:///mnt/osu osu!
+file:///mnt/SteamLibrary/steamapps/common/Quaver Quaver

@@ -1,5 +1,16 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
+  kate-edit-nixos = pkgs.writeShellScriptBin "kedit-nixos" ''
+    exec ${pkgs.kdePackages.kate}/bin/kate /etc/nixos "$@"
+  '';
+  kate-edit-xmonad = pkgs.writeShellScriptBin "kedit-xmonad" ''
+    exec ${pkgs.kdePackages.kate}/bin/kate $HOME/.xmonad "$@"
+  '';
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
   bundleBrowsers = with pkgs; [
     google-chrome
@@ -215,10 +226,13 @@ let
     kdePackages.kdenlive
     kdePackages.ffmpegthumbs
     simplescreenrecorder
+    gpu-screen-recorder
+    gpu-screen-recorder-gtk
   ];
   bundleTextEditors = with pkgs; [
     anvil-editor
     gnome-text-editor
+    kdePackages.kate
   ];
   bundleWeb = with pkgs; [
     httrack
@@ -323,27 +337,30 @@ let
     wireshark
     net-tools
   ];
-  bundleNeu = with pkgs; [
-    inputs.neu-nix.packages.x86_64-linux.neuwld
-    inputs.neu-nix.packages.x86_64-linux.neuswc
-    inputs.neu-nix.packages.x86_64-linux.neumenu
-    inputs.neu-nix.packages.x86_64-linux.hevel
-    #inputs.neu-nix.packages.x86_64-linux.hack
-    inputs.neu-nix.packages.x86_64-linux.swclock
-    inputs.neu-nix.packages.x86_64-linux.swall
-    inputs.neu-nix.packages.x86_64-linux.swiv
+  bundleNeu = with inputs.neu-nix.packages.x86_64-linux; [
+    neuwld
+    neuswc
+    neumenu
+    hevel
+    #hack (Find plan9port-wayland Package or Fix)
+    swclock
+    swall
+    swiv
+    mojito
+    hst
+    tohu
   ];
   bundleThemes = with pkgs; [
-    whitesur-gtk-theme
-    whitesur-icon-theme
-    chicago95
-    windows10-icons
     inputs.jonabron.packages.x86_64-linux.windows-xp-theme
     inputs.jonabron.packages.x86_64-linux.windows-vista-theme
     inputs.jonabron.packages.x86_64-linux.revista
     inputs.jonabron.packages.x86_64-linux.xptheme
     inputs.jonabron.packages.x86_64-linux.winxp-icons
     inputs.jonabron.packages.x86_64-linux.diinki-aero
+    whitesur-gtk-theme
+    whitesur-icon-theme
+    chicago95
+    windows10-icons
   ];
   bundleKeyboard = with pkgs; [
     keyboard-layout-editor
@@ -375,82 +392,84 @@ in
       "docker"
       "podman"
     ];
-    packages = with pkgs; [
-      kitty
-      inputs.jonabron.packages.x86_64-linux.image-text-extractor
-      inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
-      inputs.jonabron.packages.x86_64-linux.jonabar
-      inputs.nix-init.packages.x86_64-linux.default
-      inputs.jonabron.packages.x86_64-linux.momoisay
-      espeak
-      inputs.jonabron.packages.x86_64-linux.urbit
-      kdePackages.karousel
-      plasmusic-toolbar
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
-      qemu
-      quickemu
-      kjv
-      emote
-      veracrypt
-      flameshot
-      tesseract
-      textsnatcher
-      redshift
-      zathura
-      keepassxc
-      nil
-      nixfmt
-      qbittorrent
-      kdePackages.qt5compat
-      picard
-      yt-dlp
-      rofimoji
-      rofi
-      texliveFull
-      blahaj
-      zenmap
-      zerotierone
-      translate-shell
-      nix-prefetch-scripts
-      libreoffice
-      gnome-shell-extensions
-      gnome-font-viewer
-      fontforge-gtk
-      fontpreview
-      arduino-ide
-      pokeget-rs
-    ]
-    ++ bundleBrowsers
-    ++ bundleRust
-    ++ bundleWayland
-    ++ bundleFetchers
-    ++ bundleVSTs
-    ++ bundleDAWs
-    ++ bundleAudioUtilities
-    ++ bundleMessaging
-    ++ bundleEmulators
-    ++ bundleGraphicsDesign
-    ++ bundleMusicPlayers
-    ++ bundleWineAndGames
-    ++ bundleArchivers
-    ++ bundleVideoProduction
-    ++ bundleGeneralUtilities
-    ++ bundleNetworking
-    ++ bundleImageViewers
-    ++ bundleKeyboard
-    ++ bundleThemes
-    ++ bundleShells
-    ++ bundleNode
-    ++ bundleVirtualization
-    ++ bundleHaskell
-    ++ bundleXorg
-    ++ bundleWallpaperManagers
-    ++ bundleWeb
-    ++ bundleAI
-    ++ bundleFlatpak
-    ++ bundleNeu
-    ++ bundleTextEditors
-    ++ bundleExplorers;
+    packages =
+      with pkgs;
+      [
+        kitty
+        inputs.jonabron.packages.x86_64-linux.image-text-extractor
+        inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
+        inputs.jonabron.packages.x86_64-linux.jonabar
+        inputs.nix-init.packages.x86_64-linux.default
+        inputs.jonabron.packages.x86_64-linux.momoisay
+        espeak
+        inputs.jonabron.packages.x86_64-linux.urbit
+        kdePackages.karousel
+        plasmusic-toolbar
+        libsForQt5.qtstyleplugin-kvantum
+        libsForQt5.qt5ct
+        qemu
+        quickemu
+        kjv
+        emote
+        veracrypt
+        flameshot
+        tesseract
+        textsnatcher
+        redshift
+        zathura
+        keepassxc
+        nil
+        nixfmt
+        qbittorrent
+        kdePackages.qt5compat
+        picard
+        yt-dlp
+        rofimoji
+        rofi
+        texliveFull
+        blahaj
+        zenmap
+        zerotierone
+        translate-shell
+        nix-prefetch-scripts
+        libreoffice
+        gnome-shell-extensions
+        gnome-font-viewer
+        fontforge-gtk
+        fontpreview
+        arduino-ide
+        pokeget-rs
+      ]
+      ++ bundleBrowsers
+      ++ bundleRust
+      ++ bundleWayland
+      ++ bundleFetchers
+      ++ bundleVSTs
+      ++ bundleDAWs
+      ++ bundleAudioUtilities
+      ++ bundleMessaging
+      ++ bundleEmulators
+      ++ bundleGraphicsDesign
+      ++ bundleMusicPlayers
+      ++ bundleWineAndGames
+      ++ bundleArchivers
+      ++ bundleVideoProduction
+      ++ bundleGeneralUtilities
+      ++ bundleNetworking
+      ++ bundleImageViewers
+      ++ bundleKeyboard
+      ++ bundleThemes
+      ++ bundleShells
+      ++ bundleNode
+      ++ bundleVirtualization
+      ++ bundleHaskell
+      ++ bundleXorg
+      ++ bundleWallpaperManagers
+      ++ bundleWeb
+      ++ bundleAI
+      ++ bundleFlatpak
+      ++ bundleNeu
+      ++ bundleTextEditors
+      ++ bundleExplorers;
   };
 }

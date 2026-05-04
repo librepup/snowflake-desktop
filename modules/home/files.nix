@@ -1,5 +1,14 @@
-{ config, pkgs, inputs, lib, unstable, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  lib,
+  unstable,
+  ...
+}:
+{
+  # Kate
+  home.file.".kateShortcuts/LibrePup.shortcuts".source = ../../files/config/kate/LibrePup.shortcuts;
   # EWW
   home.file.".config/eww/eww.yuck".source = ../../files/config/eww/eww.yuck;
   home.file.".config/eww/eww.scss".source = ../../files/config/eww/eww.scss;
@@ -12,6 +21,9 @@
   home.file.".config/gtk-3.0/bookmarks".source = ../../files/config/gtk-3.0/bookmarks;
   xdg.configFile."Thunar/uca.xml" = {
     source = ../../files/config/Thunar/uca.xml;
+  };
+  xdg.configFile."Thunar/scripts/convertImages.sh" = {
+    source = ../../files/config/Thunar/scripts/convertImages.sh;
   };
   # Picom
   home.file.".config/picom/picom.conf".source = ../../files/config/picom/v3.conf;
@@ -34,14 +46,20 @@
     ".config/mpv/scripts/cycle-profile.lua".source = ../../files/config/mpv/scripts/cycle-profile.lua;
     ".config/mpv/scripts/modernz.lua".source = ../../files/config/mpv/scripts/modernz.lua;
     ".config/mpv/scripts/mpv-gif.lua".source = ../../files/config/mpv/scripts/mpv-gif.lua;
-    ".config/mpv/scripts/playlistmanager.lua".source = ../../files/config/mpv/scripts/playlistmanager.lua;
+    ".config/mpv/scripts/playlistmanager.lua".source =
+      ../../files/config/mpv/scripts/playlistmanager.lua;
     ".config/mpv/scripts/seek-to.lua".source = ../../files/config/mpv/scripts/seek-to.lua;
-    ".config/mpv/scripts/sponsorblock-minimal.lua".source = ../../files/config/mpv/scripts/sponsorblock-minimal.lua;
+    ".config/mpv/scripts/sponsorblock-minimal.lua".source =
+      ../../files/config/mpv/scripts/sponsorblock-minimal.lua;
     ".config/mpv/scripts/thumbfast.lua".source = ../../files/config/mpv/scripts/thumbfast.lua;
-    ".config/mpv/fonts/fluent-system-icons.ttf".source = ../../files/config/mpv/fonts/fluent-system-icons.ttf;
-    ".config/mpv/fonts/Netflix Sans Bold.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Bold.otf;
-    ".config/mpv/fonts/Netflix Sans Light.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Light.otf;
-    ".config/mpv/fonts/Netflix Sans Medium.otf".source = ../../files/config/mpv/fonts/Netflix_Sans_Medium.otf;
+    ".config/mpv/fonts/fluent-system-icons.ttf".source =
+      ../../files/config/mpv/fonts/fluent-system-icons.ttf;
+    ".config/mpv/fonts/Netflix Sans Bold.otf".source =
+      ../../files/config/mpv/fonts/Netflix_Sans_Bold.otf;
+    ".config/mpv/fonts/Netflix Sans Light.otf".source =
+      ../../files/config/mpv/fonts/Netflix_Sans_Light.otf;
+    ".config/mpv/fonts/Netflix Sans Medium.otf".source =
+      ../../files/config/mpv/fonts/Netflix_Sans_Medium.otf;
   };
   # Waybar
   home.file = {
@@ -86,8 +104,10 @@
     # Functions (funcs)
     ".shell-autoload-functions/funcs/gamemode.sh".source = ../../files/scripts/gamemode.sh;
     ".shell-autoload-functions/funcs/xmonadsync.sh".source = ../../files/scripts/xmonadsync.sh;
-    ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source = ../../files/scripts/tauonCopyConfig.sh;
-    ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source = ../../files/scripts/toggle-zen-transparency.sh;
+    ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source =
+      ../../files/scripts/tauonCopyConfig.sh;
+    ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source =
+      ../../files/scripts/toggle-zen-transparency.sh;
     ".shell-autoload-functions/funcs/lash.sh".source = ../../files/scripts/lash.sh;
     ".shell-autoload-functions/funcs/translate.sh".source = ../../files/scripts/translate.sh;
     ".shell-autoload-functions/funcs/eww.sh".source = ../../files/scripts/eww.sh;
@@ -99,7 +119,8 @@
     ".shell-autoload-functions/funcs/android.sh".source = ../../files/scripts/android.sh;
     ".shell-autoload-functions/funcs/play.sh".source = ../../files/scripts/play.sh;
     ".shell-autoload-functions/funcs/preexec.sh".source = ../../files/scripts/preexec.sh;
-    ".shell-autoload-functions/funcs/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
+    ".shell-autoload-functions/funcs/nix-get-store-path.sh".source =
+      ../../files/scripts/nix-get-store-path.sh;
     ".shell-autoload-functions/funcs/mp3.sh".source = ../../files/scripts/mp3.sh;
     ".shell-autoload-functions/funcs/help.sh".source = ../../files/scripts/help.sh;
     ".shell-autoload-functions/funcs/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
@@ -112,10 +133,12 @@
     ".shell-autoload-functions/funcs/fkill.sh".source = ../../files/scripts/fkill.sh;
     ".shell-autoload-functions/funcs/generators.sh".source = ../../files/scripts/generators.sh;
     ".shell-autoload-functions/funcs/git-helper.sh".source = ../../files/scripts/git-helper.sh;
-    ".shell-autoload-functions/funcs/guix-manager-helper.sh".source = ../../files/scripts/guix-manager-helper.sh;
+    ".shell-autoload-functions/funcs/guix-manager-helper.sh".source =
+      ../../files/scripts/guix-manager-helper.sh;
     ".shell-autoload-functions/funcs/hashurl.sh".source = ../../files/scripts/hashurl.sh;
     ".shell-autoload-functions/funcs/mp4.sh".source = ../../files/scripts/mp4.sh;
-    ".shell-autoload-functions/funcs/nix-shell-prebuilds.sh".source = ../../files/scripts/nix-shell-prebuilds.sh;
+    ".shell-autoload-functions/funcs/nix-shell-prebuilds.sh".source =
+      ../../files/scripts/nix-shell-prebuilds.sh;
     ".shell-autoload-functions/funcs/edit.sh".source = ../../files/scripts/edit.sh;
     ".shell-autoload-functions/funcs/nix-stuff.sh".source = ../../files/scripts/nix-stuff.sh;
     ".shell-autoload-functions/funcs/upload.sh".source = ../../files/scripts/upload.sh;
@@ -142,7 +165,8 @@
   # Discord Colorscheme
   home.file.".config/vesktop/themes/dank.css".source = ../../files/config/discord/dank.css;
   home.file.".config/vesktop/themes/guix.css".source = ../../files/config/discord/guix.css;
-  home.file.".config/vesktop/themes/fuwamoco-theme.css".source = ../../files/config/discord/fuwamoco-theme.css;
+  home.file.".config/vesktop/themes/fuwamoco-theme.css".source =
+    ../../files/config/discord/fuwamoco-theme.css;
   # Kitty Colorschemes
   home.file = {
     # ".config/kitty/kitty.conf".source = ../../files/config/kitty/kitty.conf;
@@ -150,12 +174,18 @@
       source = ../../files/config/kitty/scripts/emacsPager.sh;
       executable = true;
     };
-    ".config/kitty/themes/moriColorscheme.conf".source = ../../files/config/kitty/themes/moriColorscheme.conf;
-    ".config/kitty/themes/fuwamocoColorscheme.conf".source = ../../files/config/kitty/themes/fuwamocoColorscheme.conf;
-    ".config/kitty/themes/marnieColorscheme.conf".source = ../../files/config/kitty/themes/marnieColorscheme.conf;
-    ".config/kitty/themes/guixColorscheme.conf".source = ../../files/config/kitty/themes/guixColorscheme.conf;
-    ".config/kitty/themes/jungleVibrantColorscheme.conf".source = ../../files/config/kitty/themes/jungleVibrantColorscheme.conf;
-    ".config/kitty/themes/jungleColorscheme.conf".source = ../../files/config/kitty/themes/jungleColorscheme.conf;
+    ".config/kitty/themes/moriColorscheme.conf".source =
+      ../../files/config/kitty/themes/moriColorscheme.conf;
+    ".config/kitty/themes/fuwamocoColorscheme.conf".source =
+      ../../files/config/kitty/themes/fuwamocoColorscheme.conf;
+    ".config/kitty/themes/marnieColorscheme.conf".source =
+      ../../files/config/kitty/themes/marnieColorscheme.conf;
+    ".config/kitty/themes/guixColorscheme.conf".source =
+      ../../files/config/kitty/themes/guixColorscheme.conf;
+    ".config/kitty/themes/jungleVibrantColorscheme.conf".source =
+      ../../files/config/kitty/themes/jungleVibrantColorscheme.conf;
+    ".config/kitty/themes/jungleColorscheme.conf".source =
+      ../../files/config/kitty/themes/jungleColorscheme.conf;
   };
   # Btop
   home.file = {
@@ -215,18 +245,30 @@
   home.file = {
     # VTubers
     ## Mori Calliope
-    "Pictures/Wallpapers/Mori Calliope/01.png".source = ../../files/pictures/wallpapers/MoriCalliope/01.png;
-    "Pictures/Wallpapers/Mori Calliope/02.png".source = ../../files/pictures/wallpapers/MoriCalliope/02.png;
-    "Pictures/Wallpapers/Mori Calliope/03.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/03.jpg;
-    "Pictures/Wallpapers/Mori Calliope/04.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/04.jpg;
-    "Pictures/Wallpapers/Mori Calliope/05.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/05.jpg;
-    "Pictures/Wallpapers/Mori Calliope/06.png".source = ../../files/pictures/wallpapers/MoriCalliope/06.png;
-    "Pictures/Wallpapers/Mori Calliope/07.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/07.jpg;
-    "Pictures/Wallpapers/Mori Calliope/08.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/08.jpg;
-    "Pictures/Wallpapers/Mori Calliope/09.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/09.jpg;
-    "Pictures/Wallpapers/Mori Calliope/10.png".source = ../../files/pictures/wallpapers/MoriCalliope/10.png;
-    "Pictures/Wallpapers/Mori Calliope/11.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/11.jpg;
-    "Pictures/Wallpapers/Mori Calliope/12.jpg".source = ../../files/pictures/wallpapers/MoriCalliope/12.jpg;
+    "Pictures/Wallpapers/Mori Calliope/01.png".source =
+      ../../files/pictures/wallpapers/MoriCalliope/01.png;
+    "Pictures/Wallpapers/Mori Calliope/02.png".source =
+      ../../files/pictures/wallpapers/MoriCalliope/02.png;
+    "Pictures/Wallpapers/Mori Calliope/03.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/03.jpg;
+    "Pictures/Wallpapers/Mori Calliope/04.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/04.jpg;
+    "Pictures/Wallpapers/Mori Calliope/05.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/05.jpg;
+    "Pictures/Wallpapers/Mori Calliope/06.png".source =
+      ../../files/pictures/wallpapers/MoriCalliope/06.png;
+    "Pictures/Wallpapers/Mori Calliope/07.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/07.jpg;
+    "Pictures/Wallpapers/Mori Calliope/08.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/08.jpg;
+    "Pictures/Wallpapers/Mori Calliope/09.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/09.jpg;
+    "Pictures/Wallpapers/Mori Calliope/10.png".source =
+      ../../files/pictures/wallpapers/MoriCalliope/10.png;
+    "Pictures/Wallpapers/Mori Calliope/11.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/11.jpg;
+    "Pictures/Wallpapers/Mori Calliope/12.jpg".source =
+      ../../files/pictures/wallpapers/MoriCalliope/12.jpg;
     ## Camila
     "Pictures/Wallpapers/Camila/01.png".source = ../../files/pictures/wallpapers/Camila/01.png;
     "Pictures/Wallpapers/Camila/02.jpg".source = ../../files/pictures/wallpapers/Camila/02.jpg;
@@ -246,14 +288,19 @@
     "Pictures/Wallpapers/Demeniski/01.jpg".source = ../../files/pictures/wallpapers/Demenishki/01.jpg;
     "Pictures/Wallpapers/Demeniski/02.png".source = ../../files/pictures/wallpapers/Demenishki/02.png;
     ## Akuma Nihmune
-    "Pictures/Wallpapers/Akuma Nihmune/01.png".source = ../../files/pictures/wallpapers/AkumaNihmune/01.png;
-    "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
-    "Pictures/Wallpapers/Akuma Nihmune/03.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/03.jpg;
-    "Pictures/Wallpapers/Akuma Nihmune/04.jpg".source = ../../files/pictures/wallpapers/AkumaNihmune/04.jpg;
+    "Pictures/Wallpapers/Akuma Nihmune/01.png".source =
+      ../../files/pictures/wallpapers/AkumaNihmune/01.png;
+    "Pictures/Wallpapers/Akuma Nihmune/02.jpg".source =
+      ../../files/pictures/wallpapers/AkumaNihmune/02.jpg;
+    "Pictures/Wallpapers/Akuma Nihmune/03.jpg".source =
+      ../../files/pictures/wallpapers/AkumaNihmune/03.jpg;
+    "Pictures/Wallpapers/Akuma Nihmune/04.jpg".source =
+      ../../files/pictures/wallpapers/AkumaNihmune/04.jpg;
     ## FUWAMOCO
     "Pictures/Wallpapers/FUWAMOCO/01.jpg".source = ../../files/pictures/wallpapers/FUWAMOCO/01.jpg;
     ## Froot
-    "Pictures/Wallpapers/Froot Apricot/01.jpeg".source = ../../files/pictures/wallpapers/FrootApricot/01.jpeg;
+    "Pictures/Wallpapers/Froot Apricot/01.jpeg".source =
+      ../../files/pictures/wallpapers/FrootApricot/01.jpeg;
     ## el_XoX
     "Pictures/Wallpapers/el_XoX/01.jpg".source = ../../files/pictures/wallpapers/el_XoX/01.jpg;
     "Pictures/Wallpapers/el_XoX/02.jpg".source = ../../files/pictures/wallpapers/el_XoX/02.jpg;
@@ -268,16 +315,26 @@
     "Pictures/Wallpapers/Ironmouse/02.jpg".source = ../../files/pictures/wallpapers/Ironmouse/02.jpg;
     "Pictures/Wallpapers/Ironmouse/01.jpg".source = ../../files/pictures/wallpapers/Ironmouse/01.jpg;
     # Unsorted
-    "Pictures/Wallpapers/Unsorted/dangeroooous_jungle_wp.png".source = ../../files/pictures/wallpapers/Unsorted/dangeroooous_jungle_wp.png;
-    "Pictures/Wallpapers/Unsorted/marnieGruvbox.png".source = ../../files/pictures/wallpapers/Unsorted/marnieGruvbox.png;
-    "Pictures/Wallpapers/Unsorted/helltakerStare.jpg".source = ../../files/pictures/wallpapers/Unsorted/helltakerStare.jpg;
-    "Pictures/Wallpapers/Unsorted/lainGruvbox.jpg".source = ../../files/pictures/wallpapers/Unsorted/lainGruvbox.jpg;
-    "Pictures/Wallpapers/Unsorted/nixosAnime.png".source = ../../files/pictures/wallpapers/Unsorted/nixosAnime.png;
-    "Pictures/Wallpapers/Unsorted/guix_wp_01.svg".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_01.svg;
-    "Pictures/Wallpapers/Unsorted/guix_wp_02.svg".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_02.svg;
-    "Pictures/Wallpapers/Unsorted/guix_wp_01.png".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_01.png;
-    "Pictures/Wallpapers/Unsorted/guix_wp_02.png".source = ../../files/pictures/wallpapers/Unsorted/guix_wp_02.png;
-    "Pictures/Wallpapers/Unsorted/makima.jpg".source = ../../files/pictures/wallpapers/Unsorted/makima.jpg;
+    "Pictures/Wallpapers/Unsorted/dangeroooous_jungle_wp.png".source =
+      ../../files/pictures/wallpapers/Unsorted/dangeroooous_jungle_wp.png;
+    "Pictures/Wallpapers/Unsorted/marnieGruvbox.png".source =
+      ../../files/pictures/wallpapers/Unsorted/marnieGruvbox.png;
+    "Pictures/Wallpapers/Unsorted/helltakerStare.jpg".source =
+      ../../files/pictures/wallpapers/Unsorted/helltakerStare.jpg;
+    "Pictures/Wallpapers/Unsorted/lainGruvbox.jpg".source =
+      ../../files/pictures/wallpapers/Unsorted/lainGruvbox.jpg;
+    "Pictures/Wallpapers/Unsorted/nixosAnime.png".source =
+      ../../files/pictures/wallpapers/Unsorted/nixosAnime.png;
+    "Pictures/Wallpapers/Unsorted/guix_wp_01.svg".source =
+      ../../files/pictures/wallpapers/Unsorted/guix_wp_01.svg;
+    "Pictures/Wallpapers/Unsorted/guix_wp_02.svg".source =
+      ../../files/pictures/wallpapers/Unsorted/guix_wp_02.svg;
+    "Pictures/Wallpapers/Unsorted/guix_wp_01.png".source =
+      ../../files/pictures/wallpapers/Unsorted/guix_wp_01.png;
+    "Pictures/Wallpapers/Unsorted/guix_wp_02.png".source =
+      ../../files/pictures/wallpapers/Unsorted/guix_wp_02.png;
+    "Pictures/Wallpapers/Unsorted/makima.jpg".source =
+      ../../files/pictures/wallpapers/Unsorted/makima.jpg;
   };
   # Icons
   home.file = {
@@ -289,13 +346,16 @@
   };
   # Rofi
   home.file = {
-    ".config/rofi/themes/mori/background.png".source = ../../files/config/rofi/themes/mori/background.png;
+    ".config/rofi/themes/mori/background.png".source =
+      ../../files/config/rofi/themes/mori/background.png;
     ".config/rofi/themes/mori/theme.rasi".source = ../../files/config/rofi/themes/mori/theme.rasi;
     ".config/rofi/themes/rumda/fonts.rasi".source = ../../files/config/rofi/themes/rumda/fonts.rasi;
     ".config/rofi/themes/rumda/config.rasi".source = ../../files/config/rofi/themes/rumda/config.rasi;
     ".config/rofi/themes/rumda/colors.rasi".source = ../../files/config/rofi/themes/rumda/colors.rasi;
-    ".config/rofi/themes/squared/squared-nord.rasi".source = ../../files/config/rofi/themes/squared/squared-nord.rasi;
-    ".config/rofi/themes/squared/squared-loji.rasi".source = ../../files/config/rofi/themes/squared/squared-loji.rasi;
+    ".config/rofi/themes/squared/squared-nord.rasi".source =
+      ../../files/config/rofi/themes/squared/squared-nord.rasi;
+    ".config/rofi/themes/squared/squared-loji.rasi".source =
+      ../../files/config/rofi/themes/squared/squared-loji.rasi;
     ".config/rofi/scripts/runEntry.sh" = {
       source = ../../files/config/rofi/scripts/runEntry.sh;
       executable = true;

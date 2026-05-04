@@ -320,7 +320,7 @@ getXPConfig "camila" = camilaXPConfig
 getXPConfig "mori" = moriXPConfig
 getXPConfig "gigi" = gigiXPConfig
 getXPConfig "numi" = numiXPConfig
-getXPConfig _ = moriXPConfig
+getXPConfig _ = numiXPConfig
 
 setTheme :: String -> X ()
 setTheme name = do
@@ -493,7 +493,7 @@ numiXPConfig = def
     , promptBorderWidth   = 2
     , position            = Top
     , height              = 24
-    , historySize         = 0
+    , historySize         = 512
     }
 -- Tab Theme(s)
 marnieTabTheme = def

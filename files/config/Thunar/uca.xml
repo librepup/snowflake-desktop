@@ -13,16 +13,80 @@
 	<directories/>
 </action>
 <action>
-    <icon>camera-video</icon>
-    <name>Play with MPV</name>
-    <submenu></submenu>
-    <unique-id>1774291725205719-1</unique-id>
-    <command>mpv %f</command>
-    <description>Play Selection with MPV</description>
-    <range>*</range>
-    <patterns>*</patterns>
-    <directories/>
-    <video-files/>
+	<icon>application-text-template</icon>
+	<name>Edit</name>
+	<submenu></submenu>
+	<unique-id>1777908158993049-3</unique-id>
+	<command>kate %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>camera-video</icon>
+	<name>Video</name>
+	<submenu>Play</submenu>
+	<unique-id>1774291725205719-1</unique-id>
+	<command>mpv %F</command>
+	<description>Play Selection with MPV</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>imagefan-reloaded</icon>
+	<name>Images (Inf)</name>
+	<submenu>Play</submenu>
+	<unique-id>1777907807680151-1</unique-id>
+	<command>mpv --image-display-duration=inf %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<image-files/>
+</action>
+<action>
+	<icon>imagefan-reloaded</icon>
+	<name>Images (1s)</name>
+	<submenu>Play</submenu>
+	<unique-id>1777907896768370-2</unique-id>
+	<command>mpv --loop-file=no --image-display-duration=1 %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<image-files/>
+</action>
+<action>
+	<icon>application-x-archive</icon>
+	<name>Create</name>
+	<submenu>Archiving</submenu>
+	<unique-id>1777907351439801-1</unique-id>
+	<command>ark --dialog --add %N</command>
+	<description>Create Archive from Directory</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>application-x-bzip</icon>
+	<name>Extract</name>
+	<submenu>Archiving</submenu>
+	<unique-id>1774350680041366-2</unique-id>
+	<command>ark %N</command>
+	<description>Extract/View Archive</description>
+	<range>*</range>
+	<patterns>*.7z;*.zip;*.ZIP;*.rar;*.RAR;*.iso;*.ISO;*.r0*;*.R0*;*.*01;*.tar;*.TAR;*.gz;*.GZ;*.tar.bz2;*.TAR.BZ2;*.gzip;*.GZIP;*tar.gz;*TAR.GZ;*tar.xz;*TAR.XZ;*tar.lz;*TAR.LZ;*.tgz;*.osz;*.osk</patterns>
+	<other-files/>
 </action>
 <action>
 	<icon>imagefan-reloaded</icon>
@@ -36,14 +100,36 @@
 	<image-files/>
 </action>
 <action>
-    <icon>archive-manager</icon>
-    <name>Extract Archive</name>
-    <submenu></submenu>
-    <unique-id>1774350680041366-2</unique-id>
-    <command>ark %f</command>
-    <description>Extract Archive to Sub-Directory</description>
-    <range>*</range>
-    <patterns>*.7z;*.zip;*.ZIP;*.rar;*.RAR;*.iso;*.ISO;*.r0*;*.R0*;*.*01;*.tar;*.TAR;*.gz;*.GZ;*.tar.bz2;*.TAR.BZ2;*.gzip;*.GZIP;*tar.gz;*TAR.GZ;*tar.xz;*TAR.XZ;*tar.lz;*TAR.LZ;*.tgz;*.osz;*.osk</patterns>
-    <other-files/>
+	<icon>kimagemapeditor</icon>
+	<name>to PNG</name>
+	<submenu>Convert</submenu>
+	<unique-id>1777908641844740-4</unique-id>
+	<command>$HOME/.config/Thunar/scripts/convertImages.sh png %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>kimagemapeditor</icon>
+	<name>to JPG</name>
+	<submenu>Convert</submenu>
+	<unique-id>1777909525318259-5</unique-id>
+	<command>$HOME/.config/Thunar/scripts/convertImages.sh jpg %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>kimagemapeditor</icon>
+	<name>to WEBP</name>
+	<submenu>Convert</submenu>
+	<unique-id>1777909552033379-6</unique-id>
+	<command>$HOME/.config/Thunar/scripts/convertImages.sh webp %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
 </action>
 </actions>
