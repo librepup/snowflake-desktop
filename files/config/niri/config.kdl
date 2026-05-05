@@ -142,8 +142,8 @@ window-rule {
 
 // Autostart
 // spawn-at-startup "mako"
+// spawn-at-startup "nm-applet"
 spawn-at-startup "dex" "--autostart" "--environment" "niri"
-spawn-at-startup "nm-applet"
 spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
 spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
 spawn-at-startup "vicinae" "server"
@@ -265,6 +265,7 @@ binds {
     Super+Shift+X { quit; }
 
     Super+L { spawn "sh" "-c" "dms ipc call lock lock"; }
+    Super+C { spawn "sh" "-c" "dms ipc call clipboard open"; }
     Super+E { spawn "thunar"; }
 
     Super+1 { spawn "sh" "-c" "pkill swayidle && notify-send 'Screensaver' 'Turned OFF.' -i /home/puppy/Pictures/no.png"; }
