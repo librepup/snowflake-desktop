@@ -36,6 +36,8 @@ output "DP-1" {
     position x=1920 y=0
 }
 
+prefer-no-csd
+
 layout {
     gaps 2
     tab-indicator {
@@ -77,24 +79,8 @@ layout {
 
 // Window rules
 window-rule {
-    match title="FLOAT_MP"
-    default-column-width { fixed 800; }
-    open-maximized false
-}
-
-window-rule {
     match app-id="wofi"
     open-floating true
-    open-focused true
-    opacity 1.0
-}
-
-window-rule {
-    match app-id="flameshot"
-    match app-id="Flameshot"
-    open-floating false
-    open-fullscreen false
-    open-maximized true
     open-focused true
     opacity 1.0
 }
@@ -110,6 +96,8 @@ window-rule {
 
 window-rule {
     match app-id="Viewnior"
+    match title="Volume Control"
+    match title="Lautstärkeregler"
     open-floating true
     open-focused true
 }
@@ -124,18 +112,8 @@ window-rule {
 }
 
 window-rule {
-    match title="Volume Control"
-    default-column-width { fixed 400; }
-}
-
-window-rule {
-    match title="Lautstärkeregler"
-    default-column-width { fixed 800; }
-    open-maximized false
-}
-
-window-rule {
     match title="All Files"
+    match app-id="xdg-desktop-portal-gtk"
     open-floating true
     min-width 1008
     max-width 1008
@@ -148,6 +126,11 @@ window-rule {
     clip-to-geometry true
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 // Autostart
 // spawn-at-startup "mako"
@@ -160,8 +143,8 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
 spawn-at-startup "sh" "-c" "keepassxc &"
-
-prefer-no-csd
+spawn-at-startup "~/.config/niri/bin/niri-sidebar-linux-x86_64" "listen"
+spawn-at-startup "~/.config/niri/bin/oniri-1.2.0-amd64" "-T"
 
 environment {
     DISPLAY ":0"
@@ -195,6 +178,11 @@ screenshot-path "~/Pictures/screenshots/niri-screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 binds {
     Mod+Shift+Return { spawn "kitty"; }
+
+    Mod+Grave { spawn-sh "~/.config/niri/bin/niri-sidebar-linux-x86_64 toggle-window"; }
+    Mod+Shift+Grave { spawn-sh "~/.config/niri/bin/niri-sidebar-linux-x86_64 toggle-visibility"; }
+    Mod+Ctrl+Grave { spawn-sh "~/.config/niri/bin/niri-sidebar-linux-x86_64 flip"; }
+    Mod+Shift+Ctrl+Grave { spawn-sh "~/.config/niri/bin/niri-sidebar-linux-x86_64 reorder"; }
 
     Mod+Shift+B { spawn "sh" "-c" "dms ipc call bar toggle index 0"; }
 
@@ -265,7 +253,7 @@ binds {
 
     Mod+Shift+F { spawn "nixmacs"; }
     Super+N { spawn "kate"; }
-    Mod+Shift+S { spawn "helium"; }
+    Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
     Super+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
@@ -274,7 +262,7 @@ binds {
     Super+A { spawn "pavucontrol"; }
     Mod+Z { spawn "hyprmagnifier" "--size" "512x512"; }
 
-    Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config && notify-send 'Niri' 'Successfully Reloaded Config'"; }
+    Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action load-config-file && notify-send 'Niri' 'Successfully Reloaded Config'"; }
     Super+Shift+X { quit; }
 
     Super+L { spawn "sh" "-c" "dms ipc call lock lock"; }
