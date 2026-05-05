@@ -35,6 +35,15 @@
           $DRY_RUN_CMD touch "$HOME/.config/picom/user.conf"
         fi
       '';
+      createNiriConfigAndBinsSymlink = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        $DRY_RUN_CMD mkdir -p "$HOME/.config/niri"
+        if [ ! -f "$HOME/.config/niri/config.kdl" ]; then
+          $DRY_RUN_CMD ln -sfn "/etc/nixos/files/config/niri/config.kdl" "$HOME/.config/niri/config.kdl"
+        fi
+        if [ ! -d "$HOME/.config/niri/bin" ]; then
+          $DRY_RUN_CMD ln -sfn "/etc/nixos/files/config/niri/bin" "$HOME/.config/niri/bin"
+        fi
+      '';
     };
   };
 }

@@ -23,6 +23,33 @@ let
   });
 in
 {
+  environment.etc."nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors.json".text =
+    builtins.toJSON {
+      rules = [
+        {
+          pattern = {
+            feature = "procname";
+            matches = [ "niri" ];
+          };
+          profile = "Limit free buffer pool on Wayland compositors";
+        }
+      ];
+      profiles = [
+        {
+          name = "Limit free buffer pool on Wayland compositors";
+          settings = [
+            {
+              key = "GLVidHeapReuseRatio";
+              value = 0;
+            }
+            {
+              key = "GLUseEGL";
+              value = 0;
+            }
+          ];
+        }
+      ];
+    };
   services = {
     desktopManager = {
       gnome.enable = true;
