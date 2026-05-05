@@ -10,6 +10,8 @@
       HISTSIZE = 5000;
       HISTFILESIZE = 10000;
       HISTCONTROL = "ignoredups:erasedups";
+      XKB_DEFAULT_LAYOUT = "us";
+      XKB_DEFAULT_VARIANT = "colemak";
     };
     interactiveShellInit = ''
       unset EMACSLOADPATH
