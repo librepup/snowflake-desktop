@@ -260,6 +260,7 @@ binds {
     Mod+Shift+T { fullscreen-window; }
 
     Mod+M { maximize-column; }
+    Mod+Shift+Tab { maximize-column; }
     Mod+Y { set-column-width "50%"; }
 
     Mod+Shift+F { spawn "nixmacs"; }
@@ -270,6 +271,8 @@ binds {
     Super+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
     Super+Shift+D { spawn "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"; }
     Super+M { spawn "tauon"; }
+    Super+A { spawn "pavucontrol"; }
+    Mod+Z { spawn "hyprmagnifier" "--size" "512x512"; }
 
     Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config && notify-send 'Niri' 'Successfully Reloaded Config'"; }
     Super+Shift+X { quit; }
