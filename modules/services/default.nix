@@ -13,5 +13,6 @@
     ./appimage.nix
     ./ai.nix
     ./snap.nix
+    ./keyd.nix
   ];
 }

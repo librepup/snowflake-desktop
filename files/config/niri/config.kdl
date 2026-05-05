@@ -1,0 +1,305 @@
+input {
+    mod-key "Alt"
+    keyboard {
+        xkb {
+            layout "us"
+            variant "colemak"
+        }
+    }
+
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+    }
+
+    mouse {
+        // Mad Catz R.A.T. 8+ settings
+        accel-profile "flat"
+        accel-speed 0.3
+    }
+
+    focus-follows-mouse
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080"
+}
+
+output "DP-1" {
+    mode "1920x1080@143.981003"
+    focus-at-startup
+    position x=1920 y=0
+}
+
+layout {
+    gaps 2
+    tab-indicator {
+        off
+    }
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        proportion 1.0
+    }
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        width 1
+        active-color "#EDB6DB"
+        inactive-color "#1d1f21"
+    }
+    border {
+        width 1
+        active-color "#EDB6DB"
+        inactive-color "#1d1f21"
+    }
+
+    default-column-display "tabbed"
+
+    shadow {
+        on
+        softness 40
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000064"
+        inactive-color "#00000064"
+    }
+}
+
+// Window rules
+window-rule {
+    match title="FLOAT_MP"
+    default-column-width { fixed 800; }
+    open-maximized false
+}
+
+window-rule {
+    match app-id="wofi"
+    open-floating true
+    open-focused true
+    opacity 1.0
+}
+
+window-rule {
+    match app-id="goofcord"
+    min-width 1098
+    max-width 1098
+    open-on-output "HDMI-A-1"
+    open-focused false
+    default-column-width { fixed 1098; }
+}
+
+window-rule {
+    match app-id="Viewnior"
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match app-id="steam"
+    open-on-output "HDMI-A-1"
+    min-width 808
+    max-width 808
+    open-focused false
+    default-column-width { fixed 808; }
+}
+
+window-rule {
+    match title="Volume Control"
+    default-column-width { fixed 400; }
+}
+
+window-rule {
+    match title="Lautstärkeregler"
+    default-column-width { fixed 800; }
+    open-maximized false
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+spawn-at-startup "dex" "--autostart" "--environment" "niri"
+spawn-at-startup "nm-applet"
+spawn-at-startup "mako"
+
+// Wallpaper
+spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
+
+// Polybar alternative - waybar
+spawn-at-startup "bash" "-c" "'" "QT_QPA_PLATFORM=wayland" "dms" "run" "'"
+
+// Vicinae
+spawn-at-startup "vicinae" "server"
+
+// XWayland
+spawn-at-startup "xwayland-satellite"
+
+// Idle and lock
+spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
+spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
+
+prefer-no-csd
+
+environment {
+    DISPLAY ":0"
+}
+
+// Animations
+animations {
+    slowdown 1.0
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-movement {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+
+    workspace-switch {
+        duration-ms 200
+        curve "ease-out-cubic"
+    }
+}
+
+screenshot-path "~/Pictures/screenshots/niri-screenshot-%Y-%m-%d-%H-%M-%S.png"
+
+binds {
+    // Super key is Mod (Super1)
+    Mod+Shift+Return { spawn "kitty"; }
+    Mod+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+    Mod+Space { focus-workspace-previous; }
+
+    // dmenu equivalent with rofi
+    Mod+T { spawn "vicinae" "toggle"; }
+    Mod+Ctrl+T { spawn "wofi" "--show" "run" "--normal-window"; }
+
+    // Close window
+    Mod+Shift+Q { close-window; }
+
+    // Focus movement (arrow keys)
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+    // Monitor Focus
+    Super+Right { spawn "niri" "msg" "action" "focus-monitor-right"; }
+    Super+Left { spawn "niri" "msg" "action" "focus-monitor-left"; }
+    Super+Shift+Right { move-column-to-monitor-right; }
+    Super+Shift+Left { move-column-to-monitor-left; }
+
+    // Move windows
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
+
+    // Resize
+    Mod+Ctrl+Left  { set-column-width "-10%"; }
+    Mod+Ctrl+Right { set-column-width "+10%"; }
+    Mod+Ctrl+Shift+Left  { set-column-width "-0.5%"; }
+    Mod+Ctrl+Shift+Right { set-column-width "+0.5%"; }
+    Mod+Ctrl+Up    { set-window-height "+10%"; }
+    Mod+Ctrl+Down  { set-window-height "-10%"; }
+    Mod+Ctrl+H     { set-window-height "100%"; }
+
+    // Modernative resize with H/V
+    Mod+V { set-column-width "+10%"; }
+    Mod+Shift+V { set-column-width "-10%"; }
+
+    // Column width presets
+    Mod+Comma  { set-column-width "33%"; }
+    Mod+Period { set-column-width "50%"; }
+
+    // Workspace switching
+    Mod+Tab { toggle-overview; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    // Move to workspace
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+    // Fullscreen
+    Mod+Shift+T { fullscreen-window; }
+
+    // Layout modes
+    Mod+M { maximize-column; }
+    Mod+Y { set-column-width "50%"; }
+
+    // Programs
+    Mod+Shift+F { spawn "nixmacs"; }
+    Super+N { spawn "kate"; }
+    Mod+Shift+S { spawn "helium"; }
+    Mod+A { spawn "flameshot" "gui"; }
+
+    // Reload/Quit (Super+Shift)
+    Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config"; }
+    Super+Shift+X { quit; }
+
+    // Super (Win) key bindings
+    Super+L { spawn "hyprlock"; }
+    Super+E { spawn "thunar"; }
+    // Super+Period { spawn "rofimoji"; }
+    // Super+V { spawn "/home/puppy/.scripts/viewScreenshot.sh"; }
+
+    // Screensaver controls
+    Super+1 { spawn "sh" "-c" "pkill swayidle && notify-send 'Screensaver' 'Turned OFF.' -i /home/puppy/Pictures/no.png"; }
+    Super+2 { spawn "sh" "-c" "swayidle -w timeout 300 hyprlock & notify-send 'Screensaver' 'Turned ON.' -i /home/puppy/Pictures/yes.png"; }
+
+    // Screenshot
+    // Print { screenshot; }
+    // Mod+Print { screenshot-window; }
+
+    Super+T { toggle-column-tabbed-display; }
+    Mod+Shift+Space { toggle-window-floating; }
+
+    // Power management
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+}
+
+debug {
+    render-drm-device "/dev/dri/renderD128"
+}
+
+include "dms/outputs.kdl"
+
+include "dms/cursor.kdl"
+
+include "dms/windowrules.kdl"

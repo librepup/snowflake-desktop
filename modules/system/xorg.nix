@@ -29,7 +29,8 @@ in
       plasma6.enable = true;
     };
     displayManager = {
-      defaultSession = "none+xmonad";
+      #defaultSession = "none+xmonad";
+      defaultSession = "niri";
       gdm.enable = false;
       gdm.wayland = false;
       sddm = {
