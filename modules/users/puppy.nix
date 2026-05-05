@@ -325,6 +325,7 @@ let
     jq
     nix-search-cli
     nix-search
+    nixd
     manix
     devour
     systemdgenie
