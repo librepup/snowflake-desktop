@@ -69,6 +69,9 @@ in
       layout = "us";
       variant = "colemak";
     };
+    windowManager.windowmaker = {
+      enable = true;
+    };
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;

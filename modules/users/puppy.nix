@@ -63,6 +63,11 @@ let
   ];
   bundleWayland = with pkgs; [
     grim
+    nirius
+    xwayland-run
+    wl-color-picker
+    wdisplays
+    hyprmagnifier
     grimblast
     wf-recorder
     wtype
@@ -251,6 +256,7 @@ let
     feh
     xfce.tumbler
     nsxiv
+    viewnior
   ];
   bundleWallpaperManagers = with pkgs; [
     variety
@@ -275,6 +281,12 @@ let
   ];
   bundleXorg = with pkgs; [
     yad
+    xnotify
+    pmenu
+    dockapps.wmsystemtray
+    dockapps.wmcube
+    dockapps.AlsaMixer-app
+    dockapps.wmCalClock
     xcolor
     nvidia-system-monitor-qt
     xclicker

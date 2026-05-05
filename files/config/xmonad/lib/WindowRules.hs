@@ -163,6 +163,10 @@ myManageHook = composeAll
     , className =? "ulauncher"
       <||> title =? "Ulauncher - Application Launcher"
     --> hasBorder False
+    , className =? "viewnior"
+      <||> className =? "Viewnior"
+      -->
+        doCenterFloat
     , title =? "Krita - Edit Text — Krita"
       -->
         doFloat
