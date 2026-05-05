@@ -1,4 +1,27 @@
 { config, pkgs, inputs, ... }:
+let
+  hevelPkg = inputs.neu-nix.packages.x86_64-linux.hevel;
+  neuswcPkg = inputs.neu-nix.packages.x86_64-linux.neuswc;
+  tohuPkg = inputs.neu-nix.packages.x86_64-linux.tohu;
+  hevelSession = (pkgs.writeTextDir "share/wayland-sessions/hevel.desktop" ''
+    [Desktop Entry]
+    Name=hevel
+    Comment=Custom Hevel WM Session
+    Exec=${neuswcPkg}/bin/swc-launch ${hevelPkg}/bin/hevel
+    Type=Application
+  '').overrideAttrs (oldAttrs: {
+    passthru.providedSessions = [ "hevel" ];
+  });
+  tohuSession = (pkgs.writeTextDir "share/wayland-sessions/tohu.desktop" ''
+    [Desktop Entry]
+    Name=tohu
+    Comment=Custom Tohu WM Session
+    Exec=${neuswcPkg}/bin/swc-launch ${tohuPkg}/bin/tohu
+    Type=Application
+  '').overrideAttrs (oldAttrs: {
+    passthru.providedSessions = [ "tohu" ];
+  });
+in
 {
   services = {
     desktopManager = {
@@ -13,6 +36,10 @@
         enable = true;
         wayland.enable = true;
       };
+      sessionPackages = [
+        hevelSession
+        tohuSession
+      ];
     };
   };
   # Xorg
