@@ -141,17 +141,13 @@ window-rule {
 
 
 // Autostart
+// spawn-at-startup "mako"
 spawn-at-startup "dex" "--autostart" "--environment" "niri"
 spawn-at-startup "nm-applet"
-spawn-at-startup "mako"
 spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
 spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
 spawn-at-startup "vicinae" "server"
-
-// XWayland
 spawn-at-startup "xwayland-satellite"
-
-// Idle and lock
 spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
 
@@ -189,12 +185,13 @@ screenshot-path "~/Pictures/screenshots/niri-screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 binds {
     Mod+Shift+Return { spawn "kitty"; }
-    Mod+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
 
-    Mod+Space { focus-workspace-previous; }
+    Mod+Shift+B { spawn "sh" "-c" "dms ipc call bar toggle index 0"; }
+
+    Mod+Space { switch-focus-between-floating-and-tiling; }
 
     Mod+T { spawn "vicinae" "toggle"; }
-    Mod+Ctrl+T { spawn "sh" "-c" "wofi --show=run"; }
+    Mod+Ctrl+T { spawn "sh" "-c" "rofi -show drun"; }
 
     Mod+Shift+Q { close-window; }
 
@@ -207,7 +204,6 @@ binds {
     Super+Left { spawn "niri" "msg" "action" "focus-monitor-left"; }
     Super+Shift+Right { move-column-to-monitor-right; }
     Super+Shift+Left { move-column-to-monitor-left; }
-
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Right { move-column-right; }
@@ -261,8 +257,11 @@ binds {
     Mod+Shift+S { spawn "helium"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
+    Super+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+    Super+Shift+D { spawn "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"; }
+    Super+M { spawn "tauon"; }
 
-    Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config"; }
+    Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config && notify-send 'Niri' 'Successfully Reloaded Config'"; }
     Super+Shift+X { quit; }
 
     Super+L { spawn "sh" "-c" "dms ipc call lock lock"; }
