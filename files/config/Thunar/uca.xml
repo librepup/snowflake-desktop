@@ -29,7 +29,7 @@
 	<name>Video</name>
 	<submenu>Play</submenu>
 	<unique-id>1774291725205719-1</unique-id>
-	<command>mpv %F</command>
+	<command>mpv --title=&quot;%f&quot; %F</command>
 	<description>Play Selection with MPV</description>
 	<range>*</range>
 	<patterns>*</patterns>

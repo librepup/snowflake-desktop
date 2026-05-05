@@ -126,6 +126,15 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match title="VeraCrypt"
+    match title="veracrypt1 - Thunar"
+    match title="/mnt/veracrypt1"
+    match app-id="veracrypt"
+    match app-id="KeePassXC"
+    block-out-from "screen-capture"
+}
+
 gestures {
     hot-corners {
         off
