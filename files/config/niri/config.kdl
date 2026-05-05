@@ -90,6 +90,16 @@ window-rule {
 }
 
 window-rule {
+    match app-id="flameshot"
+    match app-id="Flameshot"
+    open-floating false
+    open-fullscreen false
+    open-maximized true
+    open-focused true
+    opacity 1.0
+}
+
+window-rule {
     match app-id="goofcord"
     min-width 1098
     max-width 1098
@@ -129,17 +139,13 @@ window-rule {
     clip-to-geometry true
 }
 
+
+// Autostart
 spawn-at-startup "dex" "--autostart" "--environment" "niri"
 spawn-at-startup "nm-applet"
 spawn-at-startup "mako"
-
-// Wallpaper
 spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
-
-// Polybar alternative - waybar
-spawn-at-startup "bash" "-c" "'" "QT_QPA_PLATFORM=wayland" "dms" "run" "'"
-
-// Vicinae
+spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
 spawn-at-startup "vicinae" "server"
 
 // XWayland
@@ -182,36 +188,32 @@ animations {
 screenshot-path "~/Pictures/screenshots/niri-screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 binds {
-    // Super key is Mod (Super1)
     Mod+Shift+Return { spawn "kitty"; }
     Mod+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+
     Mod+Space { focus-workspace-previous; }
 
-    // dmenu equivalent with rofi
     Mod+T { spawn "vicinae" "toggle"; }
-    Mod+Ctrl+T { spawn "wofi" "--show" "run" "--normal-window"; }
+    Mod+Ctrl+T { spawn "sh" "-c" "wofi --show=run"; }
 
-    // Close window
     Mod+Shift+Q { close-window; }
 
-    // Focus movement (arrow keys)
     Mod+Left  { focus-column-left; }
     Mod+Right { focus-column-right; }
     Mod+Up    { focus-window-up; }
     Mod+Down  { focus-window-down; }
-    // Monitor Focus
+
     Super+Right { spawn "niri" "msg" "action" "focus-monitor-right"; }
     Super+Left { spawn "niri" "msg" "action" "focus-monitor-left"; }
     Super+Shift+Right { move-column-to-monitor-right; }
     Super+Shift+Left { move-column-to-monitor-left; }
 
-    // Move windows
+
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Right { move-column-right; }
     Mod+Shift+Up    { move-window-up; }
     Mod+Shift+Down  { move-window-down; }
 
-    // Resize
     Mod+Ctrl+Left  { set-column-width "-10%"; }
     Mod+Ctrl+Right { set-column-width "+10%"; }
     Mod+Ctrl+Shift+Left  { set-column-width "-0.5%"; }
@@ -220,15 +222,12 @@ binds {
     Mod+Ctrl+Down  { set-window-height "-10%"; }
     Mod+Ctrl+H     { set-window-height "100%"; }
 
-    // Modernative resize with H/V
     Mod+V { set-column-width "+10%"; }
     Mod+Shift+V { set-column-width "-10%"; }
 
-    // Column width presets
     Mod+Comma  { set-column-width "33%"; }
     Mod+Period { set-column-width "50%"; }
 
-    // Workspace switching
     Mod+Tab { toggle-overview; }
 
     Mod+1 { focus-workspace 1; }
@@ -241,8 +240,6 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
     Mod+0 { focus-workspace 10; }
-
-    // Move to workspace
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -254,41 +251,29 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
     Mod+Shift+0 { move-column-to-workspace 10; }
 
-    // Fullscreen
     Mod+Shift+T { fullscreen-window; }
 
-    // Layout modes
     Mod+M { maximize-column; }
     Mod+Y { set-column-width "50%"; }
 
-    // Programs
     Mod+Shift+F { spawn "nixmacs"; }
     Super+N { spawn "kate"; }
     Mod+Shift+S { spawn "helium"; }
-    Mod+A { spawn "flameshot" "gui"; }
+    Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
+    Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
 
-    // Reload/Quit (Super+Shift)
     Mod+Shift+P { spawn "sh" "-c" "notify-send 'Niri' 'Reloading configuration...' && niri msg action reload-config"; }
     Super+Shift+X { quit; }
 
-    // Super (Win) key bindings
-    Super+L { spawn "hyprlock"; }
+    Super+L { spawn "sh" "-c" "dms ipc call lock lock"; }
     Super+E { spawn "thunar"; }
-    // Super+Period { spawn "rofimoji"; }
-    // Super+V { spawn "/home/puppy/.scripts/viewScreenshot.sh"; }
 
-    // Screensaver controls
     Super+1 { spawn "sh" "-c" "pkill swayidle && notify-send 'Screensaver' 'Turned OFF.' -i /home/puppy/Pictures/no.png"; }
     Super+2 { spawn "sh" "-c" "swayidle -w timeout 300 hyprlock & notify-send 'Screensaver' 'Turned ON.' -i /home/puppy/Pictures/yes.png"; }
-
-    // Screenshot
-    // Print { screenshot; }
-    // Mod+Print { screenshot-window; }
 
     Super+T { toggle-column-tabbed-display; }
     Mod+Shift+Space { toggle-window-floating; }
 
-    // Power management
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "5%-"; }
     XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }

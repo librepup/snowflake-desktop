@@ -66,6 +66,7 @@ let
     nirius
     xwayland-run
     wl-color-picker
+    fuzzel
     wdisplays
     hyprmagnifier
     grimblast
