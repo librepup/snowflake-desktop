@@ -170,6 +170,7 @@
                     system = prev.system;
                     config.allowUnfree = config.nixpkgs.config.allowUnfree or false;
                   };
+                  plan9port-wayland = final.unstable.plan9port-wayland;
                 })
               ];
             }

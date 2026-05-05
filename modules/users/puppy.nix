@@ -349,7 +349,10 @@ let
     neuswc
     neumenu
     hevel
-    #hack (Find plan9port-wayland Package or Fix)
+    (pkgs.callPackage "${inputs.neu-nix}/packages/hack/default.nix" {
+      plan9port-wayland = pkgs.unstable.plan9port-wayland;
+      neuwld = inputs.neu-nix.packages.x86_64-linux.neuwld;
+    })
     swclock
     swall
     swiv
@@ -446,6 +449,7 @@ in
         fontpreview
         arduino-ide
         pokeget-rs
+        unstable.plan9port-wayland
       ]
       ++ bundleBrowsers
       ++ bundleRust
