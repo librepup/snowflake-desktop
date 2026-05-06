@@ -116,6 +116,7 @@ window-rule {
 
 window-rule {
     match app-id="Emacs"
+    match app-id="emacs"
     opacity 0.8
 }
 
@@ -274,7 +275,7 @@ binds {
     Mod+Shift+Tab { maximize-column; }
     Mod+Y { set-column-width "50%"; }
 
-    Mod+Shift+F { spawn "nixmacs"; }
+    Mod+Shift+F { spawn "nixmacs-wayland"; }
     Super+N { spawn "kate"; }
     Super+Q { spawn "copyq" "toggle"; }
     Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
