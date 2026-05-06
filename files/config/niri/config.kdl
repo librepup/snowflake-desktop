@@ -157,8 +157,8 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
 spawn-at-startup "sh" "-c" "keepassxc &"
-spawn-at-startup "~/.config/niri/bin/niri-sidebar-linux-x86_64" "listen"
-spawn-at-startup "~/.config/niri/bin/oniri-1.2.0-amd64" "-T"
+spawn-at-startup "sh" "-c" "~/.config/niri/bin/niri-sidebar-linux-x86_64 listen"
+spawn-at-startup "sh" "-c" "~/.config/niri/bin/oniri-1.2.0-amd64 -T"
 spawn-at-startup "easyeffects" "--load-preset" "Baseline" "--hide-window"
 
 environment {
