@@ -121,6 +121,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="XEyes"
+    open-floating true
+}
+
+window-rule {
     match title="All Files"
     match app-id="xdg-desktop-portal-gtk"
     open-floating true
@@ -156,7 +161,7 @@ spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
 // spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
+spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'dms ipc call lock lock'"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
 // spawn-at-startup "sh" "-c" "keepassxc &"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/niri-sidebar-linux-x86_64 listen"
@@ -295,7 +300,7 @@ binds {
     Super+E { spawn "thunar"; }
 
     Super+1 { spawn "sh" "-c" "pkill swayidle && notify-send 'Screensaver' 'Turned OFF.' -i /home/puppy/Pictures/no.png"; }
-    Super+2 { spawn "sh" "-c" "swayidle -w timeout 300 hyprlock & notify-send 'Screensaver' 'Turned ON.' -i /home/puppy/Pictures/yes.png"; }
+    Super+2 { spawn "sh" "-c" "swayidle -w timeout 300 'dms ipc call lock lock' & notify-send 'Screensaver' 'Turned ON.' -i /home/puppy/Pictures/yes.png"; }
 
     Super+T { toggle-column-tabbed-display; }
     Mod+Shift+Space { toggle-window-floating; }
