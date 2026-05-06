@@ -1,0 +1,19 @@
+{
+  "dankStickerSearch": {
+    "enabled": true
+  },
+  "volumeMixer": {
+    "enabled": true
+  },
+  "dankGifSearch": {
+    "enabled": true
+  },
+  "easyEffects": {
+    "enabled": true,
+    "currentOutputIndex": -1,
+    "currentInputIndex": 0
+  },
+  "dankDiskUsage": {
+    "enabled": true
+  }
+}

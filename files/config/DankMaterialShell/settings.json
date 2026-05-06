@@ -1,18 +1,26 @@
 {
   "currentThemeName": "dynamic",
   "currentThemeCategory": "dynamic",
-  "customThemeFile": "",
-  "registryThemeVariants": {},
+  "customThemeFile": "/home/puppy/.config/DankMaterialShell/themes/oxocarbon/theme.json",
+  "registryThemeVariants": {
+    "catppuccin": {
+      "dark": {
+        "flavor": "mocha",
+        "accent": "mauve"
+      }
+    },
+    "oxocarbon": "pink"
+  },
   "matugenScheme": "scheme-tonal-spot",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
-  "popupTransparency": 1,
+  "popupTransparency": 0.9,
   "dockTransparency": 1,
   "widgetBackgroundColor": "sch",
   "widgetColorMode": "colorful",
   "controlCenterTileColorMode": "primary",
   "buttonColorMode": "primary",
-  "cornerRadius": 12,
+  "cornerRadius": 0,
   "niriLayoutGapsOverride": -1,
   "niriLayoutRadiusOverride": -1,
   "niriLayoutBorderSize": -1,
@@ -120,7 +128,7 @@
   "showWorkspacePadding": false,
   "workspaceScrolling": false,
   "showWorkspaceApps": false,
-  "workspaceDragReorder": true,
+  "workspaceDragReorder": false,
   "maxWorkspaceIcons": 3,
   "workspaceAppIconSizeOffset": 0,
   "groupWorkspaceApps": true,
@@ -272,7 +280,7 @@
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
   "showDock": false,
-  "dockAutoHide": false,
+  "dockAutoHide": true,
   "dockSmartAutoHide": false,
   "dockGroupByApp": false,
   "dockOpenOnOverview": false,
@@ -443,14 +451,14 @@
       "spacing": 0,
       "innerPadding": 0,
       "bottomGap": 0,
-      "transparency": 0.9,
-      "widgetTransparency": 1,
+      "transparency": 0.75,
+      "widgetTransparency": 0,
       "squareCorners": true,
       "noBackground": false,
       "maximizeWidgetIcons": true,
       "maximizeWidgetText": true,
       "removeWidgetPadding": false,
-      "widgetPadding": 5,
+      "widgetPadding": 8,
       "gothCornersEnabled": false,
       "gothCornerRadiusOverride": false,
       "gothCornerRadiusValue": 12,
@@ -460,7 +468,7 @@
       "borderThickness": 1,
       "widgetOutlineEnabled": false,
       "widgetOutlineColor": "primary",
-      "widgetOutlineOpacity": 1,
+      "widgetOutlineOpacity": 0.25,
       "widgetOutlineThickness": 1,
       "fontScale": 1,
       "iconScale": 1,
@@ -516,10 +524,6 @@
         {
           "id": "idleInhibitor",
           "enabled": true
-        },
-        {
-          "id": "launcherButton",
-          "enabled": true
         }
       ],
       "centerWidgets": [
@@ -531,6 +535,14 @@
       ],
       "rightWidgets": [
         {
+          "id": "easyEffects",
+          "enabled": true
+        },
+        {
+          "id": "privacyIndicator",
+          "enabled": true
+        },
+        {
           "id": "systemTray",
           "enabled": true
         },
@@ -539,33 +551,8 @@
           "enabled": true
         },
         {
-          "id": "controlCenterButton",
-          "enabled": true,
-          "showNetworkIcon": true,
-          "showBluetoothIcon": false,
-          "showAudioIcon": true,
-          "showAudioPercent": true,
-          "showVpnIcon": false,
-          "showBrightnessIcon": false,
-          "showBrightnessPercent": false,
-          "showMicIcon": false,
-          "showMicPercent": false,
-          "showScreenSharingIcon": true
-        },
-        {
-          "id": "keyboard_layout_name",
+          "id": "notificationButton",
           "enabled": true
-        },
-        {
-          "id": "memUsage",
-          "enabled": true,
-          "minimumWidth": false,
-          "showSwap": false
-        },
-        {
-          "id": "cpuUsage",
-          "enabled": true,
-          "minimumWidth": false
         },
         {
           "id": "clock",
@@ -576,8 +563,8 @@
       "spacing": 0,
       "innerPadding": -5,
       "bottomGap": 0,
-      "transparency": 0.9,
-      "widgetTransparency": 1,
+      "transparency": 0.75,
+      "widgetTransparency": 0,
       "squareCorners": true,
       "noBackground": false,
       "gothCornersEnabled": false,
@@ -682,8 +669,209 @@
   ],
   "systemMonitorVariants": [],
   "desktopWidgetPositions": {},
-  "desktopWidgetGridSettings": {},
-  "desktopWidgetInstances": [],
+  "desktopWidgetGridSettings": {
+    "ZOWIE XL LCD": {
+      "enabled": false,
+      "size": 50
+    }
+  },
+  "desktopWidgetInstances": [
+    {
+      "id": "dw_1778057895746_3okvkvj5o",
+      "widgetType": "desktopClock",
+      "name": "Desktop Clock",
+      "enabled": false,
+      "config": {
+        "style": "digital",
+        "transparency": 0.9,
+        "colorMode": "primary",
+        "customColor": "#ffffff",
+        "showDate": true,
+        "showAnalogNumbers": false,
+        "showAnalogSeconds": true,
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "showOnOverlay": false,
+        "clickThrough": true,
+        "syncPositionAcrossScreens": false,
+        "showDigitalSeconds": false
+      },
+      "positions": {
+        "ZOWIE XL LCD": {
+          "x": 16.59765625,
+          "y": 909.8984375,
+          "width": 361.90234375,
+          "height": 156.6015625
+        },
+        "BenQ GW2280": {
+          "width": 160,
+          "height": 70,
+          "x": 880,
+          "y": 505
+        }
+      }
+    },
+    {
+      "id": "dw_1778058019829_ky5vna4rn",
+      "widgetType": "dankDesktopWeather",
+      "name": "Dank Desktop Weather",
+      "enabled": false,
+      "config": {
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "clickThrough": true,
+        "viewMode": "compact",
+        "backgroundOpacity": 90
+      },
+      "positions": {
+        "BenQ GW2280": {
+          "width": 200,
+          "height": 200,
+          "x": 860,
+          "y": 440
+        },
+        "ZOWIE XL LCD": {
+          "width": 300,
+          "height": 150,
+          "x": 15.00390625,
+          "y": 749.40234375
+        }
+      }
+    },
+    {
+      "id": "dw_1778058343515_3jkqgt6qy",
+      "widgetType": "mediaPlayer",
+      "name": "Media Player",
+      "enabled": false,
+      "config": {
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "rotateThumbnail": true,
+        "clickThrough": true,
+        "backgroundOpacity": 80,
+        "borderOpacity": 80
+      },
+      "positions": {
+        "BenQ GW2280": {
+          "width": 320,
+          "height": 200,
+          "x": 800,
+          "y": 440
+        },
+        "ZOWIE XL LCD": {
+          "width": 320,
+          "height": 160,
+          "x": 1587.80078125,
+          "y": 50.01171875
+        }
+      }
+    },
+    {
+      "id": "dw_1778058779671_8hnkh9kba",
+      "widgetType": "appShortcut",
+      "name": "osu",
+      "enabled": false,
+      "config": {
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "shortcutApp": "osu!",
+        "clickThrough": false,
+        "followTheme": true
+      },
+      "positions": {
+        "BenQ GW2280": {
+          "width": 200,
+          "height": 200,
+          "x": 860,
+          "y": 440
+        },
+        "ZOWIE XL LCD": {
+          "width": 100,
+          "height": 100,
+          "x": 1736.203125,
+          "y": 980
+        }
+      }
+    },
+    {
+      "id": "dw_1778058642837_vn2va52j2",
+      "widgetType": "appShortcut",
+      "name": "Helium",
+      "enabled": false,
+      "config": {
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "shortcutApp": "helium",
+        "clickThrough": false,
+        "followTheme": true
+      },
+      "positions": {
+        "BenQ GW2280": {
+          "width": 200,
+          "height": 200,
+          "x": 860,
+          "y": 440
+        },
+        "ZOWIE XL LCD": {
+          "width": 100,
+          "height": 100,
+          "x": 1820,
+          "y": 980
+        }
+      }
+    },
+    {
+      "id": "dw_1778058863024_zphc5zbfb",
+      "widgetType": "appShortcut",
+      "name": "ProtonVPN",
+      "enabled": false,
+      "config": {
+        "displayPreferences": [
+          {
+            "name": "DP-1",
+            "model": "ZOWIE XL LCD"
+          }
+        ],
+        "shortcutApp": "proton.vpn.app.gtk",
+        "clickThrough": false,
+        "followTheme": true
+      },
+      "positions": {
+        "BenQ GW2280": {
+          "width": 200,
+          "height": 200,
+          "x": 860,
+          "y": 440
+        },
+        "ZOWIE XL LCD": {
+          "width": 100,
+          "height": 100,
+          "x": 1653,
+          "y": 980
+        }
+      }
+    }
+  ],
   "desktopWidgetGroups": [],
   "builtInPluginSettings": {
     "dms_settings_search": {
