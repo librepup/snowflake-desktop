@@ -307,6 +307,7 @@ binds {
     Super+L { spawn "sh" "-c" "dms ipc call lock lock"; }
     Super+C { spawn "sh" "-c" "dms ipc call clipboard open"; }
     Super+E { spawn "thunar"; }
+    Super+I { spawn "sh" "-c" "dms ipc call notifications open"; }
 
     Super+1 { spawn "sh" "-c" "pkill swayidle && notify-send 'Screensaver' 'Turned OFF.' -i /home/puppy/Pictures/no.png"; }
     Super+2 { spawn "sh" "-c" "swayidle -w timeout 300 'dms ipc call lock lock' & notify-send 'Screensaver' 'Turned ON.' -i /home/puppy/Pictures/yes.png"; }
