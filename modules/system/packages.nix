@@ -24,6 +24,8 @@
       };
     in
     [
+      libsecret
+      pkg-config
       ibus-engines.uniemoji
       ibus-with-plugins
       ibus-theme-tools

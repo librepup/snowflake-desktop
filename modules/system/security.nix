@@ -11,15 +11,8 @@
         pkgs.gcr
       ];
     };
-    gnome = {
-      gnome-keyring.enable = false;
-    };
   };
   security = {
-    pam = {
-      services.login.enableGnomeKeyring = false;
-      services.sddm.enableGnomeKeyring = false;
-    };
     sudo = {
       enable = true;
       wheelNeedsPassword = true;

@@ -96,6 +96,7 @@ window-rule {
     match app-id="Viewnior"
     match title="Volume Control"
     match title="Lautstärkeregler"
+    match title="KeePassXC -  Access Request"
     open-floating true
     open-focused true
 }
@@ -159,7 +160,9 @@ spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "
 // spawn-at-startup "sh" "-c" "keepassxc &"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/niri-sidebar-linux-x86_64 listen"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/oniri-1.2.0-amd64 -T"
-spawn-at-startup "easyeffects" "--load-preset" "Baseline" "--hide-window"
+spawn-at-startup "sh" "-c" "easyeffects --load-preset Baseline --hide-window"
+spawn-at-startup "sh" "-c" "nixmacs --fg-daemon"
+spawn-at-startup "sh" "-c" "pkill -9 -f gnome-keyring-daemon"
 spawn-at-startup "sh" "-c" "dbus-update-activation-environment --systemd --all"
 
 environment {
@@ -277,7 +280,7 @@ binds {
     Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
-    Super+Shift+G { spawn "sh" "-c" "goofcord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=gnome-libsecret"; }
+    Super+Shift+G { spawn "sh" "-c" "goofcord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Super+Shift+D { spawn "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"; }
     Super+M { spawn "tauon"; }
     Super+A { spawn "pavucontrol"; }
