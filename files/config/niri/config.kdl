@@ -102,6 +102,7 @@ window-rule {
 
 window-rule {
     match app-id="steam"
+    match title="Steam"
     open-on-output "HDMI-A-1"
     open-focused false
     open-on-workspace "2"
