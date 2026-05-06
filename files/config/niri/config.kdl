@@ -101,6 +101,11 @@ window-rule {
 }
 
 window-rule {
+    match title="notificationtoasts_7_desktop"
+    default-floating-position x=0 y=0 relative-to="bottom-right" // x=1600 y=0 relative-to="bottom-left"
+}
+
+window-rule {
     match app-id="steam"
     match title="Steam"
     open-on-output "HDMI-A-1"
@@ -146,15 +151,16 @@ gestures {
 // Autostart
 spawn-at-startup "dex" "--autostart" "--environment" "niri"
 spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
-spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
+// spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
 spawn-at-startup "vicinae" "server"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swayidle" "-w" "timeout" "300" "hyprlock"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
-spawn-at-startup "sh" "-c" "keepassxc &"
+// spawn-at-startup "sh" "-c" "keepassxc &"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/niri-sidebar-linux-x86_64 listen"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/oniri-1.2.0-amd64 -T"
 spawn-at-startup "easyeffects" "--load-preset" "Baseline" "--hide-window"
+spawn-at-startup "sh" "-c" "dbus-update-activation-environment --systemd --all"
 
 environment {
     DISPLAY ":0"
@@ -271,7 +277,7 @@ binds {
     Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
-    Super+Shift+G { spawn "goofcord" "--disable-gpu" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+    Super+Shift+G { spawn "sh" "-c" "goofcord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=gnome-libsecret"; }
     Super+Shift+D { spawn "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"; }
     Super+M { spawn "tauon"; }
     Super+A { spawn "pavucontrol"; }

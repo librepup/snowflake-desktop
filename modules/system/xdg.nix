@@ -10,6 +10,10 @@
         xdg-desktop-portal-gnome
       ];
       config = {
+        niri = {
+          default = [ "gnome" "gtk" ];
+          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        };
         common.default = [ "gnome" ];
       };
     };
