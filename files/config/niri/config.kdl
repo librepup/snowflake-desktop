@@ -41,7 +41,11 @@ prefer-no-csd
 layout {
     gaps 2
     tab-indicator {
-        off
+        on
+        hide-when-single-tab
+        place-within-column
+        active-color "purple"
+        inactive-color "black"
     }
     center-focused-column "never"
     preset-column-widths {
@@ -64,7 +68,7 @@ layout {
         inactive-color "#1d1f21"
     }
 
-    default-column-display "tabbed"
+    default-column-display "normal"
 
     shadow {
         on
@@ -117,6 +121,7 @@ window-rule {
 window-rule {
     match app-id="Emacs"
     match app-id="emacs"
+    match app-id="anvil"
     opacity 0.8
 }
 
@@ -241,15 +246,15 @@ binds {
     Mod+Ctrl+Right { set-column-width "+10%"; }
     Mod+Ctrl+Shift+Left  { set-column-width "-0.5%"; }
     Mod+Ctrl+Shift+Right { set-column-width "+0.5%"; }
-    Mod+Ctrl+Up    { set-window-height "+10%"; }
-    Mod+Ctrl+Down  { set-window-height "-10%"; }
+    Mod+Ctrl+Up    { set-window-height "-10%"; }
+    Mod+Ctrl+Down  { set-window-height "+10%"; }
     Mod+Ctrl+H     { set-window-height "100%"; }
 
     Mod+V { set-column-width "+10%"; }
     Mod+Shift+V { set-column-width "-10%"; }
 
-    Mod+Comma  { set-column-width "33%"; }
-    Mod+Period { set-column-width "50%"; }
+    Mod+Comma { consume-or-expel-window-left; } // { set-column-width "33%"; }
+    Mod+Period { consume-or-expel-window-right; } // { set-column-width "50%"; }
 
     Mod+Tab { toggle-overview; }
 
