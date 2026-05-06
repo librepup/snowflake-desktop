@@ -87,11 +87,9 @@ window-rule {
 
 window-rule {
     match app-id="goofcord"
-    min-width 1098
-    max-width 1098
     open-on-output "HDMI-A-1"
     open-focused false
-    default-column-width { fixed 1098; }
+    open-on-workspace "1"
 }
 
 window-rule {
@@ -105,10 +103,8 @@ window-rule {
 window-rule {
     match app-id="steam"
     open-on-output "HDMI-A-1"
-    min-width 808
-    max-width 808
     open-focused false
-    default-column-width { fixed 808; }
+    open-on-workspace "2"
 }
 
 window-rule {
@@ -147,8 +143,6 @@ gestures {
 }
 
 // Autostart
-// spawn-at-startup "mako"
-// spawn-at-startup "nm-applet"
 spawn-at-startup "dex" "--autostart" "--environment" "niri"
 spawn-at-startup "waypaper" "--restore" "--backend" "swaybg"
 spawn-at-startup "sh" "-c" "QT_QPA_PLATFORM=wayland dms run"
