@@ -1,6 +1,18 @@
 { config, pkgs, lib, inputs, ... }:
 {
   xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gnome
+      ];
+      config = {
+        common.default = [ "gnome" ];
+      };
+    };
     mime = {
       enable = true;
       defaultApplications = {

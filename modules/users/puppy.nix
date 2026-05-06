@@ -91,6 +91,7 @@ let
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
+    xdg-desktop-portal-gnome
     hyprshot
     sway-audio-idle-inhibit
   ];
