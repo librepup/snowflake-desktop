@@ -112,6 +112,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id="Emacs"
+    opacity 0.8
+}
+
+window-rule {
     match title="All Files"
     match app-id="xdg-desktop-portal-gtk"
     open-floating true
@@ -154,6 +159,7 @@ spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "
 spawn-at-startup "sh" "-c" "keepassxc &"
 spawn-at-startup "~/.config/niri/bin/niri-sidebar-linux-x86_64" "listen"
 spawn-at-startup "~/.config/niri/bin/oniri-1.2.0-amd64" "-T"
+spawn-at-startup "easyeffects" "--load-preset" "Baseline" "--hide-window"
 
 environment {
     DISPLAY ":0"
@@ -209,8 +215,12 @@ binds {
 
     Super+Right { spawn "niri" "msg" "action" "focus-monitor-right"; }
     Super+Left { spawn "niri" "msg" "action" "focus-monitor-left"; }
+    Mod+Ctrl+2 { spawn "niri" "msg" "action" "focus-monitor-right"; }
+    Mod+Ctrl+1 { spawn "niri" "msg" "action" "focus-monitor-left"; }
     Super+Shift+Right { move-column-to-monitor-right; }
     Super+Shift+Left { move-column-to-monitor-left; }
+    Mod+Ctrl+Shift+2 { move-column-to-monitor-right; }
+    Mod+Ctrl+Shift+1 { move-column-to-monitor-left; }
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Right { move-column-right; }
@@ -262,6 +272,7 @@ binds {
 
     Mod+Shift+F { spawn "nixmacs"; }
     Super+N { spawn "kate"; }
+    Super+Q { spawn "copyq" "toggle"; }
     Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }
