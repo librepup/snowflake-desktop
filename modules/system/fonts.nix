@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   fonts = {
+    fontDir.enable = true;
     packages = with pkgs; [
       inputs.jonabron.packages.x86_64-linux.gnutypewriter-font
       inputs.jonabron.packages.x86_64-linux.cartographcf-font
