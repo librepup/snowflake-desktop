@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  services.envfs.enable = true;
   console.keyMap = "colemak";
   environment = {
     variables = {
