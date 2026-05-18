@@ -79,7 +79,7 @@ let
     swaylock-fancy
     wlsunset
     wofi
-    mako
+    #mako
     wlr-randr
     xwayland
     xwayland-satellite
@@ -284,6 +284,7 @@ let
   ];
   bundleXorg = with pkgs; [
     yad
+    xorg.xeyes
     xnotify
     pmenu
     dockapps.wmsystemtray
