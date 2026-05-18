@@ -63,6 +63,7 @@ let
   ];
   bundleWayland = with pkgs; [
     grim
+    wayneko
     nirius
     xwayland-run
     wl-color-picker
