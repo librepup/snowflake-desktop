@@ -22,6 +22,7 @@
       iosevka
       nerd-fonts.symbols-only
       maple-mono.truetype
+      nerd-fonts.go-mono
       tt2020
       emacs-all-the-icons-fonts
       julia-mono
