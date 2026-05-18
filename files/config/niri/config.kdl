@@ -151,6 +151,8 @@ window-rule {
     match title="/mnt/veracrypt1"
     match app-id="veracrypt"
     match app-id="KeePassXC"
+    match app-id="Memes - Thunar"
+    match title="Memes - Thunar"
     block-out-from "screen-capture"
 }
 
@@ -170,7 +172,7 @@ spawn-at-startup "sh" "-c" "swayidle -w timeout 300 'dms ipc call lock lock'"
 spawn-at-startup "wlr-randr" "--output" "DP-1" "--mode" "1920x1080@143.981003" "--output" "HDMI-A-1" "--mode" "1920x1080" "--scale" "1.0" "--right-of" "DP-1"
 // spawn-at-startup "sh" "-c" "keepassxc &"
 spawn-at-startup "sh" "-c" "~/.config/niri/bin/niri-sidebar-linux-x86_64 listen"
-spawn-at-startup "sh" "-c" "~/.config/niri/bin/oniri-1.2.0-amd64 -T"
+// spawn-at-startup "sh" "-c" "~/.config/niri/bin/oniri-1.2.0-amd64 -T"
 spawn-at-startup "sh" "-c" "easyeffects --load-preset Baseline --hide-window"
 spawn-at-startup "sh" "-c" "nixmacs --fg-daemon"
 spawn-at-startup "sh" "-c" "pkill -9 -f gnome-keyring-daemon"
@@ -292,6 +294,7 @@ binds {
     Mod+Shift+F { spawn "nixmacs-wayland"; }
     Super+N { spawn "kate"; }
     Super+Q { spawn "copyq" "toggle"; }
+    Mod+S { spawn "sh" "-c" "microsoft-edge"; }
     Mod+Shift+S { spawn "sh" "-c" "helium --enable-features=UseOzonePlatform --ozone-platform=wayland"; }
     Mod+A { spawn "sh" "-c" "grim -g \"$(slurp -b 1d1f2150 -s ffffff25)\" -t png - | wl-copy"; }
     Mod+C { spawn "sh" "-c" "hyprpicker | tr -d '\n' | wl-copy"; }

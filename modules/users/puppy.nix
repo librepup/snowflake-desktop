@@ -246,6 +246,7 @@ let
     gnome-text-editor
     kdePackages.kate
     marksman
+    obsidian
   ];
   bundleWeb = with pkgs; [
     httrack
