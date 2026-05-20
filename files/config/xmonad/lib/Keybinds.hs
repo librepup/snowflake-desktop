@@ -124,6 +124,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
                                        , TS.ts_originY = fromIntegral cy }
         TS.treeselectAction dynamicConfig layoutTree)
     , ((modm .|. controlMask, xK_space), setLayout $ XMonad.layoutHook conf)
+    , ((myWinMask .|. shiftMask, xK_g), spawn "goofcord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu")
     -- Focus Windows
     , ((modm, xK_Left), windows W.focusUp)
     , ((modm, xK_Right), windows W.focusDown)
