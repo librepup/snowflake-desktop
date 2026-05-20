@@ -214,10 +214,6 @@
       bind = ALT+SHIFT,Left,exchange_client,left
       bind = ALT+SHIFT,Right,exchange_client,right
 
-      # stacker
-      bind=ALT,comma,scroller_stack_left
-      bind=ALT,period,scroller_stack_right
-
       # switch window status
       bind = ALT,p,toggleglobal,
       bind = ALT,Tab,toggleoverview,
@@ -232,6 +228,8 @@
 
       # scroller layout
       bind = ALT+SHIFT,a,set_proportion,1.0
+      bind = ALT,comma,exchange_client,left
+      bind = ALT,period,exchange_client,right
 
       # Applications
       bind = ALT+SHIFT,f,spawn,nixmacs-wayland
@@ -278,10 +276,10 @@
       bind = ALT+SHIFT,9,tag,9,0
 
       # monitor switch
-      bind = alt+SHIFT,CTRL,Left,focusmon,left
-      bind = alt+SHIFT,CTRL,Right,focusmon,right
-      bind = SUPER+ALT,Left,tagmon,left
-      bind = SUPER+ALT,Right,tagmon,right
+      bind = SUPER,Left,focusmon,left
+      bind = SUPER,Right,focusmon,right
+      bind = SUPER+SHIFT,Left,tagmon,left
+      bind = SUPER+SHIFT,Right,tagmon,right
 
       # gaps
       bind = ALT+SHIFT,X,incgaps,1
