@@ -25,6 +25,25 @@
   xdg.configFile."Thunar/scripts/convertImages.sh" = {
     source = ../../files/config/Thunar/scripts/convertImages.sh;
   };
+  # Wayland Screensaver Scripts
+  home.file = {
+    ".scripts/disableWaylandScreensaver.sh" = {
+      source = ../../files/scripts/disableScreensaverWayland.sh;
+      executable = true;
+    };
+  };
+  home.file = {
+    ".scripts/enableWaylandScreensaver.sh" = {
+      source = ../../files/scripts/enableScreensaverWayland.sh;
+      executable = true;
+    };
+  };
+  home.file = {
+    ".scripts/hyprpickerScript.sh" = {
+      source = ../../files/scripts/hyprpickerScript.sh;
+      executable = true;
+    };
+  };
   # Picom
   home.file.".config/picom/picom.conf".source = ../../files/config/picom/v3.conf;
   # Nvidia
@@ -331,6 +350,8 @@
       ../../files/pictures/wallpapers/Unsorted/guix_wp_02.png;
     "Pictures/Wallpapers/Unsorted/makima.jpg".source =
       ../../files/pictures/wallpapers/Unsorted/makima.jpg;
+    "Pictures/Wallpapers/Unsorted/femtanyl.png".source =
+      ../../files/pictures/wallpapers/Unsorted/femtanyl_wallpaper.png;
   };
   # Icons
   home.file = {
