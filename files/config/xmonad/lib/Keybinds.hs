@@ -68,7 +68,7 @@ import XMonad.Util.NamedScratchpad
 -- Actions
 import XMonad.Actions.FloatKeys
 import XMonad.Actions.WithAll
-import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not), emptyWS, Direction1D(Next, Prev))
+import XMonad.Actions.CycleWS (screenBy, toggleWS, moveTo, WSType(Not, WSIs), emptyWS, Direction1D(Next, Prev), shiftTo)
 import XMonad.Actions.Warp
 import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
 import XMonad.Actions.DynamicProjects
@@ -380,4 +380,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-button3, Set the window to floating mode and resize by dragging
     , ((modm, button3), (\w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster))
+    , ((modm, button5), \_ -> moveTo Next emptyWS)
+    , ((modm, button4), \_ -> moveTo Prev emptyWS)
+    , ((modm .|. shiftMask, button5), \_ -> shiftTo Next emptyWS)
+    , ((modm .|. shiftMask, button4), \_ -> shiftTo Prev emptyWS)
     ]
