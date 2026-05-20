@@ -187,16 +187,16 @@
       tagrule=id:9,layout_name:vertical_tile
 
       # reload config
-      bind = Alt+Shift,p,reload_config
+      bind = ALT+SHIFT,p,reload_config
 
       # menu and terminal
-      bind = Alt,t,spawn,vicinae toggle
-      bind = Alt+Shift,Return,spawn,kitty
+      bind = ALT,t,spawn,vicinae toggle
+      bind = ALT+SHIFT,Return,spawn,kitty
 
       # exit
-      #bind=Alt+Shift,x,quit
-      bind = Alt+Shift,x,spawn,~/.scripts/mango-exit.sh
-      bind = ALT+Shift,q,killclient
+      #bind=ALT+SHIFT,x,quit
+      bind = ALT+SHIFT,x,spawn,~/.scripts/mango-exit.sh
+      bind = ALT+SHIFT,q,killclient
 
       # WinBinds
       bind = SUPER,1,~/.scripts/disableWaylandScreensaver.sh
@@ -209,22 +209,22 @@
       bind = ALT,Down,focusdir,down
 
       # swap window
-      bind = Alt+SHIFT,Up,exchange_client,up
-      bind = Alt+SHIFT,Down,exchange_client,down
-      bind = Alt+SHIFT,Left,exchange_client,left
-      bind = Alt+SHIFT,Right,exchange_client,right
+      bind = ALT+SHIFT,Up,exchange_client,up
+      bind = ALT+SHIFT,Down,exchange_client,down
+      bind = ALT+SHIFT,Left,exchange_client,left
+      bind = ALT+SHIFT,Right,exchange_client,right
 
       # stacker
-      bind=Alt,comma,scroller_stack_left
-      bind=Alt,period,scroller_stack_right
+      bind=ALT,comma,scroller_stack_left
+      bind=ALT,period,scroller_stack_right
 
       # switch window status
       bind = ALT,p,toggleglobal,
       bind = ALT,Tab,toggleoverview,
       bind = ALT+SHIFT,space,togglefloating
-      bind = Alt,m,togglemaximizescreen,
-      bind = Alt+Shift,t,togglefullscreen,
-      bind = SUPER+Shift,t,togglefakefullscreen,
+      bind = ALT,m,togglemaximizescreen,
+      bind = ALT+SHIFT,t,togglefullscreen,
+      bind = SUPER+SHIFT,t,togglefakefullscreen,
       bind = SUPER,i,minimized,
       bind = SUPER+SHIFT,I,restore_minimized
       bind = SUPER+CTRL,i,toggle_scratchpad
@@ -234,54 +234,54 @@
       bind = ALT+SHIFT,a,set_proportion,1.0
 
       # Applications
-      bind = ALT+Shift,f,spawn,nixmacs-wayland
-      bind = ALT+Shift,s,spawn,microsoft-edge
+      bind = ALT+SHIFT,f,spawn,nixmacs-wayland
+      bind = ALT+SHIFT,s,spawn,microsoft-edge
       bind = SUPER,e,spawn,thunar
       bind = SUPER,n,spawn,kate
       bind = SUPER,l,spawn,dms ipc call lock lock
-      bind = Alt+Ctrl,t,spawn,rofi -show drun
-      bind = Alt+Ctrl+Shift,t,spawn,rofi -show run
-      bind = Alt,a,spawn,hyprshot -m region --clipboard-only
+      bind = ALT+CTRL,t,spawn,rofi -show drun
+      bind = ALT+CTRL+SHIFT,t,spawn,rofi -show run
+      bind = ALT,a,spawn,hyprshot -m region --clipboard-only
 
       # switch layout
-      bind = Alt,space,switch_layout
+      bind = ALT,space,switch_layout
 
       # tag switch
       bind = SUPER,Left,viewtoleft,0
-      bind = CTRL+Super+Shift,Left,viewtoleft_have_client,0
+      bind = CTRL+Super+SHIFT,Left,viewtoleft_have_client,0
       bind = SUPER,Right,viewtoright,0
-      bind = CTRL+SUPER+Shift,Right,viewtoright_have_client,0
+      bind = CTRL+SUPER+SHIFT,Right,viewtoright_have_client,0
       bind = CTRL+SUPER,Left,tagtoleft,0
       bind = CTRL+SUPER,Right,tagtoright,0
 
-      bind = Alt,1,view,1,0
-      bind = Alt,2,view,2,0
-      bind = Alt,3,view,3,0
-      bind = Alt,4,view,4,0
-      bind = Alt,5,view,5,0
-      bind = Alt,6,view,6,0
-      bind = Alt,7,view,7,0
-      bind = Alt,8,view,8,0
-      bind = Alt,9,view,9,0
+      bind = ALT,1,view,1,0
+      bind = ALT,2,view,2,0
+      bind = ALT,3,view,3,0
+      bind = ALT,4,view,4,0
+      bind = ALT,5,view,5,0
+      bind = ALT,6,view,6,0
+      bind = ALT,7,view,7,0
+      bind = ALT,8,view,8,0
+      bind = ALT,9,view,9,0
 
       # tag: move client to the tag and focus it
       # tagsilent: move client to the tag and not focus it
-      # bind = Alt,1,tagsilent,1
-      bind = Alt+Shift,1,tag,1,0
-      bind = Alt+Shift,2,tag,2,0
-      bind = Alt+Shift,3,tag,3,0
-      bind = Alt+Shift,4,tag,4,0
-      bind = Alt+Shift,5,tag,5,0
-      bind = Alt+Shift,6,tag,6,0
-      bind = Alt+Shift,7,tag,7,0
-      bind = Alt+Shift,8,tag,8,0
-      bind = Alt+Shift,9,tag,9,0
+      # bind = ALT,1,tagsilent,1
+      bind = ALT+SHIFT,1,tag,1,0
+      bind = ALT+SHIFT,2,tag,2,0
+      bind = ALT+SHIFT,3,tag,3,0
+      bind = ALT+SHIFT,4,tag,4,0
+      bind = ALT+SHIFT,5,tag,5,0
+      bind = ALT+SHIFT,6,tag,6,0
+      bind = ALT+SHIFT,7,tag,7,0
+      bind = ALT+SHIFT,8,tag,8,0
+      bind = ALT+SHIFT,9,tag,9,0
 
       # monitor switch
-      bind = alt+shift,ctrl,Left,focusmon,left
-      bind = alt+shift,ctrl,Right,focusmon,right
-      bind = SUPER+Alt,Left,tagmon,left
-      bind = SUPER+Alt,Right,tagmon,right
+      bind = alt+SHIFT,CTRL,Left,focusmon,left
+      bind = alt+SHIFT,CTRL,Right,focusmon,right
+      bind = SUPER+ALT,Left,tagmon,left
+      bind = SUPER+ALT,Right,tagmon,right
 
       # gaps
       bind = ALT+SHIFT,X,incgaps,1
@@ -305,12 +305,12 @@
       bind = CTRL+ALT,k,resizewin,+0,-10 # Up
       bind = CTRL+ALT,l,resizewin,+10,+0 # Right
 
-      bind = Alt,b,spawn,dms ipc call bar toggle index 0
+      bind = ALT,b,spawn,dms ipc call bar toggle index 0
       bind = SUPER,q,spawn,copyq toggle
-      bind = Alt,c,spawn,~/.scripts/hyprpickerScript.sh
+      bind = ALT,c,spawn,~/.scripts/hyprpickerScript.sh
       bind = SUPER,m,spawn,tauon
-      bind = SUPER+Shift,g,spawn,goofcord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland
-      bind = SUPER+Shift,d,spawn,QT_QPA_PLATFORM=wayland dms run
+      bind = SUPER+SHIFT,g,spawn,goofcord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland
+      bind = SUPER+SHIFT,d,spawn,QT_QPA_PLATFORM=wayland dms run
       bind = SUPER,c,spawn,dms ipc call clipboard open
       bind = SUPER,z,spawn,hyprmagnifier --size 512x512
       bind = SUPER,a,spawn,pavucontrol
@@ -319,10 +319,7 @@
       # Mouse Button Bindings
       # NONE mode key only work in ov mode
       mousebind = ALT,btn_left,moveresize,curmove
-      mousebind = NONE,btn_middle,togglemaximizescreen,0
       mousebind = ALT,btn_right,moveresize,curresize
-      mousebind = NONE,btn_left,toggleoverview,1
-      mousebind = NONE,btn_right,killclient,0
 
       # Axis Bindings
       axisbind = SUPER,UP,viewtoleft_have_client
