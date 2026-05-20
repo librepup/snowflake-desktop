@@ -199,8 +199,8 @@
       bind = ALT+SHIFT,q,killclient
 
       # WinBinds
-      bind = SUPER,1,~/.scripts/disableWaylandScreensaver.sh
-      bind = SUPER,2,~/.scripts/enableWaylandScreensaver.sh
+      bind = SUPER,1,spawn,~/.scripts/disableWaylandScreensaver.sh
+      bind = SUPER,2,spawn,~/.scripts/enableWaylandScreensaver.sh
 
       # switch window focus
       bind = ALT,Left,focusdir,left
