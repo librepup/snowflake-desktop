@@ -38,7 +38,11 @@
         # Fetching
         fetch = "echo -e 'mf => Microfetch\npf => Pridefetch\nhf => Hyfetch\nff => Fastfetch'";
         hf = "hyfetch $@";
+        deToSv = "trans de:sv '$@'";
+        enToSv = "trans en:sv '$@'";
+        svToDe = "trans sv:de '$@'";
         pf = "pridefetch -f trans --width 11 $@";
+        svToEn = "trans sv:en '$@'";
         mf = "microfetch $@";
         ff = "fastfetch $@";
         gf = "fastfetch --pipe false --logo Guix | sed 's/NixOS 25.11 (Xantusia)/Guix System/g' $@";

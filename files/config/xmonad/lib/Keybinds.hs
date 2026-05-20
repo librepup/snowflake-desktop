@@ -129,6 +129,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Right), windows W.focusDown)
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
+    , ((modm, xK_s), spawn "microsoft-edge")
     , ((modm .|. shiftMask, xK_s), submapDefault (spawn "helium") $ M.fromList [
           ((0, xK_Return), spawn "helium")
         , ((0, xK_s), spawn "helium")
@@ -222,7 +223,6 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Applications
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
-    , ((modm, xK_s), spawn "helium")
     , ((modm .|. controlMask, xK_s), spawn "firefox")
     -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
