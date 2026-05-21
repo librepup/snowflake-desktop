@@ -108,7 +108,7 @@ myAutostart = do
   spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Baseline --hide-window & fi" -- PipeWire EasyEffects
   spawnOnceIfExists "jonabar-numi" "if ! pgrep polybar > /dev/null; then jonabar-numi & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
-  spawnOnceIfExists "waypaper" "waypaper --restore"
+  spawnOnceIfExists "waypaper" "waypaper --restore --backend feh"
   -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
   spawnOnceIfExists "nixmacs-client" "if ! nixmacs-client -e \"(emacs-pid)\" > /dev/null 2>&1; then nixmacs --fg-daemon & fi" -- NixMacs Daemon
   spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
