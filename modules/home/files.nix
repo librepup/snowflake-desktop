@@ -90,6 +90,10 @@
   };
   # ZSH Scripts and Functions
   home.file = {
+    ".scripts/gameLauncher.sh" = {
+      source = ../../files/scripts/gameLauncher.sh;
+      executable = true;
+    };
     ".trayicon-scripts/wayPaper.sh" = {
       source = ../../files/scripts/tooltips/wayPaper.sh;
       executable = true;
@@ -357,6 +361,11 @@
   home.file = {
     "Pictures/Icons/yes.png".source = ../../files/pictures/icons/yes.png;
     "Pictures/Icons/error.png".source = ../../files/pictures/icons/error.png;
+    "Pictures/Icons/etterna.ico".source = ../../files/pictures/icons/etterna.ico;
+    "Pictures/Icons/notitg.png".source = ../../files/pictures/icons/notitg.png;
+    "Pictures/Icons/osu.png".source = ../../files/pictures/icons/osu.png;
+    "Pictures/Icons/quaver.ico".source = ../../files/pictures/icons/quaver.ico;
+    "Pictures/Icons/sdvx.png".source = ../../files/pictures/icons/sdvx.png;
     "Pictures/Icons/no.png".source = ../../files/pictures/icons/no.png;
     "Pictures/Icons/xmonad_logo.png".source = ../../files/pictures/icons/xmonad_logo.png;
     "Pictures/Icons/waypaper.svg".source = ../../files/pictures/icons/waypaper.svg;
