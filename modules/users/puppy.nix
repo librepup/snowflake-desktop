@@ -395,6 +395,7 @@ let
     xorg.xkbcomp
     xmodmap
     xbindkeys
+    wootility
   ];
 in
 {
