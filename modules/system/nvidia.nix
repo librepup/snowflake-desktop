@@ -19,9 +19,6 @@
     "nvidia_uvm"
     "nvidia_drm"
   ];
-  boot.kernelModules = [
-    "tcp_bbr"
-  ];
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
