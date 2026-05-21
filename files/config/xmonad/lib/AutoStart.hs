@@ -105,7 +105,7 @@ myAutostart = do
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
   spawnIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
-  spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Baseline --hide-window & fi" -- PipeWire EasyEffects
+  spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Jag --hide-window & fi" -- PipeWire EasyEffects
   spawnOnceIfExists "jonabar-numi" "if ! pgrep polybar > /dev/null; then jonabar-numi & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
   spawnOnceIfExists "waypaper" "waypaper --restore --backend feh"
