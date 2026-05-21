@@ -25,7 +25,8 @@ let
     lynx # CLI Web-Browser
     links2 # CLI Web-Browser
     w3m-full # CLI Web-Browser
-    microsoft-edge # Microsoft's Edge Web-Browser
+    #microsoft-edge # Microsoft's Edge Web-Browser
+    unstable.microsoft-edge # Microsoft's Edge Web-Browser (Unstable Channel)
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # Zen Firefox Forked Web Browser
     floorp-bin # Floorp Firefox Forked Web-Browser
     filezilla # GUI FTP Client
