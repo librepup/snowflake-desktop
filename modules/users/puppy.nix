@@ -209,6 +209,7 @@ let
     inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}.osu-stable # osu!stable Windows Build for NixOS Linux
     outfox # StepMania-Based 4K Rhythm Game
     ace-of-penguins # Small Game Suite
+    unnamed-sdvx-clone # Sound Voltex Clone/Inspired Game
     kdePackages.kpat # KDE's Solitaire Game Collection
     prismlauncher # Feature-Rich Minecraft Launcher and Mod Manager
     itgmania # StepMania-Based 4K Rhythm Game
