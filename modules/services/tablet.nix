@@ -22,7 +22,10 @@
   hardware.uinput.enable = true;
   boot.kernelModules = [ "uinput" ];
   services.udev = {
-    packages = [ pkgs.util-linux ];
+    packages = [
+      pkgs.util-linux
+      pkgs.wooting-udev-rules
+    ];
     extraRules = ''
       # Wacom CTH-480 for OpenTabletDriver (OTD)
       SUBSYSTEM=="hidraw", ATTRS{idVendor}=="056a", ATTRS{idProduct}=="0302", MODE="0666", GROUP="plugdev"
