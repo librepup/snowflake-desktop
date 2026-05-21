@@ -222,6 +222,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Switch Layouts
     , ((modm, xK_y), sendMessage NextLayout)
     -- Applications
+    , ((modm, xK_g), spawn "~/.scripts/gameLauncher.sh")
     , ((myWinMask, xK_a), spawn "pavucontrol")
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
