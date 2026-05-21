@@ -52,6 +52,12 @@
  ```
 
 # Main Tested Podman Notes
+## Create Isolated Networks
+ - Two isolated networks are not really needed, but I did it this way by accident, and now everything works - so I dare not change my ways.
+ ```sh
+ podman network create --internal isolated-net
+ podman network create isolated_network
+ ```
 ## Stop, Delete, and Clean Up Containers
  - `podman stop ollama && podman rm ollama`
 ## Create Container
