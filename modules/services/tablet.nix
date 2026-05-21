@@ -25,6 +25,7 @@
     packages = [
       pkgs.util-linux
       pkgs.wooting-udev-rules
+      inputs.jonabron.packages.x86_64-linux.ratctl-udevrules
     ];
     extraRules = ''
       # Wacom CTH-480 for OpenTabletDriver (OTD)

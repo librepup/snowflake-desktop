@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
-    #./containerization.nix
+    # ./containerization.nix
     ./guix.nix
     ./networks.nix
     ./virtualization.nix
@@ -14,5 +14,6 @@
     ./ai.nix
     ./snap.nix
     ./keyd.nix
+    ./mouse.nix
   ];
 }
