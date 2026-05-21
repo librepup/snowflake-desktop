@@ -66,6 +66,7 @@
         tarZip = "echo 'Arg1: Archive.tar.gz, Arg2: Full Path of the Folder';tar -czvf $@";
         zipCreate = "echo 'Arg1: Archive.zip, Arg2: Folder/';zip -r $@";
         # Applications
+        compressMp4To10MB = "ffmpeg -i $@ -b:v 1000k -c:a aac -b:a 128k resultingVideoCompressed.mp4";
         gamingmode = "gamemoderun mangohud $@";
         gamingmodeDevour = "devour gamemoderun mangohud $@";
         animescript = "$HOME/.scripts/animescript.sh $@";
