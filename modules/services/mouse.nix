@@ -4,7 +4,7 @@
     ratbagd = {
       enable = true;
     };
-    openrgb = {
+    hardware.openrgb = {
       enable = true;
       motherboard = "intel";
       server.port = 6742;
