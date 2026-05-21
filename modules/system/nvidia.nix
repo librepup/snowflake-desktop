@@ -10,12 +10,17 @@
   boot.kernelParams = [
     "nvidia-drm.modeset=1"
     "nvidia-drm.fbdev=0"
+    "mitigations=off"
+    "nmi_watchdog=0"
   ];
   boot.initrd.kernelModules = [
     "nvidia"
     "nvidia_modeset"
     "nvidia_uvm"
     "nvidia_drm"
+  ];
+  boot.kernelModules = [
+    "tcp_bbr"
   ];
   hardware.graphics = {
     enable = true;

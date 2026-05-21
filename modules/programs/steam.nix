@@ -1,11 +1,13 @@
 { config, lib, pkgs, inputs, ... }:
 {
+  hardware.steam-hardware.enable = true;
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
   };
   programs.gamemode = {
     enable = true;
   };
+  programs.gamescope.enable = true;
   programs.steam = {
     enable = true;
     package = pkgs.millennium-steam.override {

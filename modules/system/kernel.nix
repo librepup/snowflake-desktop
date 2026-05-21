@@ -1,5 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  boot.kernel.sysctl = {
+    "net.core.netdev_max_backlog" = 16384;
+    "net.ipv4.tcp_fastopen" = 3;
+    "net.ipv4.tcp_congestion_control" = "bbr";
+    "net.core.default_qdisc" = "fq";
+  };
   nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ];
   hardware.enableRedistributableFirmware = true;
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;

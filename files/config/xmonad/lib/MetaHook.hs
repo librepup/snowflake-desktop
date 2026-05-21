@@ -138,9 +138,9 @@ main = do
 
   xmonad
      . ewmhFullscreen
-     . ewmh
+     -- . ewmh
      . docks
-     $ def {
+     $ ewmh def {
         terminal           = myTerminal
         , focusFollowsMouse  = True
         , clickJustFocuses   = False
