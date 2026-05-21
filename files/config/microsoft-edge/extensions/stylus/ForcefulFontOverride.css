@@ -1,0 +1,7 @@
+* {
+    font-family: "DejaVu Sans Mono", "Symbols Nerd Font Mono", "Noto Sans", "BlexMono Nerd Font", "Arial", "sans-serif" !important;
+}
+
+*:not([class*="material-symbol"]):not([class*="icon"]) {
+    font-family: "DejaVu Sans Mono", "Symbols Nerd Font Mono", "Noto Sans", "BlexMono Nerd Font", "Arial", "sans-serif" !important;
+}

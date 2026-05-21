@@ -228,6 +228,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm .|. controlMask, xK_s), spawn "firefox")
+    , ((myWinMask, xK_q), spawn "com.github.dynobo.normcap -t False --parse-text True --detect-text True -u False --cli-mode | xclip -selection clipboard")
     -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
     , ((modm .|. shiftMask, xK_a), spawn "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland com.github.dynobo.normcap --detect-text=True --parse-text=True --show-introduction=False --tray=False --cli-mode 2>/dev/null | xclip -selection clipboard")

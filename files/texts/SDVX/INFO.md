@@ -43,3 +43,8 @@
  - MAX 300 TAKAMATT MIN REMIX - TAKAMATT
  - 不思議玩具ガンーガラディンドン -  マチゲリータ(Effected by: MEGACYCLE)
  - SURVALI - YM
+ - チルノのパーフェクトさんすう教室 - ARM(IOSYS)
+ - カミサマネシジマキ- KEMU FEAT. GUMI
+ - オーパーライド - 吉田夜世 (Kasane Teto)
+ - クァシパイア - DECO*27
+ - ヒ バ パ ナ -RELOADED- - DECO*27
