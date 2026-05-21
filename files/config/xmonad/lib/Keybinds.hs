@@ -224,6 +224,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Applications
     , ((modm, xK_g), spawn "~/.scripts/gameLauncher.sh")
     , ((myWinMask, xK_a), spawn "pavucontrol")
+    , ((myWinMask, xK_n), spawn "kate")
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm .|. controlMask, xK_s), spawn "firefox")
