@@ -4,6 +4,7 @@
   console.keyMap = "colemak";
   environment = {
     variables = {
+      NIXPKGS_ALLOW_WARN = 1;
       EDITOR = "nixmacs";
       VISUAL = "nixmacs";
       PAGER = "less";

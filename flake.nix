@@ -109,7 +109,7 @@
       noctalia,
       nix-alien,
       nix-search-tv,
-      astal,
+      # astal,
       vicinae,
       mango,
       naitre,
@@ -119,12 +119,12 @@
       spicetify-nix,
       nix-cachyos-kernel,
       nix-gaming,
-      plasma-manager,
+      # plasma-manager,
       jonabron,
       zen-browser,
       nix-init,
       millennium,
-      aerothemeplasma-nix,
+      # aerothemeplasma-nix,
       flatpaks,
       nur,
       nix-snapd,
@@ -167,7 +167,9 @@
               nixpkgs.overlays = [
                 (final: prev: {
                   unstable = import inputs.nixpkgs-unstable {
-                    system = prev.system;
+                    system = prev.stdenv.hostPlatform.system;
+                    # Old System Definition
+                    # system = prev.system;
                     config.allowUnfree = config.nixpkgs.config.allowUnfree or false;
                   };
                   plan9port-wayland = final.unstable.plan9port-wayland;
@@ -221,7 +223,7 @@
                   inputs.naitre.hmModules.naitre # Naitre HUD
                   inputs.dms.homeModules.dank-material-shell # DMS Shell
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
-                  plasma-manager.homeModules.plasma-manager
+                  # plasma-manager.homeModules.plasma-manager
                 ];
                 backupFileExtension =
                   let

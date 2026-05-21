@@ -23,7 +23,7 @@
         # Nix Related
         home-rebuild = "home-manager switch --flake /etc/nixos#puppy $@";
         home-garbage = "home-manager expire-generations '-1 days'";
-        rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
+        # rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
         garbage = "doas nix-collect-garbage -d $@";
         ns = "nix-shell --run zsh $@";
         nss = "nix-search $@";
@@ -32,7 +32,7 @@
         nix-options = "manix $@";
         nixbuild = "echo 'Did you mean `buildnix`?'";
         repair = "doas nix-store --verify --repair $@";
-        nix-generations = "doas nix-env --list-generations --profile /nix/var/nix/profiles/system $@";
+        nix-generations = "doas nix-env -p /nix/var/nix/profiles/system --list-generations";
         generations = "echo -e 'NixOS Generations:\n' && doas nix-env --list-generations --profile /nix/var/nix/profiles/system && echo -e '\nHome-Manager Generations:\n' && ls -l ~/.local/state/nix/profiles/ | grep home-manager";
         home-generations = "ls -l ~/.local/state/nix/profiles/ | grep home-manager $@";
         # Fetching
@@ -156,6 +156,22 @@
 
         # Initialize Zoxide (A 'cd' Alternative)
         eval "$(zoxide init zsh)"
+
+        # Rebuild Function that Hides Evaluation Warnings, but keeps Displaying Critical Errors
+        rebuildOld() {
+          doas nixos-rebuild switch --flake /etc/nixos#snowflake "$@"
+        }
+        rebuild() {
+          doas nixos-rebuild switch --flake /etc/nixos#snowflake "$@" 2> >(grep -vE \
+            "^evaluation warning|\
+        Please migrate to the new structured attribute set format|\
+        See the module documentation for examples|\
+        The old string format will be removed|\
+        This will soon not be possible" >&2)
+        }
+        rebuildFirstIteration() {
+          doas nixos-rebuild switch --flake /etc/nixos#snowflake "$@" 2> >(grep -v "^evaluation warning" >&2)
+        }
       '';
       ohMyZsh = {
         enable = true;
