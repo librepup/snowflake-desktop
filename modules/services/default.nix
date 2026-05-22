@@ -2,6 +2,8 @@
 {
   imports = [
     # ./containerization.nix
+    ./apple.nix
+    ./speech.nix
     ./guix.nix
     ./networks.nix
     ./virtualisation.nix

@@ -52,6 +52,11 @@ let
     libgcc
     rustlings
   ];
+  bundleApple = with pkgs; [
+    libimobiledevice
+    ifuse
+    gvfs
+  ];
   bundleAI = with pkgs; [
     ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
   ];
@@ -70,6 +75,7 @@ let
   bundleWayland = with pkgs; [
     # Various Wayland Related Packages
     grim
+    wlprop
     wayneko
     nirius
     xwayland-run
@@ -293,6 +299,8 @@ let
   ];
   bundleXorg = with pkgs; [
     yad
+    xmonadctl
+    fastcompmgr
     xorg.xeyes # GUI Googly-Eyes following the Cursor for Xorg
     xnotify
     pmenu
@@ -324,6 +332,7 @@ let
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
+    outguess
     openssl
     parted # Disk Partitioning Utility
     gparted # Disk Partitioning Utility
@@ -418,6 +427,7 @@ in
     description = "puppy";
     extraGroups = [
       "gamemode"
+      "usbmux"
       "networkmanager"
       "wheel"
       "dialout"
@@ -511,6 +521,7 @@ in
       ++ bundleAI # AI/LLM Related Bundle
       ++ bundleFlatpak # Flatpak Utilities
       ++ bundleNeu # Wayland.FYI Stuff
+      ++ bundleApple # Utilities Related to Apple iPhones
       ++ bundleTextEditors # Text Editors
       ++ bundleExplorers;
   };
