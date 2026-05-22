@@ -39,3 +39,4 @@ Models To-Try
 =============
 1. **huihui_ai/gemma3-abliterated** - Supposedly Uncensored/Freed Version of Gemma3
 2. **llama2-uncensored** (`llama2-uncensored:7b`) - Supposedly Uncensored/Freed Version of Llama2
+3. **Chronos-Hermes-13b-v2-GGUF** (`hf.co/TheBloke/Chronos-Hermes-13b-v2-GGUF:Q4_K_M`) - Popular Uncensored Model (Quantized Version)
