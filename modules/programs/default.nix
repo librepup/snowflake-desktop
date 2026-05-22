@@ -1,6 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
   imports = [
+    ./phone.nix
     ./zsh.nix
     ./tmux.nix
     ./spicetify.nix

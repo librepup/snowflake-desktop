@@ -4,7 +4,7 @@
     # ./containerization.nix
     ./guix.nix
     ./networks.nix
-    ./virtualization.nix
+    ./virtualisation.nix
     ./flatpak.nix
     ./authentication.nix
     ./printing.nix
