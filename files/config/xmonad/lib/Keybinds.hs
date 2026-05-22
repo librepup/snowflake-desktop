@@ -130,7 +130,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Right), windows W.focusDown)
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
-    , ((modm, xK_s), spawn "microsoft-edge --disable-features=MediaRouter")
+    , ((modm, xK_s), spawn "microsoft-edge")
     , ((modm .|. shiftMask, xK_s), submapDefault (spawn "helium") $ M.fromList [
           ((0, xK_Return), spawn "helium")
         , ((0, xK_s), spawn "helium")

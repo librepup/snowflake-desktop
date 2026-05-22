@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
   services.open-webui = {
-    enable = false;
+    enable = true;
     stateDir = "/mnt/AI/open-webui/state";
     port = 6967;
     environment = {
