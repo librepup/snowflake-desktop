@@ -34,3 +34,7 @@ podman container list
 # ... or ...
 podman ps
 ```
+
+Models To-Try
+=============
+1. **huihui_ai/gemma3-abliterated** - Supposedly Uncensored/Freed Version of Gemma3
