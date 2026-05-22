@@ -1,42 +1,40 @@
-LLM Shenanigans on NixOS
-========================
-# OLLAMA
-## Start OLLAMA Server
+Advanced Modification and Instruction for your LLM
+==================================================
+Interacting with and Managing your LLM
+--------------------------------------
+## Serve OLLAMA
 ```sh
 podman run \
   --device nvidia.com/gpu=all \
   -v /mnt/AI/ollama:/root/.ollama:Z \
   --network=none \
-  ollama/ollama
+  -v /mnt/AI/PuppiesModfileV2:/root/PuppiesModfileV2:Z \
+ollama/ollama
 ```
-## Run LLM
-Find the `<container-name>` via `podman ps`.
+## Create Model
 ```sh
-podman exec -it <container-name> ollama run gemma3
+podman exec -it <container-name> ollama create master -f /root/PuppiesModfileV2
+```
+## Run Model
+```sh
+podman exec -it <container-name> ollama run master
+```
+## Delete Model
+```sh
+podman exec -it <container-name> ollama rm master
 ```
 
-# Container Management
+Managing your Podman Container
+------------------------------
+## Delete Container
+```sh
+podman rm <container-name>
+```
 ## Start Container
 ```sh
 podman start <container-name>
-```
-## Enter Container
-```sh
-podman exec -it <container-name> bash
 ```
 ## Stop Container
 ```sh
 podman stop <container-name>
 ```
-## List Containers
-```sh
-podman container list
-# ... or ...
-podman ps
-```
-
-Models To-Try
-=============
-1. **huihui_ai/gemma3-abliterated** - Supposedly Uncensored/Freed Version of Gemma3
-2. **llama2-uncensored** (`llama2-uncensored:7b`) - Supposedly Uncensored/Freed Version of Llama2
-3. **Chronos-Hermes-13b-v2-GGUF** (`hf.co/TheBloke/Chronos-Hermes-13b-v2-GGUF:Q4_K_M`) - Popular Uncensored Model (Quantized Version)
