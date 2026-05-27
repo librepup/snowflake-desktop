@@ -13,6 +13,14 @@
       "1.1.1.1"
       "8.8.8.8"
     ];
-    firewall.checkReversePath = false;
+    firewall = {
+      checkReversePath = false;
+      # allowedTCPPorts = [
+      #   53317
+      # ];
+      # allowedUDPPorts = [
+      #   53317
+      # ];
+    };
   };
 }

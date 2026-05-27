@@ -332,6 +332,7 @@ let
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
+    lshw
     outguess
     openssl
     parted # Disk Partitioning Utility
@@ -371,6 +372,8 @@ let
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
     dhcpcd
+    localsend
+    anydesk
     networkmanagerapplet
     networkmanager_dmenu
     wpa_supplicant

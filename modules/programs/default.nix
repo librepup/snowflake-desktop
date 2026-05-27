@@ -11,6 +11,7 @@
     ./others.nix
     ./wayland.nix
     ./thunar.nix
+    ./qt.nix
     # ./obs.nix
     # ./aeroshell.nix
   ];

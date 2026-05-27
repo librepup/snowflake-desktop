@@ -230,6 +230,10 @@
   };
   # Avatars
   home.file = {
+    "Pictures/Avatars/FUWAMOCO/01.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/01.jpeg;
+    "Pictures/Avatars/FUWAMOCO/02.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/02.jpeg;
+    "Pictures/Avatars/FUWAMOCO/03.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/03.jpeg;
+    "Pictures/Avatars/FUWAMOCO/04.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/04.jpeg;
     # Nemu Manaka
     "Pictures/Avatars/Nemu Manaka/01.jpeg".source = ../../files/pictures/avatars/NemuManaka/01.jpeg;
     "Pictures/Avatars/Nemu Manaka/02.jpeg".source = ../../files/pictures/avatars/NemuManaka/02.jpeg;
