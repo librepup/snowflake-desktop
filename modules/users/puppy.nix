@@ -68,7 +68,30 @@ let
     kdePackages.flatpak-kcm
   ];
   bundleHaskell = with pkgs; [
-    ghc # Haskell Compiler
+    # Haskell Compiler
+    (haskellPackages.ghcWithPackages (ps: with ps; [
+      # GUIs
+      haskell-gi-base
+      gi-gtk4
+      # Discord
+      calamity
+      calamity-commands
+      # General
+      text
+      aeson
+      bytestring
+      data-default
+      data-flags
+      di
+      di-polysemy
+      generic-lens
+      lens
+      polysemy
+      polysemy-plugin
+      texts
+      text-show
+    ]))
+    # ghc
     stack # Haskell Package/Module Management Utility
     cabal-install # Haskell Cabal Installer
   ];
@@ -449,6 +472,7 @@ in
     packages =
       with pkgs;
       [
+        unstable.ratty
         kitty
         inputs.jonabron.packages.x86_64-linux.image-text-extractor
         inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
