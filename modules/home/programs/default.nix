@@ -8,5 +8,6 @@
     ./others.nix
     ./vim.nix
     ./copyq.nix
+    # ./librewolf.nix
   ];
 }

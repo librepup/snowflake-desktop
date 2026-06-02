@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, unstable, ... }:
 {
+  # custom.librewolf.enable = true;
   programs.mpv = {
     enable = true;
     config = {
