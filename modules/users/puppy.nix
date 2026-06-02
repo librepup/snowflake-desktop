@@ -35,7 +35,7 @@ let
     netflix # GUI Wrapper for Netflix based on Chrome
     vivaldi # Vivaldi Web-Browser
     vivaldi-ffmpeg-codecs # Vivaldi Web-Browser Codecs
-    nur.repos.hythera.waterfox-bin # WaterFox Firefox Based Web-Browser
+    # nur.repos.hythera.waterfox-bin # WaterFox Firefox Based Web-Browser
     nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
     widevine-cdm # WideVine DRM Support for Netflix and related Services
@@ -74,8 +74,7 @@ let
       haskell-gi-base
       gi-gtk4
       # Discord
-      calamity
-      calamity-commands
+      discord-haskell
       # General
       text
       aeson
