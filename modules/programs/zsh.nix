@@ -174,6 +174,17 @@
         rebuildFirstIteration() {
           doas nixos-rebuild switch --flake /etc/nixos#snowflake "$@" 2> >(grep -v "^evaluation warning" >&2)
         }
+        networkStatus() {
+          echo -e "\n -> Current Main Route:"
+          ip route get 1.1.1.1
+          echo -e "\n -> Default IP Route:"
+          ip route show default
+          echo -e "\n -> NetworkManager Active Devices:"
+          nmcli connection show --active
+          echo -e "\n -> Network-Capable Devices:"
+          ip a | grep -E "UP|MULTICAST" | sed '/LOOPBACK/d' | sed '/virbr/d' | awk '{print $2}' | sed 's/://g'
+        }
+
       '';
       ohMyZsh = {
         enable = true;
