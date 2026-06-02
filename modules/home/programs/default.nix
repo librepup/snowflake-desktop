@@ -1,7 +1,8 @@
 { config, pkgs, lib, unstable, ... }:
 {
   imports = [
-    #./direnv.nix
+    # ./direnv.nix
+    # ./speedify.nix
     ./keepassxc.nix
     ./music.nix
     ./nixmacs.nix

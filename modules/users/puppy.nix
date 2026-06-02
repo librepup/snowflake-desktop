@@ -394,6 +394,9 @@ let
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
     dhcpcd
+    rofi-network-manager
+    wifi-qr
+    aircrack-ng
     nmap
     localsend
     anydesk
