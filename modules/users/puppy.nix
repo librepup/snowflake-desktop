@@ -394,6 +394,7 @@ let
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
     dhcpcd
+    nmap
     localsend
     anydesk
     networkmanagerapplet
