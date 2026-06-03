@@ -99,20 +99,20 @@ myAutostart = do
   spawnOnceIfExists "xrandr" "xrandr --output DP-0 --primary --mode 1920x1080 --rate 144.00 --pos 0x0 --output HDMI-0 --mode 1920x1080 --scale-from 2560x1440 --pos 1920x0 --gamma 1.5:1.5:1.5 --right-of DP-0" -- Monitor
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global' 'libinput Accel Speed' 0.3" -- Mouse (1)
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Speed' 0.3" -- Mouse (2)
-  spawn "setxkbmap us -variant colemak"
+  spawn "setxkbmap us -variant colemak" -- Set Keyboard Layout
   -- spawnIfExists "xmodmap" "setxkbmap us -variant colemak && xmodmap ~/.my-input-remappings/xmodmap/global" -- XModMap
-  -- spawnIfExists "xbindkeys" "sleep 1 && killall xbindkeys && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
+  spawnIfExists "xbindkeys" "sleep 1 && killall xbindkeys && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
   spawnOnceIfExists "dex" "dex --autostart --environment xmonad" -- XMonad Environment
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
   spawnIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
   spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Jag --hide-window & fi" -- PipeWire EasyEffects
-  spawnOnceIfExists "jonabar-numi" "if ! pgrep polybar > /dev/null; then jonabar-numi & fi" -- Polybar
+  spawnOnceIfExists "jonabar-mori" "if ! pgrep polybar > /dev/null; then jonabar-mori & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
   spawnOnceIfExists "waypaper" "waypaper --restore --backend feh"
   -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
   spawnOnceIfExists "nixmacs-client" "if ! nixmacs-client -e \"(emacs-pid)\" > /dev/null 2>&1; then nixmacs --fg-daemon & fi" -- NixMacs Daemon
-  spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
+  -- spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
   -- spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -l 52.520008:13.404954 -t 5200:5200 -m randr:crtc=0; xrandr --output HDMI-0 --gamma 1.5:1.5:1.5 & fi" -- Bluelight Filter
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC

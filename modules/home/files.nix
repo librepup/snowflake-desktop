@@ -15,7 +15,7 @@
   home.file.".config/eww/images/clock.png".source = ../../files/config/eww/images/clock.png;
   home.file.".config/eww/images/filian.gif".source = ../../files/config/eww/images/filian.gif;
   # Input Remaps
-  home.file.".my-input-remappings/xbindkeys/global".source = ../../files/config/xbindkeys/global;
+  home.file.".my-input-remappings/xbindkeys/global".source = ../../files/config/xbindkeys/bindings; # ../../files/config/xbindkeys/global;
   home.file.".my-input-remappings/xmodmap/global".source = ../../files/config/xmodmap/global;
   # Thunar
   home.file.".config/gtk-3.0/bookmarks".source = ../../files/config/gtk-3.0/bookmarks;
