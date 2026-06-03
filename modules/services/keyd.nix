@@ -21,36 +21,37 @@
             kp8 = "up";
             kp2 = "z";
             kp3 = "x";
+            kp1 = "delete";
             kp0 = "space";
             kpplus = "c";
             kpequal = "delete";
             kpdot = "layer(alt)";
-          };
-          alt = {
-            kp1 = "w";
-            kp0 = "w";
-            kpenter = "layer(shift)";
-            kpplus = "layer(control)";
+            kpslash = "slash";
           };
           control = {
-            kp1 = "y";
-            kp0 = "y";
             kp7 = "macro(C-x [)";
             kp9 = "macro(C-x ])";
             kp3 = "macro(C-x ])";
           };
           extralayer = {
-            kpenter = "enter";
-            v = "A-w";
-            c = "C-y";
+            "1" = "f1";
+            "2" = "f2";
+            "3" = "f3";
+            "4" = "f4";
+            "5" = "f5";
+            "6" = "f6";
+            "7" = "f7";
+            "8" = "f8";
+            "9" = "f9";
+            "10" = "f10";
+            "11" = "f11";
+            "12" = "f12";
+            equal = "delete";
             "[" = "macro(C-x [)";
             "]" = "macro(C-x ])";
             up = "macro(C-x [)";
             down = "macro(C-x ])";
             x = "A-x";
-          };
-          "alt+shift" = {
-            kpenter = "enter";
           };
         };
       };
@@ -73,35 +74,36 @@
     kp8 = up
     kp2 = z
     kp3 = x
+    kp1 = delete
     kp0 = space
     kpplus = c
     kpequal = delete
     kpdot = layer(alt)
-
-    [alt]
-    kp1 = w
-    kp0 = w
-    kpenter = layer(shift)
-    kpplus = layer(control)
+    kpslash = slash
 
     [control]
-    kp1 = y
-    kp0 = y
     kp7 = macro(C-x [)
     kp9 = macro(C-x ])
     kp3 = macro(C-x ])
 
     [extralayer]
-    kpenter = enter
-    v = A-w
-    c = C-y
+    1 = f1
+    2 = f2
+    3 = f3
+    4 = f4
+    5 = f5
+    6 = f6
+    7 = f7
+    8 = f8
+    9 = f9
+    10 = f10
+    11 = f11
+    12 = f12
+    equal = delete
     [ = macro(C-x [)
     ] = macro(C-x ])
     up = macro(C-x [)
     down = macro(C-x ])
     x = A-x
-
-    [alt+shift]
-    kpenter = enter
   '';
 }
