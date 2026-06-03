@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-deprecations #-}
 ------------------------------------------------------------------------
 -- Main
 ------------------------------------------------------------------------
@@ -62,6 +63,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageHelpers (isInProperty, doLower, doHideIgnore)
 import XMonad.Hooks.ManageDocks (avoidStruts, docksStartupHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.EwmhDesktops
+import qualified XMonad.Hooks.EwmhDesktops as ED
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.Focus
@@ -137,10 +139,13 @@ main = do
         _ -> (numiTabTheme, numiColorscheme, numiXPConfig)
 
   xmonad
-     . ewmhFullscreen
+     -- . fullscreenSupport
      -- . ewmh
-     . docks
-     $ ewmh def {
+     $ docks
+     $ ewmhFullscreen
+     . ewmh
+     -- \$ ewmh def {
+     $ def {
         terminal           = myTerminal
         , focusFollowsMouse  = True
         , clickJustFocuses   = False
@@ -155,7 +160,8 @@ main = do
         , manageHook         = myManageHook
                             -- Scratchpad Hooks: {- <+> namedScratchpadManageHook myScratchpads -}
                             <+> manageHook def
-        , handleEventHook    = fadeWindowsEventHook
+        , handleEventHook    = ED.fullscreenEventHook
+                            <+> fadeWindowsEventHook
                             <+> handleEventHook def
                             <+> focusTickleHook
         , startupHook        = myStartupHook

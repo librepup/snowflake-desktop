@@ -43,10 +43,9 @@
             "7" = "f7";
             "8" = "f8";
             "9" = "f9";
-            "10" = "f10";
-            "11" = "f11";
-            "12" = "f12";
-            equal = "delete";
+            "0" = "f10";
+            minus = "f11";
+            equal = "f12";
             "[" = "macro(C-x [)";
             "]" = "macro(C-x ])";
             up = "macro(C-x [)";
@@ -96,10 +95,9 @@
     7 = f7
     8 = f8
     9 = f9
-    10 = f10
-    11 = f11
-    12 = f12
-    equal = delete
+    0 = f10
+    minus = f11
+    equal = f12
     [ = macro(C-x [)
     ] = macro(C-x ])
     up = macro(C-x [)
