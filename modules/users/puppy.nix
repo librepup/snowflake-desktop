@@ -5,8 +5,12 @@
   ...
 }:
 let
+  # Wrapped Python with Packages
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
     # Stable Diffusion
+    diffusers
+    transformers
+    accelerate
     torchWithCuda
     torchvision-bin
     torchaudio-bin
