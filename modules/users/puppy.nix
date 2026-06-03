@@ -223,6 +223,7 @@ let
     tauon # Beautiful Music Player
   ];
   bundleWineAndGames = with pkgs; [
+    the-powder-toy # Open-Source Sandboxing Game
     wineWowPackages.yabridge # Wine Package optimized for Audio Production and VST Usage
     winetricks # Tweak and Extend WinePrefixes
     faugus-launcher
