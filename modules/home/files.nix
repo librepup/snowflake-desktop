@@ -126,6 +126,7 @@
     # Completions (comps)
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
+    ".shell-autoload-functions/funcs/convertToPdf.sh".source = ../../files/scripts/convertToPdf.sh;
     ".shell-autoload-functions/funcs/gamemode.sh".source = ../../files/scripts/gamemode.sh;
     ".shell-autoload-functions/funcs/xmonadsync.sh".source = ../../files/scripts/xmonadsync.sh;
     ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source =

@@ -5,6 +5,27 @@
   ...
 }:
 let
+  pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
+    discordpy
+    psutil
+    utils
+    requests
+    urllib3
+    json5
+    pyqt5
+    pyqt6
+    pyside6
+    setuptools
+    tkinter
+    multidict
+    pyttsx3
+    pygobject3
+    pipx
+    libusb1
+    plyvel
+  ]);
+  pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
+  pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   # Kate Wrapper for Editing NixOS Configuration Files
   kate-edit-nixos = pkgs.writeShellScriptBin "kedit-nixos" ''
     exec ${pkgs.kdePackages.kate}/bin/kate /etc/nixos "$@"
@@ -66,6 +87,21 @@ let
     bazaar
     flatpak-xdg-utils
     kdePackages.flatpak-kcm
+  ];
+  bundlePython = [
+    pkgs.libusb1
+    pkgs.libglibutil
+    pkgs.libsm
+    pkgs.libxrender
+    pkgs.libxext
+    pkgs.libgtop
+    pkgs.libgtkflow4
+    pkgs.libGL
+    pkgs.uv
+    pkgs.pyflyby
+    pkgs.gtk3
+    pkgs.gobject-introspection
+    pythonWrapped
   ];
   bundleHaskell = with pkgs; [
     # Haskell Compiler
@@ -451,6 +487,7 @@ let
   ];
 in
 {
+  environment.etc."pythonPathDefinition".source = pythonPathFile;
   users.users.puppy = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -523,6 +560,7 @@ in
         pokeget-rs
         unstable.plan9port-wayland
       ]
+      ++ bundlePython # Python Development Bundle
       ++ bundleBrowsers # Web Browsers
       ++ bundleRust # Rust Development Bundle
       ++ bundleWayland # Wayland Related Bundle
