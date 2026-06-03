@@ -123,6 +123,10 @@
       source = ../../files/scripts/runRio.sh;
       executable = true;
     };
+    ".scripts/toggleBars.sh" = {
+      source = ../../files/scripts/toggleBars.sh;
+      executable = true;
+    };
     # Completions (comps)
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
