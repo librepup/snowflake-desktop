@@ -6,12 +6,19 @@
 }:
 let
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
+    # Stable Diffusion
+    torchWithCuda
+    torchvision-bin
+    torchaudio-bin
+    # Discord
     discordpy
+    # General
     psutil
     utils
     requests
     urllib3
     json5
+    # GUI
     pyqt5
     pyqt6
     pyside6
@@ -20,6 +27,7 @@ let
     multidict
     pyttsx3
     pygobject3
+    # PIP
     pipx
     libusb1
     plyvel
