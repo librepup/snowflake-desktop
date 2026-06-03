@@ -11,10 +11,17 @@
       ];
       config = {
         niri = {
-          default = [ "gnome" "gtk" ];
-          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+          default = [
+            "gnome"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.Secret" = [
+            "gnome-keyring"
+          ];
         };
-        common.default = [ "gnome" ];
+        common.default = [
+          "gnome"
+        ];
       };
     };
     mime = {

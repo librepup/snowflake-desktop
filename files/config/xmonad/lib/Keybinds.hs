@@ -150,6 +150,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
         , ((0, xK_Left), moveTo Prev (Not emptyWS))
+        , ((controlMask .|. shiftMask, xK_f), sendMessage $ Toggle NBFULL)
         , ((0, xK_1), spawn "~/.scripts/toggleBars.sh 0")
         , ((0, xK_2), spawn "~/.scripts/toggleBars.sh 1")
         , ((0, xK_q), spawn "copyq toggle")
