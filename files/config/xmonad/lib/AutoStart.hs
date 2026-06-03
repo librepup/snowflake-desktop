@@ -99,8 +99,9 @@ myAutostart = do
   spawnOnceIfExists "xrandr" "xrandr --output DP-0 --primary --mode 1920x1080 --rate 144.00 --pos 0x0 --output HDMI-0 --mode 1920x1080 --scale-from 2560x1440 --pos 1920x0 --gamma 1.5:1.5:1.5 --right-of DP-0" -- Monitor
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global' 'libinput Accel Speed' 0.3" -- Mouse (1)
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Speed' 0.3" -- Mouse (2)
-  spawnIfExists "xmodmap" "setxkbmap us -variant colemak && xmodmap ~/.my-input-remappings/xmodmap/global" -- XModMap
-  spawnIfExists "xbindkeys" "sleep 1 && killall xbindkeys && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
+  spawn "setxkbmap us -variant colemak"
+  -- spawnIfExists "xmodmap" "setxkbmap us -variant colemak && xmodmap ~/.my-input-remappings/xmodmap/global" -- XModMap
+  -- spawnIfExists "xbindkeys" "sleep 1 && killall xbindkeys && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
   spawnOnceIfExists "dex" "dex --autostart --environment xmonad" -- XMonad Environment
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet

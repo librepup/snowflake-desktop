@@ -477,6 +477,7 @@ let
   ];
   bundleKeyboard = with pkgs; [
     keyboard-layout-editor
+    keyd
     kalamine
     inputs.jonabron.packages.x86_64-linux.ratctl # Mad Catz Mice Control Utility
     xorg.xkbcomp

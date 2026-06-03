@@ -91,6 +91,7 @@ import Graphics.X11.Xlib (xC_left_ptr)
 import Graphics.X11.Xlib (warpPointer)
 import Graphics.X11.Xlib.Extras
 import Graphics.X11.Xlib.Extras (none, getWindowAttributes, wa_width, wa_height)
+import Graphics.X11.ExtraTypes.XF86
 -- Prompt
 import XMonad.Prompt
 import XMonad.Prompt.Shell
@@ -105,6 +106,7 @@ import XMonad.Prompt.Workspace
 myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
     [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- 'spawn $ XMonad.terminal conf' to spawn Default Terminal.
+    , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- Run Prompt
     , ((modm .|. controlMask, xK_t), shellPrompt xp)
