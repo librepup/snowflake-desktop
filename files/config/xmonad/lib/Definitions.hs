@@ -779,6 +779,7 @@ myTree =
         , Node (TS.TSNode "EasyEffects" "" (spawn "easyeffects")) []
         , Node (TS.TSNode "Helvum" "" (spawn "helvum")) []
         ]
+      , Node (TS.TSNode "Flatpaks" "" (spawn "warehouse")) []
       , Node (TS.TSNode "Video" "" (return ()))
         [ Node (TS.TSNode "Nvidia" "" (spawn "nvidia-settings")) []
         , Node (TS.TSNode "XRandr" "" (spawn "lxrandr")) []
