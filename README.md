@@ -22,6 +22,8 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - OpenTabletDriver Installed
  - Input-Remapper Installed
  - GameMode Enabled
+ - KeyD Enabled
+ - Wootility Installed and UDev Rules Set-Up
 
 ## Networks
  - I2P Installed (Disabled by Default)
