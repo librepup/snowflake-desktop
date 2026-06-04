@@ -273,6 +273,11 @@
   # Wallpapers
   home.file = {
     # VTubers
+    ## Rin Penrose
+    "Pictures/Wallpapers/Rin Penrose/01.png".source =
+      ../../files/pictures/wallpapers/RinPenrose/01.png;
+    "Pictures/Wallpapers/Rin Penrose/02.jpeg".source =
+      ../../files/pictures/wallpapers/RinPenrose/02.jpeg;
     ## ProjektMelody
     "Pictures/Wallpapers/Projekt Melody/01.jpg".source =
       ../../files/pictures/wallpapers/ProjektMelody/01.jpg;
