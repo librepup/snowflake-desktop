@@ -85,6 +85,8 @@
         gc = "git clone $@";
         ctluu = "systemctl --user $@";
         ctl = "systemctl $@";
+        findDuplicateImages = "findimagedupes -R -- . $@";
+        find-duplicate-images = "findimagedupes -R -- . $@";
         picom-no-frame-pacing = "picom --backend glx  --no-frame-pacing $@";
         bat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
