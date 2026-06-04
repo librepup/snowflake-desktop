@@ -19,8 +19,8 @@
             kp5 = "down";
             kp6 = "right";
             kp8 = "up";
-            kp2 = "z";
-            kp3 = "x";
+            kp2 = "backspace";
+            kp3 = "layer(meta)";
             kp1 = "delete";
             kp0 = "space";
             kpplus = "c";
@@ -71,8 +71,8 @@
     kp5 = down
     kp6 = right
     kp8 = up
-    kp2 = z
-    kp3 = x
+    kp2 = backspace
+    kp3 = layer(meta)
     kp1 = delete
     kp0 = space
     kpplus = c
