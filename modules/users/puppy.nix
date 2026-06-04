@@ -253,6 +253,7 @@ let
     nx-libs
   ];
   bundleGraphicsDesign = with pkgs; [
+    timg
     unstable.findimagedupes # CLI Tool to Identify Duplicate/Similar Images
     gimp3-with-plugins # GNU Image Manipulation Software
     krita # Image Editing Software

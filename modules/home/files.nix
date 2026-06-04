@@ -273,6 +273,31 @@
   # Wallpapers
   home.file = {
     # VTubers
+    ## ProjektMelody
+    "Pictures/Wallpapers/Projekt Melody/01.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/01.jpg;
+    "Pictures/Wallpapers/Projekt Melody/02.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/02.jpg;
+    "Pictures/Wallpapers/Projekt Melody/03.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/03.jpg;
+    "Pictures/Wallpapers/Projekt Melody/04.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/04.jpg;
+    "Pictures/Wallpapers/Projekt Melody/05.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/05.jpg;
+    "Pictures/Wallpapers/Projekt Melody/06.png".source =
+      ../../files/pictures/wallpapers/ProjektMelody/06.png;
+    "Pictures/Wallpapers/Projekt Melody/07.png".source =
+      ../../files/pictures/wallpapers/ProjektMelody/07.png;
+    "Pictures/Wallpapers/Projekt Melody/08.png".source =
+      ../../files/pictures/wallpapers/ProjektMelody/08.png;
+    "Pictures/Wallpapers/Projekt Melody/09.jpeg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/09.jpeg;
+    "Pictures/Wallpapers/Projekt Melody/10.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/10.jpg;
+    "Pictures/Wallpapers/Projekt Melody/11.png".source =
+      ../../files/pictures/wallpapers/ProjektMelody/11.png;
+    "Pictures/Wallpapers/Projekt Melody/12.jpg".source =
+      ../../files/pictures/wallpapers/ProjektMelody/12.jpg;
     ## Mori Calliope
     "Pictures/Wallpapers/Mori Calliope/01.png".source =
       ../../files/pictures/wallpapers/MoriCalliope/01.png;
