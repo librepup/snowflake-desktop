@@ -82,6 +82,7 @@ import XMonad.Actions.Warp
 import XMonad.Actions.DynamicWorkspaces (addWorkspace, addWorkspacePrompt, removeWorkspace, removeWorkspaceByTag, removeEmptyWorkspace, removeEmptyWorkspaceByTag, withWorkspace, selectWorkspace)
 import XMonad.Actions.DynamicProjects
 import XMonad.Actions.MouseResize
+import XMonad.Actions.MouseGestures
 import XMonad.Actions.WithAll (sinkAll)
 import XMonad.Actions.Minimize
 import qualified XMonad.Actions.Search as S
@@ -117,6 +118,12 @@ import XMonad.Prompt.XMonad
 ------------------------------------------------------------------------
 -- Definitions
 ------------------------------------------------------------------------
+-- Mouse Gestures
+myGestures :: M.Map [Direction2D] (Window -> X ())
+myGestures = M.fromList
+    [ ([R], \_ -> warpToScreen 1 0.5 0.5) -- Drag Right -> Screen 1
+    , ([L], \_ -> warpToScreen 0 0.5 0.5) -- Drag Left  -> Screen 0
+    ]
 -- Change Focused Windows Class to 'xmonad-shijima-class-group', and add Function to Revert all Shijimai-fied Windows to their previous State/Class.
 reclaimAllShijima :: X ()
 reclaimAllShijima = do

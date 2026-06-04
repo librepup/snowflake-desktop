@@ -9,6 +9,7 @@
         ];
         settings = {
           main = {
+            # mouse1 = "overload(mouse_gesture_layer, mouse1)";
             kpasterisk = "layer(extralayer)";
             rightshift = "layer(meta)";
             capslock = "layer(control)";
@@ -33,6 +34,9 @@
             kp9 = "macro(C-x ])";
             kp3 = "macro(C-x ])";
           };
+          # mouse_gesture_layer = {
+          #   middlemouse = "f24";
+          # };
           extralayer = {
             "1" = "f1";
             "2" = "f2";
