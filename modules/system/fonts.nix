@@ -5,7 +5,13 @@
     packages = with pkgs; [
       inputs.jonabron.packages.x86_64-linux.gnutypewriter-font
       inputs.jonabron.packages.x86_64-linux.cartographcf-font
-      inputs.jonabron.packages.x86_64-linux.jonafonts.all
+      inputs.jonabron.packages.x86_64-linux.jonafonts.synapsian
+      inputs.jonabron.packages.x86_64-linux.jonafonts.karamarea
+      inputs.jonabron.packages.x86_64-linux.jonafonts.templeos
+      inputs.jonabron.packages.x86_64-linux.jonafonts.icons
+      inputs.jonabron.packages.x86_64-linux.jonafonts.lucidabright
+      inputs.jonabron.packages.x86_64-linux.jonafonts.blexmono
+      inputs.jonabron.packages.x86_64-linux.jonafonts.w95fa
       dejavu_fonts
       noto-fonts
       noto-fonts-cjk-sans
