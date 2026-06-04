@@ -71,7 +71,9 @@
         gamingmodeDevour = "devour gamemoderun mangohud $@";
         animescript = "$HOME/.scripts/animescript.sh $@";
         bible = "kjv $@";
-        img = "kitten icat --use-window-size 380,380,380,380 $@";
+        img = "timg ./* --center --title=\"%b\" --grid=4 -p k";
+        pic = "timg $@ --center --title=\"%b\" --grid=4 -p k";
+        kitten-img = "kitten icat --use-window-size 380,380,380,380 $@";
         explorer = "yazi $@";
         poke = "pokeget --hide-name $@";
         weather = "curl wttr.in/Berlin $@";
