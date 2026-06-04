@@ -6,6 +6,7 @@
       inputs.jonabron.packages.x86_64-linux.gnutypewriter-font
       inputs.jonabron.packages.x86_64-linux.cartographcf-font
       inputs.jonabron.packages.x86_64-linux.jonafonts.all
+      dejavu_fonts
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji-blob-bin
