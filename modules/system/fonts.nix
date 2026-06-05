@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+[O]{ config, pkgs, inputs, ... }:
 {
   fonts = {
     fontconfig = {
@@ -17,6 +17,18 @@
           "Noto Color Emoji"
         ];
       };
+      localConf = ''
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+        <fontconfig>
+          <alias>
+            <family>Source Code Pro for Powerline</family>
+            <prefer>
+              <family>Symbols Nerd Font</family>
+            </prefer>
+          </alias>
+        </fontconfig>
+      '';
     };
     fontDir.enable = true;
     packages = with pkgs; [
