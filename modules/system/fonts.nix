@@ -12,6 +12,7 @@
       inputs.jonabron.packages.x86_64-linux.jonafonts.lucidabright
       inputs.jonabron.packages.x86_64-linux.jonafonts.blexmono
       inputs.jonabron.packages.x86_64-linux.jonafonts.w95fa
+      font-awesome
       corefonts
       dejavu_fonts
       noto-fonts
