@@ -1,6 +1,23 @@
 { config, pkgs, inputs, ... }:
 {
   fonts = {
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        serif = [
+          "Source Code Pro for Powerline" "Symbols Nerd Font"
+        ];
+        monospace = [
+          "Source Code Pro for Powerline" "Symbols Nerd Font"
+        ];
+        sansSerif = [
+          "Source Code Pro for Powerline" "Symbols Nerd Font"
+        ];
+        emoji = [
+          "Noto Color Emoji"
+        ];
+      };
+    };
     fontDir.enable = true;
     packages = with pkgs; [
       inputs.jonabron.packages.x86_64-linux.gnutypewriter-font
