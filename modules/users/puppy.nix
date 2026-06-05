@@ -273,6 +273,8 @@ let
     tauon # Beautiful Music Player
   ];
   bundleWineAndGames = with pkgs; [
+    clamav # ClamAV AntiVirus Engine
+    clamtk # GUI Interface for ClamAV
     the-powder-toy # Open-Source Sandboxing Game
     wineWowPackages.yabridge # Wine Package optimized for Audio Production and VST Usage
     winetricks # Tweak and Extend WinePrefixes
