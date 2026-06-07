@@ -421,6 +421,7 @@ let
   ];
   bundleGeneralUtilities = with pkgs; [
     progress
+    file
     lshw
     outguess
     openssl

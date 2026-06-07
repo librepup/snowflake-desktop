@@ -1,2 +1,2 @@
 # System Modules
-## [Xorg](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/modules/system/markdown)
+## [Xorg](https://github.com/librepup/snowflake-desktop/blob/master/modules/system/markdown/INFO_XORG.md)

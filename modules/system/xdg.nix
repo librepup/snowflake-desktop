@@ -39,10 +39,10 @@
         "video/mpg" = "mpv.desktop";
         "application/pdf" = "zathura.desktop";
         "inode/directory" = "thunar.desktop";
-        "text/html" = "helium.desktop";
-        "x-scheme-handler/http" = "helium.desktop";
-        "x-scheme-handler/https" = "helium.desktop";
-        "application/x-mswinurl" = "helium.desktop";
+        "text/html" = "microsoft-edge.desktop";
+        "x-scheme-handler/http" = "microsoft-edge.desktop";
+        "x-scheme-handler/https" = "microsoft-edge.desktop";
+        "application/x-mswinurl" = "microsoft-edge.desktop";
         "text/plain" = "org.kde.kate.desktop";
         "text/markdown" = "org.kde.kate.desktop";
         "application/zip" = "org.kde.ark.desktop";
