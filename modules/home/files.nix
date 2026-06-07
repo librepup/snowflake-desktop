@@ -131,12 +131,11 @@
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
     ".shell-autoload-functions/funcs/convertToPdf.sh".source = ../../files/scripts/convertToPdf.sh;
+    ".shell-autoload-functions/funcs/backupNixOSConfig.sh".source = ../../files/scripts/backupNixOSConfig.sh;
     ".shell-autoload-functions/funcs/gamemode.sh".source = ../../files/scripts/gamemode.sh;
     ".shell-autoload-functions/funcs/xmonadsync.sh".source = ../../files/scripts/xmonadsync.sh;
-    ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source =
-      ../../files/scripts/tauonCopyConfig.sh;
-    ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source =
-      ../../files/scripts/toggle-zen-transparency.sh;
+    ".shell-autoload-functions/funcs/tauonCopyConfig.sh".source = ../../files/scripts/tauonCopyConfig.sh;
+    ".shell-autoload-functions/funcs/toggle-zen-transparency.sh".source = ../../files/scripts/toggle-zen-transparency.sh;
     ".shell-autoload-functions/funcs/lash.sh".source = ../../files/scripts/lash.sh;
     ".shell-autoload-functions/funcs/translate.sh".source = ../../files/scripts/translate.sh;
     ".shell-autoload-functions/funcs/eww.sh".source = ../../files/scripts/eww.sh;
@@ -148,8 +147,7 @@
     ".shell-autoload-functions/funcs/android.sh".source = ../../files/scripts/android.sh;
     ".shell-autoload-functions/funcs/play.sh".source = ../../files/scripts/play.sh;
     ".shell-autoload-functions/funcs/preexec.sh".source = ../../files/scripts/preexec.sh;
-    ".shell-autoload-functions/funcs/nix-get-store-path.sh".source =
-      ../../files/scripts/nix-get-store-path.sh;
+    ".shell-autoload-functions/funcs/nix-get-store-path.sh".source = ../../files/scripts/nix-get-store-path.sh;
     ".shell-autoload-functions/funcs/mp3.sh".source = ../../files/scripts/mp3.sh;
     ".shell-autoload-functions/funcs/help.sh".source = ../../files/scripts/help.sh;
     ".shell-autoload-functions/funcs/nixgethash.sh".source = ../../files/scripts/nixgethash.sh;
@@ -162,12 +160,10 @@
     ".shell-autoload-functions/funcs/fkill.sh".source = ../../files/scripts/fkill.sh;
     ".shell-autoload-functions/funcs/generators.sh".source = ../../files/scripts/generators.sh;
     ".shell-autoload-functions/funcs/git-helper.sh".source = ../../files/scripts/git-helper.sh;
-    ".shell-autoload-functions/funcs/guix-manager-helper.sh".source =
-      ../../files/scripts/guix-manager-helper.sh;
+    ".shell-autoload-functions/funcs/guix-manager-helper.sh".source = ../../files/scripts/guix-manager-helper.sh;
     ".shell-autoload-functions/funcs/hashurl.sh".source = ../../files/scripts/hashurl.sh;
     ".shell-autoload-functions/funcs/mp4.sh".source = ../../files/scripts/mp4.sh;
-    ".shell-autoload-functions/funcs/nix-shell-prebuilds.sh".source =
-      ../../files/scripts/nix-shell-prebuilds.sh;
+    ".shell-autoload-functions/funcs/nix-shell-prebuilds.sh".source = ../../files/scripts/nix-shell-prebuilds.sh;
     ".shell-autoload-functions/funcs/edit.sh".source = ../../files/scripts/edit.sh;
     ".shell-autoload-functions/funcs/nix-stuff.sh".source = ../../files/scripts/nix-stuff.sh;
     ".shell-autoload-functions/funcs/upload.sh".source = ../../files/scripts/upload.sh;
