@@ -58,7 +58,6 @@ let
     nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
     widevine-cdm # WideVine DRM Support for Netflix and related Services
-    widevine-path-location # WideVine DRM Support for Netflix and related Services
   ];
   bundleKDEPlasma = with pkgs.kdePackages; [
     # Packages related to KDE Plasma
