@@ -12,12 +12,58 @@
   programs.plasma = {
     enable = true;
     workspace = {
-      lookAndFeel = "authui7";
-      theme = "Seven-Black";
-      windowDecorations = {
-        library = "org.kde.breeze";
-        theme = "Breeze";
+      lookAndFeel = "org.kde.breezedark.desktop";
+    };
+    fonts = {
+      fixedWidth.family = "Source Code Pro for Powerline";
+    };
+    input = {
+      keyboard = {
+        numlockOnStartup = "on";
+      };
+    };
+    hotkeys = {
+      commands = {
+        launch-edge = {
+          name = "Launch Microsoft Edge";
+          key = "Alt+S";
+          command = "microsoft-edge";
+        };
+        launch-kitty = {
+          name = "Launch Kitty";
+          key = "Alt+Shift+Return";
+          command = "kitty";
+        };
+        launch-goofcord = {
+          name = "Launch GoofCord (No GPU)";
+          key = "Super+Shift+G";
+          command = "goofcord --enable-features=UseOzonePlatform --ozone-platform=x11 --disable-gpu";
+        };
+      };
+    };
+    kwin = {
+      effects = {
+        blur = {
+          enable = true;
+          noiseStrength = 0;
+          strength = 6;
+        };
+        slideBack.enable = true;
+        translucency.enable = true;
+        wobblyWindows.enable = false;
+      };
+    };
+    virtualDesktops = {
+      number = 10;
+      rows = 1;
+    };
+    krunner = {
+      position = "center";
+    };
+    spectacle = {
+      shortcuts = {
+        captureRectangularRegion = "Alt+a";
       };
     };
   };
-]
+}

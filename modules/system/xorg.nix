@@ -57,12 +57,12 @@ in
     };
     displayManager = {
       defaultSession = "none+xmonad";
-      #defaultSession = "niri";
       gdm.enable = false;
       gdm.wayland = false;
       sddm = {
         enable = true;
         wayland.enable = true;
+        autoNumlock = true;
       };
       sessionPackages = [
         hevelSession
@@ -103,12 +103,6 @@ in
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      # extraPackages = hpkgs: [
-      #   hpkgs.X11
-      #   hpkgs.X11-xshape
-      #   hpkgs.xmonad-contrib
-      #   hpkgs.xmonad-extras
-      # ];
     };
     windowManager.awesome = {
       enable = true;

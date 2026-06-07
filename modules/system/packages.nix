@@ -16,7 +16,7 @@
       '';
       sddmBackground = pkgs.stdenvNoCC.mkDerivation {
         name = "sddmBackground";
-        src = ../../files/pictures/wallpapers/AkumaNihmune/04.jpg;
+        src = ../../files/pictures/wallpapers/MoriCalliope/06.png;
         dontUnpack = true;
         installPhase = ''
           cp $src $out

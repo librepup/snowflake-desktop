@@ -8,12 +8,12 @@ let
   # Wrapped Python with Packages
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
     # Stable Diffusion
-    # diffusers
-    # transformers
-    # accelerate
-    # torchWithCuda
-    # torchvision-bin
-    # torchaudio-bin
+    #diffusers
+    #transformers
+    #accelerate
+    #torchWithCuda
+    #torchvision-bin
+    #torchaudio-bin
     # Discord
     discordpy
     # General
@@ -38,18 +38,6 @@ let
   ]);
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
-  # Kate Wrapper for Editing NixOS Configuration Files
-  kate-edit-nixos = pkgs.writeShellScriptBin "kedit-nixos" ''
-    exec ${pkgs.kdePackages.kate}/bin/kate /etc/nixos "$@"
-  '';
-  # Kate Wrapper for Editing XMonad Configuration Files
-  kate-edit-xmonad = pkgs.writeShellScriptBin "kedit-xmonad" ''
-    exec ${pkgs.kdePackages.kate}/bin/kate $HOME/.xmonad "$@"
-  '';
-  # Text-File Containing the Path to the WideVine DRM Utility
-  widevine-path-location = pkgs.writeShellScriptBin "widevine-path-location" ''
-    echo "${pkgs.widevine-cdm}/share/google/chrome/WidevineCdm"
-  '';
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
   bundleBrowsers = with pkgs; [
     google-chrome # Google's Web-Browser
@@ -58,7 +46,6 @@ let
     lynx # CLI Web-Browser
     links2 # CLI Web-Browser
     w3m-full # CLI Web-Browser
-    #microsoft-edge # Microsoft's Edge Web-Browser
     unstable.microsoft-edge # Microsoft's Edge Web-Browser (Unstable Channel)
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # Zen Firefox Forked Web Browser
     floorp-bin # Floorp Firefox Forked Web-Browser
@@ -68,11 +55,37 @@ let
     netflix # GUI Wrapper for Netflix based on Chrome
     vivaldi # Vivaldi Web-Browser
     vivaldi-ffmpeg-codecs # Vivaldi Web-Browser Codecs
-    # nur.repos.hythera.waterfox-bin # WaterFox Firefox Based Web-Browser
     nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
     widevine-cdm # WideVine DRM Support for Netflix and related Services
     widevine-path-location # WideVine DRM Support for Netflix and related Services
+  ];
+  bundleKDEPlasma = with pkgs.kdePackages; [
+    # Packages related to KDE Plasma
+    breeze
+    breeze-icons
+  ];
+  bundleGnome = with pkgs; [
+    # Applications by, related to, included in, or meant for GNOME
+    gnome-tweaks
+    gnome-frog
+    gnome-builder
+    gnome-decoder
+    gnome-contacts
+    gnome-calendar
+    gnome-system-monitor
+    pasystray
+    gnome-themes-extra
+    glib
+  ];
+  bundleGnomeExtensions = with pkgs.gnomeExtensions; [
+    # Extensions for the GNOME Shell
+    focus
+    auto-move-windows
+    moveclock
+    hide-activities-button
+    paperwm
+    user-themes
   ];
   bundleRust = with pkgs; [
     # Various Rust Related Utilities
@@ -86,6 +99,7 @@ let
     rustlings
   ];
   bundleApple = with pkgs; [
+    # Applications for using, connecting to, or related to Apple's iPhones
     libimobiledevice
     ifuse
     gvfs
@@ -101,6 +115,7 @@ let
     kdePackages.flatpak-kcm
   ];
   bundlePython = [
+    # Packages, Dependencies, Libraries, Tools, and more related to Python
     pkgs.libusb1
     pkgs.libglibutil
     pkgs.libsm
@@ -138,7 +153,6 @@ let
       texts
       text-show
     ]))
-    # ghc
     stack # Haskell Package/Module Management Utility
     cabal-install # Haskell Cabal Installer
   ];
@@ -609,6 +623,9 @@ in
       ++ bundleNeu # Wayland.FYI Stuff
       ++ bundleApple # Utilities Related to Apple iPhones
       ++ bundleTextEditors # Text Editors
-      ++ bundleExplorers;
+      ++ bundleGnome # GNOME Applications
+      ++ bundleGnomeExtensions # GNOME Shell Extensions
+      ++ bundleKDEPlasma # KDE Plasma Packages
+      ++ bundleExplorers; # File Explorers and Related
   };
 }

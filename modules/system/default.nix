@@ -16,5 +16,6 @@
     ./region.nix
     ./filesystem.nix
     ./cpu.nix
+    ./keyboard.nix
   ];
 }
