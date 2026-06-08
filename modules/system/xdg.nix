@@ -31,6 +31,9 @@
         "image/jpeg" = "fehWrapped.desktop";
         "image/jpg" = "fehWrapped.desktop";
         "image/webp" = "fehWrapped.desktop";
+        "image/avif" = "fehWrapped.desktop";
+        "image/gif" = "mpv.desktop";
+        "image/svg+xml" = "fehWrapped.desktop";
         "video/mp4" = "mpv.desktop";
         "video/webm" = "mpv.desktop";
         "video/mkv" = "mpv.desktop";
