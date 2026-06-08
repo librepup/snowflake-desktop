@@ -49,7 +49,7 @@ let
     GenericName=Image Viewer
     GenericName[en_US]=Image Viewer
     Comment=Wrapped Image Viewer and Cataloguer
-    Exec=${fehViewerWrapped}/bin/fehWrapped --start-at %u
+    Exec=${fehViewerWrapped}/bin/fehWrapped %u $@
     Terminal=false
     Type=Application
     Icon=feh
