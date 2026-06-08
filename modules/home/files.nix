@@ -132,6 +132,7 @@
     # Completions (comps)
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
+    ".shell-autoload-functions/funcs/restartPortals.sh".source = ../../files/scripts/restartPortals.sh;
     ".shell-autoload-functions/funcs/convertToPdf.sh".source = ../../files/scripts/convertToPdf.sh;
     ".shell-autoload-functions/funcs/backupNixOSConfig.sh".source = ../../files/scripts/backupNixOSConfig.sh;
     ".shell-autoload-functions/funcs/gamemode.sh".source = ../../files/scripts/gamemode.sh;
