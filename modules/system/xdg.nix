@@ -27,10 +27,10 @@
     mime = {
       enable = true;
       defaultApplications = {
-        "image/png" = "viewnior.desktop";
-        "image/jpeg" = "viewnior.desktop";
-        "image/jpg" = "viewnior.desktop";
-        "image/webp" = "viewnior.desktop";
+        "image/png" = "feh.desktop";
+        "image/jpeg" = "feh.desktop";
+        "image/jpg" = "feh.desktop";
+        "image/webp" = "feh.desktop";
         "video/mp4" = "mpv.desktop";
         "video/webm" = "mpv.desktop";
         "video/mkv" = "mpv.desktop";
