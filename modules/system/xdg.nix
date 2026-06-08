@@ -27,10 +27,10 @@
     mime = {
       enable = true;
       defaultApplications = {
-        "image/png" = "feh.desktop";
-        "image/jpeg" = "feh.desktop";
-        "image/jpg" = "feh.desktop";
-        "image/webp" = "feh.desktop";
+        "image/png" = "fehWrapped.desktop";
+        "image/jpeg" = "fehWrapped.desktop";
+        "image/jpg" = "fehWrapped.desktop";
+        "image/webp" = "fehWrapped.desktop";
         "video/mp4" = "mpv.desktop";
         "video/webm" = "mpv.desktop";
         "video/mkv" = "mpv.desktop";

@@ -39,6 +39,24 @@ let
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
+  fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
+    exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --font 'SourceCode Pro for Powerline' --image-bg '#000000' --auto-reload "$@"
+  '';
+  fehViewerWrappedDesktop = pkgs.writeTextDir "share/applications/fehWrapped.desktop" ''
+    [Desktop Entry]
+    Name=FehWrapped
+    Name[en_US]=fehWrapped
+    GenericName=Image Viewer
+    GenericName[en_US]=Image Viewer
+    Comment=Wrapped Image Viewer and Cataloguer
+    Exec=${fehViewerWrapped} --start-at %u
+    Terminal=false
+    Type=Application
+    Icon=feh
+    Categories=Graphics;2DGraphics;Viewer;
+    MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/tiff;image/webp;image/x-bmp;image/x-pcx;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-tga;image/x-xbitmap;image/heic;
+    NoDisplay=true
+  '';
   bundleBrowsers = with pkgs; [
     google-chrome # Google's Web-Browser
     librewolf-bin # LibreWolf Firefox Forked Web-Browser with a Focus on Privacy
@@ -361,6 +379,8 @@ let
   ];
   bundleImageViewers = with pkgs; [
     feh # Minimalist Image Viewer and Wallpaper Setter
+    fehViewerWrapped # Wrapped Feh Command
+    fehViewerWrappedDesktop
     xfce.tumbler
     nsxiv # Suckless Image Viewer
     viewnior # Image Viewer
