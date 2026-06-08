@@ -33,7 +33,7 @@
     horizontal_padding = 12
     text_icon_padding = 10
     frame_width = 2
-    frame_color = "#E4810D"
+    frame_color = "#ec3372"
     gap_size = 8
     separator_color = frame
     sort = yes
@@ -44,7 +44,7 @@
     font = DejaVu Sans Mono 11
     line_height = 4
     markup = full
-    format = "<span foreground='#ffbf2d' font_desc='Bold 12'>%s</span>\n%b"
+    format = "<span foreground='#ec3372' font_desc='Bold 12'>%s</span>\n%b"
     alignment = left
     vertical_alignment = center
     show_age_threshold = 60
@@ -72,14 +72,14 @@
 
 [urgency_low]
     background = "#1a1a1a"
-    foreground = "#f8b878"
-    frame_color = "#E4810D"
+    foreground = "#F58FA3"
+    frame_color = "#ec3372"
     timeout = 5
 
 [urgency_normal]
     background = "#1a1a1a"
     foreground = "#ffffff"
-    frame_color = "#ffbf2d"
+    frame_color = "#ec3372"
     timeout = 8
 
 [urgency_critical]
