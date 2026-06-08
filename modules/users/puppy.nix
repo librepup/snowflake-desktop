@@ -40,16 +40,16 @@ let
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
   fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
-    exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --font 'SourceCode Pro for Powerline' --image-bg '#000000' --auto-reload "$@"
+    exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --image-bg '#000000' --auto-reload "$@"
   '';
   fehViewerWrappedDesktop = pkgs.writeTextDir "share/applications/fehWrapped.desktop" ''
     [Desktop Entry]
-    Name=FehWrapped
+    Name=fehWrapped
     Name[en_US]=fehWrapped
     GenericName=Image Viewer
     GenericName[en_US]=Image Viewer
     Comment=Wrapped Image Viewer and Cataloguer
-    Exec=${fehViewerWrapped} --start-at %u
+    Exec=${fehViewerWrapped}/bin/fehWrapped --start-at %u
     Terminal=false
     Type=Application
     Icon=feh
