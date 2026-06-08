@@ -92,6 +92,7 @@
         picom-no-frame-pacing = "picom --backend glx  --no-frame-pacing $@";
         bat = "bat --style=plain --decorations=always --color=always --theme=base16 --pager=less --paging=auto --wrap=auto $@";
         wp = "feh --bg-fill $@";
+        feh = "feh --geometry --ignore-aspect --recursive --auto-zoom --zoom fill --scale-down --slideshow-delay '-1' --font 'SourceCode Pro for Powerline' --image-bg '#000000' --auto-reload $@";
         fpak-run = "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland $@";
         fpak-install = "flatpak install --user $@";
         forcekill = "kill -9 $@";
@@ -112,6 +113,7 @@
         encryptunmount = "echo \"encryptunmount /mnt/Decrypted\";fusermount -u $1";
         encryptmount = "echo \"encryptmount /mnt/Encrypted /mnt/Decrypted\";encfs $1 $2";
         clock = "clock-rs --color red --hide-seconds --bold --fmt '%A, %d.%m.%Y'";
+        pqiv = "pqiv --action='toggle_scale_mode(5)' --bind-key='p { goto_file_relative(-1) }' --bind-key='n { goto_file_relative(1) }' --bind-key='r { rotate_right() }' --bind-key='l { toggle_slideshow() }' --slideshow-interval=1 --hide-info-box --background-pattern=black --end-of-files-action=wrap-no-reshuffle $@";
         cleanflatpak = "flatpak uninstall --unused";
         guix-garbage = "guix gc $@";
         guix-update = "guix pull && guix package --upgrade && guix gc $@";

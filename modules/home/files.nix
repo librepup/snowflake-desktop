@@ -7,6 +7,8 @@
   ...
 }:
 {
+  # FEH
+  home.file.".config/feh/keys".source = ../../files/config/feh/keys;
   # Kate
   home.file.".kateShortcuts/LibrePup.shortcuts".source = ../../files/config/kate/LibrePup.shortcuts;
   # EWW

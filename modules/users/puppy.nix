@@ -350,6 +350,7 @@ let
     kdePackages.kate # Extensible Text and Code Editor
     marksman
     obsidian # Note Taking Application
+    litemdview # Suckless Markdown Viewer
   ];
   bundleWeb = with pkgs; [
     httrack # Recursive Website Downloader
