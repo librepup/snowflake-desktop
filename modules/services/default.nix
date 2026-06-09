@@ -15,7 +15,6 @@
     ./appimage.nix
     ./ai.nix
     ./snap.nix
-    # ./keyd.nix # Moved to modules/system/keyboard.
     ./mouse.nix
   ];
 }

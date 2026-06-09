@@ -16,6 +16,8 @@
             rightshift = "layer(meta)";
             capslock = "layer(control)";
             rightalt = "altgr";
+            sysrq = "home";
+            print = "end";
             f21 = "f21";
             f22 = "f22";
             kp4 = "left";
@@ -68,6 +70,8 @@
     rightshift = layer(meta)
     capslock = layer(control)
     rightalt = altgr
+    sysrq = home
+    print = end
     f21 = f21
     f22 = f22
     kp4 = left
