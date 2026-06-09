@@ -284,6 +284,7 @@ let
     nx-libs
   ];
   bundleGraphicsDesign = with pkgs; [
+    inputs.jonabron.packages.x86_64-linux.image-text-extractor
     timg
     unstable.findimagedupes # CLI Tool to Identify Duplicate/Similar Images
     gimp3-with-plugins # GNU Image Manipulation Software
@@ -481,6 +482,7 @@ let
   ];
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
+    inputs.jonabron.packages.x86_64-linux.urbit
     dhcpcd
     rofi-network-manager
     wifi-qr
@@ -527,6 +529,7 @@ let
     windows10-icons
   ];
   bundleKeyboard = with pkgs; [
+    inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
     keyboard-layout-editor
     keyd
     kalamine
@@ -567,13 +570,11 @@ in
       [
         unstable.ratty
         kitty
-        inputs.jonabron.packages.x86_64-linux.image-text-extractor
-        inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
-        inputs.jonabron.packages.x86_64-linux.jonabar
         inputs.nix-init.packages.x86_64-linux.default
+        inputs.jonabron.packages.x86_64-linux.desktopancs
+        inputs.jonabron.packages.x86_64-linux.jonabar
         inputs.jonabron.packages.x86_64-linux.momoisay
         espeak
-        inputs.jonabron.packages.x86_64-linux.urbit
         kdePackages.karousel
         plasmusic-toolbar
         libsForQt5.qtstyleplugin-kvantum
