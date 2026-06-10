@@ -17,7 +17,7 @@
 	<name>Edit</name>
 	<submenu></submenu>
 	<unique-id>1777908158993049-3</unique-id>
-	<command>kate %F</command>
+	<command>gnome-text-editor %F</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -29,7 +29,7 @@
 	<name>Video</name>
 	<submenu>Play</submenu>
 	<unique-id>1774291725205719-1</unique-id>
-	<command>mpv --title=&quot;%f&quot; %F</command>
+	<command>unshare -n --map-current-user mpv --title=&quot;%f&quot; %F</command>
 	<description>Play Selection with MPV</description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -42,7 +42,7 @@
 	<name>Images (Inf)</name>
 	<submenu>Play</submenu>
 	<unique-id>1777907807680151-1</unique-id>
-	<command>mpv --image-display-duration=inf %F</command>
+	<command>unshare -n --map-current-user mpv --image-display-duration=inf %F</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -54,7 +54,7 @@
 	<name>Images (1s)</name>
 	<submenu>Play</submenu>
 	<unique-id>1777907896768370-2</unique-id>
-	<command>mpv --loop-file=no --image-display-duration=1 %F</command>
+	<command>unshare -n --map-current-user mpv --loop-file=no --image-display-duration=1 %F</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
