@@ -366,6 +366,7 @@
     "Pictures/Wallpapers/el_XoX/04.jpg".source = ../../files/pictures/wallpapers/el_XoX/04.jpg;
     "Pictures/Wallpapers/el_XoX/05.jpg".source = ../../files/pictures/wallpapers/el_XoX/05.jpg;
     ## Ironmouse
+    "Pictures/Wallpapers/Ironmouse/07.jpg".source = ../../files/pictures/wallpapers/Ironmouse/07.jpg;
     "Pictures/Wallpapers/Ironmouse/06.png".source = ../../files/pictures/wallpapers/Ironmouse/06.png;
     "Pictures/Wallpapers/Ironmouse/05.jpeg".source = ../../files/pictures/wallpapers/Ironmouse/05.jpeg;
     "Pictures/Wallpapers/Ironmouse/04.jpg".source = ../../files/pictures/wallpapers/Ironmouse/04.jpg;

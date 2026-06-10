@@ -6,3 +6,4 @@
 ![Ironmouse Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/Ironmouse/04.jpg)
 ![Ironmouse Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/Ironmouse/05.jpeg)
 ![Ironmouse Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/Ironmouse/06.png)
+![Ironmouse Wallpaper](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/wallpapers/Ironmouse/07.jpg)
