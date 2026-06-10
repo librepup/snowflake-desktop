@@ -14,22 +14,8 @@ CURRENT="$(ibus engine 2>/dev/null || true)"
 MENU_INPUT="$(
   for e in "${ENGINES[@]}"; do
     if [[ "$e" == "$CURRENT" ]]; then
-      if [[ "$e" == "xkb:us:colemak:eng" ]]; then
-        e="US Colemak"
-      elif [[ "$e" == "typing-booster" ]]; then
-        e="TypingBooster"
-      else
-        true
-      fi
       printf "%s (current)\n" "$e"
     else
-      if [[ "$e" == "xkb:us:colemak:eng" ]]; then
-        e="US Colemak"
-      elif [[ "$e" == "typing-booster" ]]; then
-        e="TypingBooster"
-      else
-        true
-      fi
       printf "%s\n" "$e"
     fi
   done

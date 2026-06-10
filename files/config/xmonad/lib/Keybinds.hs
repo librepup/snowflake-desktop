@@ -110,8 +110,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- IBus/Keyboard Layout
-    , ((myWinMask, xK_Escape), spawn "ibus engine xkb:us:colemak:eng")
-    , ((myWinMask, xK_BackSpace), spawn "ibus engine typing-booster")
+    , ((myWinMask, xK_F1), spawn "ibus engine xkb:us:colemak:eng")
+    , ((myWinMask, xK_F2), spawn "ibus engine typing-booster")
+    , ((myWinMask, xK_Escape), spawn "~/.scripts/ibusPicker.sh")
     -- Run Prompt
     , ((modm .|. controlMask, xK_t), shellPrompt xp)
     , ((modm .|. controlMask .|. shiftMask, xK_t), shellPrompt xp)
