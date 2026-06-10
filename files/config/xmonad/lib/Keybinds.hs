@@ -106,12 +106,15 @@ import XMonad.Prompt.Workspace
 -- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
-    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- 'spawn $ XMonad.terminal conf' to spawn Default Terminal.
-    , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
+    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- spawn $ XMonad.terminal conf' to spawn Default Terminal.
+    -- , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- IBus/Keyboard Layout
     , ((myWinMask, xK_F1), spawn "ibus engine xkb:us:colemak:eng; notify-send 'Colemak' 'Switched Engine to US: Colemak' -i $HOME/Pictures/Icons/yes.png")
     , ((myWinMask, xK_F2), spawn "ibus engine typing-booster; notify-send 'TypingBooster' 'Switched Engine to TypingBooster' -i $HOME/Pictures/Icons/yes.png")
+    , ((myWinMask .|. shiftMask, xK_Escape), spawn "notify-send \"$(ibus engine)\" \"Current Engine is: $(ibus engine)\" -i $HOME/Pictures/Icons/xmonad_logo.png")
+    , ((myWinMask, xK_period), spawn "if [[ \"$(ibus engine)\" == *\"uniemoji\"* ]]; then ibus engine xkb:us:colemak:eng; else ibus engine uniemoji; fi")
+    , ((myWinMask, xF86XK_Tools), spawn "ibus-setup")
     , ((myWinMask, xK_Escape), spawn "~/.scripts/ibusPicker.sh")
     -- Run Prompt
     , ((modm .|. controlMask, xK_t), shellPrompt xp)
