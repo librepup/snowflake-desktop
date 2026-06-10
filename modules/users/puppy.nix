@@ -145,6 +145,7 @@ let
     pkgs.pyflyby
     pkgs.gtk3
     pkgs.gobject-introspection
+    pkgs.sqlitebrowser
     pythonWrapped
   ];
   bundleHaskell = with pkgs; [

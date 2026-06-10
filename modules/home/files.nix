@@ -97,6 +97,10 @@
       source = ../../files/scripts/gameLauncher.sh;
       executable = true;
     };
+    ".scripts/ibusPicker.sh" = {
+      source = ../../files/scripts/ibusPicker.sh;
+      executable = true;
+    };
     ".trayicon-scripts/wayPaper.sh" = {
       source = ../../files/scripts/tooltips/wayPaper.sh;
       executable = true;

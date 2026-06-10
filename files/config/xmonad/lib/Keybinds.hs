@@ -109,6 +109,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- 'spawn $ XMonad.terminal conf' to spawn Default Terminal.
     , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
+    -- IBus/Keyboard Layout
+    , ((myWinMask, xK_Escape), spawn "ibus engine xkb:us:colemak:eng")
+    , ((myWinMask, xK_BackSpace), spawn "ibus engine typing-booster")
     -- Run Prompt
     , ((modm .|. controlMask, xK_t), shellPrompt xp)
     , ((modm .|. controlMask .|. shiftMask, xK_t), shellPrompt xp)

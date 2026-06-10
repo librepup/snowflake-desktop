@@ -1,0 +1,20 @@
+[engine/typing-booster]
+addspaceoncommit=true
+aichatenable=false
+arrowkeysreopenpreedit=true
+autocapitalize=true
+autoselectcandidate=1
+autosettings=@aas []
+candidatesdelaymilliseconds=uint32 0
+dictionary='de_DE,en_US'
+dictionaryinstalltimestamp='2026-06-10 14:03:07'
+inlinecompletion=2
+inputmethod='NoIME'
+inputmode=true
+keybindings={'remove_candidate_6': <['Control+6', 'Control+KP_6', 'Control+F6']>, 'toggle_off_the_record': <['Mod5+F9', 'Shift+Control+Mod1+O', 'Shift+Control+Mod1+R']>, 'commit_and_forward_key': <['Shift+Return']>, 'trigger_word_predictions': <['Shift+Control+Mod1+W']>, 'commit_candidate_5': <@as []>, 'next_case_mode': <['Shift_L']>, 'lookup_table_page_up': <['Page_Up', 'KP_Page_Up', 'KP_Prior']>, 'ai_chat_continue': <@as []>, 'toggle_ascii_digits': <@as []>, 'ai_chat_start_new': <@as []>, 'previous_case_mode': <['Shift_R']>, 'select_previous_candidate': <['Shift+Tab', 'Shift+ISO_Left_Tab', 'Up', 'KP_Up']>, 'next_input_method': <['Shift+Control+Mod1+N']>, 'previous_input_method': <['Control+Up', 'Control+KP_Up']>, 'remove_candidate_2': <['Control+2', 'Control+KP_2', 'Control+F2']>, 'lookup_related': <['Mod5+F12', 'Control+Tab']>, 'commit_candidate_6': <@as []>, 'setup': <['Mod5+F10', 'Shift+Control+Mod1+F10', 'Shift+Control+Mod1+greater', 'Shift+Control+Mod1+less']>, 'remove_candidate_3': <['Control+3', 'Control+KP_3', 'Control+F3']>, 'remove_candidate_8': <['Control+8', 'Control+KP_8', 'Control+F8']>, 'remove_candidate_9': <['Control+9', 'Control+KP_9', 'Control+F9']>, 'commit_candidate_1': <@as []>, 'select_next_candidate': <['Tab', 'ISO_Left_Tab', 'Down', 'KP_Down']>, 'toggle_emoji_style': <@as []>, 'commit_candidate_7': <@as []>, 'next_dictionary': <['Mod1+Down', 'Mod1+KP_Down', 'Shift+Control+Mod1+Down', 'Shift+Control+Mod1+Up']>, 'show_selection_info': <@as []>, 'remove_candidate_4': <['Control+4', 'Control+KP_4', 'Control+F4']>, 'toggle_input_mode_on_off': <['Control+End', 'Shift+Control+Mod1+I', 'Shift+Control+Mod1+space', 'Shift+Control+Mod1+Return']>, 'commit_candidate_2': <@as []>, 'trigger_emoji_predictions': <['Shift+Control+Mod1+E']>, 'change_line_direction_left_to_right': <@as []>, 'speech_recognition': <@as []>, 'lookup_table_page_down': <['Page_Down', 'KP_Page_Down', 'KP_Next']>, 'commit_candidate_8': <@as []>, 'change_line_direction_right_to_left': <@as []>, 'remove_candidate_5': <['Control+5', 'Control+KP_5', 'Control+F5']>, 'toggle_emoji_prediction': <['Mod5+F6']>, 'toggle_hide_input': <['Shift+Control+Escape', 'Shift+Control+Mod1+H']>, 'commit_candidate_3': <@as []>, 'selection_to_preedit': <['Shift+Control+Mod1+Right']>, 'cancel': <['Escape']>, 'change_line_direction_toggle': <@as []>, 'enable_lookup': <['ISO_Left_Tab', 'Tab']>, 'commit_candidate_9': <@as []>, 'commit': <['Return']>, 'previous_dictionary': <['Mod1+Up', 'Mod1+KP_Up']>, 'commit_candidate_1_plus_space': <['1', 'KP_1', 'F1']>, 'commit_candidate_2_plus_space': <['2', 'KP_2', 'F2']>, 'commit_candidate_3_plus_space': <['3', 'KP_3', 'F3']>, 'commit_candidate_4': <@as []>, 'commit_candidate_5_plus_space': <['5', 'KP_5', 'F5']>, 'commit_candidate_6_plus_space': <['6', 'KP_6', 'F6']>, 'commit_candidate_4_plus_space': <['4', 'KP_4', 'F4']>, 'commit_candidate_7_plus_space': <['7', 'KP_7', 'F7']>, 'commit_candidate_9_plus_space': <['9', 'KP_9', 'F9']>, 'remove_candidate_1': <['Control+1', 'Control+KP_1', 'Control+F1']>, 'commit_candidate_8_plus_space': <['8', 'KP_8', 'F8']>, 'remove_candidate_7': <['Control+7', 'Control+KP_7', 'Control+F7']>}
+lookuptableorientation=0
+pagesize=6
+shownumberofcandidates=false
+showstatusinfoinaux=false
+tabenable=true
+wordpredictions=true

@@ -6,6 +6,10 @@
     ibus.engines = with pkgs.ibus-engines; [
       uniemoji
       typing-booster
+      m17n
     ];
+  };
+  environment.variables = {
+    IBUS_COMPONENT_PATH = "/run/current-system/sw/share/ibus/component";
   };
 }
