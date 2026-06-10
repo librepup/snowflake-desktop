@@ -97,6 +97,10 @@
       source = ../../files/scripts/gameLauncher.sh;
       executable = true;
     };
+    ".scripts/eraseAll.sh" = {
+      source = ../../files/scripts/eraseAll.sh;
+      executable = true;
+    };
     ".scripts/ibusPicker.sh" = {
       source = ../../files/scripts/ibusPicker.sh;
       executable = true;
