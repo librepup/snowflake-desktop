@@ -142,8 +142,10 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Right), windows W.focusDown)
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
+    -- Extra Programs
     , ((modm, xK_s), spawn "microsoft-edge")
     , ((modm .|. shiftMask, xK_s), spawn "vivaldi")
+    , ((modm, xK_n), spawn "gnome-text-editor --standalone")
     -- Tab Submap and Tabby
     , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
@@ -232,7 +234,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_f), spawn "nixmacs")
     , ((myWinMask .|. shiftMask, xK_f), spawn "acme")
     , ((modm .|. controlMask, xK_s), spawn "firefox")
-    , ((myWinMask, xK_q), spawn "com.github.dynobo.normcap -t False --parse-text True --detect-text True -u False --cli-mode | xclip -selection clipboard")
+    , ((modm .|. shiftMask .|. controlMask, xK_s), spawn "helium")
+    , ((myWinMask, xK_q), spawn "normcap")
+    -- , ((myWinMask .|. shiftMask, xK_q), spawn "com.github.dynobo.normcap -t False --parse-text True --detect-text True -u False --cli-mode | xclip -selection clipboard")
     -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
     , ((modm .|. shiftMask, xK_a), spawn "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland com.github.dynobo.normcap --detect-text=True --parse-text=True --show-introduction=False --tray=False --cli-mode 2>/dev/null | xclip -selection clipboard")

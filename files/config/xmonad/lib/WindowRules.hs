@@ -126,7 +126,8 @@ myManageHook = composeAll
       -->                                                          -- Focus and Warp Mouse to "vicinae" Window.
         (doFocus <+> doWarp)
     , (title =? "FLOAT_ME_NOW" <||>
-       className =? "feh")
+       className =? "feh" <||>
+       className =? "gnome-text-editor")
       -->                                                          -- Float and Move "FLOAT_ME_NOW" Windows.
         doRectFloat (W.RationalRect 0.15 0.1 0.7 0.8)
     , title =? "Library"                  --> doCenterFloat        -- Center Float Browser Library.

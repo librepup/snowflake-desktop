@@ -602,7 +602,7 @@ in
         nixfmt
         qbittorrent
         kdePackages.qt5compat
-        yt-dlp
+        unstable.yt-dlp
         rofimoji
         rofi
         blahaj
