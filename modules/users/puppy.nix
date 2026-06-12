@@ -593,6 +593,7 @@ in
         emote
         veracrypt
         flameshot
+        normcap
         tesseract
         textsnatcher
         redshift

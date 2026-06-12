@@ -221,6 +221,8 @@ applicationActionList =
   , ("l: Lock Screen", spawn "betterlockscreen --lock")
   , ("c: Color Picker", spawn "xcolor | tr -d '\n' | xclip -selection clipboard")
   , ("m: Open Music Player", spawn "tauon")
+  , ("w: Flatpak Manager", spawn "warehouse")
+  , ("s: Flatpak Permissions", spawn "flatpak run com.github.tchx84.Flatseal")
   , ("t: Run DMenu", spawn $ "dmenu_run" ++ dmenuArgs moriDmenuTheme ++ " -p '%:'")
   , ("i: Open Pinta", spawn "flatpak run com.github.PintaProject.Pinta")
   , ("k: Reload Picom", spawn "if pgrep picom > /dev/null 2>&1; then pkill picom; else picom & fi")

@@ -16,5 +16,6 @@
     ./ai.nix
     ./snap.nix
     ./mouse.nix
+    ./ssh.nix
   ];
 }
