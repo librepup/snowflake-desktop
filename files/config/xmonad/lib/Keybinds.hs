@@ -106,7 +106,7 @@ import XMonad.Prompt.Workspace
 -- myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Terminals
-    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal) -- spawn $ XMonad.terminal conf' to spawn Default Terminal.
+    [ ((modm .|. shiftMask, xK_Return), spawn Definitions.myTerminal)
     -- , ((0, xF86XK_Game), spawn "notify-send 'KeyD' 'Toggled the Extra Layer via KeyD.'")
     , ((modm, xK_Return), spawn Definitions.myTerminalFb)
     -- IBus/Keyboard Layout
@@ -236,10 +236,9 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_s), spawn "firefox")
     , ((modm .|. shiftMask .|. controlMask, xK_s), spawn "helium")
     , ((myWinMask, xK_q), spawn "normcap")
-    -- , ((myWinMask .|. shiftMask, xK_q), spawn "com.github.dynobo.normcap -t False --parse-text True --detect-text True -u False --cli-mode | xclip -selection clipboard")
-    -- , ((modm .|. shiftMask, xK_s), spawn "zen")
     , ((modm, xK_a), spawn "flameshot gui")
-    , ((modm .|. shiftMask, xK_a), spawn "flatpak run --share=network --socket=fallback-x11 --socket=x11 --nosocket=wayland com.github.dynobo.normcap --detect-text=True --parse-text=True --show-introduction=False --tray=False --cli-mode 2>/dev/null | xclip -selection clipboard")
+    , ((modm .|. shiftMask, xK_a), spawn "normcap")
+    , ((modm .|. shiftMask .|. controlMask, xK_a), spawn "normcap --detect-text=True --parse-text=True --show-introduction=False --tray=False --cli-mode 2>/dev/null | xclip -selection clipboard")
     , ((modm, xK_d), spawn "icedove")
     -- Exit XMonad
     , ((modm .|. shiftMask, xK_e), confirmPrompt xp "Type 'yes' to exit:" $ io (exitWith ExitSuccess))
@@ -388,7 +387,6 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm, button1), (\w -> focus w >> mouseMoveWindow w
                                        >> windows W.shiftMaster))
     -- Mouse Gestures
-    -- , ((noModMask, button2), mouseGesture myGestures)
     -- mod-button2, Raise the window to the top of the stack
     , ((modm, button2), (\w -> focus w >> windows W.shiftMaster))
     -- mod-button3, Set the window to floating mode and resize by dragging
