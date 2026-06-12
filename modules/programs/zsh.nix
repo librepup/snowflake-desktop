@@ -116,6 +116,7 @@
         pqiv = "pqiv --action='toggle_scale_mode(5)' --bind-key='p { goto_file_relative(-1) }' --bind-key='n { goto_file_relative(1) }' --bind-key='r { rotate_right() }' --bind-key='l { toggle_slideshow() }' --slideshow-interval=1 --hide-info-box --background-pattern=black --end-of-files-action=wrap-no-reshuffle $@";
         cleanflatpak = "flatpak uninstall --unused";
         guix-garbage = "guix gc $@";
+        nonet = "unshare -n --map-current-user $@";
         guix-update = "guix pull && guix package --upgrade && guix gc $@";
         search = "nix-search-tv print | fzf --preview 'nix-search-tv preview {}' --scheme history $@";
         zathura = "devour zathura $@";

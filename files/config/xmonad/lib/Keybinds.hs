@@ -116,6 +116,8 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((myWinMask, xK_period), spawn "if [[ \"$(ibus engine)\" == *\"uniemoji\"* ]]; then ibus engine xkb:us:colemak:eng; else ibus engine uniemoji; fi")
     , ((myWinMask, xF86XK_Tools), spawn "ibus-setup")
     , ((myWinMask, xK_Escape), spawn "~/.scripts/ibusPicker.sh")
+    -- Run Cleaner
+    , ((myWinMask, xK_BackSpace), spawn "~/.scripts/eraseAll.sh")
     -- Run Prompt
     , ((modm .|. controlMask, xK_t), shellPrompt xp)
     , ((modm .|. controlMask .|. shiftMask, xK_t), shellPrompt xp)
@@ -141,19 +143,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Up), windows W.focusUp)
     , ((modm, xK_Down), windows W.focusDown)
     , ((modm, xK_s), spawn "microsoft-edge")
-    , ((modm .|. shiftMask, xK_s), submapDefault (spawn "helium") $ M.fromList [
-          ((0, xK_Return), spawn "helium")
-        , ((0, xK_s), spawn "helium")
-        , ((shiftMask, xK_s), spawn "zen")
-        , ((controlMask, xK_s), spawn "microsoft-edge --disable-features=MediaRouter")
-        , ((0, xK_f), spawn "firefox")
-        , ((0, xK_o), spawn "com.opera.opera-gx")
-        , ((0, xK_e), spawn "microsoft-edge")
-        , ((0, xK_m), spawn "microsoft-edge")
-        , ((shiftMask, xK_f), spawn "floorp")
-        , ((0, xK_h), spawn "helium")
-        , ((0, xK_z), spawn "zen")
-      ])
+    , ((modm .|. shiftMask, xK_s), spawn "vivaldi")
     -- Tab Submap and Tabby
     , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [
           ((0, xK_Right), moveTo Next (Not emptyWS))
@@ -232,7 +222,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_t), sendMessage ToggleStruts >> sendMessage (Toggle NBFULL))
     -- Toggle Bar
     , ((modm, xK_b), sendMessage ToggleStruts)
-    , ((modm .|. shiftMask, xK_b), spawn "pkill polybar && jonabar-mori &")
+    , ((modm .|. shiftMask, xK_b), spawn "pkill polybar && jonabar start mori &")
     -- Switch Layouts
     , ((modm, xK_y), sendMessage NextLayout)
     -- Applications

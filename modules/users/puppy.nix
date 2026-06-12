@@ -237,6 +237,7 @@ let
     muse # Muse Audio Production DAW
   ];
   bundleAudioUtilities = with pkgs; [
+    picard # Audio File Tag Editor
     playerctl
     mamba
     ciano
@@ -529,6 +530,12 @@ let
     chicago95
     windows10-icons
   ];
+  bundleDocuments = with pkgs; [
+    masterpdfeditor4
+    libreoffice
+    zathura
+    texliveFull
+  ];
   bundleKeyboard = with pkgs; [
     inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
     keyboard-layout-editor
@@ -589,23 +596,19 @@ in
         tesseract
         textsnatcher
         redshift
-        zathura
         keepassxc
         nil
         nixfmt
         qbittorrent
         kdePackages.qt5compat
-        picard
         yt-dlp
         rofimoji
         rofi
-        texliveFull
         blahaj
         zenmap
         zerotierone
         translate-shell
         nix-prefetch-scripts
-        libreoffice
         gnome-shell-extensions
         gnome-font-viewer
         fontforge-gtk
@@ -649,6 +652,7 @@ in
       ++ bundleGnome # GNOME Applications
       ++ bundleGnomeExtensions # GNOME Shell Extensions
       ++ bundleKDEPlasma # KDE Plasma Packages
+      ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
   };
 }
