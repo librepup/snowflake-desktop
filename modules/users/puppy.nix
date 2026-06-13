@@ -35,12 +35,20 @@ let
     pipx
     libusb1
     plyvel
+    howdoi
   ]);
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
   fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
     exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --image-bg '#000000' --auto-reload "$@"
+  '';
+  listOfOllamaModels = pkgs.writeTextDir "share/ollama-model-list.md" ''
+    1. leeplenty/lumimaid-v0.2:12b - Fully Uncensored
+    2. qwen2.5-coder:1.5b - Super Fast Small Model
+    3. MistaaB/SpicyMorph:latest - Untested
+    4. gurubot/self-after-dark:3b-q4_K_M - Untested
+    5. all-minilm:latest - Converts Prompts to Data-Points
   '';
   fehViewerWrappedDesktop = pkgs.writeTextDir "share/applications/fehWrapped.desktop" ''
     [Desktop Entry]
@@ -122,6 +130,7 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
+    listOfOllamaModels
     ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
   ];
@@ -445,6 +454,7 @@ let
     ulauncher # Extensible Application Launcher
   ];
   bundleGeneralUtilities = with pkgs; [
+    sherlock
     progress
     file
     lshw
