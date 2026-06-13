@@ -123,6 +123,7 @@ let
   ];
   bundleAI = with pkgs; [
     ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
+    inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities

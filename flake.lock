@@ -801,11 +801,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1781114903,
-        "narHash": "sha256-qlYw/6CYRFYWMxyqt0cJZ6Wt7ko37p8LvQTsmxL+BDI=",
+        "lastModified": 1781382153,
+        "narHash": "sha256-bkfoedYky0rFxXt+GgCEd3n5+f8P4S45b7T3sbyg00w=",
         "owner": "librepup",
         "repo": "jonabron",
-        "rev": "1bdf2da1acecaee715475b63d5f08437fc02a843",
+        "rev": "33f28ca1275a415b2825a6f3718ff1d225114f80",
         "type": "github"
       },
       "original": {
