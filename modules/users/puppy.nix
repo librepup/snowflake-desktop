@@ -130,7 +130,7 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
-    local-ai # Locally Generate Images, and Audio with AI
+    # local-ai # Locally Generate Images, and Audio with AI (Marked Broken)
     listOfOllamaModels
     ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
