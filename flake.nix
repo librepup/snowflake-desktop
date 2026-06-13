@@ -26,10 +26,6 @@
       url = "github:librepup/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     vicinae.url = "github:vicinaehq/vicinae";
     vicinae-extensions = {
       url = "github:vicinaehq/extensions";
@@ -65,10 +61,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    aerothemeplasma-nix = {
-      url = "github:nyakase/aerothemeplasma-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # aerothemeplasma-nix = {
+    #   url = "github:nyakase/aerothemeplasma-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # astal = {
+    #   url = "github:aylur/astal";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     jonabron.url = "github:librepup/jonabron";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -95,6 +95,9 @@
       url = "github:ricardomaps/neu-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixified-ai = {
+      url = "github:nixified-ai/flake";
+    };
   };
 
   outputs =
@@ -109,7 +112,6 @@
       noctalia,
       nix-alien,
       nix-search-tv,
-      # astal,
       vicinae,
       mango,
       naitre,
@@ -119,16 +121,15 @@
       spicetify-nix,
       nix-cachyos-kernel,
       nix-gaming,
-      # plasma-manager,
       jonabron,
       zen-browser,
       nix-init,
       millennium,
-      # aerothemeplasma-nix,
       flatpaks,
       nur,
       nix-snapd,
       neu-nix,
+      nixified-ai,
       ...
     }:
     let
@@ -150,6 +151,7 @@
           inputs.spicetify-nix.nixosModules.default
           nur.modules.nixos.default
           nix-snapd.nixosModules.default
+          inputs.nixified-ai.nixosModules.comfyui
           # Nixpkgs Config
           {
             nixpkgs.config = {
@@ -184,6 +186,9 @@
               nixpkgs.overlays = [
                 nix-cachyos-kernel.overlays.pinned
                 inputs.millennium.overlays.default
+                inputs.nixified-ai.overlays.comfyui
+                inputs.nixified-ai.overlays.models
+                inputs.nixified-ai.overlays.fetchers
               ];
             }
           )
@@ -223,7 +228,6 @@
                   inputs.naitre.hmModules.naitre # Naitre HUD
                   inputs.dms.homeModules.dank-material-shell # DMS Shell
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
-                  # plasma-manager.homeModules.plasma-manager
                 ];
                 backupFileExtension =
                   let

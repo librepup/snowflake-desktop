@@ -1,5 +1,20 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  nixpkgs.overlays = [
+    inputs.nixified-ai.overlays.comfyui
+    inputs.nixified-ai.overlays.models
+    inputs.nixified-ai.overlays.fetchers
+  ];
+  services.comfyui = {
+    enable = false;
+    package = inputs.nixified-ai.packages.x86_64-linux.comfyui-nvidia;
+    host = "0.0.0.0";
+    customNodes = with inputs.nixified-ai.packages.x86_64-linux.comfyui-nvidia.pkgs; [
+      comfyui-gguf
+      comfyui-impact-pack
+      comfyui-easy-use
+    ];
+  };
   services.open-webui = {
     enable = true;
     stateDir = "/var/lib/open-webui";
@@ -19,7 +34,10 @@
     acceleration = "vulkan";
     package = pkgs.ollama-vulkan;
   };
-  systemd.services.ollama.wantedBy = lib.mkForce [ ];
-  systemd.services.ollama-model-loader.wantedBy = lib.mkForce [ ];
-  systemd.services.open-webui.wantedBy = lib.mkForce [ ];
+  systemd.services = {
+    ollama.wantedBy = lib.mkForce [ ];
+    ollama-model-loader.wantedBy = lib.mkForce [ ];
+    open-webui.wantedBy = lib.mkForce [ ];
+    # comfyui.wantedBy = lib.mkForce [ ];
+  };
 }

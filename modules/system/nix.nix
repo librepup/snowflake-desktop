@@ -13,12 +13,22 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
         "https://cuda-maintainers.cachix.org"
+        "https://ai.cachix.org"
+      ];
+      trusted-substituters = [
+        "https://attic.xuyh0120.win/lantian"
+        "https://nix-gaming.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org"
+        "https://cuda-maintainers.cachix.org"
+        "https://ai.cachix.org"
       ];
       trusted-public-keys = [
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
       ];
       auto-optimise-store = true;
       experimental-features = [
