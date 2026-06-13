@@ -287,6 +287,7 @@ let
     nx-libs
   ];
   bundleGraphicsDesign = with pkgs; [
+    charm-freeze # Generate Images from Code
     inputs.jonabron.packages.x86_64-linux.image-text-extractor
     timg
     unstable.findimagedupes # CLI Tool to Identify Duplicate/Similar Images
