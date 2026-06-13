@@ -485,6 +485,7 @@ let
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
     inputs.jonabron.packages.x86_64-linux.urbit
+    mdns-scanner
     dhcpcd
     rofi-network-manager
     wifi-qr

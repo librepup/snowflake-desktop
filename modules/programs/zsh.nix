@@ -145,6 +145,10 @@
         autoload -Uz compinit
         compinit
 
+        autoload -U select-word-style
+        select-word-style bash
+        bindkey '^W' backward-kill-word
+
         # Source Auto-Load Functions
         if [ -d "$HOME/.shell-autoload-functions" ]; then
           for script in "$HOME/.shell-autoload-functions/funcs"/*.sh; do
