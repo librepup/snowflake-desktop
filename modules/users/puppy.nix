@@ -199,6 +199,7 @@ let
       gi-cairo-render
       renderable
       JuicyPixels
+      JuicyPixels-extra
     ]))
     stack # Haskell Package/Module Management Utility
     cabal-install # Haskell Cabal Installer
