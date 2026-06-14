@@ -42,7 +42,7 @@
     ollama.wantedBy = lib.mkForce [ ];
     ollama-model-loader.wantedBy = lib.mkForce [ ];
     open-webui.wantedBy = lib.mkForce [ ];
-    sillytavern.wantedBy = libe.mkForce [ ];
+    sillytavern.wantedBy = lib.mkForce [ ];
     # comfyui.wantedBy = lib.mkForce [ ];
   };
 }
