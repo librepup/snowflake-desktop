@@ -15,6 +15,10 @@
       comfyui-easy-use
     ];
   };
+  services.sillytavern = {
+    enable = true;
+    port = 8045;
+  };
   services.open-webui = {
     enable = true;
     stateDir = "/var/lib/open-webui";
@@ -38,6 +42,7 @@
     ollama.wantedBy = lib.mkForce [ ];
     ollama-model-loader.wantedBy = lib.mkForce [ ];
     open-webui.wantedBy = lib.mkForce [ ];
+    sillytavern.wantedBy = libe.mkForce [ ];
     # comfyui.wantedBy = lib.mkForce [ ];
   };
 }
