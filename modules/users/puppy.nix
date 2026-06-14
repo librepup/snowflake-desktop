@@ -169,6 +169,9 @@ let
       discord-haskell
       # General
       text
+      gloss
+      gloss-rendering
+      base
       aeson
       bytestring
       data-default
