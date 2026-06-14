@@ -198,6 +198,7 @@ let
       X11-xshape
       gi-cairo-render
       renderable
+      JuicyPixels
     ]))
     stack # Haskell Package/Module Management Utility
     cabal-install # Haskell Cabal Installer
