@@ -181,9 +181,26 @@ let
       polysemy-plugin
       texts
       text-show
+      turtle
+      dns
+      nix-paths
+      xmonad
+      xmonad-utils
+      xmonad-extras
+      xmonad-contrib
+      X11
+      X11-xft
+      x11-xim
+      x11-xinput
+      X11-xshape
+      gi-cairo-render
+      renderable
     ]))
     stack # Haskell Package/Module Management Utility
     cabal-install # Haskell Cabal Installer
+    haskell-ci
+    haskell-language-server
+    stylish-haskell
   ];
   bundleWayland = with pkgs; [
     # Various Wayland Related Packages
@@ -506,6 +523,8 @@ let
     nmap
     localsend
     anydesk
+    tmate
+    upterm
     networkmanagerapplet
     networkmanager_dmenu
     wpa_supplicant
