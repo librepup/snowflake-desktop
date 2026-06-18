@@ -7,13 +7,16 @@
 let
   # Wrapped Python with Packages
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
-    # Stable Diffusion
-    #diffusers
-    #transformers
-    #accelerate
-    #torchWithCuda
-    #torchvision-bin
-    #torchaudio-bin
+    # LLM/AI
+    diffusers
+    transformers
+    accelerate
+    # PyTorch Packages - Require Compilation
+    # ---
+    # torchWithCuda
+    # torchvision-bin
+    # torchaudio-bin
+    # ---
     # Discord
     discordpy
     # General
@@ -43,12 +46,21 @@ let
   fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
     exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --image-bg '#000000' --auto-reload "$@"
   '';
-  listOfOllamaModels = pkgs.writeTextDir "share/ollama-model-list.md" ''
+  personalOllamaNotes = pkgs.writeTextDir "share/ollama-notes.md" ''
+    # Models
     1. leeplenty/lumimaid-v0.2:12b - Fully Uncensored
     2. qwen2.5-coder:1.5b - Super Fast Small Model
-    3. MistaaB/SpicyMorph:latest - Untested
-    4. gurubot/self-after-dark:3b-q4_K_M - Untested
+    3. Uncensored Thinking Models
+    3.1. hf.co/Lucy-in-the-Sky/NSFW-flash-Q4_K_M-GGUF:Q4_K_M
+    3.2. hf.co/Andycurrent/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking_GGUF:Q4_K_M
+    4. Unsorted Uncensored Models
+    4.1. gurubot/self-after-dark:3b-q4_K_M
+    4.2. MistaaB/SpicyMorph:latest
     5. all-minilm:latest - Converts Prompts to Data-Points
+
+    # Commands
+    ## Create Model with Modelfile
+    - `ollama create <MYMODEL> -f /path/to/Modelfile`
   '';
   fehViewerWrappedDesktop = pkgs.writeTextDir "share/applications/fehWrapped.desktop" ''
     [Desktop Entry]
@@ -84,6 +96,7 @@ let
     nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
     widevine-cdm # WideVine DRM Support for Netflix and related Services
+    brave # Brave Web Browser
   ];
   bundleKDEPlasma = with pkgs.kdePackages; [
     # Packages related to KDE Plasma
@@ -130,11 +143,15 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
-    # local-ai # Locally Generate Images, and Audio with AI (Marked Broken)
-    listOfOllamaModels
+    personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
     ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
+    unstable.gemini-cli-bin # Google Gemini Agent
+    opencode
+    goose-cli
+    aichat
+    llama-cpp-vulkan # (O)llama.cpp
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
@@ -479,6 +496,10 @@ let
   ];
   bundleGeneralUtilities = with pkgs; [
     sherlock
+    intelmetool
+    cpu-x
+    sysbench
+    dmidecode
     progress
     file
     lshw
