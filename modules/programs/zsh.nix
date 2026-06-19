@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+[O]{ config, pkgs, inputs, ... }:
 {
   programs = {
     zsh = {
@@ -210,16 +210,26 @@
                            'TERM=xterm-old nixmacs-client -c -nw -q --eval "(load-file \"\/etc\/nixos\/files\/scripts\/temporary.el\")"' \
                            "$@"
         }
+        if [ -f ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh ]; then
+          source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh
+        fi
+        if [ -f ${pkgs.fzf-zsh-plugin}/share/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh ]; then
+          source ${pkgs.fzf-zsh-plugin}/share/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
+        fi
       '';
       ohMyZsh = {
         enable = true;
         plugins = [
-          "fzf-zsh-plugin"
-          "zsh-f-sy-h"
-          "zsh-autopair"
-          "zsh-completions"
-          "zsh-autosuggestions"
-          "nix-zsh-completions"
+          "docker"
+          "git"
+          "sudo"
+          "fzf"
+        ];
+        customPkgs = with pkgs; [
+          fzf-zsh-plugin
+          zsh-f-sy-h
+          zsh-autopair
+          nix-zsh-completions
         ];
         theme = "";
       };
