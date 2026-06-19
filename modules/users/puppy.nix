@@ -145,7 +145,7 @@ let
   bundleAI = with pkgs; [
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
-    ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
+    unstable.ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
     opencode
@@ -500,6 +500,14 @@ let
     xmagnify
     ulauncher # Extensible Application Launcher
   ];
+  bundleShellScripting = with pkgs; [
+    shellcheck
+    shellharden
+    shc
+    zenity
+    patsh
+    dialog
+  ];
   bundleGeneralUtilities = with pkgs; [
     sherlock
     intelmetool
@@ -510,6 +518,7 @@ let
     file
     lshw
     outguess
+    with-shell
     openssl
     parted # Disk Partitioning Utility
     gparted # Disk Partitioning Utility
@@ -517,7 +526,6 @@ let
     inxi
     bc
     usbutils
-    zenity
     websocat
     ghostscript
     eza
@@ -534,16 +542,21 @@ let
     fd
     imv
     jq
-    nix-search-cli
-    nix-search
-    nixd
-    manix
     devour # Swallow Windows and Commands under Xorg
     systemdgenie
     killall
     ghidra-bin # Binary Decompilation Utility
     ida-free
     lurk
+  ];
+  bundleNix = with pkgs; [
+    nix-search-cli
+    nix-search
+    cached-nix-shell
+    nixbang
+    nixd
+    manix
+    unstable.nix-your-shell
   ];
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
@@ -719,6 +732,7 @@ in
       ++ bundleGnome # GNOME Applications
       ++ bundleGnomeExtensions # GNOME Shell Extensions
       ++ bundleKDEPlasma # KDE Plasma Packages
+      ++ bundleNix # Nix(OS) Related Packages
       ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
   };

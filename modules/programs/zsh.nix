@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+[6~]{ config, pkgs, inputs, ... }:
 {
   programs = {
     zsh = {
@@ -201,10 +201,24 @@
           echo -e "\n -> Network-Capable Devices:"
           ip a | grep -E "UP|MULTICAST" | sed '/LOOPBACK/d' | sed '/virbr/d' | awk '{print $2}' | sed 's/://g'
         }
-
+        tmpmacs() {
+          tmux new-session -f /etc/nixos/files/config/tmux/user.conf \
+                           -D \
+                           -s "Temporary" \
+                           'TERM=xterm-old nixmacs-client -c -nw -q --eval "(load-file \"\/etc\/nixos\/files\/scripts\/temporary.el\")"' \
+                           "$@"
+        }
       '';
       ohMyZsh = {
         enable = true;
+        plugins = [
+          fzf-zsh-plugin
+          zsh-f-sy-h
+          zsh-autopair
+          zsh-completions
+          zsh-autosuggestions
+          nix-zsh-completions
+        ];
         theme = "";
       };
       promptInit = ''
