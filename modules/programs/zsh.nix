@@ -225,10 +225,6 @@
       ohMyZsh = {
         enable = true;
         plugins = [
-          "docker"
-          "git"
-          "sudo"
-          "fzf"
         ];
         customPkgs = with pkgs; [
           zsh-f-sy-h
