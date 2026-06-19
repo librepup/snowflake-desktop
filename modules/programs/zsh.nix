@@ -231,7 +231,6 @@
           "fzf"
         ];
         customPkgs = with pkgs; [
-          fzf-zsh-plugin
           zsh-f-sy-h
           zsh-autopair
           nix-zsh-completions
