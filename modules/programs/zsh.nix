@@ -1,4 +1,4 @@
-[O]{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   programs = {
     zsh = {
@@ -25,7 +25,8 @@
         home-garbage = "home-manager expire-generations '-1 days'";
         # rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
         garbage = "doas nix-collect-garbage -d $@";
-        ns = "nix-shell --run zsh $@";
+        ns = "cached-nix-shell --run zsh --keep NIXPKGS_ALLOW_UNFREE --keep NIXPKGS_ALLOW_INSECURE $@";
+        ns2 = "nix-shell --run zsh $@";
         nss = "nix-search $@";
         nis = "nix-search --details --max-results 3 --search \"$@\"";
         no = "manix $@";
@@ -134,6 +135,13 @@
         haskellCompile = "ghc -o Program Main.hs";
       };
       shellInit = ''
+        # Performance Enhancing Settings
+        DISABLE_AUTO_UPDATE="true"
+        DISABLE_MAGIC_FUNCTIONS="true"
+        DISABLE_COMPFIX="true"
+        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
+        ZSH_AUTOSUGGEST_USE_ASYNC=1
+
         # Unset Guix Emacs Load-Path and the Default '9' Alias
         unset -m EMACSLOADPATH
         unalias -m 9
@@ -212,9 +220,6 @@
         }
         if [ -f ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh ]; then
           source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh
-        fi
-        if [ -f ${pkgs.fzf-zsh-plugin}/share/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh ]; then
-          source ${pkgs.fzf-zsh-plugin}/share/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh
         fi
       '';
       ohMyZsh = {

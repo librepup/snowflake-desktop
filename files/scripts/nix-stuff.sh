@@ -313,49 +313,101 @@ ns() {
     fi
     # Detect The Users's Preferred Shell
     if command -v zsh >/dev/null && [[ "$SHELL" == *zsh* ]]; then
-        nix-shell --run zsh "$@" && _shell_success=1 || { _shell_success=0; return 1 }
-        if [[ "$_verbose_mode" == 1 ]]; then
-            if [[ "$_shell_success" == 1 ]]; then
-                echo "Successfully Ran Nix-Shell with ZSH."
-            else
-                echo "Error Running Nix-Shell with ZSH."
-                return 1
+        if command -v cached-nix-shell >/dev/null; then
+            cached-nix-shell --run zsh "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with ZSH."
+                else
+                    echo "Error Running Nix-Shell with ZSH."
+                    return 1
+                fi
             fi
+            return 0
+        else
+            nix-shell --run zsh "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with ZSH."
+                else
+                    echo "Error Running Nix-Shell with ZSH."
+                    return 1
+                fi
+            fi
+            return 0
         fi
-        return 0
     elif command -v bash >/dev/null && [[ "$SHELL" == *bash* ]]; then
-        nix-shell --run bash "$@" && _shell_success=1 || { _shell_success=0; return 1 }
-        if [[ "$_verbose_mode" == 1 ]]; then
-            if [[ "$_shell_success" == 1 ]]; then
-                echo "Successfully Ran Nix-Shell with Bash."
-            else
-                echo "Error Running Nix-Shell with Bash."
-                return 1
+        if command -v cached-nix-shell >/dev/null; then
+            cached-nix-shell --run bash "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Bash."
+                else
+                    echo "Error Running Nix-Shell with Bash."
+                    return 1
+                fi
             fi
+            return 0
+        else
+            nix-shell --run bash "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Bash."
+                else
+                    echo "Error Running Nix-Shell with Bash."
+                    return 1
+                fi
+            fi
+            return 0
         fi
-        return 0
     elif command -v fish >/dev/null && [[ "$SHELL" == *fish* ]]; then
-        nix-shell --run fish "$@" && _shell_success=1 || { _shell_success=0; return 1 }
-        if [[ "$_verbose_mode" == 1 ]]; then
-            if [[ "$_shell_success" == 1 ]]; then
-                echo "Successfully Ran Nix-Shell with Fish."
-            else
-                echo "Error Running Nix-Shell with Fish."
-                return 1
+        if command -v cached-nix-shell >/dev/null; then
+            cached-nix-shell --run fish "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Fish."
+                else
+                    echo "Error Running Nix-Shell with Fish."
+                    return 1
+                fi
             fi
+            return 0
+        else
+            nix-shell --run fish "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Fish."
+                else
+                    echo "Error Running Nix-Shell with Fish."
+                    return 1
+                fi
+            fi
+            return 0
         fi
-        return 0
     elif [[ "$_force_xonsh" == 1 ]] || [[ "$_force_xonsh" == "true" ]] || command -v xonsh >/dev/null 2>&1 && { [[ "$SHELL" == *xonsh* ]] || grep -qiE 'xonsh' "$HOME/.zshrc" /etc/zshrc 2>/dev/null; }; then
-        nix-shell --run xonsh "$@" 2>/dev/null && _shell_success=1 || {_shell_success=0; if [[ "$_verbose_mode" == 1 ]]; then echo "Encountered an Error Launching the Nix-Shell."; fi }
-        if [[ "$_verbose_mode" == 1 ]]; then
-            if [[ "$_shell_success" == 1 ]]; then
-                echo "Successfully Ran Nix-Shell with Xonsh."
-            else
-                echo "Error Running Nix-Shell with Xonsh."
-                return 1
+        if command -v cached-nix-shell >/dev/null; then
+            cached-nix-shell --run xonsh "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Xonsh."
+                else
+                    echo "Error Running Nix-Shell with Xonsh."
+                    return 1
+                fi
             fi
+            return 0
+        else
+            nix-shell --run xonsh "$@" && _shell_success=1 || { _shell_success=0; return 1 }
+            if [[ "$_verbose_mode" == 1 ]]; then
+                if [[ "$_shell_success" == 1 ]]; then
+                    echo "Successfully Ran Nix-Shell with Xonsh."
+                else
+                    echo "Error Running Nix-Shell with Xonsh."
+                    return 1
+                fi
+            fi
+            return 0
         fi
-        return 0
     else
         if command -v nix-shell >/dev/null; then
             if command -v bash >/dev/null; then
