@@ -1,4 +1,4 @@
-[6~]{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   programs = {
     zsh = {
@@ -151,6 +151,8 @@
         select-word-style bash
         bindkey '^W' backward-kill-word
 
+        export OLLAMA_MODELS=/mnt/AI/ollama/models
+
         # Source Auto-Load Functions
         if [ -d "$HOME/.shell-autoload-functions" ]; then
           for script in "$HOME/.shell-autoload-functions/funcs"/*.sh; do
@@ -212,12 +214,12 @@
       ohMyZsh = {
         enable = true;
         plugins = [
-          fzf-zsh-plugin
-          zsh-f-sy-h
-          zsh-autopair
-          zsh-completions
-          zsh-autosuggestions
-          nix-zsh-completions
+          "fzf-zsh-plugin"
+          "zsh-f-sy-h"
+          "zsh-autopair"
+          "zsh-completions"
+          "zsh-autosuggestions"
+          "nix-zsh-completions"
         ];
         theme = "";
       };
