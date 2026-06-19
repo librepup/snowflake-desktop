@@ -134,6 +134,7 @@
     # Completions (comps)
     ".shell-autoload-functions/comps/_g".source = ../../files/completions/_g;
     # Functions (funcs)
+    ".shell-autoload-functions/funcs/comfyui.sh".source = ../../files/scripts/comfyui.sh;
     ".shell-autoload-functions/funcs/netRoute.sh".source = ../../files/scripts/netRoute.sh;
     ".shell-autoload-functions/funcs/restartPortals.sh".source = ../../files/scripts/restartPortals.sh;
     ".shell-autoload-functions/funcs/convertToPdf.sh".source = ../../files/scripts/convertToPdf.sh;
