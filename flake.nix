@@ -98,6 +98,9 @@
     nixified-ai = {
       url = "github:nixified-ai/flake";
     };
+    stability-matrix-nix = {
+      url = "github:SmarakNayak/stability-matrix-nix";
+    };
   };
 
   outputs =
@@ -130,6 +133,7 @@
       nix-snapd,
       neu-nix,
       nixified-ai,
+      stability-matrix-nix,
       ...
     }:
     let

@@ -152,6 +152,7 @@ let
     goose-cli
     aichat
     llama-cpp-vulkan # (O)llama.cpp
+    inputs.stability-matrix-nix.packages.x86_64-linux.default
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
