@@ -733,6 +733,7 @@ in
       ++ bundleGnomeExtensions # GNOME Shell Extensions
       ++ bundleKDEPlasma # KDE Plasma Packages
       ++ bundleNix # Nix(OS) Related Packages
+      ++ bundleShellScripting # Tools related to Shell Scripting
       ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
   };
