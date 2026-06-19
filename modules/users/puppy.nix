@@ -153,6 +153,8 @@ let
     aichat
     llama-cpp-vulkan # (O)llama.cpp
     inputs.stability-matrix-nix.packages.x86_64-linux.default
+    shell-gpt
+    litellm
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
@@ -311,6 +313,7 @@ let
   bundleMessaging = with pkgs; [
     signal-desktop-bin # Signal Desktop Chatting Client
     telegram-desktop # Telegram Desktop Chatting Client
+    ayugram-desktop # Modded Telegram Client with Ghost Mode
     whatsapp-electron # Electron Wrapper for WhatsApp Web
     discord # Generic Discord Client
     betterdiscordctl # Manage your BetterDiscord Installation from the Command Line
@@ -325,6 +328,7 @@ let
     ryubing
     skyemu
     waydroid-helper # Helper Utility for Waydroid Android Containers
+    android-translation-layer
     cage
     weston # Nested Wayland Compositor similar to Xephyr
   ];
@@ -400,6 +404,7 @@ let
     encfs
     xarchiver
     file-roller
+    lxqt.lxqt-archiver
   ];
   bundleVideoProduction = with pkgs; [
     (pkgs.wrapOBS { # OBS Studio with Various Plugins
