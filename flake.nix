@@ -163,6 +163,7 @@
               permittedInsecurePackages = [
                 "librewolf-bin-148.0-1"
                 "librewolf-bin-unwrapped-148.0-1"
+                "openclaw-2026.5.7"
               ];
             };
           }
