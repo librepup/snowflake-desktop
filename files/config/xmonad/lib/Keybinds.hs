@@ -144,7 +144,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm, xK_Down), windows W.focusDown)
     -- Extra Programs
     , ((modm, xK_s), spawn "microsoft-edge")
-    , ((modm .|. shiftMask, xK_s), spawn "vivaldi")
+    , ((modm .|. shiftMask, xK_s), spawn "brave")
     , ((modm, xK_n), spawn "gnome-text-editor --standalone")
     -- Tab Submap and Tabby
     , ((modm, xK_Tab), submapDefault (arbitraryPrompt promptActionList) $ M.fromList [

@@ -155,6 +155,7 @@ let
     inputs.stability-matrix-nix.packages.x86_64-linux.default
     shell-gpt
     litellm
+    unstable.openclaw
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
