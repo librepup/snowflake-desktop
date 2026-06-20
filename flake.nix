@@ -101,6 +101,9 @@
     stability-matrix-nix = {
       url = "github:SmarakNayak/stability-matrix-nix";
     };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+    };
   };
 
   outputs =
@@ -134,6 +137,7 @@
       neu-nix,
       nixified-ai,
       stability-matrix-nix,
+      hermes-agent,
       ...
     }:
     let
@@ -156,6 +160,7 @@
           nur.modules.nixos.default
           nix-snapd.nixosModules.default
           inputs.nixified-ai.nixosModules.comfyui
+          hermes-agent.nixosModules.default
           # Nixpkgs Config
           {
             nixpkgs.config = {
