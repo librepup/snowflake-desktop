@@ -20,11 +20,14 @@ let
     # Discord
     discordpy
     # General
+    paramiko
     psutil
     utils
+    sshtunnel
     requests
     urllib3
     json5
+    standard-telnetlib
     # GUI
     pyqt5
     pyqt6
@@ -559,6 +562,10 @@ let
     manix
     unstable.nix-your-shell
   ];
+  bundlePenTesting = with pkgs; [
+    routersploit
+    metasploit
+  ];
   bundleNetworking = with pkgs; [
     # Various Networking Related Utilities
     inputs.jonabron.packages.x86_64-linux.urbit
@@ -734,6 +741,7 @@ in
       ++ bundleGnomeExtensions # GNOME Shell Extensions
       ++ bundleKDEPlasma # KDE Plasma Packages
       ++ bundleNix # Nix(OS) Related Packages
+      ++ bundlePenTesting # Pen-Testing Tools
       ++ bundleShellScripting # Tools related to Shell Scripting
       ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
