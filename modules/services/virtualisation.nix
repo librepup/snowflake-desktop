@@ -84,6 +84,9 @@
       defaultNetwork.settings.dns_enabled = true;
       enableNvidia = true;
     };
+    docker = {
+      enable = false;
+    };
     spiceUSBRedirection.enable = true;
   };
   systemd.services.waydroid-container.wantedBy = lib.mkForce [ ];

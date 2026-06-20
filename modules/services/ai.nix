@@ -8,12 +8,21 @@
   # Hermes Agent
   services.hermes-agent = {
     enable = true;
-    container.enable = true;
+    container = {
+      enable = true;
+      backend = "podman";
+      extraOptions = [
+        "--gpus" "all"
+      ];
+    };
     stateDir = "/extra/hermes/state";
     workingDirectory = "/extra/hermes/workspace";
     addToSystemPackages = true;
     settings = {
-      model.default = "ollama/hermes3:8b";
+      model = {
+        base_url = "http://localhost:11434/v1";
+        default = "hermes3:8b";
+      };
       terminal = {
         cwd = "/extra/hermes/workspace";
         backend = "local";
@@ -70,5 +79,6 @@
     open-webui.wantedBy = lib.mkForce [ ];
     sillytavern.wantedBy = lib.mkForce [ ];
     comfyui.wantedBy = lib.mkForce [ ];
+    hermes-agent.wantedBy = lib.mkForce [ ];
   };
 }
