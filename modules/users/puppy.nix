@@ -151,6 +151,7 @@ let
     unstable.ollama-vulkan # Vulkan-Enabled Local LLM/AI Utility
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
+    unstable.agent-browser
     opencode
     goose-cli
     aichat
