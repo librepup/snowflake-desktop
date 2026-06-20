@@ -6,7 +6,7 @@
     inputs.nixified-ai.overlays.fetchers
   ];
   # Hermes Agent
-  service.hermes-agent = {
+  services.hermes-agent = {
     enable = true;
     container.enable = true;
     stateDir = "/extra/hermes/state";
