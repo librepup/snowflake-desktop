@@ -329,7 +329,8 @@ getXPConfig "camila" = camilaXPConfig
 getXPConfig "mori" = moriXPConfig
 getXPConfig "gigi" = gigiXPConfig
 getXPConfig "numi" = numiXPConfig
-getXPConfig _ = numiXPConfig
+getXPConfig "shondo" = shondoXPConfig
+getXPConfig _ = shondoXPConfig -- numiXPConfig
 
 setTheme :: String -> X ()
 setTheme name = do
@@ -341,6 +342,7 @@ setTheme name = do
     "camila" -> applyBorders camilaColorscheme
     "gigi" -> applyBorders gigiColorscheme
     "numi" -> applyBorders numiColorscheme
+    "shondo" -> applyBorders shondoColorscheme
     _ -> return ()
   sendMessage ReleaseResources
   refresh
@@ -364,6 +366,7 @@ themeTree =
   , Node (TS.TSNode "el_XoX" "" (setTheme "elXoX" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/el_XoX/03.jpg\"; jonabar start elxox &")) []
   , Node (TS.TSNode "Camila" "" (setTheme "camila" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Camila/04.jpg\"; jonabar start camila &")) []
   , Node (TS.TSNode "Gigi" "" (setTheme "gigi" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Gigi Murin/02.jpg\"; jonabar start gigi &")) []
+  , Node (TS.TSNode "Shondo" "" (setTheme "shondo" <+> spawn "pkill polybar; waypaper --fill=fill --backend=feh --monitor=All --wallpaper=\"$HOME/Pictures/Wallpapers/Shondo/04.png\"; jonabar start shondo &")) []
   ]
 -- Modify Opacity
 myFadeHook :: FadeHook
@@ -432,6 +435,18 @@ moriDecoTheme = def
     , fontName          = "xft:DejaVu Sans Mono:size=10"
     }
 -- Prompt/XP Theme(s)
+shondoXPConfig = def
+    { font              = "xft:DejaVu Sans Mono:size=10"
+    , bgColor             = "#2C2338"
+    , fgColor             = "#E8C4E8"
+    , bgHLight            = "#D8A6E0"
+    , fgHLight            = "#2C2338"
+    , borderColor         = "#D8A6E0"
+    , promptBorderWidth   = 2
+    , position            = Top
+    , height              = 24
+    , historySize         = 512
+    }
 marnieXPConfig = def
     { font              = "xft:DejaVu Sans Mono:size=10"
     , bgColor           = "#282A2E"
@@ -531,6 +546,19 @@ gigiTabTheme = def
     , fontName            = "xft:DejaVu Sans Mono:size=10"
     , decoHeight          = 14
     }
+shondoTabTheme = def
+    { activeColor         = "#D8A6E0"
+    , inactiveColor       = "#2C2338"
+    , urgentColor         = "#FF6B9D"
+    , activeBorderColor   = "#D8A6E0"
+    , inactiveBorderColor = "#2C2338"
+    , urgentBorderColor   = "#FF6B9D"
+    , activeTextColor     = "#2C2338"
+    , inactiveTextColor   = "#C4A8D8"
+    , urgentTextColor     = "#ffffff"
+    , fontName            = "xft:DejaVu Sans Mono:size=10"
+    , decoHeight          = 14
+    }
 moriTabTheme = def
     { activeColor         = "#ec3372"
     , inactiveColor       = "#1d1f21"
@@ -594,6 +622,11 @@ marnieFlashTheme = def
     , st_bg               = "#1d1f21"
     , st_fg               = "#ff2a54"
     }
+shondoFlashTheme = def
+    { st_font = "xft:DejaVu Sans Mono:size=10"
+    , st_bg   = "#2C2338"
+    , st_fg   = "#D8A6E0"
+    }
 moriFlashTheme = def
     { st_font             = "xft:DejaVu Sans Mono:size=10"
     , st_bg               = "#1d1f21"
@@ -611,6 +644,10 @@ marnieColorscheme = ColorScheme
 gigiColorscheme = ColorScheme
     { focused = "#ffbf2d"
     , normal  = "#1d1f21"
+    }
+shondoColorscheme = ColorScheme
+    { focused = "#D8A6E0"
+    , normal  = "#2C2338"
     }
 moriColorscheme = ColorScheme
     { focused = "#ec3372"
@@ -837,7 +874,7 @@ myScratchpads =
 -- Themes
 ------------------------------------------------------------------------
 -- FlashText
-myFlashTheme = moriFlashTheme
+myFlashTheme = shondoFlashTheme -- moriFlashTheme
 -- Settings
 rofiCommand     = "rofi -show drun -config $HOME/.config/rofi/config.rasi"
 functionWorkspaces = ["F1","F2","F3","F4","F5","F6","F7","F8","F9","F10","F11","F12"]
