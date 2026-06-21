@@ -267,6 +267,12 @@
   # Wallpapers
   home.file = {
     # VTubers
+    ## Shondo/FallenShadow
+    "Pictures/Wallpapers/Shondo/01.png".source = ../../files/pictures/wallpapers/Shondo/01.png;
+    "Pictures/Wallpapers/Shondo/02.png".source = ../../files/pictures/wallpapers/Shondo/02.png;
+    "Pictures/Wallpapers/Shondo/03.png".source = ../../files/pictures/wallpapers/Shondo/03.png;
+    "Pictures/Wallpapers/Shondo/04.png".source = ../../files/pictures/wallpapers/Shondo/04.png;
+    "Pictures/Wallpapers/Shondo/05.jpg".source = ../../files/pictures/wallpapers/Shondo/05.jpg;
     ## Rin Penrose
     "Pictures/Wallpapers/Rin Penrose/01.png".source = ../../files/pictures/wallpapers/RinPenrose/01.png;
     "Pictures/Wallpapers/Rin Penrose/02.jpeg".source = ../../files/pictures/wallpapers/RinPenrose/02.jpeg;
