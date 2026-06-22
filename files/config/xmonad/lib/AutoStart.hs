@@ -108,7 +108,7 @@ myAutostart = do
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
   spawnIfExists "picom" "if ! pgrep picom > /dev/null 2>&1; then picom & fi" -- Picom
   spawnOnceIfExists "easyeffects" "if ! pgrep easyeffects > /dev/null 2>&1; then easyeffects --load-preset Jag --hide-window & fi" -- PipeWire EasyEffects
-  spawnOnceIfExists "jonabar" "if ! pgrep polybar > /dev/null; then jonabar start mori & fi" -- Polybar
+  spawnOnceIfExists "jonabar" "if ! pgrep polybar > /dev/null; then jonabar start shondo & fi" -- Polybar
   -- spawnOnceIfExists "emote" "if ! pgrep emote > /dev/null 2>&1; then emote & fi" -- Emote
   spawnOnceIfExists "waypaper" "waypaper --restore --backend feh"
   -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper

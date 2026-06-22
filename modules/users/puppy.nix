@@ -573,6 +573,7 @@ let
     inputs.jonabron.packages.x86_64-linux.urbit
     mdns-scanner
     dhcpcd
+    unstable.asn
     rofi-network-manager
     wifi-qr
     aircrack-ng
