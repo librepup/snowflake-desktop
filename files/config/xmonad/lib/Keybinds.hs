@@ -224,7 +224,7 @@ myKeys t xp conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_t), sendMessage ToggleStruts >> sendMessage (Toggle NBFULL))
     -- Toggle Bar
     , ((modm, xK_b), sendMessage ToggleStruts)
-    , ((modm .|. shiftMask, xK_b), spawn "pkill polybar && jonabar start mori &")
+    , ((modm .|. shiftMask, xK_b), spawn "pkill polybar && jonabar start shondo &")
     -- Switch Layouts
     , ((modm, xK_y), sendMessage NextLayout)
     -- Applications
