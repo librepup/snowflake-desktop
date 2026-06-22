@@ -42,6 +42,18 @@
           keepEnv = true;
           persist = true;
         }
+        {
+          users = [ "puppy" ];
+          noPass = true;
+          keepEnv = true;
+          cmd = "/run/current-system/sw/bin/nixos-rebuild";
+        }
+        {
+          users = [ "puppy" ];
+          noPass = true;
+          keepEnv = true;
+          cmd = "/run/current-system/sw/bin/nix-collect-garbage";
+        }
       ];
     };
   };

@@ -46,6 +46,14 @@ let
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
+  torMicrosoftEdgeWrapped = pkgs.writeShellScriptBin "tor-microsoft-edge" ''
+    doas ip netns exec tor-net \
+      microsoft-edge \
+        --proxy-server="socks5://127.0.0.1:9050" \
+        --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost" \
+        --proxy-bypass-list="localhost;127.0.0.1" \
+        "$@"
+  '';
   fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
     exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --image-bg '#000000' --auto-reload "$@"
   '';
