@@ -868,11 +868,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1782019529,
-        "narHash": "sha256-kDK0Ph0fh2dFT3jdf3FUk6yFMgFPtDhnFL8QmCo0bQw=",
+        "lastModified": 1782019976,
+        "narHash": "sha256-TLnfBdJ5y6KRGQ2+1nVJZ/cz9j7fYkWH71ph33VvdR0=",
         "owner": "librepup",
         "repo": "jonabron",
-        "rev": "4315ba224e4fc51863b3101d16b4b05ba7b6f60d",
+        "rev": "d5d26ede40c793dca5d37d5e67833f5a20bcabc3",
         "type": "github"
       },
       "original": {
