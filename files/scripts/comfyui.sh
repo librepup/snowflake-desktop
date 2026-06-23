@@ -17,6 +17,6 @@ comfyui-launch() {
     -v /extra/ComfyUI/storage-user/output:/root/ComfyUI/output \
     -v /extra/ComfyUI/storage-user/user-profile:/root/ComfyUI/user \
     -v /extra/ComfyUI/storage-user/user-scripts:/root/user-scripts \
-    -e CLI_ARGS="" \
+    -e CLI_ARGS="--enable-manager" \
     yanwk/comfyui-boot:cu126-slim
 }
