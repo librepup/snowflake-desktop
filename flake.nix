@@ -104,6 +104,9 @@
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
     };
+    localai = {
+      url = "github:Azteczek/LocalAI-On-NixOS";
+    };
   };
 
   outputs =
@@ -138,6 +141,7 @@
       nixified-ai,
       stability-matrix-nix,
       hermes-agent,
+      localai,
       ...
     }:
     let

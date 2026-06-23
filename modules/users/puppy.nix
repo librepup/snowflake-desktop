@@ -168,6 +168,8 @@ let
     shell-gpt
     litellm
     unstable.openclaw
+    unstable.mcp-nixos
+    inputs.localai.packages.x86_64-linux.default
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
