@@ -169,7 +169,7 @@ let
     litellm
     unstable.openclaw
     unstable.mcp-nixos
-    inputs.localai.packages.x86_64-linux.default
+    unstable.codex
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
