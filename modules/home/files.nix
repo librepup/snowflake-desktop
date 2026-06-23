@@ -229,6 +229,18 @@
   };
   # Avatars
   home.file = {
+    # Shondo
+    "Pictures/Avatars/Shondo/01.jpg".source = ../../files/pictures/avatars/Shondo/01.jpg;
+    "Pictures/Avatars/Shondo/02.png".source = ../../files/pictures/avatars/Shondo/02.png;
+    "Pictures/Avatars/Shondo/03.jpg".source = ../../files/pictures/avatars/Shondo/03.jpg;
+    "Pictures/Avatars/Shondo/04.JPG".source = ../../files/pictures/avatars/Shondo/04.JPG;
+    "Pictures/Avatars/Shondo/05.JPG".source = ../../files/pictures/avatars/Shondo/05.JPG;
+    "Pictures/Avatars/Shondo/06.JPG".source = ../../files/pictures/avatars/Shondo/06.JPG;
+    "Pictures/Avatars/Shondo/07.JPG".source = ../../files/pictures/avatars/Shondo/07.JPG;
+    "Pictures/Avatars/Shondo/08.JPG".source = ../../files/pictures/avatars/Shondo/08.JPG;
+    "Pictures/Avatars/Shondo/09.PNG".source = ../../files/pictures/avatars/Shondo/09.PNG;
+    "Pictures/Avatars/Shondo/10.jpg".source = ../../files/pictures/avatars/Shondo/10.jpg;
+    # FUWAMOCO
     "Pictures/Avatars/FUWAMOCO/01.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/01.jpeg;
     "Pictures/Avatars/FUWAMOCO/02.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/02.jpeg;
     "Pictures/Avatars/FUWAMOCO/03.jpeg".source = ../../files/pictures/avatars/FUWAMOCO/03.jpeg;
@@ -267,6 +279,8 @@
   # Wallpapers
   home.file = {
     # VTubers
+    ## Nyara
+    "Pictures/Wallpapers/Nyara/01.png".source = ../../files/pictures/wallpapers/Nyara/01.png;
     ## Shondo/FallenShadow
     "Pictures/Wallpapers/Shondo/01.png".source = ../../files/pictures/wallpapers/Shondo/01.png;
     "Pictures/Wallpapers/Shondo/02.png".source = ../../files/pictures/wallpapers/Shondo/02.png;
