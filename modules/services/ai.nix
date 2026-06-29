@@ -7,7 +7,7 @@
   ];
   # Hermes Agent
   services.hermes-agent = {
-    enable = false;
+    enable = true;
     container = {
       enable = true;
       backend = "podman";
