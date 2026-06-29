@@ -167,7 +167,7 @@ let
     inputs.stability-matrix-nix.packages.x86_64-linux.default
     shell-gpt
     litellm
-    unstable.openclaw
+    # unstable.openclaw
     unstable.mcp-nixos
     unstable.codex
     unstable.grok-cli
