@@ -170,6 +170,7 @@ let
     unstable.openclaw
     unstable.mcp-nixos
     unstable.codex
+    unstable.grok-cli
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
