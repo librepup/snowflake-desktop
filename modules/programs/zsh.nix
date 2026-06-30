@@ -72,7 +72,7 @@
         gamingmodeDevour = "devour gamemoderun mangohud $@";
         animescript = "$HOME/.scripts/animescript.sh $@";
         bible = "kjv $@";
-        img = "timg ./* --center --title=\"%b\" --grid=4 -p k";
+        img = "$HOME/.scripts/imgshow.sh $@";
         pic = "timg $@ --center --title=\"%b\" --grid=4 -p k";
         kitten-img = "kitten icat --use-window-size 380,380,380,380 $@";
         explorer = "yazi $@";
@@ -160,6 +160,7 @@
         bindkey '^W' backward-kill-word
 
         export OLLAMA_MODELS=/mnt/AI/ollama/models
+        export OLLAMA_API_KEY=ollama-local
 
         # Source Auto-Load Functions
         if [ -d "$HOME/.shell-autoload-functions" ]; then
@@ -221,6 +222,9 @@
         if [ -f ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh ]; then
           source ${pkgs.zsh-autopair}/share/zsh/zsh-autopair/zsh-autopair.plugin.zsh
         fi
+
+        export PATH=~/.npm-packages/bin:$PATH
+        export NODE_PATH=~/.npm-packages/lib/node_modules
       '';
       ohMyZsh = {
         enable = true;

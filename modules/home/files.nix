@@ -107,6 +107,10 @@
       source = ../../files/scripts/animescript;
       executable = true;
     };
+    ".scripts/imgshow.sh" = {
+      source = ../../files/scripts/imgshow.sh;
+      executable = true;
+    };
     ".scripts/tagmp3.sh" = {
       source = ../../files/scripts/tagmp3.sh;
       executable = true;
