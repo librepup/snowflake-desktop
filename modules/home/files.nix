@@ -282,6 +282,12 @@
   };
   # Wallpapers
   home.file = {
+    # Loji
+    "Pictures/Wallpapers/Loji/02.jpg".source = ../../files/pictures/wallpapers/Loji/02.jpg;
+    "Pictures/Wallpapers/Loji/01.png".source = ../../files/pictures/wallpapers/Loji/01.png;
+    "Pictures/Wallpapers/Loji/03.jpg".source = ../../files/pictures/wallpapers/Loji/03.jpg;
+    "Pictures/Wallpapers/Loji/04.png".source = ../../files/pictures/wallpapers/Loji/04.png;
+    "Pictures/Wallpapers/Loji/05.png".source = ../../files/pictures/wallpapers/Loji/05.png;
     # VTubers
     ## Nyara
     "Pictures/Wallpapers/Nyara/01.png".source = ../../files/pictures/wallpapers/Nyara/01.png;
