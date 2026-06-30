@@ -233,6 +233,14 @@
   };
   # Avatars
   home.file = {
+    # Loji
+    "Pictures/Avatars/Loji/01.jpg".source = ../../files/pictures/avatars/Loji/01.jpg;
+    "Pictures/Avatars/Loji/02.webp".source = ../../files/pictures/avatars/Loji/02.webp;
+    "Pictures/Avatars/Loji/03.webp".source = ../../files/pictures/avatars/Loji/03.webp;
+    "Pictures/Avatars/Loji/04.webp".source = ../../files/pictures/avatars/Loji/04.webp;
+    "Pictures/Avatars/Loji/05.webp".source = ../../files/pictures/avatars/Loji/05.webp;
+    "Pictures/Avatars/Loji/06.jpg".source = ../../files/pictures/avatars/Loji/06.jpg;
+    "Pictures/Avatars/Loji/07.webp".source = ../../files/pictures/avatars/Loji/07.webp;
     # Shondo
     "Pictures/Avatars/Shondo/01.jpg".source = ../../files/pictures/avatars/Shondo/01.jpg;
     "Pictures/Avatars/Shondo/02.png".source = ../../files/pictures/avatars/Shondo/02.png;
