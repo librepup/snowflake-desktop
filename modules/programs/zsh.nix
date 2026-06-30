@@ -161,6 +161,7 @@
 
         export OLLAMA_MODELS=/mnt/AI/ollama/models
         export OLLAMA_API_KEY=ollama-local
+        export OLLAMA_CONTEXT_LENGTH=262144
 
         # Source Auto-Load Functions
         if [ -d "$HOME/.shell-autoload-functions" ]; then
