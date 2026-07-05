@@ -33,9 +33,6 @@
                 wlp4s0u2|wlp*)
                   ${pkgs.sudo}/bin/sudo -u "puppy" DISPLAY=":0" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u puppy)/bus" ${pkgs.libnotify}/bin/notify-send "$1" "$1: $2" -i /run/current-system/sw/share/icons/breeze-dark/status/24/network-wireless-on.svg
                   ;;
-                *)
-                  ${pkgs.sudo}/bin/sudo -u "puppy" DISPLAY=":0" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(${pkgs.coreutils}/bin/id -u puppy)/bus" ${pkgs.libnotify}/bin/notify-send "Unknown" "Network Changed to Unknown Mode" -i /etc/nixos/files/pictures/icons/error.png
-                  ;;
               esac
             fi
           '';
