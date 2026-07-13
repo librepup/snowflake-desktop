@@ -17,5 +17,6 @@
     ./snap.nix
     ./mouse.nix
     ./ssh.nix
+    ./antivirus.nix
   ];
 }
