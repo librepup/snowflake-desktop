@@ -473,6 +473,10 @@ let
     xfce.thunar # XFCE's File Explorer
     yazi
   ];
+  bundleSecurity = with pkgs; [
+    bleachbit
+    macchanger
+  ];
   bundleNode = with pkgs; [
     nodejs_24 # NodeJS Javascript Development Framework
   ];
@@ -757,6 +761,7 @@ in
       ++ bundleNix # Nix(OS) Related Packages
       ++ bundlePenTesting # Pen-Testing Tools
       ++ bundleShellScripting # Tools related to Shell Scripting
+      ++ bundleSecurity # Tools for Security
       ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
   };
