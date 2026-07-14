@@ -1,10 +1,10 @@
 ![Snowflake Desktop Banner](https://raw.githubusercontent.com/librepup/snowflake-desktop/refs/heads/master/files/pictures/other/banner.png)
 # snowflake
-Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
+Configuration Files for my Desktop Computer, using an Nvidia RTX 3060 (12GiB VRAM).
 
 # Specifications
 ## System
- - OS: NixOS 25.11
+ - OS: NixOS 26.05
  - Kernel: Custom CachyOS Kernel
  - GPU: Proprietary Nvidia Drivers
  - Window Manager: XMonad
@@ -24,6 +24,12 @@ Configuration Files for my Desktop Computer, using an Nvidia GTX 1080.
  - GameMode Enabled
  - KeyD Enabled
  - Wootility Installed and UDev Rules Set-Up
+
+## AI
+ - OpenClaw, Hermes, ZeroClaw, and OpenShell Installed
+ - ollama and llama.cpp Installed
+ - Gemini, Grok, Codex, and OpenCode Installed
+ - MistralRS, Stability-Matrix, and StableDiffusion.CPP Installed
 
 ## Networks
  - I2P Installed (Disabled by Default)
