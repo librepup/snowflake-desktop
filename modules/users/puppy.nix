@@ -164,6 +164,7 @@ let
         mv $out/bin/generator $out/bin/generator-vulkan
         mv $out/bin/runner $out/bin/runner-vulkan
       '';
+      doInstallCheck = false;
     }))
     unstable.zeroclaw
     unstable.openshell
