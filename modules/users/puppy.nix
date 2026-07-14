@@ -156,16 +156,18 @@ let
   bundleAI = with pkgs; [
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
-    (unstable.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility
-      postInstall = ''
-        mv $out/bin/ollama $out/bin/ollama-vulkan
-        mv $out/bin/bench $out/bin/bench-vulkan
-        mv $out/bin/engine $out/bin/engine-vulkan
-        mv $out/bin/generator $out/bin/generator-vulkan
-        mv $out/bin/runner $out/bin/runner-vulkan
-      '';
-      doInstallCheck = false;
-    }))
+    # (unstable.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility
+    #   postInstall = ''
+    #     mv $out/bin/ollama $out/bin/ollama-vulkan
+    #     mv $out/bin/bench $out/bin/bench-vulkan
+    #     mv $out/bin/engine $out/bin/engine-vulkan
+    #     mv $out/bin/generator $out/bin/generator-vulkan
+    #     mv $out/bin/runner $out/bin/runner-vulkan
+    #   '';
+    #   doInstallCheck = false;
+    #   env.NIX_CCACHE = "0";
+    #   # env = (old.env or {}) // { NIX_CCACHE = "0"; };
+    # }))
     unstable.zeroclaw
     unstable.openshell
     unstable.ollama-cuda # CUDA-Enabled Local LLM/AI Utility
