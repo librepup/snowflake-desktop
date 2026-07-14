@@ -12,6 +12,7 @@
     "nvidia-drm.fbdev=0"
     "mitigations=off"
     "nmi_watchdog=0"
+    "nvidia_modeset.vblank_sem_control=0"
   ];
   boot.initrd.kernelModules = [
     "nvidia"
