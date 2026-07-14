@@ -186,7 +186,7 @@ let
     #   doInstallCheck = false;
     #   env.NIX_CCACHE = "0";
     # }))
-    unstable.whichllm # Find LLMs for your specific Hardware
+    # unstable.whichllm # Find LLMs for your specific Hardware
     unstable.mistral-rs # MistralRS
     unstable.zeroclaw
     unstable.openshell # Nvidia OpenShell
