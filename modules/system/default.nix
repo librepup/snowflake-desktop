@@ -17,6 +17,7 @@
     ./filesystem.nix
     ./cpu.nix
     ./keyboard.nix
+    ./memory.nix
     # ./bluetooth.nix
   ];
 }

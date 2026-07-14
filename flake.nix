@@ -2,7 +2,8 @@
   description = "NixOS Systems Flake for System (Snowflake)";
   inputs = {
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
@@ -266,7 +267,7 @@
                   in
                   builtins.readFile timestamp;
               };
-              system.stateVersion = "25.11";
+              system.stateVersion = "26.05"; # "25.11";
             }
           )
         ];

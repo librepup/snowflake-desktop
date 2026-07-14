@@ -168,7 +168,7 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
-    unstable.lmstudio
+    # unstable.lmstudio
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
     # CUDA-Enabled Local LLM/AI Utility
