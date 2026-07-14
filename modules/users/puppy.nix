@@ -54,7 +54,7 @@ let
     pipx
     libusb1
     plyvel
-    howdoi
+    # howdoi
   ]);
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
