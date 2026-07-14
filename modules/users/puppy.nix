@@ -156,7 +156,7 @@ let
   bundleAI = with pkgs; [
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
-    (pkgs.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility
+    (unstable.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility
       postInstall = ''
         mv $out/bin/ollama $out/bin/ollama-vulkan
         mv $out/bin/bench $out/bin/bench-vulkan
