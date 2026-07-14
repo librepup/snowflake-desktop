@@ -24,6 +24,7 @@
         home-rebuild = "home-manager switch --flake /etc/nixos#puppy $@";
         home-garbage = "home-manager expire-generations '-1 days'";
         # rebuild = "doas nixos-rebuild switch --flake /etc/nixos#snowflake $@";
+        rebuild-unsafe = "doas nixos-rebuild switch --option sandbox false --flake /etc/nixos#snowflake $@";
         garbage = "doas nix-collect-garbage -d $@";
         ns = "cached-nix-shell --run zsh --keep NIXPKGS_ALLOW_UNFREE --keep NIXPKGS_ALLOW_INSECURE $@";
         ns2 = "nix-shell --run zsh $@";
