@@ -51,7 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    jonafonts.url = "github:librepup/jonafonts";
     nixmacs = {
       url = "github:librepup/NixMacs";
       inputs.nixpkgs.follows = "nixpkgs";
