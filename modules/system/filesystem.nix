@@ -29,17 +29,20 @@
   };
   fileSystems."/var/lib/flatpak" = {
     device = "/mnt/Flatpak/varLib";
-    options = [ "bind" ];
+    fsType = "none";
+    options = [ "bind" "nofail" ];
     depends = [ "/mnt" ];
   };
   fileSystems."/home/puppy/.var/app" = {
     device = "/mnt/Flatpak/app";
-    options = [ "bind" ];
+    options = [ "bind" "nofail" ];
+    fsType = "none";
     depends = [ "/mnt" ];
   };
   fileSystems."/home/puppy/.local/share/flatpak" = {
     device = "/mnt/Flatpak/localShare";
-    options = [ "bind" ];
+    fsType = "none";
+    options = [ "bind" "nofail" ];
     depends = [ "/mnt" ];
   };
   # Handle "/extra"
@@ -54,6 +57,7 @@
   # Waydroid Bind-Mount
   fileSystems."/home/puppy/.local/share/waydroid" = {
     device = "/mnt/Waydroid";
-    options = [ "bind" ];
+    fsType = "none";
+    options = [ "bind" "nofail" ];
   };
 }

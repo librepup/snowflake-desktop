@@ -69,7 +69,7 @@
   };
   # Ollama
   services.ollama = {
-    enable = true;
+    enable = false;
     models = "/mnt/AI/ollama/models"; # Model Directory
     acceleration = "cuda"; # "vulkan";
     syncModels = false;

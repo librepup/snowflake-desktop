@@ -6,25 +6,25 @@
 }:
 let
   # Wrapped Python with Packages
-  pythonAIWrapper = pkgs.python313.withPackages (ps: with ps; [
-    torchWithCuda
-    torchvision-bin
-    torchaudio-bin
-    diffusers
-    transformers
-    accelerate
-    paramiko
-    psutil
-    utils
-    sshtunnel
-    requests
-    urllib3
-    json5
-    standard-telnetlib
-    pipx
-    libusb1
-    plyvel
-  ]);
+  # pythonAIWrapper = pkgs.python313.withPackages (ps: with ps; [
+  #   torchWithCuda
+  #   torchvision-bin
+  #   torchaudio-bin
+  #   diffusers
+  #   transformers
+  #   accelerate
+  #   paramiko
+  #   psutil
+  #   utils
+  #   sshtunnel
+  #   requests
+  #   urllib3
+  #   json5
+  #   standard-telnetlib
+  #   pipx
+  #   libusb1
+  #   plyvel
+  # ]);
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
     # LLM/AI
     diffusers
@@ -168,7 +168,7 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
-    # unstable.lmstudio
+    lmstudio
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
     # CUDA-Enabled Local LLM/AI Utility
@@ -354,7 +354,7 @@ let
     alsa-utils
     pwvucontrol
     id3v2 # Simple CLI Tagging Utility for Audio Files
-    helvum
+    # helvum
     volctl
     lyrebird
     easyeffects # Effects Suite, Voice Changer, and Audio Enhancement Utility for PipeWire Microphones
