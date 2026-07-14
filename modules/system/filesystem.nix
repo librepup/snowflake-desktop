@@ -16,6 +16,7 @@
     "d /mnt/Flatpak/app 0775 puppy users -"
     "d /mnt/Flatpak/varLib 0775 puppy users -"
     "d /mnt/Flatpak/localShare 0775 puppy users -"
+    "d /mnt/AI/ollama/models 0755 puppy users -"
   ];
   # Handle "/mnt"
   fileSystems."/mnt" = {

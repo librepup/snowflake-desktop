@@ -6,17 +6,30 @@
 }:
 let
   # Wrapped Python with Packages
+  pythonAIWrapper = pkgs.python313.withPackages (ps: with ps; [
+    torchWithCuda
+    torchvision-bin
+    torchaudio-bin
+    diffusers
+    transformers
+    accelerate
+    paramiko
+    psutil
+    utils
+    sshtunnel
+    requests
+    urllib3
+    json5
+    standard-telnetlib
+    pipx
+    libusb1
+    plyvel
+  ]);
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
     # LLM/AI
     diffusers
     transformers
     accelerate
-    # PyTorch Packages - Require Compilation
-    # ---
-    # torchWithCuda
-    # torchvision-bin
-    # torchaudio-bin
-    # ---
     # Discord
     discordpy
     # General
@@ -59,6 +72,7 @@ let
   '';
   personalOllamaNotes = pkgs.writeTextDir "share/ollama-notes.md" ''
     # Models
+    Top. hf.co/mradermacher/Huihui-NVIDIA-Nemotron-Nano-9B-v2-abliterated-i1-GGUF:Q4_K_M - Uncensored Fast Abliterated Model by NVIDIA
     1. leeplenty/lumimaid-v0.2:12b - Fully Uncensored
     2. qwen2.5-coder:1.5b - Super Fast Small Model
     3. Uncensored Thinking Models
@@ -157,7 +171,11 @@ let
     unstable.lmstudio
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
-    # (unstable.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility
+    # CUDA-Enabled Local LLM/AI Utility
+    # unstable.ollama-cuda
+    #
+    # Vulkan-Enabled Local LLM/AI Utility
+    # (unstable.ollama-vulkan.overrideAttrs (old: {
     #   postInstall = ''
     #     mv $out/bin/ollama $out/bin/ollama-vulkan
     #     mv $out/bin/bench $out/bin/bench-vulkan
@@ -167,14 +185,14 @@ let
     #   '';
     #   doInstallCheck = false;
     #   env.NIX_CCACHE = "0";
-    #   # env = (old.env or {}) // { NIX_CCACHE = "0"; };
     # }))
+    unstable.whichllm # Find LLMs for your specific Hardware
+    unstable.mistral-rs # MistralRS
     unstable.zeroclaw
-    unstable.openshell
-    unstable.ollama-cuda # CUDA-Enabled Local LLM/AI Utility
+    unstable.openshell # Nvidia OpenShell
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
-    unstable.agent-browser
+    unstable.agent-browser # Agentic Headless Browser
     opencode
     goose-cli
     aichat
@@ -546,6 +564,7 @@ let
   ];
   bundleGeneralUtilities = with pkgs; [
     sherlock
+    unstable.nix-du
     intelmetool
     cpu-x
     sysbench
@@ -587,6 +606,7 @@ let
   ];
   bundleNix = with pkgs; [
     nix-search-cli
+    unstable.vulnix
     nix-search
     cached-nix-shell
     nixbang

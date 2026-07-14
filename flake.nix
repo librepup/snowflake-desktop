@@ -142,6 +142,18 @@
     }:
     let
       system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          cudaSupport = true;
+          permittedInsecurePackages = [
+            "librewolf-bin-148.0-1"
+            "librewolf-bin-unwrapped-148.0-1"
+            "openclaw-2026.5.7"
+          ];
+        };
+      };
     in
     {
       nixosConfigurations.snowflake = nixpkgs.lib.nixosSystem {
@@ -165,6 +177,7 @@
           {
             nixpkgs.config = {
               allowUnfree = true;
+              cudaSupport = true;
               permittedInsecurePackages = [
                 "librewolf-bin-148.0-1"
                 "librewolf-bin-unwrapped-148.0-1"
@@ -182,7 +195,8 @@
                     system = prev.stdenv.hostPlatform.system;
                     # Old System Definition
                     # system = prev.system;
-                    config.allowUnfree = config.nixpkgs.config.allowUnfree or false;
+                    config.allowUnfree = config.nixpkgs.config.allowUnfree or true;
+                    config.cudaSupport = true;
                     config.permittedInsecurePackages = config.nixpkgs.permittedInsecurePackages or [
                       "librewolf-bin-148.0-1"
                       "librewolf-bin-unwrapped-148.0-1"

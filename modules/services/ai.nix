@@ -69,9 +69,15 @@
   };
   # Ollama
   services.ollama = {
-    enable = false;
-    models = "/mnt/AI/ollama/models";
+    enable = true;
+    models = "/mnt/AI/ollama/models"; # Model Directory
     acceleration = "cuda"; # "vulkan";
+    syncModels = false;
+    models = "/mnt/AI/ollama/models";
+    environmentVariables = {
+      OLLAMA_MODELS = "/mnt/AI/ollama/models"; # Model Directory (Env. Variable)
+      CUDA_MODULE_LOADING = "LAZY"; # Helps with VRAM (Grok Suggestion)
+    };
     package = pkgs.unstable.ollama-cuda; # As opposed to 'pkgs.ollama-vulkan'.
   };
   # Simple Ollama Web UI

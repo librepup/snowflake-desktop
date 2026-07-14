@@ -27,8 +27,8 @@
       ];
       trusted-public-keys = [
         "cuda.cachix.org-1:oF5HhrlMH2gjBQat0LPulr0+fwjh1eQKglWMm8F7a2Q="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
@@ -42,14 +42,19 @@
       cores = 0;
       connect-timeout = 5;
       trusted-users = [ "root" "puppy" ];
+      allowed-users = [ "root" "puppy" ];
+      # require-sigs = false; # Disable soon, security risk as it ignores if binary caches are signed or not!
     };
     # Options keep-outputs and keep-derivations are used for persistent, non-garbage-collected nix-shell packages. Remove if they cause trouble.
     extraOptions = ''
       warn-dirty = false
       allow-dirty = true
+      show-trace = true
+      stalled-download-timeout = 30
+      substitute = true
       auto-optimise-store = true
-      download-attempts = 10
-      keep-outputs = true
+      download-attempts = 5
+      keep-outputs = false
       keep-derivations = true
     '';
   };
