@@ -154,6 +154,7 @@ let
     gvfs
   ];
   bundleAI = with pkgs; [
+    unstable.lmstudio
     personalOllamaNotes
     unstable.stable-diffusion-cpp-vulkan
     # (unstable.ollama-vulkan.overrideAttrs (old: { # Vulkan-Enabled Local LLM/AI Utility

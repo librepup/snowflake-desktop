@@ -8,6 +8,7 @@
     };
     settings = {
       substituters = [
+        "https://cuda.cachix.org"
         "https://attic.xuyh0120.win/lantian"
         "https://nix-gaming.cachix.org"
         "https://nix-community.cachix.org"
@@ -16,6 +17,7 @@
         "https://ai.cachix.org"
       ];
       trusted-substituters = [
+        "https://cuda.cachix.org"
         "https://attic.xuyh0120.win/lantian"
         "https://nix-gaming.cachix.org"
         "https://nix-community.cachix.org"
@@ -24,6 +26,7 @@
         "https://ai.cachix.org"
       ];
       trusted-public-keys = [
+        "cuda.cachix.org-1:oF5HhrlMH2gjBQat0LPulr0+fwjh1eQKglWMm8F7a2Q="
         "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -51,6 +54,7 @@
     '';
   };
   nixpkgs.config = {
+    cudaSupport = true;
     allowUnfree = true;
     permittedInsecurePackages = [
       "librewolf-bin-148.0-1"

@@ -1,5 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  # Enable Overlays for Community AI Modules and Services.
   nixpkgs.overlays = [
     inputs.nixified-ai.overlays.comfyui
     inputs.nixified-ai.overlays.models
@@ -21,7 +22,7 @@
     settings = {
       model = {
         base_url = "http://localhost:11434/v1";
-        default = "hermes3:8b";
+        default = "hf.co/mradermacher/Huihui-NVIDIA-Nemotron-Nano-9B-v2-abliterated-i1-GGUF:Q4_K_M";
       };
       terminal = {
         cwd = "/extra/hermes/workspace";
@@ -70,11 +71,17 @@
   services.ollama = {
     enable = false;
     models = "/mnt/AI/ollama/models";
-    acceleration = "vulkan";
-    package = pkgs.ollama-vulkan;
+    acceleration = "cuda"; # "vulkan";
+    package = pkgs.unstable.ollama-cuda; # As opposed to 'pkgs.ollama-vulkan'.
   };
+  # Simple Ollama Web UI
+  services.nextjs-ollama-llm-ui = {
+    enable = true;
+  };
+  # Disable Services from Automatically Starting.
   systemd.services = {
     ollama.wantedBy = lib.mkForce [ ];
+    nextjs-ollama-llm-ui.wantedBy = lib.mkForce [ ];
     ollama-model-loader.wantedBy = lib.mkForce [ ];
     open-webui.wantedBy = lib.mkForce [ ];
     sillytavern.wantedBy = lib.mkForce [ ];
