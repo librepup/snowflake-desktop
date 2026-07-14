@@ -71,7 +71,7 @@
   services.ollama = {
     enable = false;
     models = "/mnt/AI/ollama/models"; # Model Directory
-    acceleration = "cuda"; # "vulkan";
+    # acceleration = "cuda"; # "vulkan";
     syncModels = false;
     environmentVariables = {
       OLLAMA_MODELS = "/mnt/AI/ollama/models"; # Model Directory (Env. Variable)

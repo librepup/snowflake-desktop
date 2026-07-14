@@ -360,7 +360,7 @@ let
     easyeffects # Effects Suite, Voice Changer, and Audio Enhancement Utility for PipeWire Microphones
   ];
   bundleMessaging = with pkgs; [
-    signal-desktop-bin # Signal Desktop Chatting Client
+    # signal-desktop-bin # Signal Desktop Chatting Client
     telegram-desktop # Telegram Desktop Chatting Client
     ayugram-desktop # Modded Telegram Client with Ghost Mode
     whatsapp-electron # Electron Wrapper for WhatsApp Web
