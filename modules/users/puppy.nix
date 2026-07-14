@@ -103,7 +103,7 @@ let
     NoDisplay=true
   '';
   bundleBrowsers = with pkgs; [
-    google-chrome # Google's Web-Browser
+    # google-chrome # Google's Web-Browser
     librewolf-bin # LibreWolf Firefox Forked Web-Browser with a Focus on Privacy
     tor-browser # Tor Browser
     lynx # CLI Web-Browser
@@ -111,16 +111,16 @@ let
     w3m-full # CLI Web-Browser
     unstable.microsoft-edge # Microsoft's Edge Web-Browser (Unstable Channel)
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # Zen Firefox Forked Web Browser
-    floorp-bin # Floorp Firefox Forked Web-Browser
+    # floorp-bin # Floorp Firefox Forked Web-Browser
     filezilla # GUI FTP Client
     inputs.helium.packages.x86_64-linux.default # Helium Chromium Based Web Browser
-    inputs.jonabron.packages.x86_64-linux.pybrowse # Python-Based GUI Browser Selector/Opener/Launcher
-    netflix # GUI Wrapper for Netflix based on Chrome
-    vivaldi # Vivaldi Web-Browser
-    vivaldi-ffmpeg-codecs # Vivaldi Web-Browser Codecs
-    nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
+    # inputs.jonabron.packages.x86_64-linux.pybrowse # Python-Based GUI Browser Selector/Opener/Launcher
+    # netflix # GUI Wrapper for Netflix based on Chrome
+    # vivaldi # Vivaldi Web-Browser
+    # vivaldi-ffmpeg-codecs # Vivaldi Web-Browser Codecs
+    # nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
-    widevine-cdm # WideVine DRM Support for Netflix and related Services
+    # widevine-cdm # WideVine DRM Support for Netflix and related Services
     brave # Brave Web Browser
   ];
   bundleKDEPlasma = with pkgs.kdePackages; [
@@ -170,22 +170,8 @@ let
   bundleAI = with pkgs; [
     lmstudio
     personalOllamaNotes
+    unstable.ollama-vulkan
     unstable.stable-diffusion-cpp-vulkan
-    # CUDA-Enabled Local LLM/AI Utility
-    # unstable.ollama-cuda
-    #
-    # Vulkan-Enabled Local LLM/AI Utility
-    # (unstable.ollama-vulkan.overrideAttrs (old: {
-    #   postInstall = ''
-    #     mv $out/bin/ollama $out/bin/ollama-vulkan
-    #     mv $out/bin/bench $out/bin/bench-vulkan
-    #     mv $out/bin/engine $out/bin/engine-vulkan
-    #     mv $out/bin/generator $out/bin/generator-vulkan
-    #     mv $out/bin/runner $out/bin/runner-vulkan
-    #   '';
-    #   doInstallCheck = false;
-    #   env.NIX_CCACHE = "0";
-    # }))
     # unstable.whichllm # Find LLMs for your specific Hardware
     unstable.mistral-rs # MistralRS
     unstable.zeroclaw

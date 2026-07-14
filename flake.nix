@@ -265,7 +265,7 @@
                   in
                   builtins.readFile timestamp;
               };
-              system.stateVersion = "26.05"; # "25.11";
+              system.stateVersion = "25.11";
             }
           )
         ];

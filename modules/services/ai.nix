@@ -69,7 +69,7 @@
   };
   # Ollama
   services.ollama = {
-    enable = false;
+    enable = true;
     models = "/mnt/AI/ollama/models"; # Model Directory
     # acceleration = "cuda"; # "vulkan";
     syncModels = false;
@@ -77,7 +77,7 @@
       OLLAMA_MODELS = "/mnt/AI/ollama/models"; # Model Directory (Env. Variable)
       CUDA_MODULE_LOADING = "LAZY"; # Helps with VRAM (Grok Suggestion)
     };
-    package = pkgs.ollama-cuda; # As opposed to 'pkgs.ollama-vulkan', or use 'pkgs.unstable.ollama-cuda'.
+    package = pkgs.unstable.ollama-vulkan; # As opposed to 'pkgs.ollama-cuda'.
   };
   # Simple Ollama Web UI
   services.nextjs-ollama-llm-ui = {

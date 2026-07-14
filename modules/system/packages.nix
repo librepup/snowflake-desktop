@@ -40,7 +40,7 @@
       gnumake
       gcc
       inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien
-      inputs.nix-search-tv.packages.x86_64-linux.default
+      # inputs.nix-search-tv.packages.x86_64-linux.default
       vim
       wget
       emacs-wayland
