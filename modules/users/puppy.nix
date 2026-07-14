@@ -651,7 +651,7 @@ let
       neuwld = inputs.neu-nix.packages.x86_64-linux.neuwld;
     })
     swclock
-    swall
+    # swall
     swiv
     mojito
     hst
