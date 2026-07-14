@@ -1064,11 +1064,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782781144,
-        "narHash": "sha256-pfH2t25poTtyYHRh8aRIgufxcCBZAdUsbA53aLwgLb8=",
+        "lastModified": 1784064098,
+        "narHash": "sha256-xLFXqB0zeR+C9vtwz4VCsKnKtU++UAKaQbNZvKOuJBc=",
         "owner": "librepup",
         "repo": "NixMacs",
-        "rev": "483f9e805cf320b1ae0808e6fa2f02181e2aabe7",
+        "rev": "12aaa1b03b0c09319fa0f3ed243c0424937c3be9",
         "type": "github"
       },
       "original": {

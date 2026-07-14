@@ -15,7 +15,7 @@
         "https://cache.nixos.org"
         # "https://cuda-maintainers.cachix.org"
         "https://cache.xinux.uz"
-        "https://attic.xuyh0120.win/lantian"
+        # "https://attic.xuyh0120.win/lantian"
       ];
       # Can be commented out.
       trusted-substituters = [
@@ -26,7 +26,7 @@
         # "https://cuda-maintainers.cachix.org"
         "https://ai.cachix.org"
         "https://cache.xinux.uz"
-        "https://attic.xuyh0120.win/lantian"
+        # "https://attic.xuyh0120.win/lantian"
       ];
       # -extra
       trusted-public-keys = [
@@ -37,7 +37,7 @@
         # "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
         "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
         "cache.xinux.uz:BXCrtqejFjWzWEB9YuGB7X2MV4ttBur1N8BkwQRdH+0="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        # "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=""lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
       ];
       auto-optimise-store = true;
       experimental-features = [
