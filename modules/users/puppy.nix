@@ -601,7 +601,7 @@ let
     systemdgenie
     killall
     ghidra-bin # Binary Decompilation Utility
-    ida-free
+    # ida-free
     lurk
   ];
   bundleNix = with pkgs; [
