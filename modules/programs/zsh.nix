@@ -132,6 +132,7 @@
         ollamaServe = "ollama serve $@";
         ollamaExtra = "OLLAMA_MODELS=/extra/DotOllamaModels ollama serve";
         ollamaMnt = "OLLAMA_MODELS=/mnt/AI/ollama/models ollama serve";
+        ollama-vulkan = "ollama-vulkan $@";
         haskellCompile = "ghc -o Program Main.hs";
       };
       shellInit = ''
