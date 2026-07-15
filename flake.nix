@@ -3,16 +3,16 @@
   inputs = {
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
     stylix = {
-      url = "github:nix-community/stylix/release-26.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -20,27 +20,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-26.05";
+      url = "github:nix-community/nixvim/nixos-25.11";
     };
     noctalia = {
       url = "github:librepup/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    vicinae.url = "github:vicinaehq/vicinae";
-    vicinae-extensions = {
-      url = "github:vicinaehq/extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # vicinae.url = "github:vicinaehq/vicinae";
+    # vicinae-extensions = {
+    #   url = "github:vicinaehq/extensions";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
-    mango = {
-      url = "github:DreamMaoMao/mango"; # Add "?ref=vertical-stack" to the url end for specific branch.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    naitre = {
-      url = "github:librepup/NaitreHUD";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # mango = {
+    #   url = "github:DreamMaoMao/mango"; # Add "?ref=vertical-stack" to the url end for specific branch.
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # naitre = {
+    #   url = "github:librepup/NaitreHUD";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -117,9 +117,9 @@
       noctalia,
       nix-alien,
       nix-search-tv,
-      vicinae,
-      mango,
-      naitre,
+      # vicinae,
+      # mango,
+      # naitre,
       nixpkgs-unstable,
       dms,
       dgop,
@@ -165,8 +165,8 @@
           stylix.nixosModules.stylix
           nix-index-database.nixosModules.nix-index
           home-manager.nixosModules.home-manager
-          mango.nixosModules.mango
-          naitre.nixosModules.naitre
+          # mango.nixosModules.mango
+          # naitre.nixosModules.naitre
           inputs.spicetify-nix.nixosModules.default
           nur.modules.nixos.default
           nix-snapd.nixosModules.default
@@ -251,9 +251,9 @@
                   nixmacs.homeManagerModules.default
                   nixvim.homeModules.nixvim
                   inputs.noctalia.homeModules.default # Noctalia
-                  vicinae.homeManagerModules.default # Vicinae
-                  inputs.mango.hmModules.mango # MangoWC
-                  inputs.naitre.hmModules.naitre # Naitre HUD
+                  # vicinae.homeManagerModules.default # Vicinae
+                  # inputs.mango.hmModules.mango # MangoWC
+                  # inputs.naitre.hmModules.naitre # Naitre HUD
                   inputs.dms.homeModules.dank-material-shell # DMS Shell
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
                 ];

@@ -1,8 +1,8 @@
 { config, pkgs, inputs, lib, ... }:
 {
   programs = {
-    mango.enable = true;
-    naitre.enable = true;
+    # mango.enable = true;
+    # naitre.enable = true;
     xwayland.enable = true;
     niri.enable = true;
     dank-material-shell = {

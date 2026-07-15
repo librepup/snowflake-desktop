@@ -1,15 +1,15 @@
 { config, pkgs, lib, inputs, unstable, ... }:
 {
-  services.vicinae = {
-    enable = true; # default: false
-    systemd = {
-      enable = true; # default: false
-      autoStart = true; # default: false
-      environment = {
-        USE_LAYER_SHELL = 1;
-      };
-    };
-  };
+  # services.vicinae = {
+  #   enable = false; # default: false
+  #   systemd = {
+  #     enable = true; # default: false
+  #     autoStart = true; # default: false
+  #     environment = {
+  #       USE_LAYER_SHELL = 1;
+  #     };
+  #   };
+  # };
   programs.noctalia-shell = {
     enable = true;
     package = inputs.noctalia.packages.${pkgs.system}.default;

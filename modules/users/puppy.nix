@@ -104,7 +104,7 @@ let
   '';
   bundleBrowsers = with pkgs; [
     # google-chrome # Google's Web-Browser
-    librewolf-bin # LibreWolf Firefox Forked Web-Browser with a Focus on Privacy
+    # librewolf-bin # LibreWolf Firefox Forked Web-Browser with a Focus on Privacy
     tor-browser # Tor Browser
     lynx # CLI Web-Browser
     links2 # CLI Web-Browser
@@ -175,7 +175,7 @@ let
     # unstable.whichllm # Find LLMs for your specific Hardware
     unstable.mistral-rs # MistralRS
     unstable.zeroclaw
-    unstable.openshell # Nvidia OpenShell
+    # unstable.openshell # Nvidia OpenShell
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
     unstable.agent-browser # Agentic Headless Browser
@@ -183,7 +183,7 @@ let
     goose-cli
     aichat
     llama-cpp-vulkan # (O)llama.cpp
-    inputs.stability-matrix-nix.packages.x86_64-linux.default
+    # inputs.stability-matrix-nix.packages.x86_64-linux.default
     shell-gpt
     litellm
     # unstable.openclaw

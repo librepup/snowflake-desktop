@@ -58,6 +58,7 @@ in
     displayManager = {
       defaultSession = "none+xmonad";
       gdm.enable = false;
+      gdm.wayland = false;
       sddm = {
         enable = true;
         wayland.enable = true;
