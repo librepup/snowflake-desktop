@@ -8,17 +8,18 @@
     };
     settings = {
       # extra-
-      substituters = [
+      substituters = [ # lib.mkForce
+        "https://cache.nixos.org"
         # "https://cuda.cachix.org"
         "https://nix-gaming.cachix.org"
         "https://nix-community.cachix.org"
-        "https://cache.nixos.org"
         # "https://cuda-maintainers.cachix.org"
+        "https://ai.cachix.org"
         "https://cache.xinux.uz"
         # "https://attic.xuyh0120.win/lantian"
       ];
       # Can be commented out.
-      trusted-substituters = [
+      trusted-substituters = [ # lib.mkForce
         "https://cache.nixos.org"
         "https://nix-gaming.cachix.org"
         # "https://cuda.cachix.org"
@@ -29,7 +30,7 @@
         # "https://attic.xuyh0120.win/lantian"
       ];
       # -extra
-      trusted-public-keys = [
+      trusted-public-keys = [ # lib.mkForce
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         # "cuda.cachix.org-1:oF5HhrlMH2gjBQat0LPulr0+fwjh1eQKglWMm8F7a2Q="
@@ -46,7 +47,7 @@
       ];
       max-jobs = "auto";
       cores = 0;
-      connect-timeout = 10;
+      connect-timeout = 30;
       trusted-users = [ "root" "puppy" ];
     };
     # Options keep-outputs and keep-derivations are used for persistent, non-garbage-collected nix-shell packages. Remove if they cause trouble.
@@ -55,9 +56,10 @@
       allow-dirty = true
       show-trace = true
       substitute = true
+      fallback = true
       auto-optimise-store = true
-      keep-outputs = true
-      keep-derivations = true
+      min-free = 5368709120
+      max-free = 21474836480
     '';
   };
   nixpkgs.config = {

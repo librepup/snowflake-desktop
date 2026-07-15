@@ -399,7 +399,7 @@ let
     tauon # Beautiful Music Player
   ];
   bundleWineAndGames = with pkgs; [
-    unstable.vintagestory
+    # unstable.vintagestory
     clamav # ClamAV AntiVirus Engine
     clamtk # GUI Interface for ClamAV
     the-powder-toy # Open-Source Sandboxing Game
