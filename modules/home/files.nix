@@ -91,6 +91,10 @@
       source = ../../files/scripts/gameLauncher.sh;
       executable = true;
     };
+    ".scripts/vlckeys.sh" = {
+      source = ../../files/scripts/vlckeys.sh;
+      executable = true;
+    };
     ".scripts/eraseAll.sh" = {
       source = ../../files/scripts/eraseAll.sh;
       executable = true;

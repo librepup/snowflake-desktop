@@ -26,3 +26,9 @@
 
 "xdotool mouseup 3"
   F21 + Release
+
+"~/.scripts/vlckeys.sh p"
+  b:8
+
+"~/.scripts/vlckeys.sh n"
+  b:9
