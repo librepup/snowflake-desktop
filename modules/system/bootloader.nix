@@ -23,12 +23,12 @@
       '';
     };
   };
-  specialisation = {
-    rescue-mode.configuration = {
-      system.nixos.tags = [ "rescue" ];
-      boot.kernelParams = [ "systemd.unit=rescue.target" ];
-    };
-  };
+  # specialisation = {
+  #   rescue-mode.configuration = {
+  #     system.nixos.tags = [ "rescue" ];
+  #     boot.kernelParams = [ "systemd.unit=rescue.target" ];
+  #   };
+  # };
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 }
