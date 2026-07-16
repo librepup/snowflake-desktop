@@ -51,7 +51,7 @@ let
     pyttsx3
     pygobject3
     # PIP
-    pipx
+    # pipx
     libusb1
     plyvel
     # howdoi
@@ -173,12 +173,12 @@ let
     unstable.ollama-vulkan
     unstable.stable-diffusion-cpp-vulkan
     # unstable.whichllm # Find LLMs for your specific Hardware
-    unstable.mistral-rs # MistralRS
-    unstable.zeroclaw
+    # unstable.mistral-rs # MistralRS
+    # unstable.zeroclaw
     # unstable.openshell # Nvidia OpenShell
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
-    unstable.agent-browser # Agentic Headless Browser
+    # unstable.agent-browser # Agentic Headless Browser
     opencode
     goose-cli
     aichat
@@ -187,9 +187,9 @@ let
     shell-gpt
     litellm
     # unstable.openclaw
-    unstable.mcp-nixos
-    unstable.codex
-    unstable.grok-cli
+    # unstable.mcp-nixos
+    # unstable.codex
+    # unstable.grok-cli
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
@@ -307,23 +307,23 @@ let
     pfetch # Minimalist Fetching Utility
     onefetch # GitHub Repository Fetching Utility
   ];
-  bundleVSTs = with pkgs; [
-    # Various Audio Production VST Plugins
-    yabridge
-    yabridgectl
-    oxefmsynth
-    bespokesynth-with-vst2
-    ninjas2
-    zam-plugins
-    vaporizer2
-    surge
-    lsp-plugins
-  ];
+  # bundleVSTs = with pkgs; [
+  #   # Various Audio Production VST Plugins
+  #   yabridge
+  #   yabridgectl
+  #   oxefmsynth
+  #   bespokesynth-with-vst2
+  #   ninjas2
+  #   zam-plugins
+  #   vaporizer2
+  #   surge
+  #   lsp-plugins
+  # ];
   bundleDAWs = with pkgs; [
     ardour # Ardour Audio Production DAW
-    zrythm # ZRythm Audio Production DAW
-    non # Non-DAW Audio Production DAW
-    muse # Muse Audio Production DAW
+    # zrythm # ZRythm Audio Production DAW
+    # non # Non-DAW Audio Production DAW
+    # muse # Muse Audio Production DAW
   ];
   bundleAudioUtilities = with pkgs; [
     picard # Audio File Tag Editor
@@ -749,7 +749,7 @@ in
       ++ bundleRust # Rust Development Bundle
       ++ bundleWayland # Wayland Related Bundle
       ++ bundleFetchers # Various System-Fetcher Utilities
-      ++ bundleVSTs # Music Production Plugin/VST Bundle
+      # ++ bundleVSTs # Music Production Plugin/VST Bundle
       ++ bundleDAWs # Music Production Bundle
       ++ bundleAudioUtilities # Utilities for Audio and Related
       ++ bundleMessaging # Instant Messaging Bundle

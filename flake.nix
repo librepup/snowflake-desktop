@@ -2,7 +2,6 @@
   description = "NixOS Systems Flake for System (Snowflake)";
   inputs = {
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -26,21 +25,8 @@
       url = "github:librepup/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # vicinae.url = "github:vicinaehq/vicinae";
-    # vicinae-extensions = {
-    #   url = "github:vicinaehq/extensions";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
-    # mango = {
-    #   url = "github:DreamMaoMao/mango"; # Add "?ref=vertical-stack" to the url end for specific branch.
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # naitre = {
-    #   url = "github:librepup/NaitreHUD";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,14 +46,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    # aerothemeplasma-nix = {
-    #   url = "github:nyakase/aerothemeplasma-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # astal = {
-    #   url = "github:aylur/astal";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     jonabron.url = "github:librepup/jonabron";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -117,9 +95,6 @@
       noctalia,
       nix-alien,
       nix-search-tv,
-      # vicinae,
-      # mango,
-      # naitre,
       nixpkgs-unstable,
       dms,
       dgop,
@@ -145,7 +120,7 @@
         inherit system;
         config = {
           allowUnfree = true;
-          cudaSupport = true;
+          # cudaSupport = true;
           permittedInsecurePackages = [
             "librewolf-bin-148.0-1"
             "librewolf-bin-unwrapped-148.0-1"
@@ -176,7 +151,7 @@
           {
             nixpkgs.config = {
               allowUnfree = true;
-              cudaSupport = true;
+              # cudaSupport = true;
               permittedInsecurePackages = [
                 "librewolf-bin-148.0-1"
                 "librewolf-bin-unwrapped-148.0-1"
@@ -195,7 +170,7 @@
                     # Old System Definition
                     # system = prev.system;
                     config.allowUnfree = config.nixpkgs.config.allowUnfree or true;
-                    config.cudaSupport = true;
+                    # config.cudaSupport = true;
                     config.permittedInsecurePackages = config.nixpkgs.permittedInsecurePackages or [
                       "librewolf-bin-148.0-1"
                       "librewolf-bin-unwrapped-148.0-1"

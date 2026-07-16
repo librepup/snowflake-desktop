@@ -63,7 +63,7 @@
     '';
   };
   nixpkgs.config = {
-    cudaSupport = true;
+    # cudaSupport = true;
     allowUnfree = true;
     permittedInsecurePackages = [
       "librewolf-bin-148.0-1"
