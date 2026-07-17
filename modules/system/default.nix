@@ -18,6 +18,7 @@
     ./cpu.nix
     ./keyboard.nix
     ./memory.nix
+    ./sleep.nix
     # ./bluetooth.nix
   ];
 }
