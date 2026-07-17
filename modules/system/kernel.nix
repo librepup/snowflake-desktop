@@ -15,4 +15,7 @@
   boot.extraModprobeConfig = ''
     install algif_aead /bin/false
   '';
+  boot.blacklistedKernelModules = [
+    "nouveau"
+  ];
 }

@@ -1,6 +1,11 @@
 { config, lib, pkgs, inputs, ... }:
 {
+  services.resolved.enable = true;
   networking = {
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     networkmanager = {
       enable = true;
       settings = {
@@ -18,10 +23,10 @@
           "ipv6.route-metric" = 600;
         };
       };
-      insertNameservers = [
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
+      # insertNameservers = [
+      #   "1.1.1.1"
+      #   "8.8.8.8"
+      # ];
       dispatcherScripts = [
         {
           source = pkgs.writeShellScript "connectivityUpdateHook" ''

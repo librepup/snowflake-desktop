@@ -59,36 +59,36 @@ in
       defaultSession = "none+xmonad";
       gdm.enable = false;
       sddm = {
-        enable = true;
-        wayland.enable = true;
+        enable = false;
+        wayland.enable = false;
         autoNumlock = true;
       };
-      sessionPackages = [
-        hevelSession
-        tohuSession
-      ];
+      # sessionPackages = [
+      #   hevelSession
+      #   tohuSession
+      # ];
     };
   };
   # Xorg
-  services.xserver.xrandrHeads = [
-    {
-      output = "DP-0";
-      monitorConfig = ''
-        Option "Mode" "1920x1080"
-        Option "Rate" "144"
-        Option "Primary" "true"
-        Option "Position" "0 0"
-      '';
-    }
-    {
-      output = "HDMI-0";
-      monitorConfig = ''
-        Option "Mode" "1920x1080"
-        Option "Rate" "60"
-        Option "Position" "1920 0"
-      '';
-    }
-  ];
+  # services.xserver.xrandrHeads = [
+  #   {
+  #     output = "DP-3";
+  #     monitorConfig = ''
+  #       Option "Mode" "1920x1080"
+  #       Option "Rate" "144"
+  #       Option "Primary" "true"
+  #       Option "Position" "0 0"
+  #     '';
+  #   }
+  #   {
+  #     output = "HDMI-1";
+  #     monitorConfig = ''
+  #       Option "Mode" "1920x1080"
+  #       Option "Rate" "60"
+  #       Option "Position" "1920 0"
+  #     '';
+  #   }
+  # ];
   services.xserver = {
     videoDrivers = [ "nvidia" ];
     enable = true;
@@ -96,9 +96,9 @@ in
       layout = "us";
       variant = "colemak";
     };
-    windowManager.windowmaker = {
-      enable = true;
-    };
+    # windowManager.windowmaker = {
+    #   enable = true;
+    # };
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
