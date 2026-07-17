@@ -77,10 +77,14 @@
       OLLAMA_MODELS = "/mnt/AI/ollama/models"; # Model Directory (Env. Variable)
       CUDA_MODULE_LOADING = "LAZY"; # Helps with VRAM (Grok Suggestion)
     };
-    package = pkgs.unstable.ollama-vulkan; # As opposed to 'pkgs.ollama-cuda'.
+    package = pkgs.unstable.ollama-cuda; # As opposed to 'pkgs.ollama-cuda'.
   };
   # Simple Ollama Web UI
   services.nextjs-ollama-llm-ui = {
+    enable = true;
+  };
+  # Grok
+  programs.grok-cli = {
     enable = true;
   };
   # Disable Services from Automatically Starting.

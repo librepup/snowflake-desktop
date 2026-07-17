@@ -9,6 +9,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xai-grok.url = "github:timoteuszelle/x.ai-grok";
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
     stylix = {
       url = "github:nix-community/stylix/release-26.05";
@@ -92,6 +93,7 @@
       nix-index-database,
       nixmacs,
       nixvim,
+      xai-grok,
       noctalia,
       nix-alien,
       nix-search-tv,
@@ -140,13 +142,12 @@
           stylix.nixosModules.stylix
           nix-index-database.nixosModules.nix-index
           home-manager.nixosModules.home-manager
-          # mango.nixosModules.mango
-          # naitre.nixosModules.naitre
           inputs.spicetify-nix.nixosModules.default
           nur.modules.nixos.default
           nix-snapd.nixosModules.default
           inputs.nixified-ai.nixosModules.comfyui
           hermes-agent.nixosModules.default
+          xai-grok.nixosModules.default
           # Nixpkgs Config
           {
             nixpkgs.config = {

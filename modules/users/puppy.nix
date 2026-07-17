@@ -170,26 +170,24 @@ let
   bundleAI = with pkgs; [
     lmstudio
     personalOllamaNotes
-    unstable.ollama-vulkan
+    # unstable.ollama-vulkan
+    unstable.ollama-cuda
     unstable.stable-diffusion-cpp-vulkan
-    # unstable.whichllm # Find LLMs for your specific Hardware
-    # unstable.mistral-rs # MistralRS
-    # unstable.zeroclaw
-    # unstable.openshell # Nvidia OpenShell
+    unstable.whichllm # Find LLMs for your specific Hardware
+    unstable.zeroclaw
+    unstable.openshell # Nvidia OpenShell
     inputs.jonabron.packages.x86_64-linux.how2 # AI for your Shell
     unstable.gemini-cli-bin # Google Gemini Agent
-    # unstable.agent-browser # Agentic Headless Browser
     opencode
     goose-cli
     aichat
     llama-cpp-vulkan # (O)llama.cpp
-    # inputs.stability-matrix-nix.packages.x86_64-linux.default
     shell-gpt
     litellm
-    # unstable.openclaw
+    unstable.codex
+    # inputs.stability-matrix-nix.packages.x86_64-linux.default
     # unstable.mcp-nixos
-    # unstable.codex
-    # unstable.grok-cli
+    # unstable.agent-browser # Agentic Headless Browser
   ];
   bundleFlatpak = with pkgs; [
     # Various Flatpak Related Utilities
@@ -340,13 +338,11 @@ let
     alsa-utils
     pwvucontrol
     id3v2 # Simple CLI Tagging Utility for Audio Files
-    # helvum
     volctl
     lyrebird
     easyeffects # Effects Suite, Voice Changer, and Audio Enhancement Utility for PipeWire Microphones
   ];
   bundleMessaging = with pkgs; [
-    # signal-desktop-bin # Signal Desktop Chatting Client
     telegram-desktop # Telegram Desktop Chatting Client
     ayugram-desktop # Modded Telegram Client with Ghost Mode
     whatsapp-electron # Electron Wrapper for WhatsApp Web
@@ -399,7 +395,6 @@ let
     tauon # Beautiful Music Player
   ];
   bundleWineAndGames = with pkgs; [
-    # unstable.vintagestory
     clamav # ClamAV AntiVirus Engine
     clamtk # GUI Interface for ClamAV
     the-powder-toy # Open-Source Sandboxing Game
@@ -587,7 +582,6 @@ let
     systemdgenie
     killall
     ghidra-bin # Binary Decompilation Utility
-    # ida-free
     lurk
   ];
   bundleNix = with pkgs; [
@@ -637,7 +631,6 @@ let
       neuwld = inputs.neu-nix.packages.x86_64-linux.neuwld;
     })
     swclock
-    # swall
     swiv
     mojito
     hst
