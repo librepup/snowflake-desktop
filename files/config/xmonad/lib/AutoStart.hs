@@ -113,7 +113,7 @@ myAutostart = do
   spawnOnceIfExists "waypaper" "waypaper --restore --backend feh"
   -- spawnOnceIfExists "feh" "sleep 1 && feh --bg-fill $HOME/Pictures/Wallpapers/Mori\\ Calliope/06.png" -- Wallpaper
   spawnOnceIfExists "nixmacs-client" "if ! nixmacs-client -e \"(emacs-pid)\" > /dev/null 2>&1; then nixmacs --fg-daemon & fi" -- NixMacs Daemon
-  -- spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
+  spawnOnceIfExists "xset" "xset s off -dpms s noblank" -- Disable Screensaver
   -- spawnOnceIfExists "redshift" "if ! pgrep redshift > /dev/null 2>&1; then redshift -l 52.520008:13.404954 -t 5200:5200 -m randr:crtc=0; xrandr --output HDMI-0 --gamma 1.5:1.5:1.5 & fi" -- Bluelight Filter
   spawnOnceIfExists "dunst" "if ! pgrep dunst > /dev/null 2>&1; then dunst & fi" -- Dunst
   spawnOnceIfExists "keepassxc" "if ! pgrep keepassxc > /dev/null 2>&1; then keepassxc & fi" -- KeePassXC
