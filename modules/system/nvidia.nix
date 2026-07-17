@@ -28,8 +28,11 @@
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+        kernelSuspendNotifier = true;
+      };
       open = false;
       nvidiaSettings = true;
     };
