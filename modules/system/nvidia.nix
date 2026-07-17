@@ -31,7 +31,7 @@
       powerManagement = {
         enable = true;
         finegrained = false;
-        kernelSuspendNotifier = true;
+        # kernelSuspendNotifier = true;
       };
       open = false;
       nvidiaSettings = true;
