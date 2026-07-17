@@ -296,6 +296,12 @@
   };
   # Wallpapers
   home.file = {
+    # Grok Ani
+    "Pictures/Wallpapers/Grok Ani/01.png".source = ../../files/pictures/wallpapers/GrokAni/01.png
+    "Pictures/Wallpapers/Grok Ani/02.jpg".source = ../../files/pictures/wallpapers/GrokAni/02.jpg
+    "Pictures/Wallpapers/Grok Ani/03.jpg".source = ../../files/pictures/wallpapers/GrokAni/03.jpg
+    "Pictures/Wallpapers/Grok Ani/04.jpg".source = ../../files/pictures/wallpapers/GrokAni/04.jpg
+    "Pictures/Wallpapers/Grok Ani/05.jpg".source = ../../files/pictures/wallpapers/GrokAni/05.jpg
     # Loji
     "Pictures/Wallpapers/Loji/02.jpg".source = ../../files/pictures/wallpapers/Loji/02.jpg;
     "Pictures/Wallpapers/Loji/01.png".source = ../../files/pictures/wallpapers/Loji/01.png;
