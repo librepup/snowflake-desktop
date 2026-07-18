@@ -488,8 +488,10 @@ let
     yazi
   ];
   bundleSecurity = with pkgs; [
+    veracrypt
     bleachbit
     macchanger
+    mcrypt
   ];
   bundleNode = with pkgs; [
     nodejs_24 # NodeJS Javascript Development Framework
@@ -710,7 +712,6 @@ in
         quickemu
         kjv
         emote
-        veracrypt
         flameshot
         normcap
         tesseract
