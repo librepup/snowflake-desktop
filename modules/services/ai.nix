@@ -54,19 +54,20 @@
     port = 8045;
   };
   # OpenWeb-UI
-  # services.open-webui = {
-  #   enable = true;
-  #   stateDir = "/var/lib/open-webui";
-  #   port = 6967;
-  #   environment = {
-  #     ENABLE_IMAGE_GENERATION = "True";
-  #     ENABLE_WEB_SEARCH = "True";
-  #     USER_PERMISSIONS_CHAT_FILE_UPLOAD = "True";
-  #     ENABLE_MEMORIES = "True";
-  #     DATA_DIR = "/var/lib/open-webui";
-  #     OLLAMA_BASE_URL = "http://127.0.0.1:11434";
-  #   };
-  # };
+  services.open-webui = {
+    enable = true;
+    stateDir = "/var/lib/open-webui";
+    port = 6967;
+    package = pkgs.unstable.open-webui;
+    environment = {
+      ENABLE_IMAGE_GENERATION = "True";
+      ENABLE_WEB_SEARCH = "True";
+      USER_PERMISSIONS_CHAT_FILE_UPLOAD = "True";
+      ENABLE_MEMORIES = "True";
+      DATA_DIR = "/var/lib/open-webui";
+      OLLAMA_BASE_URL = "http://127.0.0.1:11434";
+    };
+  };
   # Ollama
   services.ollama = {
     enable = true;
@@ -92,7 +93,7 @@
     ollama.wantedBy = lib.mkForce [ ];
     nextjs-ollama-llm-ui.wantedBy = lib.mkForce [ ];
     ollama-model-loader.wantedBy = lib.mkForce [ ];
-    # open-webui.wantedBy = lib.mkForce [ ];
+    open-webui.wantedBy = lib.mkForce [ ];
     sillytavern.wantedBy = lib.mkForce [ ];
     comfyui.wantedBy = lib.mkForce [ ];
     hermes-agent.wantedBy = lib.mkForce [ ];
