@@ -102,7 +102,7 @@ myAutostart = do
   spawnOnceIfExists "xinput" "xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Profile Enabled' 0 1 0 && xinput set-prop 'Mad Catz Global MADCATZ R.A.T. 8+ gaming mouse' 'libinput Accel Speed' 0.3" -- Mouse (2)
   spawn "setxkbmap us -variant colemak" -- Set Keyboard Layout
   -- spawnIfExists "xmodmap" "setxkbmap us -variant colemak && xmodmap ~/.my-input-remappings/xmodmap/global" -- XModMap
-  spawnOnceIfExists "xbindkeys" "sleep 5 && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
+  -- spawnOnceIfExists "xbindkeys" "sleep 5 && xbindkeys --file ~/.my-input-remappings/xbindkeys/global" -- XBindKeys
   spawnOnceIfExists "dex" "dex --autostart --environment xmonad" -- XMonad Environment
   spawnOnceIfExists "xss-lock" "xss-lock --transfer-sleep-lock -- betterlockscreen --lock blur --span --time-format %H:%M:%S --show-layout &" -- BetterLockscreen XSS Lock
   spawnOnceIfExists "nm-applet" "if ! pgrep nm-applet > /dev/null 2>&1; then nm-applet & fi" -- NetworkManager Applet
