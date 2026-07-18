@@ -40,6 +40,7 @@
         # Fetching
         fetch = "echo -e 'mf => Microfetch\npf => Pridefetch\nhf => Hyfetch\nff => Fastfetch'";
         hf = "hyfetch $@";
+        grokfetch = "fastfetch --logo-width 40 --logo-height 20 --logo-padding-left 0 --logo-padding-right 0 --logo ~/.config/fastfetch/images/grokfetch.png $@";
         deToSv = "trans de:sv '$@'";
         enToSv = "trans en:sv '$@'";
         svToDe = "trans sv:de '$@'";

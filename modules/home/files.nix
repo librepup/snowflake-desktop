@@ -202,6 +202,7 @@
   home.file.".config/fastfetch/images/mori01.png".source = ../../files/config/fastfetch/mori01.png;
   home.file.".config/fastfetch/images/mori02.png".source = ../../files/config/fastfetch/mori02.png;
   home.file.".config/fastfetch/images/numi01.png".source = ../../files/config/fastfetch/numi01.png;
+  home.file.".config/fastfetch/images/grokfetch.png".source = ../../files/config/fastfetch/grokfetch.png;
   home.file.".config/fastfetch/images/gigi.png".source = ../../files/config/fastfetch/gigi.png;
   home.file.".config/fastfetch/config.jsonc".source = ../../files/config/fastfetch/config.jsonc;
   # Kitty Colorschemes
