@@ -83,7 +83,6 @@
         wetter = "curl wttr.in/Berlin $@";
         htop = "btm --theme nord $@";
         i = "viewnior $@";
-        v = "mpv $@";
         iftop = "bandwhich $@";
         restartXdgDesktopPortal = "pkill -f xdg-desktop-portal; systemctl --user restart xdg-desktop-portal; systemctl --user restart xdg-desktop-portal-gnome";
         xdg-desktop-portal-restart = "pkill -f xdg-desktop-portal; systemctl --user restart xdg-desktop-portal; systemctl --user restart xdg-desktop-portal-gnome";
