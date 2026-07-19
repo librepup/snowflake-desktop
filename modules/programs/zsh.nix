@@ -130,11 +130,9 @@
         floorp = "devour floorp $@";
         nvidia-system-monitor-qt = "qnvsm $@";
         ardour = "devour ardour8 $@";
-        ollamaGemma3 = "ollama run gemma3 $@";
-        ollamaServe = "ollama serve $@";
         ollamaExtra = "OLLAMA_MODELS=/extra/DotOllamaModels ollama serve";
-        ollamaMnt = "OLLAMA_MODELS=/mnt/AI/ollama/models ollama serve";
-        ollama-vulkan = "ollama-vulkan $@";
+        oser = "OLLAMA_MODELS=/mnt/AI/ollama/models OLLAMA_CONTEXT_LENGTH=81920 OLLAMA_FLASH_ATTENTION=1 OLLAMA_KV_CACHE_TYPE=q8_0 ollama serve $@";
+        ml = "$HOME/.scripts/modellist.sh";
         haskellCompile = "ghc -o Program Main.hs";
       };
       shellInit = ''

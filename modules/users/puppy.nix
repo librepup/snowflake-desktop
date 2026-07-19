@@ -170,6 +170,7 @@ let
   bundleAI = with pkgs; [
     lmstudio
     personalOllamaNotes
+    unstable.heretic
     # unstable.ollama-vulkan
     unstable.ollama-cuda
     unstable.stable-diffusion-cpp-vulkan

@@ -91,6 +91,10 @@
       source = ../../files/scripts/gameLauncher.sh;
       executable = true;
     };
+    ".scripts/modellist.sh" = {
+      source = ../../files/scripts/modellist.sh;
+      executable = true;
+    };
     ".scripts/vlckeys.sh" = {
       source = ../../files/scripts/vlckeys.sh;
       executable = true;
