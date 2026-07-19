@@ -134,6 +134,7 @@
         oser = "OLLAMA_MODELS=/mnt/AI/ollama/models OLLAMA_CONTEXT_LENGTH=81920 OLLAMA_FLASH_ATTENTION=1 OLLAMA_KV_CACHE_TYPE=q8_0 ollama serve $@";
         ml = "$HOME/.scripts/modellist.sh";
         haskellCompile = "ghc -o Program Main.hs";
+        v = "unshare -n --map-current-user vlc --loop --repeat $@";
       };
       shellInit = ''
         # Performance Enhancing Settings

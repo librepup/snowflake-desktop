@@ -454,6 +454,7 @@ let
     simplescreenrecorder
     gpu-screen-recorder # Record your Screen through your GPU
     gpu-screen-recorder-gtk # GUI Interface for gpu-screen-recorder
+    vlc
   ];
   bundleTextEditors = with pkgs; [
     anvil-editor # Text Editor inspired by Plan9's ACME
