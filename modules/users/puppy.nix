@@ -5,26 +5,6 @@
   ...
 }:
 let
-  # Wrapped Python with Packages
-  # pythonAIWrapper = pkgs.python313.withPackages (ps: with ps; [
-  #   torchWithCuda
-  #   torchvision-bin
-  #   torchaudio-bin
-  #   diffusers
-  #   transformers
-  #   accelerate
-  #   paramiko
-  #   psutil
-  #   utils
-  #   sshtunnel
-  #   requests
-  #   urllib3
-  #   json5
-  #   standard-telnetlib
-  #   pipx
-  #   libusb1
-  #   plyvel
-  # ]);
   pythonWrapped = pkgs.python313.withPackages (ps: with ps; [
     # LLM/AI
     diffusers
@@ -51,7 +31,6 @@ let
     pyttsx3
     pygobject3
     # PIP
-    # pipx
     libusb1
     plyvel
     # howdoi
@@ -59,33 +38,8 @@ let
   pythonPath = "${pythonWrapped}/${pythonWrapped.sitePackages}";
   pythonPathFile = pkgs.writeText "pythonPathDefinition" pythonPath;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}; # Define Spicetify-Nix Packages
-  torMicrosoftEdgeWrapped = pkgs.writeShellScriptBin "tor-microsoft-edge" ''
-    doas ip netns exec tor-net \
-      microsoft-edge \
-        --proxy-server="socks5://127.0.0.1:9050" \
-        --host-resolver-rules="MAP * ~NOTFOUND , EXCLUDE localhost" \
-        --proxy-bypass-list="localhost;127.0.0.1" \
-        "$@"
-  '';
   fehViewerWrapped = pkgs.writeShellScriptBin "fehWrapped" ''
     exec ${pkgs.feh}/bin/feh --geometry --ignore-aspect --recursive --auto-zoom --zoom max --no-menus --draw-filename --zoom-step 10 --scale-down --slideshow-delay '-1' --image-bg '#000000' --auto-reload "$@"
-  '';
-  personalOllamaNotes = pkgs.writeTextDir "share/ollama-notes.md" ''
-    # Models
-    Top. hf.co/mradermacher/Huihui-NVIDIA-Nemotron-Nano-9B-v2-abliterated-i1-GGUF:Q4_K_M - Uncensored Fast Abliterated Model by NVIDIA
-    1. leeplenty/lumimaid-v0.2:12b - Fully Uncensored
-    2. qwen2.5-coder:1.5b - Super Fast Small Model
-    3. Uncensored Thinking Models
-    3.1. hf.co/Lucy-in-the-Sky/NSFW-flash-Q4_K_M-GGUF:Q4_K_M
-    3.2. hf.co/Andycurrent/Gemma-3-1B-it-GLM-4.7-Flash-Heretic-Uncensored-Thinking_GGUF:Q4_K_M
-    4. Unsorted Uncensored Models
-    4.1. gurubot/self-after-dark:3b-q4_K_M
-    4.2. MistaaB/SpicyMorph:latest
-    5. all-minilm:latest - Converts Prompts to Data-Points
-
-    # Commands
-    ## Create Model with Modelfile
-    - `ollama create <MYMODEL> -f /path/to/Modelfile`
   '';
   fehViewerWrappedDesktop = pkgs.writeTextDir "share/applications/fehWrapped.desktop" ''
     [Desktop Entry]
@@ -103,25 +57,17 @@ let
     NoDisplay=true
   '';
   bundleBrowsers = with pkgs; [
-    # google-chrome # Google's Web-Browser
-    # librewolf-bin # LibreWolf Firefox Forked Web-Browser with a Focus on Privacy
     tor-browser # Tor Browser
     lynx # CLI Web-Browser
     links2 # CLI Web-Browser
     w3m-full # CLI Web-Browser
     unstable.microsoft-edge # Microsoft's Edge Web-Browser (Unstable Channel)
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default # Zen Firefox Forked Web Browser
-    # floorp-bin # Floorp Firefox Forked Web-Browser
     filezilla # GUI FTP Client
     inputs.helium.packages.x86_64-linux.default # Helium Chromium Based Web Browser
-    # inputs.jonabron.packages.x86_64-linux.pybrowse # Python-Based GUI Browser Selector/Opener/Launcher
-    # netflix # GUI Wrapper for Netflix based on Chrome
-    # vivaldi # Vivaldi Web-Browser
-    # vivaldi-ffmpeg-codecs # Vivaldi Web-Browser Codecs
-    # nur.repos.bandithedoge.thorium-bin # Throium Web-Browser
     thunderbird-bin # ThunderBird E-Mail Client Suite
-    # widevine-cdm # WideVine DRM Support for Netflix and related Services
     brave # Brave Web Browser
+    mullvad-browser # MullvadVPN Browser
   ];
   bundleKDEPlasma = with pkgs.kdePackages; [
     # Packages related to KDE Plasma
@@ -513,10 +459,6 @@ let
     xorg.xeyes # GUI Googly-Eyes following the Cursor for Xorg
     xnotify
     pmenu
-    dockapps.wmsystemtray
-    dockapps.wmcube
-    dockapps.AlsaMixer-app
-    dockapps.wmCalClock
     xcolor # Xorg Color-Picker
     nvidia-system-monitor-qt
     xclicker # Xorg Auto-Clicker
@@ -612,17 +554,19 @@ let
     wifi-qr
     aircrack-ng
     nmap
-    localsend
-    anydesk
     tmate
     upterm
     networkmanagerapplet
     networkmanager_dmenu
     wpa_supplicant
-    protonvpn-gui
-    riseup-vpn
-    wireshark
     net-tools
+  ];
+  bundleVPN = with pkgs; [
+    mullvad-vpn
+    mullvad
+    riseup-vpn
+    protonvpn-gui
+    proton-vpn-cli
   ];
   bundleNeu = with inputs.neu-nix.packages.x86_64-linux; [
     # Various Wayland.FYI related Tools and Window-Managers
@@ -661,15 +605,25 @@ let
   ];
   bundleKeyboard = with pkgs; [
     inputs.jonabron.packages.x86_64-linux.keyboard-layout-exporter
-    keyboard-layout-editor
     keyd
     kalamine
-    inputs.jonabron.packages.x86_64-linux.ratctl # Mad Catz Mice Control Utility
     xorg.xkbcomp
     xmodmap # Rebind Keys uder Xorg
     xbindkeys # Rebind Keys under Xorg
     wootility # Wooting Keyboard Utility
+  ];
+  bundleUnused = with pkgs; [
     piper # Gaming Mouse Configuration Utility
+    inputs.jonabron.packages.x86_64-linux.ratctl # Mad Catz Mice Control Utility
+    keyboard-layout-editor
+    wireshark
+    localsend
+    anydesk
+    dockapps.wmsystemtray
+    dockapps.wmcube
+    dockapps.AlsaMixer-app
+    dockapps.wmCalClock
+    unstable.plan9port-wayland
   ];
 in
 {
@@ -738,18 +692,15 @@ in
         fontpreview
         arduino-ide
         pokeget-rs
-        unstable.plan9port-wayland
       ]
       ++ bundlePython # Python Development Bundle
       ++ bundleBrowsers # Web Browsers
       ++ bundleRust # Rust Development Bundle
       ++ bundleWayland # Wayland Related Bundle
       ++ bundleFetchers # Various System-Fetcher Utilities
-      # ++ bundleVSTs # Music Production Plugin/VST Bundle
       ++ bundleDAWs # Music Production Bundle
       ++ bundleAudioUtilities # Utilities for Audio and Related
       ++ bundleMessaging # Instant Messaging Bundle
-      ++ bundleEmulators # Emulators
       ++ bundleGraphicsDesign # Bundle for Graphic Design and Image Editing
       ++ bundleMusicPlayers # Music Players
       ++ bundleWineAndGames # Bundle for Wine and Windows-/Gaming-Related Software
@@ -769,7 +720,6 @@ in
       ++ bundleWeb # Web Related Software and Utilities
       ++ bundleAI # AI/LLM Related Bundle
       ++ bundleFlatpak # Flatpak Utilities
-      ++ bundleNeu # Wayland.FYI Stuff
       ++ bundleApple # Utilities Related to Apple iPhones
       ++ bundleTextEditors # Text Editors
       ++ bundleGnome # GNOME Applications
@@ -779,6 +729,7 @@ in
       ++ bundlePenTesting # Pen-Testing Tools
       ++ bundleShellScripting # Tools related to Shell Scripting
       ++ bundleSecurity # Tools for Security
+      ++ bundleVPN # VPN Utilities and Related
       ++ bundleDocuments # Tools for Editing Documents
       ++ bundleExplorers; # File Explorers and Related
   };

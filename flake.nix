@@ -22,31 +22,31 @@
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
     };
-    noctalia = {
-      url = "github:librepup/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    # noctalia = {
+    #   url = "github:librepup/noctalia-shell";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-search-tv.url = "github:3timeslazy/nix-search-tv";
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dgop = {
-      url = "github:AvengeMedia/dgop";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # dms = {
+    #   url = "github:AvengeMedia/DankMaterialShell/stable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # dgop = {
+    #   url = "github:AvengeMedia/dgop";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nixmacs = {
       url = "github:librepup/NixMacs";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    # plasma-manager = {
+    #   url = "github:nix-community/plasma-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.home-manager.follows = "home-manager";
+    # };
     jonabron.url = "github:librepup/jonabron";
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -69,16 +69,16 @@
       url = "github:nix-community/nix-snapd";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neu-nix = {
-      url = "github:ricardomaps/neu-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # neu-nix = {
+    #   url = "github:ricardomaps/neu-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixified-ai = {
       url = "github:nixified-ai/flake";
     };
-    stability-matrix-nix = {
-      url = "github:SmarakNayak/stability-matrix-nix";
-    };
+    # stability-matrix-nix = {
+    #   url = "github:SmarakNayak/stability-matrix-nix";
+    # };
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
     };
@@ -94,12 +94,12 @@
       nixmacs,
       nixvim,
       xai-grok,
-      noctalia,
+      # noctalia,
       nix-alien,
       nix-search-tv,
       nixpkgs-unstable,
-      dms,
-      dgop,
+      # dms,
+      # dgop,
       spicetify-nix,
       nix-cachyos-kernel,
       nix-gaming,
@@ -110,9 +110,9 @@
       flatpaks,
       nur,
       nix-snapd,
-      neu-nix,
+      # neu-nix,
       nixified-ai,
-      stability-matrix-nix,
+      # stability-matrix-nix,
       hermes-agent,
       ...
     }:
