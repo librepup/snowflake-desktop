@@ -85,9 +85,9 @@
     enable = true;
   };
   # Grok
-  programs.grok-cli = {
-    enable = true;
-  };
+  # programs.grok-cli = {
+  #   enable = true;
+  # };
   # Disable Services from Automatically Starting.
   systemd.services = {
     ollama.wantedBy = lib.mkForce [ ];

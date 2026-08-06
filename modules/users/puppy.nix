@@ -133,6 +133,8 @@ let
     litellm
     unstable.codex
     code-cursor-fhs
+    grok-build
+    # grok-cli
     # inputs.stability-matrix-nix.packages.x86_64-linux.default
     # unstable.mcp-nixos
     # unstable.agent-browser # Agentic Headless Browser
