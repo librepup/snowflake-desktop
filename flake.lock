@@ -601,11 +601,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1786022740,
-        "narHash": "sha256-Ec1JFUJTc6O7apl3Vyq3SzAF0b9JW25JWTMi8LgR8qY=",
+        "lastModified": 1786024129,
+        "narHash": "sha256-b3SJ0E+wRWVH8myKpJm/AUaqneN24H8+xs0n3Tf62kc=",
         "owner": "librepup",
         "repo": "jonabron",
-        "rev": "34e3a993a46e1c1ef7068479e5084ed64c610b24",
+        "rev": "07ddda393a196d6cea737f455426252c55ea4fd8",
         "type": "github"
       },
       "original": {
