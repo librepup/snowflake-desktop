@@ -133,7 +133,7 @@ let
     litellm
     unstable.codex
     code-cursor-fhs
-    grok-build
+    unstable.grok-build
     # grok-cli
     # inputs.stability-matrix-nix.packages.x86_64-linux.default
     # unstable.mcp-nixos
