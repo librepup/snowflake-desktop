@@ -10,10 +10,10 @@
   #     };
   #   };
   # };
-  programs.noctalia-shell = {
-    enable = true;
-    package = inputs.noctalia.packages.${pkgs.system}.default;
-  };
+  # programs.noctalia-shell = {
+  #   enable = true;
+  #   package = inputs.noctalia.packages.${pkgs.system}.default;
+  # };
   services.flameshot = {
     enable = true;
     settings = {

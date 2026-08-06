@@ -206,7 +206,7 @@
             }:
             {
               imports = [
-                inputs.dms.nixosModules.dank-material-shell
+                # inputs.dms.nixosModules.dank-material-shell
                 home-manager.nixosModules.home-manager
                 ./hardware-configuration.nix
                 inputs.nix-gaming.nixosModules.pipewireLowLatency
@@ -226,11 +226,11 @@
                   stylix.homeModules.stylix
                   nixmacs.homeManagerModules.default
                   nixvim.homeModules.nixvim
-                  inputs.noctalia.homeModules.default # Noctalia
+                  # inputs.noctalia.homeModules.default # Noctalia
                   # vicinae.homeManagerModules.default # Vicinae
                   # inputs.mango.hmModules.mango # MangoWC
                   # inputs.naitre.hmModules.naitre # Naitre HUD
-                  inputs.dms.homeModules.dank-material-shell # DMS Shell
+                  # inputs.dms.homeModules.dank-material-shell # DMS Shell
                   inputs.spicetify-nix.homeManagerModules.default # Spicetify-Nix
                 ];
                 backupFileExtension =

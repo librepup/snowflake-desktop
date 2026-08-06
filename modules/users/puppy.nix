@@ -115,7 +115,7 @@ let
   ];
   bundleAI = with pkgs; [
     lmstudio
-    personalOllamaNotes
+    # personalOllamaNotes
     unstable.heretic
     # unstable.ollama-vulkan
     unstable.ollama-cuda
@@ -132,6 +132,7 @@ let
     shell-gpt
     litellm
     unstable.codex
+    code-cursor-fhs
     # inputs.stability-matrix-nix.packages.x86_64-linux.default
     # unstable.mcp-nixos
     # unstable.agent-browser # Agentic Headless Browser
