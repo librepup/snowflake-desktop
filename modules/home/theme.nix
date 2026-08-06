@@ -6,9 +6,10 @@
     x11.enable = true;
     name = "Amiga (Classic Red)";
     package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+    size = 56;
     # name = "XCursor-Pro-Red";
     # package = pkgs.xcursor-pro;
-    size = 28;
+    # size = 28;
   };
   programs.gnome-shell = {
     enable = true;
@@ -151,9 +152,10 @@
     cursorTheme = {
       name = "Amiga (Classic Red)";
       package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+      size = 56;
       # name = "XCursor-Pro-Red";
       # package = pkgs.xcursor-pro;
-      size = 28;
+      # size = 28;
     };
     gtk4 = {
       enable = true;
@@ -169,9 +171,10 @@
     cursor = {
       name = "Amiga (Classic Red)";
       package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+      size = 56;
       # name = "XCursor-Pro-Red";
       # package = pkgs.xcursor-pro;
-      size = 28;
+      # size = 28;
     };
     enable = false;
     image = ../../files/pictures/wallpapers/MoriCalliope/06.png;
