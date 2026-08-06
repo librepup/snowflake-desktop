@@ -4,8 +4,10 @@
     enable = true;
     gtk.enable = true;
     x11.enable = true;
-    name = "XCursor-Pro-Red";
-    package = pkgs.xcursor-pro;
+    name = "Amiga (Classic Red)";
+    package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+    # name = "XCursor-Pro-Red";
+    # package = pkgs.xcursor-pro;
     size = 28;
   };
   programs.gnome-shell = {
@@ -147,8 +149,10 @@
       package = lib.mkForce pkgs.whitesur-icon-theme;
     };
     cursorTheme = {
-      name = "XCursor-Pro-Red";
-      package = pkgs.xcursor-pro;
+      name = "Amiga (Classic Red)";
+      package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+      # name = "XCursor-Pro-Red";
+      # package = pkgs.xcursor-pro;
       size = 28;
     };
     gtk4 = {
@@ -163,8 +167,10 @@
   stylix = {
     targets.gtk.enable = false;
     cursor = {
-      name = "XCursor-Pro-Red";
-      package = pkgs.xcursor-pro;
+      name = "Amiga (Classic Red)";
+      package = inputs.jonabron.packages.x86_64-linux.amiga-classic-red;
+      # name = "XCursor-Pro-Red";
+      # package = pkgs.xcursor-pro;
       size = 28;
     };
     enable = false;

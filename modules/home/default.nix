@@ -1,4 +1,4 @@
-{ config, pkgs, lib, unstable, ... }:
+{ config, pkgs, lib, inputs, unstable, ... }:
 {
   imports = [
     ./desktops/default.nix
